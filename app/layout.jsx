@@ -1,5 +1,5 @@
 // Vercel Analytics
-// import { Analytics } from "@vercel/analytics/react";
+import { Analytics } from "@vercel/analytics/react";
 
 import { NavBar } from "@/components/NavBar";
 import Footer from "@/components/Footer";
@@ -32,11 +32,45 @@ export const metadata = {
 const layout = ({ children }) => {
   return (
     <html lang="en">
+      <Head>
+        <title>Contest Hive</title>
+        <meta
+          name="description"
+          content="Contest Hive provides contest information from various competitive programming platforms. It also provides a REST API for the same"
+        />
+        <meta property="og:url" content="https://contest-hive.vercel.app/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Contest Hive" />
+        <meta
+          property="og:description"
+          content="Contest Hive provides contest information from various competitive programming platforms. It also provides a REST API for the same"
+        />
+        <meta
+          property="og:image"
+          content="https://contest-hive.vercel.app/assets/images/contestHive.png"
+        />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="contest-hive.vercel.app" />
+        <meta
+          property="twitter:url"
+          content="https://contest-hive.vercel.app/"
+        />
+        <meta name="twitter:title" content="Contest Hive" />
+        <meta
+          name="twitter:description"
+          content="Contest Hive provides contest information from various competitive programming platforms. It also provides a REST API for the same"
+        />
+        <meta
+          name="twitter:image"
+          content="https://contest-hive.vercel.app/assets/images/contestHive.png"
+        />
+      </Head>
       <body className="bg-gray-900 text-gray-200">
         <NavBar />
         {children}
         <Footer />
-        {/* <Analytics /> */}
+        <Analytics />
       </body>
     </html>
   );

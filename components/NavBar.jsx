@@ -38,7 +38,7 @@ export const NavBar = () => {
         <Link href="/" className="flex items-center">
           <Image
             src={logoUrl}
-            width={30}
+            width={50}
             height={50}
             className="h-10 mr-3"
             alt={`${navTitle} Logo`}

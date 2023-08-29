@@ -3,10 +3,10 @@ import Link from "next/link";
 
 const GithubUrl = "https://github.com/Nusab19/Contest-Hive";
 
-const Description = () => {
+const Content = () => {
   return (
     <section className="body-font">
-      <div className="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
+      <div className="container mx-auto flex px-5 py-15 mb-20 items-center justify-center flex-col">
         {/* <Image
           className="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center
           rounded"
@@ -21,8 +21,7 @@ const Description = () => {
           </header>
           <p className="leading-relaxed mb-8">
             <q className="font-bold">Software Freedom For All</q>
-            <p className="mb-2"></p>
-
+            <span className="block mb-2"></span>
             We're not only providing the API for free, but also the source code.
             So that you can make this better by your contribution too!
             <br />
@@ -56,4 +55,4 @@ const Description = () => {
   );
 };
 
-export default Description;
+export default Content;

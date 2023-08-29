@@ -1,12 +1,15 @@
-import HomePage from "@/components/HomePage";
+import Home from "@/components/Home";
+import Kontests from "@/components/Kontests";
+import Features from "@/components/Features";
 import Content from "@/components/Content";
-// import platformSelector from "@/components/platformSelector";
 
 const page = () => {
   return (
     <>
-      <HomePage />
-      {/* <platformSelector /> */}
+      <Home />
+      <Kontests />
+      <Features />
+      <Kontests />
       <Content />
     </>
   );
