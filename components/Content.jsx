@@ -21,7 +21,8 @@ const Description = () => {
           </header>
           <p className="leading-relaxed mb-8">
             <q className="font-bold">Software Freedom For All</q>
-            <br />
+            <p className="mb-2"></p>
+
             We're not only providing the API for free, but also the source code.
             So that you can make this better by your contribution too!
             <br />
