@@ -5,7 +5,7 @@ import "./globals.css";
 const layout = ({ children }) => {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-gray-900 text-gray-300">
         <NavBar />
         {children}
         <Footer/>

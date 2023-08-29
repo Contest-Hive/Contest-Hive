@@ -1,5 +1,6 @@
 import HomePage from "@/components/HomePage";
-import Description from "@/components/Description";
+import Description from "@/components/Content";
+
 const page = () => {
   return (
     <>

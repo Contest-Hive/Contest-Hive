@@ -1,6 +1,6 @@
 const Stats = () => {
   return (
-    <section className="text-gray-400 bg-gray-900 body-font">
+    <section className=" body-font">
       <div className="container px-5 py-24 mx-auto">
         <div className="flex flex-col text-center w-full mb-20">
           <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">
@@ -19,9 +19,9 @@ const Stats = () => {
               <svg
                 fill="none"
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 className="text-indigo-400 w-12 h-12 mb-3 inline-block"
                 viewBox="0 0 24 24"
               >
@@ -37,9 +37,9 @@ const Stats = () => {
               <svg
                 fill="none"
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 className="text-indigo-400 w-12 h-12 mb-3 inline-block"
                 viewBox="0 0 24 24"
               >
@@ -56,9 +56,9 @@ const Stats = () => {
               <svg
                 fill="none"
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 className="text-indigo-400 w-12 h-12 mb-3 inline-block"
                 viewBox="0 0 24 24"
               >
@@ -74,9 +74,9 @@ const Stats = () => {
               <svg
                 fill="none"
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 className="text-indigo-400 w-12 h-12 mb-3 inline-block"
                 viewBox="0 0 24 24"
               >
