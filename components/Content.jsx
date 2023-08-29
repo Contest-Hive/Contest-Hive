@@ -1,10 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 
-
 const makeAnchorTag = (text, url) => {
+  const newTab = url[0] != "/" ? 'target="_blank"' : ""
+  
   return (
-    <Link href={url} className="md:hover:text-purple-400 text-blue-300">
+    <Link
+      href={url}
+      className="md:hover:text-purple-400 text-blue-300"
+      {...newTab}
+    >
       <b>{text}</b>
     </Link>
   );

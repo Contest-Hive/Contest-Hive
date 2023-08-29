@@ -1,5 +1,5 @@
 // Vercel Analytics
-import { Analytics } from "@vercel/analytics/react";
+// import { Analytics } from "@vercel/analytics/react";
 
 import { NavBar } from "@/components/NavBar";
 import Footer from "@/components/Footer";
@@ -36,7 +36,7 @@ const layout = ({ children }) => {
         <NavBar />
         {children}
         <Footer />
-        <Analytics />
+        {/* <Analytics /> */}
       </body>
     </html>
   );

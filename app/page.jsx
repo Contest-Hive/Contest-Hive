@@ -1,11 +1,13 @@
 import HomePage from "@/components/HomePage";
-import Description from "@/components/Content";
+import Content from "@/components/Content";
+// import platformSelector from "@/components/platformSelector";
 
 const page = () => {
   return (
     <>
       <HomePage />
-      <Description />
+      {/* <platformSelector /> */}
+      <Content />
     </>
   );
 };

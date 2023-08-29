@@ -15,6 +15,7 @@ const Footer = () => {
         <Link
           className="flex title-font font-medium items-center md:justify-start justify-center text-white"
           href="https://github.com/Nusab19/Contest-Hive"
+          target="_blank"
         >
           <span className="ml-3 text-2xl">Contest Hive</span>
         </Link>
@@ -36,6 +37,7 @@ const Footer = () => {
             href={contactInfo.facebook}
             // className="ml-3"
             title="Facebook Profile of Nusab Taha"
+            target="_blank"
           >
             <svg
               fill="currentColor"
@@ -54,6 +56,7 @@ const Footer = () => {
             href={contactInfo.twitter}
             className="ml-3"
             title="Twitter of Nusab Taha"
+            target="_blank"
           >
             <svg
               fill="currentColor"
@@ -90,6 +93,7 @@ const Footer = () => {
             href={contactInfo.linkedin}
             className="ml-3"
             title="Linkedin of Nusab Taha"
+            target="_blank"
           >
             <svg
               fill="currentColor"
