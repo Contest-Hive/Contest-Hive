@@ -40,11 +40,11 @@ const Description = () => {
           <div className="flex justify-center">
             <a href="#">
               <button className="inline-flex text-white bg-purple-800 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-700 rounded text-lg">
-                API Documentation
+                API Docs
               </button>
             </a>
             <a href={GithubUrl}>
-              <button className="ml-4 inline-flex  bg-gray-800 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-800 hover:text-white rounded text-lg">
+              <button className="ml-4 inline-flex  bg-gray-800 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-800 hover:text-white rounded text-lg">
                 Github
               </button>
             </a>
