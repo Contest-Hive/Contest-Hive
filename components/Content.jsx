@@ -27,7 +27,7 @@ const Description = () => {
             We Build Open-Source
           </header>
           <p className="leading-relaxed mb-8">
-            <q>Software Freedom For All</q>
+            <q className="font-bold">Software Freedom For All</q>
             <br />
             We're not only providing the API for free, but also the source code.
             So that you can make this better by your contribution too!
