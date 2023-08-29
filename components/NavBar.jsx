@@ -31,7 +31,7 @@ export const NavBar = () => {
   }
 
   return (
-    <nav className="bg-white border-gray-200 dark:bg-gray-900 sticky">
+    <nav className="dark:bg-gray-900 border-gray-200">
       <div className="top-0 flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/" className="flex items-center">
           <Image
