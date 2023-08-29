@@ -1,3 +1,6 @@
+import Link from "next/link";
+
+
 const HomePage = () => {
   return (
     <section className="body-font">

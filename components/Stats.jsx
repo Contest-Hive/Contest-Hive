@@ -1,3 +1,6 @@
+import Link from "next/link";
+
+
 const Stats = () => {
   return (
     <section className=" body-font">

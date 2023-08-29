@@ -1,3 +1,6 @@
+import Link from "next/link";
+
+
 const contactInfo = {
   facebook: "https://fb.me/NusabTaha",
   twitter: "https://twitter.com/Nusab19",
@@ -20,7 +23,7 @@ const Footer = () => {
           <span className="ml-3">—</span>
           <Link
             href="https://linkedin.com/in/NusabTaha"
-            className="ml-3 text-rose-500 text-md font-semibold font-mono text-base"
+            className="ml-3 text-rose-500 text-md font-semibold font-mono text-base hover:text-purple-400"
             target="_blank"
             rel="noopener noreferrer"
           >
