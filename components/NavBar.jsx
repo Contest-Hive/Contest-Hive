@@ -33,7 +33,7 @@ export const NavBar = () => {
   return (
     <nav className="bg-gray-900">
       <div className="top-0 flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="/" className="flex items-center">
+        <Link href="/" className="flex items-center">
           <Image
             src={logoUrl}
             width={30}
@@ -44,7 +44,7 @@ export const NavBar = () => {
           <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
             {navTitle}
           </span>
-        </a>
+        </Link>
 
         {/* DropDown Button */}
         <div onMouseLeave={closeAll}>
@@ -79,23 +79,23 @@ export const NavBar = () => {
           <div className={navbarOpen ? classWhenOpen : classWhenClosed}>
             <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 md:bg-gray-900 md:border-hidden border border-gray-700 rounded-lg md:flex-row md:space-x-8 md:mt-0 bg-gray-800">
               <li>
-                <a
+                <Link
                   href={blueLink.url}
                   className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0"
                   aria-current="page"
                 >
                   {blueLink.name}
-                </a>
+                </Link>
               </li>
               {/* From navLinks */}
               {Object.keys(navLinks).map((key) => (
                 <li key={key}>
-                  <a
+                  <Link
                     href={navLinks[key]}
                     className="block py-2 pl-3 pr-4 rounded md:hover:bg-transparentmd:hover:text-blue-700 md:p-0 hover:text-white"
                   >
                     {key}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

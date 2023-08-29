@@ -24,7 +24,7 @@ const UserExperience = () => {
                 pinterest fanny pack venmo, post-ironic heirloom try-hard pabst
                 authentic iceland.
               </p>
-              <a className="inline-flex items-center">
+              <Link className="inline-flex items-center">
                 <Image
                   alt="testimonial"
                   src="https://dummyimage.com/106x106"
@@ -36,7 +36,7 @@ const UserExperience = () => {
                   </span>
                   <span className="text-gray-500 text-sm">UI DEVELOPER</span>
                 </span>
-              </a>
+              </Link>
             </div>
           </div>
           <div className="p-4 md:w-1/2 w-full">
@@ -55,7 +55,7 @@ const UserExperience = () => {
                 pinterest fanny pack venmo, post-ironic heirloom try-hard pabst
                 authentic iceland.
               </p>
-              <a className="inline-flex items-center">
+              <Link className="inline-flex items-center">
                 <Image
                   alt="testimonial"
                   src="https://dummyimage.com/107x107"
@@ -67,7 +67,7 @@ const UserExperience = () => {
                   </span>
                   <span className="text-gray-500 text-sm">DESIGNER</span>
                 </span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

@@ -40,7 +40,7 @@ const HomePage = () => {
                   <br />
                   So, you can use it for your projects without any worries.
                 </p>
-                {/* <a className="mt-3 text-indigo-400 inline-flex items-center">
+                {/* <Link className="mt-3 text-indigo-400 inline-flex items-center">
                   Learn More
                   <svg
                     fill="none"
@@ -53,7 +53,7 @@ const HomePage = () => {
                   >
                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                   </svg>
-                </a> */}
+                </Link> */}
               </div>
             </div>
           </div>
