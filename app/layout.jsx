@@ -3,8 +3,8 @@ import { Analytics } from "@vercel/analytics/react";
 
 import { NavBar } from "@/components/NavBar";
 import Footer from "@/components/Footer";
-
 import "./globals.css";
+import Head from "next/head";
 
 export const metadata = {
   title: "Contest Hive",
