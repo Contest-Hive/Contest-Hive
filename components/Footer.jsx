@@ -9,18 +9,22 @@ const Footer = () => {
   return (
     <footer className=" body-font">
       <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
-        <a className="flex title-font font-medium items-center md:justify-start justify-center text-white">
-          <span className="ml-3 text-xl">Contest Hive</span>
+        <a
+          className="flex title-font font-medium items-center md:justify-start justify-center text-white"
+          href="https://github.com/Nusab19/Contest-Hive"
+        >
+          <span className="ml-3 text-2xl">Contest Hive</span>
         </a>
-        <p className="text-sm  sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:mt-0 mt-4">
-          © 2023 <b>Contest Hive</b> —
+        <p className="text-sm sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:mt-0 mt-4">
+          <b>© 2023 Contest Hive</b>
+          <span className="ml-3">—</span>
           <a
             href="https://linkedin.com/in/NusabTaha"
-            className="text-yellow-200 ml-1"
+            className="ml-3 text-rose-500 text-md font-semibold font-mono text-base"
             target="_blank"
             rel="noopener noreferrer"
           >
-            @NusabTaha
+            @ NusabTaha
           </a>
         </p>
         {/* Facebook */}
