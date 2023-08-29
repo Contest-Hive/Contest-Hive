@@ -16,7 +16,7 @@ const Footer = () => {
           © 2023 <b>Contest Hive</b> —
           <a
             href="https://linkedin.com/in/NusabTaha"
-            className="text-purple-400 ml-1"
+            className="text-yellow-200 ml-1"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -28,6 +28,7 @@ const Footer = () => {
           <a
             href={contactInfo.facebook}
             // className="ml-3"
+            title="Facebook Profile of Nusab Taha"
           >
             <svg
               fill="currentColor"
@@ -42,7 +43,11 @@ const Footer = () => {
           </a>
 
           {/* Twitter */}
-          <a href={contactInfo.twitter} className="ml-3">
+          <a
+            href={contactInfo.twitter}
+            className="ml-3"
+            title="Twitter of Nusab Taha"
+          >
             <svg
               fill="currentColor"
               strokeLinecap="round"
@@ -74,7 +79,11 @@ const Footer = () => {
           </a> */}
 
           {/* Linkedin */}
-          <a href={contactInfo.linkedin} className="ml-3">
+          <a
+            href={contactInfo.linkedin}
+            className="ml-3"
+            title="Linkedin of Nusab Taha"
+          >
             <svg
               fill="currentColor"
               stroke="currentColor"

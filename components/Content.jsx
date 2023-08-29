@@ -35,7 +35,7 @@ const Description = () => {
             Feel free to visit the {makeAnchorTag("Github", GithubUrl)}{" "}
             repository.
           </p>
-          
+
           {/* API Docs and Github Button */}
           <div className="flex justify-center">
             <a href="#">
