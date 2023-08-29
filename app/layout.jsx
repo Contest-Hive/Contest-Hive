@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import "./globals.css";
 import Head from "next/head";
 
-export const metadata = {
+const metadata = {
   title: "Contest Hive",
   description:
     "Contest Hive provides contest information from various competitive programming platforms. It also provides a REST API for the same",
