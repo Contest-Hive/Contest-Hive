@@ -1,5 +1,3 @@
-
-
 const HomePage = () => {
   return (
     <section className="body-font">
@@ -12,6 +10,13 @@ const HomePage = () => {
             Contests' Information at your Fingertips
           </h2>
         </div>
+
+        {/* Add Section to Select Platform */}
+        <div className="text-center w-full">
+          <header className="title-font sm:text-5xl text-3xl mb-10 font-medium text-white">
+            Why Contest Hive?
+          </header>
+        </div>
         <div className="flex flex-wrap -m-4">
           <div className="p-4 md:w-1/3">
             <div className="flex rounded-lg h-full bg-gray-800 bg-opacity-60 p-8 flex-col">
@@ -22,9 +27,7 @@ const HomePage = () => {
                     viewBox="0 0 512 512"
                     fill="#6b9bd2"
                   >
-                    <path
-                      d="M377.16,25.55c-53.57.19-99.77,32.3-121.16,78.63-21.38-46.32-67.58-78.44-121.16-78.63C58,25.29-2.39,92.55.07,170.85c5,159.71,155.09,266.36,223.05,306.6a64.52,64.52,0,0,0,65.75,0c68-40.23,218-146.89,223.05-306.6C514.39,92.55,454,25.29,377.16,25.55ZM152.62,256l18,27,21.31,32,21.31-32L240,242.91l52.34,104.68,24-40L347.26,256h120C424.67,358.28,321.38,428.4,275.8,455.39a38.85,38.85,0,0,1-39.72,0C190.62,428.47,87.26,358.33,44.64,256Z"
-                    />
+                    <path d="M377.16,25.55c-53.57.19-99.77,32.3-121.16,78.63-21.38-46.32-67.58-78.44-121.16-78.63C58,25.29-2.39,92.55.07,170.85c5,159.71,155.09,266.36,223.05,306.6a64.52,64.52,0,0,0,65.75,0c68-40.23,218-146.89,223.05-306.6C514.39,92.55,454,25.29,377.16,25.55ZM152.62,256l18,27,21.31,32,21.31-32L240,242.91l52.34,104.68,24-40L347.26,256h120C424.67,358.28,321.38,428.4,275.8,455.39a38.85,38.85,0,0,1-39.72,0C190.62,428.47,87.26,358.33,44.64,256Z" />
                   </svg>
                 </div>
                 <h2 className="text-white text-lg title-font font-medium">
@@ -187,7 +190,7 @@ const HomePage = () => {
                   </svg>
                 </div>
                 <h2 className="text-white text-lg title-font font-medium">
-                Boundless
+                  Boundless
                 </h2>
               </div>
               <div className="flex-grow">

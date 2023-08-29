@@ -17,7 +17,7 @@ const blueLink = {
 };
 const navLinks = {
   Documentation: "#",
-  "Source Code": "#",
+  Legal: "#",
 };
 
 export const NavBar = () => {
