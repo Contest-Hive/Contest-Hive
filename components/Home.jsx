@@ -1,6 +1,7 @@
 const Home = () => {
   return (
     <div className="container px-5 py-24 mx-auto flex flex-wrap">
+        
       <div className="flex flex-col text-center w-full">
         <h1 className="sm:text-6xl text-5xl font-bold title-font text-white">
           Contest Hive
