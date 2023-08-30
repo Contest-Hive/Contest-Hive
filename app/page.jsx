@@ -9,7 +9,6 @@ const page = () => {
       <Home />
       <Kontests />
       <Features />
-      <Kontests />
       <Content />
     </>
   );
