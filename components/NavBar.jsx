@@ -83,7 +83,7 @@ export const NavBar = () => {
               <li>
                 <Link
                   href={blueLink.url}
-                  className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0"
+                  className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-cyan-300 md:p-0"
                   aria-current="page"
                 >
                   {blueLink.name}
