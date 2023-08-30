@@ -1,5 +1,5 @@
+import { defaultConfig } from "next/dist/server/config-shared";
 import Link from "next/link";
-
 
 const contactInfo = {
   facebook: "https://fb.me/NusabTaha",
@@ -29,6 +29,15 @@ const Footer = () => {
             rel="noopener noreferrer"
           >
             @ NusabTaha
+            <svg
+            className="ml-2 w-5 h-5 mb-1 inline-block"
+              xmlns="http://www.w3.org/2000/svg"
+              id="flag-icons-bd"
+              viewBox="0 0 640 480"
+            >
+              <path fill="#006a4e" d="M0 0h640v480H0z" />
+              <circle cx="280" cy="240" r="160" fill="#f42a41" />
+            </svg>
           </Link>
         </p>
         {/* Facebook */}
