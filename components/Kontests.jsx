@@ -91,7 +91,7 @@ const Kontests = () => {
       </div>
 
       {/* Last Updated */}
-      <div className="mx-auto w-2/3 mb-6">
+      <div className="mx-auto md:w-2/3 w-full mb-6">
         <button
           type="button"
           className="relative inline-flex items-center w-full px-4 py-2 text-sm font-medium rounded-b-lg rounded-t-lg border-gray-700 bg-gray-800 text-gray-100"
@@ -102,7 +102,7 @@ const Kontests = () => {
         </button>
       </div>
 
-      <div className="container block md:w-2/3 mx-auto w-full overflow-y-scroll h-52">
+      <div className="container block md:w-2/3 mx-auto w-full overflow-y-scroll h-60">
         {contests.data?.map((item) => {
           return (
             <Link href={item.url} target="_blank" key={item.url}>
