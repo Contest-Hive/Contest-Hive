@@ -3,7 +3,6 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-
 const classWhenClosed = "hidden w-full md:block md:w-auto";
 const classWhenOpen =
   "absolute sm:hidden w-[90%] md:block md:w-auto right-5 top-16 items-center justify-center";
@@ -40,6 +39,7 @@ export const NavBar = () => {
             src={logoUrl}
             width={50}
             height={50}
+            style={{ width: "50px", height: "auto" }}
             className="h-10 mr-3"
             alt={`${navTitle} Logo`}
           ></Image>
@@ -83,8 +83,8 @@ export const NavBar = () => {
               <li>
                 <Link
                   href={blueLink.url}
-                  className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-cyan-300 md:p-0"
-                  aria-current="page"
+                  type="button"
+                  class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"
                 >
                   {blueLink.name}
                 </Link>
@@ -94,7 +94,7 @@ export const NavBar = () => {
                 <li key={key}>
                   <Link
                     href={navLinks[key]}
-                    className="block py-2 pl-3 pr-4 rounded md:hover:bg-transparentmd:hover:text-blue-700 md:p-0 hover:text-white"
+                    className="block mt-2 py-2 pl-3 pr-4 rounded md:hover:bg-transparent md:hover:text-cyan-200 md:p-0 hover:text-white"
                   >
                     {key}
                   </Link>
