@@ -4,24 +4,6 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import svgIcons from "./helpers/KontestsHelper";
 
-const svgIcon = (
-  <svg
-    className="w-3 h-3 mr-2.5"
-    aria-hidden="true"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 8 14"
-  >
-    <path
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-      d="m1 13 5.7-5.326a.909.909 0 0 0 0-1.348L1 1"
-    />
-  </svg>
-);
-
 const allPlatforms = {
   AtCoder: "atcoder",
   CodeChef: "codechef",
@@ -97,7 +79,7 @@ const Kontests = () => {
           className="relative inline-flex items-center w-full px-4 py-2 text-sm font-medium rounded-b-lg rounded-t-lg border-gray-700 bg-gray-800 text-gray-100"
         >
           <span className="mr-4"></span>
-          {svgIcon}
+          {svgIcons[pltName.toLowerCase()] || svgIcons["Default"]}
           Last Updated: {contests?.lastUpdated || " Loading..."}
         </button>
       </div>
@@ -120,7 +102,7 @@ const Kontests = () => {
                 >
                   {contests.data.indexOf(item) + 1}
                 </span>
-                {svgIcon}
+                {svgIcons[pltName.toLowerCase()] || svgIcons["Default"]}
                 {item.name}
               </button>
             </Link>
@@ -130,7 +112,7 @@ const Kontests = () => {
           <Link href="#" key="1">
             <button type="button" className={getClassOfButtons(2, 5)}>
               <span className="mr-2">1</span>
-              {svgIcon}
+              {svgIcons["Default"]}
               No Contests is available at {pltName}
             </button>
           </Link>
