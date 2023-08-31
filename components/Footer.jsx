@@ -2,10 +2,11 @@ import { defaultConfig } from "next/dist/server/config-shared";
 import Link from "next/link";
 
 const contactInfo = {
-  facebook: "https://fb.me/NusabTaha",
-  twitter: "https://twitter.com/Nusab19",
+  facebook: "https://fb.me/NusabTaha/",
+  twitter: "https://twitter.com/Nusab19/",
   // instagram: "https://instagram.com/Nusab19", // not an insta Guy. ~,~
-  linkedin: "https://linkedin.com/in/NusabTaha",
+  linkedin: "https://linkedin.com/in/NusabTaha/",
+  portfolio: "https://nusab19.pages.dev/",
 };
 
 const Footer = () => {
@@ -13,6 +14,7 @@ const Footer = () => {
     <footer className=" body-font">
       <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
         <Link
+          title="Github Repository of Contest Hive"
           className="flex title-font font-medium items-center md:justify-start justify-center text-white"
           href="https://github.com/Nusab19/Contest-Hive"
           target="_blank"
@@ -23,14 +25,15 @@ const Footer = () => {
           <b>© 2023 Contest Hive</b>
           <span className="ml-3">—</span>
           <Link
-            href="https://linkedin.com/in/NusabTaha"
+            title="Portfolio of Nusab Taha"
+            href={contactInfo.portfolio}
             className="ml-3 text-rose-500 text-md font-semibold font-mono text-base hover:text-purple-400"
             target="_blank"
             rel="noopener noreferrer"
           >
             @ NusabTaha
             <svg
-            className="ml-2 w-5 h-5 mb-1 inline-block"
+              className="ml-2 w-5 h-5 mb-1 inline-block"
               xmlns="http://www.w3.org/2000/svg"
               id="flag-icons-bd"
               viewBox="0 0 640 480"
@@ -121,6 +124,11 @@ const Footer = () => {
             </svg>
           </Link>
           {/* --------- */}
+          {/* Add Discord, CodeForces and Toph Svg with the profile links */}
+          {/* --------- */}
+          
+
+
         </span>
       </div>
     </footer>

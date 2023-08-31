@@ -36,19 +36,7 @@ const Content = () => {
             repository.
           </p>
 
-          {/* API Docs and Github Button */}
-          <div className="flex justify-center">
-            <Link href="#" target="_blank">
-              <button className="inline-flex text-white bg-purple-800 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-700 rounded text-lg">
-                API Docs
-              </button>
-            </Link>
-            <Link href={GithubUrl} target="_blank">
-              <button className="ml-4 inline-flex  bg-gray-800 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-800 hover:text-white rounded text-lg">
-                Github
-              </button>
-            </Link>
-          </div>
+          
         </div>
       </div>
     </section>
