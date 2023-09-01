@@ -24,13 +24,14 @@ function getClassOfButtons(index, length) {
 // Component
 const Kontests = () => {
   const [pltName, setPltName] = useState("atcoder");
-  const [contests, setContests] = useState({ data: [] });
+  const [contests, setContests] = useState({ data: [{name:"Loading Data...", url:"#"}] });
 
   const changePlatform = (plt) => {
     setPltName(plt);
   };
 
   useEffect(() => {
+    setContests({ data: [{name:"Loading Data...", url:"#"}] });
     const url = `/api/${pltName.toLocaleLowerCase()}`;
     fetch(url)
       .then((res) => res.json())
