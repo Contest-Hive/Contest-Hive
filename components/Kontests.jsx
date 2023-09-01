@@ -39,7 +39,7 @@ const Kontests = () => {
       })
       .catch((err) => {
         console.log("error:", err);
-        alert("Something went wrong! Please try again.");
+        alert("Something went wrong! Please refresh the page.");
       });
   }, [pltName]);
 

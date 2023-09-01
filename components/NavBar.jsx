@@ -1,11 +1,10 @@
 "use client";
+
 import { useState } from "react";
+
 import Image from "next/image";
 import Link from "next/link";
 
-const classWhenClosed = "hidden w-full md:block md:w-auto";
-const classWhenOpen =
-  "absolute sm:hidden w-[90%] md:block md:w-auto right-5 top-16 items-center justify-center";
 
 // Change these to your own links
 const navTitle = "Contest Hive";
@@ -20,6 +19,14 @@ const navLinks = {
   Documentation: "#",
   Legal: "#",
 };
+
+
+// Don't Change
+const classWhenClosed = "hidden w-full md:block md:w-auto";
+const classWhenOpen =
+  "absolute sm:hidden w-[90%] md:block md:w-auto right-5 top-16 items-center justify-center";
+
+
 
 export const NavBar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -83,8 +90,12 @@ export const NavBar = () => {
               <li>
                 <Link
                   href={blueLink.url}
-                  className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent 
-                  md:text-cyan-500 md:hover:text-gray-100 md:p-0"
+                  className="block py-2 px-4 text-white bg-sky-700 rounded md:bg-sky-700
+                  md:hover:bg-teal-700
+                  md:px-4 md:py-2
+                  md:rounded-t-lg
+                  md:rounded-b-lg
+                  md:text-gray-100 md:hover:text-gray-100"
                   aria-current="page"
                 >
                   {blueLink.name}
@@ -95,7 +106,10 @@ export const NavBar = () => {
                 <li key={key}>
                   <Link
                     href={navLinks[key]}
-                    className="block py-2 pl-3 pr-4 rounded md:hover:bg-transparent md:hover:text-blue-700 md:p-0 hover:text-white"
+                    className="block py-2 px-4
+                    rounded md:hover:text-white
+                    md:hover:bg-sky-700
+                    hover:text-white"
                   >
                     {key}
                   </Link>
