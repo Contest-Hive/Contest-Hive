@@ -76,7 +76,7 @@ const Kontests = () => {
       <div className="mx-auto md:w-2/3 w-full mb-6">
         <button
           type="button"
-          className="relative inline-flex items-center w-full px-4 py-2 text-sm font-medium rounded-b-lg rounded-t-lg border-gray-700 bg-gray-800 text-gray-100"
+          className="relative inline-flex items-center w-full px-4 py-2 text-sm font-medium rounded-b-lg rounded-t-lg border-gray-700 bg-sky-900 text-gray-100"
         >
           <span className="mr-4"></span>
           {svgIcons[pltName.toLowerCase()] || svgIcons["Default"]}
