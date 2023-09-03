@@ -9,7 +9,7 @@ const platforms = {
     "leetcode",
     "toph",
   ],
-  alais: {
+  alias: {
     1: "atcoder",
     2: "codechef",
     3: "codeforces",

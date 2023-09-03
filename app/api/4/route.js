@@ -4,7 +4,7 @@ const API_URL = "https://raw.githubusercontent.com/Nusab19/__contest-hive-backen
 export async function GET() {
 	const response = await fetch(API_URL, {
 	next: {
-	  revalidate: 10 * 60, // 10 Minutes
+	  revalidate: 5 * 60, // 5 Minutes
 	},
 	});
 	
