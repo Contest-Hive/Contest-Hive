@@ -5,7 +5,6 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-
 // Change these to your own links
 const navTitle = "Contest Hive";
 // const logoUrl = "/assets/icons/apple-touch-icon.png";
@@ -16,17 +15,14 @@ const blueLink = {
   url: "/about",
 };
 const navLinks = {
-  Documentation: "#",
-  Legal: "#",
+  Documentation: "/docs",
+  Credits: "/credits",
 };
-
 
 // Don't Change
 const classWhenClosed = "hidden w-full md:block md:w-auto";
 const classWhenOpen =
   "absolute sm:hidden w-[90%] md:block md:w-auto right-5 top-16 items-center justify-center";
-
-
 
 export const NavBar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -40,17 +36,17 @@ export const NavBar = () => {
 
   return (
     <nav className="bg-gray-900">
-      <div className="top-0 flex flex-wrap items-center justify-between mx-auto p-4">
+      <div className="top-0 mx-auto flex flex-wrap items-center justify-between p-4">
         <Link href="/" className="flex items-center">
           <Image
             src={logoUrl}
             width={50}
             height={50}
             style={{ width: "50px", height: "auto" }}
-            className="h-10 mr-3"
+            className="mr-3 h-10"
             alt={`${navTitle} Logo`}
           ></Image>
-          <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
+          <span className="self-center whitespace-nowrap text-2xl font-semibold text-white">
             {navTitle}
           </span>
         </Link>
@@ -60,7 +56,7 @@ export const NavBar = () => {
           <button
             data-collapse-toggle="navbar-default"
             type="button"
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden focus:outline-none focus:ring-2 hover:bg-gray-700 focus:ring-gray-600"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-600 md:hidden"
             aria-controls="navbar-default"
             aria-expanded="false"
             onClick={handleNavbar}
@@ -68,7 +64,7 @@ export const NavBar = () => {
           >
             <span className="sr-only">Open main menu</span>
             <svg
-              className="w-5 h-5"
+              className="h-5 w-5"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -86,16 +82,16 @@ export const NavBar = () => {
 
           {/* DropDown Links */}
           <div className={navbarOpen ? classWhenOpen : classWhenClosed}>
-            <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 md:bg-gray-900 md:border-hidden border border-gray-700 rounded-lg md:flex-row md:space-x-8 md:mt-0 bg-gray-800">
+            <ul className="mt-4 flex flex-col rounded-lg border border-gray-700 bg-gray-800 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-hidden md:bg-gray-900 md:p-0">
               <li>
                 <Link
                   href={blueLink.url}
-                  className="block py-2 px-4 text-white bg-sky-700 rounded md:bg-sky-700
-                  md:hover:bg-teal-700
-                  md:px-4 md:py-2
+                  className="block rounded bg-sky-700 px-4 py-2 text-white 
+                  transition 
+                  duration-500 md:rounded-b-lg
                   md:rounded-t-lg
-                  md:rounded-b-lg
-                  md:text-gray-100 md:hover:text-gray-100"
+                  md:px-4
+                  md:py-2 md:text-gray-100 md:hover:bg-indigo-700 md:hover:text-gray-100 "
                   aria-current="page"
                 >
                   {blueLink.name}
@@ -106,10 +102,10 @@ export const NavBar = () => {
                 <li key={key}>
                   <Link
                     href={navLinks[key]}
-                    className="block py-2 px-4
-                    rounded md:hover:text-white
-                    md:hover:bg-sky-700
-                    hover:text-white"
+                    className="block rounded px-4
+                    py-2 transition
+                    duration-500
+                    hover:text-white md:hover:bg-indigo-700 md:hover:text-white"
                   >
                     {key}
                   </Link>

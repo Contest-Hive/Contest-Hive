@@ -3,18 +3,18 @@ import Link from "next/link";
 const Features = () => {
   return (
     <section className="body-font">
-      <div className="container px-5 py-10 mb-11 mx-auto flex flex-wrap">
+      <div className="container mx-auto my-20 mb-11 flex flex-wrap px-5 py-10">
         {/* Add Section to Select Platform */}
-        <div className="text-center w-full">
-          <header className="title-font sm:text-5xl text-3xl mb-10 font-medium text-white">
+        <div className="w-full text-center">
+          <header className="title-font mb-10 text-3xl font-medium text-white sm:text-5xl">
             Why Contest Hive?
           </header>
         </div>
-        <div className="flex flex-wrap -m-4">
+        <div className="-m-4 flex flex-wrap">
           <div className="p-4 md:w-1/3">
-            <div className="flex rounded-lg h-full bg-gray-800 bg-opacity-60 p-8 flex-col">
-              <div className="flex items-center mb-3">
-                <div className="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full  text-white flex-shrink-0">
+            <div className="flex h-full flex-col rounded-lg bg-gray-800 bg-opacity-60 p-8">
+              <div className="mb-3 flex items-center">
+                <div className="mr-3 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center  rounded-full text-white">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 512 512"
@@ -23,37 +23,21 @@ const Features = () => {
                     <path d="M377.16,25.55c-53.57.19-99.77,32.3-121.16,78.63-21.38-46.32-67.58-78.44-121.16-78.63C58,25.29-2.39,92.55.07,170.85c5,159.71,155.09,266.36,223.05,306.6a64.52,64.52,0,0,0,65.75,0c68-40.23,218-146.89,223.05-306.6C514.39,92.55,454,25.29,377.16,25.55ZM152.62,256l18,27,21.31,32,21.31-32L240,242.91l52.34,104.68,24-40L347.26,256h120C424.67,358.28,321.38,428.4,275.8,455.39a38.85,38.85,0,0,1-39.72,0C190.62,428.47,87.26,358.33,44.64,256Z" />
                   </svg>
                 </div>
-                <h2 className="text-white text-lg title-font font-medium">
+                <h2 className="title-font text-lg font-medium text-white">
                   Reliable
                 </h2>
               </div>
               <div className="flex-grow">
-                <p className="leading-relaxed text-base">
-                  Contest-Hive is a stable API with 99% Uptime.
-                  <br />
-                  So, you can use it for your projects without any worries.
+                <p className="text-base leading-relaxed">
+                With Contest-Hive's steady API clocking in at 99% uptime, your projects are in safe hands.
                 </p>
-                {/* <Link className="mt-3 text-indigo-400 inline-flex items-center">
-                  Learn More
-                  <svg
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    className="w-4 h-4 ml-2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                  </svg>
-                </Link> */}
               </div>
             </div>
           </div>
           <div className="p-4 md:w-1/3">
-            <div className="flex rounded-lg h-full bg-gray-800 bg-opacity-60 p-8 flex-col">
-              <div className="flex items-center mb-3">
-                <div className="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-fulltext0-white flex-shrink-0">
+            <div className="flex h-full flex-col rounded-lg bg-gray-800 bg-opacity-60 p-8">
+              <div className="mb-3 flex items-center">
+                <div className="rounded-fulltext0-white mr-3 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center">
                   <svg
                     viewBox="0 0 24.00 24.00"
                     fill="none"
@@ -182,24 +166,22 @@ const Features = () => {
                     </g>
                   </svg>
                 </div>
-                <h2 className="text-white text-lg title-font font-medium">
-                  Boundless
+                <h2 className="title-font text-lg font-medium text-white">
+                  Seamless
                 </h2>
               </div>
               <div className="flex-grow">
-                <p className="leading-relaxed text-base">
-                  Contest Hive can handle unlimited amount of requests.
-                  <br />
-                  This became possible because of Vercel and NextJS
+                <p className="text-base leading-relaxed">
+                Count on Contest Hive API for minimal latency, processing your requests in a flash.
                 </p>
                 {/* Learn More */}
               </div>
             </div>
           </div>
           <div className="p-4 md:w-1/3">
-            <div className="flex rounded-lg h-full bg-gray-800 bg-opacity-60 p-8 flex-col">
-              <div className="flex items-center mb-3">
-                <div className="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full text-white flex-shrink-0">
+            <div className="flex h-full flex-col rounded-lg bg-gray-800 bg-opacity-60 p-8">
+              <div className="mb-3 flex items-center">
+                <div className="mr-3 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-white">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="28"
@@ -214,13 +196,13 @@ const Features = () => {
                     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
                   </svg>
                 </div>
-                <h2 className="text-white text-lg title-font font-medium">
+                <h2 className="title-font text-lg font-medium text-white">
                   Forever Free
                 </h2>
               </div>
               <div className="flex-grow">
-                <p className="leading-relaxed text-base">
-                  Contest Hive is intended to be free forever. No hidden costs.
+                <p className="text-base leading-relaxed">
+                  Contest Hive is free forever. No sign-in required.
                 </p>
               </div>
             </div>

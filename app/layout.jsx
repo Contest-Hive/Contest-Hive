@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import "./globals.css";
 import Head from "next/head";
 
+
 export const metadata = {
   title: "Contest Hive",
   description:
