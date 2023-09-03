@@ -45,7 +45,7 @@ const layout = ({ children }) => {
         <meta name="twitter:image:height" content="<generated>" />
       </Head>
 
-      <body className="bg-gray-900 text-gray-200">
+      <body className="bg-gray-950 text-gray-200">
         <NavBar />
         {children}
         <Footer />

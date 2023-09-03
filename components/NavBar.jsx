@@ -35,7 +35,7 @@ export const NavBar = () => {
   }
 
   return (
-    <nav className="bg-gray-900">
+    <nav>
       <div className="top-0 mx-auto flex flex-wrap items-center justify-between p-4">
         <Link href="/" className="flex items-center">
           <Image
@@ -56,13 +56,13 @@ export const NavBar = () => {
           <button
             data-collapse-toggle="navbar-default"
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-600 md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-900 md:hidden"
             aria-controls="navbar-default"
             aria-expanded="false"
             onClick={handleNavbar}
             id="hamBurger"
           >
-            <span className="sr-only">Open main menu</span>
+            <span className="sr-only">Open DropDown Bar</span>
             <svg
               className="h-5 w-5"
               aria-hidden="true"
@@ -82,7 +82,7 @@ export const NavBar = () => {
 
           {/* DropDown Links */}
           <div className={navbarOpen ? classWhenOpen : classWhenClosed}>
-            <ul className="mt-4 flex flex-col rounded-lg border border-gray-700 bg-gray-800 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-hidden md:bg-gray-900 md:p-0">
+            <ul className="mt-4 flex flex-col rounded-lg border border-gray-800 bg-gray-900 md:bg-gray-950 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-hidden md:p-0">
               <li>
                 <Link
                   href={blueLink.url}
