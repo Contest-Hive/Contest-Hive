@@ -136,7 +136,7 @@ function getTableRow(name, duration, url, startTimeUTC) {
     // Client-side-only code
     maxLen = window.innerWidth < 768 ? 33 : 50;
   }
-  console.log(startTimeUTC)
+  console.log(startTimeUTC);
   const startTime = humanReadableTime(startTimeUTC);
   let startingIn = whenIsItStarting(getSecondsDifference(startTimeUTC));
 
@@ -249,8 +249,8 @@ const KontestsTable = () => {
 
       {/* Table of Contests */}
       <div className="relative mx-auto w-11/12 overflow-x-auto rounded md:w-3/4">
-        <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400">
-          <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+        <table className="w-full text-left text-sm text-gray-400">
+          <thead className="bg-gray-700 text-xs uppercase text-gray-400">
             <tr>
               <th scope="col" className="px-6 py-3">
                 Contest name
@@ -277,13 +277,10 @@ const KontestsTable = () => {
             })}
             {/* If the ContestsData is Empty */}
             {contestsData.data.length === 0 && (
-              <tr
-                className="border-b bg-white dark:border-gray-700 dark:bg-gray-800"
-                key={1}
-              >
+              <tr className="border-b border-gray-700 bg-gray-800" key={1}>
                 <th
                   scope="row"
-                  className="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"
+                  className="whitespace-nowrap px-6 py-4 font-medium text-white"
                 >
                   No Contests Available
                 </th>
