@@ -2,7 +2,7 @@
 const layout = ({children}) => {
   return (
     <div>
-      {children}
+      Hello from Docs
     </div>
   )
 }
