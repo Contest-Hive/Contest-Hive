@@ -202,7 +202,8 @@ const Features = () => {
               </div>
               <div className="flex-grow">
                 <p className="text-base leading-relaxed">
-                  Contest Hive is free forever. No sign-in required.
+                  Contest Hive is free forever.
+                  No sign-in or authentication is required to use the API.
                 </p>
               </div>
             </div>
