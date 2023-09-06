@@ -136,7 +136,7 @@ function getTableRow(name, duration, url, startTimeUTC) {
     // Client-side-only code
     maxLen = window.innerWidth < 768 ? 33 : 50;
   }
-  console.log(startTimeUTC);
+  // console.log(startTimeUTC);
   const startTime = humanReadableTime(startTimeUTC);
   let startingIn = whenIsItStarting(getSecondsDifference(startTimeUTC));
 
@@ -155,7 +155,7 @@ function getTableRow(name, duration, url, startTimeUTC) {
       <td className="px-6 py-4" title={duration}>
         {duration}
       </td>
-      <td className="px-6 py-4 font-medium text-blue-400" title={url}>
+      <td className="px-6 py-4 font-medium text-blue-500" title={url}>
         <Link href={url} target="_blank">
           Here
         </Link>
