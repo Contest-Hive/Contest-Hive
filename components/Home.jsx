@@ -15,7 +15,7 @@ const Home = () => {
 
         {/* API Docs and Github Button */}
         <div className="mt-16 flex justify-center">
-          <Link href="#" target="_blank">
+          <Link href="/docs">
             <button className="inline-flex rounded border-0 bg-purple-800 px-6 py-2 text-lg text-white transition duration-500 hover:bg-indigo-700 focus:outline-none">
               API Docs
               <span>
