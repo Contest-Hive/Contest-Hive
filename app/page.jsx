@@ -5,12 +5,12 @@ import Content from "@/components/Content";
 
 const page = () => {
   return (
-    <>
+    <div>
       <Home />
       <Kontests />
       <Features />
       <Content />
-    </>
+    </div>
   );
 };
 

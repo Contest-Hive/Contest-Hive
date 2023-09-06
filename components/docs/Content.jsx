@@ -16,7 +16,6 @@ const Features = () => {
               <div className="mb-3 flex items-center">
                 <div className="mr-3 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center  rounded-full text-white">
                   <svg
-                    className="transition  duration-300 hover:-rotate-[360deg]"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 512 512"
                     fill="#6b9bd2"
@@ -41,7 +40,6 @@ const Features = () => {
               <div className="mb-3 flex items-center">
                 <div className="rounded-fulltext0-white mr-3 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center">
                   <svg
-                    className="transition  duration-300 hover:-rotate-45"
                     viewBox="0 0 24.00 24.00"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -187,7 +185,6 @@ const Features = () => {
               <div className="mb-3 flex items-center">
                 <div className="mr-3 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-white">
                   <svg
-                  className="transition  duration-300 hover:-rotate-[360deg]"
                     xmlns="http://www.w3.org/2000/svg"
                     width="28"
                     height="28"
