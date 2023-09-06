@@ -19,7 +19,7 @@ const Content = () => {
             Feel free to visit the{" "}
             <Link
               href={GithubUrl}
-              className="text-cyan-400 md:hover:text-purple-400"
+              className="text-blue-500 md:hover:text-purple-400"
               target="_blank"
               title="Github Repository of Contest Hive"
             >
