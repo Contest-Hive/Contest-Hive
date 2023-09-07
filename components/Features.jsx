@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Features = () => {
   return (
-    <section className="body-font">
+    <section className="body-font tracking-wide">
       <div className="container mx-auto my-20 mb-11 flex flex-wrap px-5 py-10">
         {/* Add Section to Select Platform */}
         <div className="w-full text-center">
@@ -187,7 +187,7 @@ const Features = () => {
               <div className="mb-3 flex items-center">
                 <div className="mr-3 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-white">
                   <svg
-                  className="transition  duration-300 hover:-rotate-[360deg]"
+                    className="transition  duration-300 hover:-rotate-[360deg]"
                     xmlns="http://www.w3.org/2000/svg"
                     width="28"
                     height="28"

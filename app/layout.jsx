@@ -11,7 +11,7 @@ const layout = ({ children }) => {
         <NavBar />
         {children}
         <Footer />
-        <Analytics />
+        {/* <Analytics /> */}
       </body>
     </html>
   );

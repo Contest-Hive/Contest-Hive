@@ -1,9 +1,11 @@
 
 const layout = ({children}) => {
   return (
-    <div>
-      Hello from Docs
-    </div>
+    <html lang="en">
+      <body className="bg-gray-950 text-gray-200">
+        Hello World
+      </body>
+    </html>
   )
 }
 
