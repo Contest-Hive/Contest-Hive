@@ -227,12 +227,13 @@ const Kontests = () => {
       <div className="container mx-auto flex flex-wrap px-5 py-10">
         <div className="mb-2 flex w-full flex-col text-center">
           <label
-            htmlFor="countries"
+            htmlFor="platforms"
             className="mb-2 block text-sm font-medium text-gray-200"
           >
             Select a Platform
           </label>
           <select
+            id="platforms"
             className="mx-auto mb-1 block w-2/3 rounded-lg border border-gray-800 bg-gray-900 p-2.5 text-sm text-gray-200 placeholder-gray-800  focus:outline-none focus:ring-2 focus:ring-gray-900"
             onChange={changePlatform}
           >
