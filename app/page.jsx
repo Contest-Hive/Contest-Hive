@@ -1,16 +1,21 @@
+import NavBar from "@/components/NavBar";
 import Home from "@/components/Home";
 import Kontests from "@/components/Kontests";
 import Features from "@/components/Features";
 import Content from "@/components/Content";
+import Footer from "@/components/Footer";
+
 
 const page = () => {
   return (
-    <div>
+    <main className="bg-gray-950 text-gray-200">
+      <NavBar />
       <Home />
       <Kontests />
       <Features />
       <Content />
-    </div>
+      <Footer />
+    </main>
   );
 };
 
