@@ -157,7 +157,7 @@ function getTableRow(name, duration, url, startTimeUTC) {
       </td>
       <td className="px-6 py-4 font-medium text-blue-500" title={url}>
         <Link href={url} target="_blank">
-          Here
+          Open
         </Link>
       </td>
     </tr>
