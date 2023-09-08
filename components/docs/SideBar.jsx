@@ -1,4 +1,63 @@
+"use client";
+
+import { useState, useEffect, useRef } from "react";
+
 const SideBar = () => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isDesktop, setDesktop] = useState(window.innerWidth >= 768);
+
+  useEffect(() => {
+    // Close the sidebar when the screen is less than 768px
+    function handleResize() {
+      setDesktop(window.innerWidth >= 768);
+      if (window.innerWidth < 768) {
+        setSidebarOpen(false);
+      }
+    }
+
+    // Bind the event listener
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      // Unbind the event listener on clean up
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const ref = useRef(null);
+
+  function handleSidebar() {
+    setSidebarOpen(!sidebarOpen);
+  }
+
+  useEffect(() => {
+    // Close the sidebar when clicked outside
+    function handleClickOutside(event) {
+      if (ref.current && !ref.current.contains(event.target)) {
+        setSidebarOpen(false);
+      }
+    }
+
+    // Bind the event listener
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [sidebarOpen]);
+
+  function getClassName() {
+    if (isDesktop) {
+      return "fixed left-0 top-0 z-40 h-screen w-64 translate-x-0 transition-transform";
+    } else {
+      if (sidebarOpen) {
+        return "fixed left-0 top-0 z-40 h-screen w-64 translate-x-0 transition-transform";
+      }
+      return "fixed left-0 top-0 z-40 h-screen w-64 -translate-x-full transition-transform";
+    }
+  }
+
   return (
     <>
       <button
@@ -6,7 +65,8 @@ const SideBar = () => {
         data-drawer-toggle="logo-sidebar"
         aria-controls="logo-sidebar"
         type="button"
-        className="ml-3 mt-2 inline-flex items-center rounded-lg p-2 text-sm text-gray-400 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-600 sm:hidden"
+        className="ml-3 mt-2 inline-flex items-center rounded-lg p-2 text-sm text-gray-400 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-900 md:hidden"
+        onClick={handleSidebar}
       >
         <span className="sr-only">Open sidebar</span>
         <svg
@@ -25,11 +85,12 @@ const SideBar = () => {
       </button>
 
       <aside
+        ref={ref}
         id="logo-sidebar"
-        className="fixed left-0 top-0 z-40 h-screen w-64 -translate-x-full transition-transform sm:translate-x-0"
+        className={getClassName()}
         aria-label="Sidebar"
       >
-        <div className="h-full overflow-y-auto bg-gray-800 px-3 py-4">
+        <div className="h-full overflow-y-auto bg-gray-900 px-3 py-4">
           <a
             href="https://flowbite.com/"
             className="mb-5 flex items-center pl-2.5"
@@ -47,7 +108,7 @@ const SideBar = () => {
             <li>
               <a
                 href="#"
-                className="group flex items-center rounded-lg p-2 text-white hover:bg-gray-700"
+                className="group flex items-center rounded-lg p-2 text-white hover:bg-gray-800"
               >
                 <svg
                   className="h-5 w-5 text-gray-400 transition duration-75 group-hover:text-white"
@@ -65,7 +126,7 @@ const SideBar = () => {
             <li>
               <a
                 href="#"
-                className="group flex items-center rounded-lg p-2 text-white hover:bg-gray-700"
+                className="group flex items-center rounded-lg p-2 text-white hover:bg-gray-800"
               >
                 <svg
                   className="h-5 w-5 flex-shrink-0 text-gray-400 transition duration-75 group-hover:text-white"
@@ -85,7 +146,7 @@ const SideBar = () => {
             <li>
               <a
                 href="#"
-                className="group flex items-center rounded-lg p-2 text-white hover:bg-gray-700"
+                className="group flex items-center rounded-lg p-2 text-white hover:bg-gray-800"
               >
                 <svg
                   className="h-5 w-5 flex-shrink-0 text-gray-400 transition duration-75 group-hover:text-white"
@@ -105,7 +166,7 @@ const SideBar = () => {
             <li>
               <a
                 href="#"
-                className="group flex items-center rounded-lg p-2 text-white hover:bg-gray-700"
+                className="group flex items-center rounded-lg p-2 text-white hover:bg-gray-800"
               >
                 <svg
                   className="h-5 w-5 flex-shrink-0 text-gray-400 transition  duration-75 group-hover:text-white"
@@ -122,7 +183,7 @@ const SideBar = () => {
             <li>
               <a
                 href="#"
-                className="group flex items-center rounded-lg p-2 text-white hover:bg-gray-700"
+                className="group flex items-center rounded-lg p-2 text-white hover:bg-gray-800"
               >
                 <svg
                   className="h-5 w-5 flex-shrink-0  text-gray-400 transition  duration-75 group-hover:text-white"
@@ -139,7 +200,7 @@ const SideBar = () => {
             <li>
               <a
                 href="#"
-                className="group flex items-center rounded-lg p-2 text-white hover:bg-gray-700"
+                className="group flex items-center rounded-lg p-2 text-white hover:bg-gray-800"
               >
                 <svg
                   className="h-5 w-5 flex-shrink-0 text-gray-400 transition duration-75 group-hover:text-white"
@@ -162,7 +223,7 @@ const SideBar = () => {
             <li>
               <a
                 href="#"
-                className="group flex items-center rounded-lg p-2 text-white hover:bg-gray-700"
+                className="group flex items-center rounded-lg p-2 text-white hover:bg-gray-800"
               >
                 <svg
                   className="h-5 w-5 flex-shrink-0 text-gray-400 transition  duration-75 group-hover:text-white"
@@ -183,7 +244,7 @@ const SideBar = () => {
       </aside>
       {/* Sep */}
 
-      <div class="p-4 sm:ml-64">Hello World</div>
+      <div class="p-4 md:ml-64">Hello World</div>
     </>
   );
 };
