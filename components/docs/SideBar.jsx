@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 
 const SideBar = () => {
+  // Start of Sidebar Responsiveness
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isDesktop, setDesktop] = useState(window.innerWidth >= 768);
 
@@ -23,8 +24,7 @@ const SideBar = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  const ref = useRef(null);
+  const sidebarRef = useRef(null);
 
   function handleSidebar() {
     setSidebarOpen(!sidebarOpen);
@@ -33,7 +33,7 @@ const SideBar = () => {
   useEffect(() => {
     // Close the sidebar when clicked outside
     function handleClickOutside(event) {
-      if (ref.current && !ref.current.contains(event.target)) {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
         setSidebarOpen(false);
       }
     }
@@ -57,6 +57,20 @@ const SideBar = () => {
       return "fixed left-0 top-0 z-40 h-screen w-64 -translate-x-full transition-transform";
     }
   }
+  // End of Sidebar
+
+  // Start of Multi-level Dropdown
+  const [dropdownOpen1, setDropdownOpen1] = useState(false);
+  function handleDropdown1() {
+    setDropdownOpen1(!dropdownOpen1);
+  }
+
+  const [dropdownOpen2, setDropdownOpen2] = useState(false);
+
+  function handleDropdown2() {
+    setDropdownOpen2(!dropdownOpen2);
+  }
+  // End of Multi-level Dropdown
 
   return (
     <>
@@ -85,7 +99,7 @@ const SideBar = () => {
       </button>
 
       <aside
-        ref={ref}
+        ref={sidebarRef}
         id="logo-sidebar"
         className={getClassName()}
         aria-label="Sidebar"
@@ -101,7 +115,7 @@ const SideBar = () => {
               alt="Flowbite Logo"
             />
             <span className="self-center whitespace-nowrap text-xl font-semibold text-white">
-              Flowbite
+              Contest Hive
             </span>
           </a>
           <ul className="space-y-2 font-medium">
@@ -123,6 +137,74 @@ const SideBar = () => {
                 <span className="ml-3">Dashboard</span>
               </a>
             </li>
+            {/* Drop list */}
+            <li>
+              <button
+                type="button"
+                className="group flex w-full items-center rounded-lg p-2 text-base text-white transition duration-75 hover:bg-gray-800"
+                aria-controls="dropdown-example"
+                data-collapse-toggle="dropdown-example"
+                onClick={handleDropdown1}
+              >
+                <svg
+                  className="h-5 w-5 flex-shrink-0 text-gray-400 transition duration-75 group-hover:text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 18 21"
+                >
+                  <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
+                </svg>
+                <span className="ml-3 flex-1 whitespace-nowrap text-left">
+                  E-commerce
+                </span>
+                <svg
+                  className="h-3 w-3"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 10 6"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="m1 1 4 4 4-4"
+                  />
+                </svg>
+              </button>
+              <ul
+                id="dropdown-example"
+                className={dropdownOpen1 ? "mt-2 space-y-2" : "hidden"}
+              >
+                <li>
+                  <a
+                    href="#"
+                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-75 hover:bg-gray-800"
+                  >
+                    Products
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-75 hover:bg-gray-800"
+                  >
+                    Billing
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-75 hover:bg-gray-800"
+                  >
+                    Invoice
+                  </a>
+                </li>
+              </ul>
+            </li>
+            {/* List Items */}
             <li>
               <a
                 href="#"
@@ -138,7 +220,7 @@ const SideBar = () => {
                   <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z" />
                 </svg>
                 <span className="ml-3 flex-1 whitespace-nowrap">Kanban</span>
-                <span className="ml-3 inline-flex items-center justify-center rounded-full bg-gray-700 px-2 text-sm font-medium text-gray-300">
+                <span className="ml-3 inline-flex items-center justify-center rounded-full bg-gray-800 px-2 text-sm font-medium text-gray-300">
                   Pro
                 </span>
               </a>
@@ -158,7 +240,7 @@ const SideBar = () => {
                   <path d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z" />
                 </svg>
                 <span className="ml-3 flex-1 whitespace-nowrap">Inbox</span>
-                <span className="ml-3 inline-flex h-3 w-3 items-center justify-center rounded-full  bg-blue-900 p-3 text-sm font-medium text-blue-300">
+                <span className="ml-3 inline-flex h-3 w-3 items-center justify-center rounded-full bg-blue-900 p-3 text-sm font-medium text-blue-300">
                   3
                 </span>
               </a>
@@ -169,7 +251,7 @@ const SideBar = () => {
                 className="group flex items-center rounded-lg p-2 text-white hover:bg-gray-800"
               >
                 <svg
-                  className="h-5 w-5 flex-shrink-0 text-gray-400 transition  duration-75 group-hover:text-white"
+                  className="h-5 w-5 flex-shrink-0 text-gray-400 transition duration-75 group-hover:text-white"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="currentColor"
@@ -186,7 +268,7 @@ const SideBar = () => {
                 className="group flex items-center rounded-lg p-2 text-white hover:bg-gray-800"
               >
                 <svg
-                  className="h-5 w-5 flex-shrink-0  text-gray-400 transition  duration-75 group-hover:text-white"
+                  className="h-5 w-5 flex-shrink-0 text-gray-400 transition duration-75 group-hover:text-white"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="currentColor"
@@ -226,7 +308,7 @@ const SideBar = () => {
                 className="group flex items-center rounded-lg p-2 text-white hover:bg-gray-800"
               >
                 <svg
-                  className="h-5 w-5 flex-shrink-0 text-gray-400 transition  duration-75 group-hover:text-white"
+                  className="h-5 w-5 flex-shrink-0 text-gray-400 transition duration-75 group-hover:text-white"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="currentColor"
@@ -244,7 +326,7 @@ const SideBar = () => {
       </aside>
       {/* Sep */}
 
-      <div class="p-4 md:ml-64">Hello World</div>
+      <div className="p-4 md:ml-64">Hello World</div>
     </>
   );
 };
