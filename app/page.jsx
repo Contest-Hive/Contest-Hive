@@ -5,10 +5,9 @@ import Features from "@/components/Features";
 import Content from "@/components/Content";
 import Footer from "@/components/Footer";
 
-
 const page = () => {
   return (
-    <main className="bg-gray-950 text-gray-200">
+    <main>
       <NavBar />
       <Home />
       <Kontests />

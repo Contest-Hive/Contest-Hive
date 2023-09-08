@@ -22,7 +22,7 @@ const navLinks = {
 // Don't Change this unless you know what you are doing
 const classWhenClosed = "hidden w-full md:block md:w-auto";
 const classWhenOpen =
-  "absolute w-[90%] md:block md:w-auto right-5 top-16 items-center justify-center";
+  "absolute w-[94%] md:block md:w-auto right-5 top-16 items-center justify-center";
 
 export const NavBar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);

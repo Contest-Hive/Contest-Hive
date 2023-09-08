@@ -2,10 +2,14 @@
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
+import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
+
+
 const layout = ({ children }) => {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-gray-950 text-gray-200">
         {children}
       </body>
     </html>
