@@ -1,11 +1,14 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const SideBar = () => {
   // Start of Sidebar Responsiveness
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [isDesktop, setDesktop] = useState(window.innerWidth >= 768);
+  const [isDesktop, setDesktop] = useState(
+    typeof window !== "undefined" ? window.innerWidth >= 768 : false,
+  );
 
   useEffect(() => {
     // Close the sidebar when the screen is less than 768px
@@ -106,7 +109,7 @@ const SideBar = () => {
       >
         <div className="h-full overflow-y-auto bg-gray-900 px-3 py-4">
           <Link href="/" className="mb-5 flex items-center pl-2.5">
-            <img
+            <Image
               src="https://flowbite.com/docs/images/logo.svg"
               className="mr-3 h-6 sm:h-7"
               alt="Contest Hive Logo"
