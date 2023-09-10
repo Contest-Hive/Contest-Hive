@@ -195,47 +195,10 @@ function trimString(str, maxLen) {
 
 /**
  *
- * @param {string} name     - The name of the contest
- * @param {string} duration   - The duration of the contest
- * @param {string} url     - The url of the contest
- * @param {string} startTimeUTC - The start time of the contest in UTC ISO 8601 format
- * @returns {JSX.Element} - The table row for the contest
+ * @param {object} data - The data object containing the contests
+ * @param {string} platform - Name of the platform
+ * @returns {JSX.Element} - The table containing the contests
  */
-function getTableRow(name, duration, url, startTimeUTC) {
-  let maxLen = 50;
-
-  if (typeof window !== "undefined") {
-    // Client-side-only code
-    maxLen = window.innerWidth < 768 ? 33 : 50;
-  }
-
-  const startTime = humanReadableTime(startTimeUTC);
-  let startingIn = whenIsItStarting(getSecondsDifference(startTimeUTC));
-
-  return (
-    <tr className="border-b border-gray-800 bg-gray-900" key={url}>
-      <th
-        scope="row"
-        className="whitespace-nowrap px-6 py-4 font-medium text-white"
-        title={name}
-      >
-        {trimString(name, maxLen)}
-      </th>
-      <td className="px-6 py-4" title={startTime}>
-        {startingIn}
-      </td>
-      <td className="px-6 py-4" title={duration}>
-        {duration}
-      </td>
-      <td className="px-6 py-4 font-medium text-blue-500" title={url}>
-        <Link href={url} target="_blank">
-          Open
-        </Link>
-      </td>
-    </tr>
-  );
-}
-
 function getTable(data, platform) {
   const contests = [];
   platform = platform.toLowerCase();
@@ -263,7 +226,9 @@ function getTable(data, platform) {
       getSecondsDifference(a.startTime) - getSecondsDifference(b.startTime)
     );
   });
+
   if (contests.length === 0) {
+    // If no contest is available
     return (
       <tr className="bg-gray-900" key={1}>
         <td className="px-6 py-4 text-white">{capitalizeString(platform)}</td>
@@ -324,4 +289,4 @@ function getTable(data, platform) {
   return table;
 }
 
-export { getTableRow, convertToLocalDate, svgIcons, getTable };
+export { svgIcons, getTable };

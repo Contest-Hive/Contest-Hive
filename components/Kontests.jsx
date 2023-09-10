@@ -1,13 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import {
   getTable,
 } from "../components/helpers/KontestsHelper.jsx";
 
 const Kontests = () => {
-  const [pltName, setPltName] = useState("atcoder");
+  const [pltName, setPltName] = useState("all");
   const [allContestsData, setAllContestsData] = useState({
     ok: true,
     data: {
@@ -65,14 +64,14 @@ const Kontests = () => {
             className="mx-auto mb-1 block w-2/3 rounded-lg border border-gray-800 bg-gray-900 p-2.5 text-sm text-gray-200 placeholder-gray-800  focus:outline-none focus:ring-2 focus:ring-gray-900"
             onChange={changePlatform}
           >
-            <option defaultValue="atcoder">AtCoder</option>
+            <option defaultValue="all">All</option>
+            <option value="atcoder">AtCoder</option>
             <option value="codechef">CodeChef</option>
             <option value="codeforces">CodeForces</option>
             <option value="hackerearth">HackerEarth</option>
             <option value="hackerrank">HackerRank</option>
             <option value="leetcode">LeetCode</option>
             <option value="toph">Toph</option>
-            <option value="all">All</option>
           </select>
         </div>
       </div>
