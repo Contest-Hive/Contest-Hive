@@ -22,25 +22,45 @@ const SideBarLinks = {
 
 const SideBar = () => {
   // Start of Sidebar Responsiveness
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  // const [isDesktop, setDesktop] = useState(
-  //   typeof window !== "undefined" ? window.innerWidth >= 768 : false,
-  // );
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [isDesktop, setDesktop] = useState(true);
+  const [classForSidebar, setClassForSidebar] = useState(
+    "fixed left-0 top-0 z-40 h-screen w-64 translate-x-0 transition-transform",
+  ); // open as default
 
-  const [isDesktop, setDesktop] = useState(false);
+  function handleResize() {
+    // Close the sidebar when the screen is less than 768px
+
+    if (window.innerWidth >= 768) {
+      setDesktop(true);
+      setSidebarOpen(true);
+      setClassForSidebar(
+        "fixed left-0 top-0 z-40 h-screen w-64 translate-x-0 transition-transform",
+      );
+    } else {
+      setDesktop(false);
+      setSidebarOpen(false);
+      setClassForSidebar(
+        "fixed left-0 top-0 z-40 h-screen w-64 -translate-x-full transition-transform",
+      );
+    }
+  }
+  useEffect(() => {
+    handleResize();
+  }, []);
 
   useEffect(() => {
-    // Close the sidebar when the screen is less than 768px
-    console.log("Hello World");
-    function handleResize() {
-      if (window.innerWidth >= 768) {
-        setDesktop(true);
-        setSidebarOpen(true);
-      } else {
-        setDesktop(false);
-        setSidebarOpen(false);
-      }
+    // toggles the sidebar for mobile
+    if (sidebarOpen) {
+      setClassForSidebar(
+        "fixed left-0 top-0 z-40 h-screen w-64 translate-x-0 transition-transform",
+      );
+    } else {
+      setClassForSidebar(
+        "fixed left-0 top-0 z-40 h-screen w-64 -translate-x-full transition-transform",
+      );
     }
+
     // Bind the event listener
     window.addEventListener("resize", handleResize);
 
@@ -48,7 +68,7 @@ const SideBar = () => {
       // Unbind the event listener on clean up
       window.removeEventListener("resize", handleResize);
     };
-  });
+  }, [sidebarOpen]);
 
   function handleSidebar() {
     setSidebarOpen(true);
@@ -59,7 +79,7 @@ const SideBar = () => {
     // Close the sidebar when clicked outside
     function handleClickOutside(event) {
       if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
-        setSidebarOpen(false);
+        if (!isDesktop) setSidebarOpen(false);
       }
     }
 
@@ -115,7 +135,7 @@ const SideBar = () => {
       <aside
         ref={sidebarRef}
         id="logo-sidebar"
-        className={getClassName()}
+        className={classForSidebar}
         aria-label="Sidebar"
       >
         <div className="h-full overflow-y-auto bg-gray-900 px-3 py-4">
