@@ -21,12 +21,15 @@ const SideBarLinks = {
 };
 
 const SideBar = () => {
-  // Start of Sidebar Responsiveness
-  const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [isDesktop, setDesktop] = useState(true);
+  // Everything is set to false as default
+  // So, mobile users don't see the sidebar when they first visit the page
+  
+  // Desktop users will see the sidebar sliding from the left at first
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isDesktop, setDesktop] = useState(false);
   const [classForSidebar, setClassForSidebar] = useState(
-    "fixed left-0 top-0 z-40 h-screen w-64 translate-x-0 transition-transform",
-  ); // open as default
+    "fixed left-0 top-0 z-40 h-screen w-64 -translate-x-full transition-transform",
+  ); // closed as default
 
   function handleResize() {
     // Close the sidebar when the screen is less than 768px
