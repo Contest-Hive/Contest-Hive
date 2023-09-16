@@ -231,10 +231,8 @@ function getTable(data, platform) {
     // If no contest is available
     return (
       <tr className="bg-gray-900" key={1}>
-        <td className="px-6 py-4 text-white">{capitalizeString(platform)}</td>
-        <th scope="row" className="px-6 py-4 font-medium">
-          No Contests Available
-        </th>
+        <td className="px-6 py-4 font-medium">{capitalizeString(platform)}</td>
+        <td className="px-6 py-4 font-medium">No Contests Available</td>
         <td className="px-6 py-4">never</td>
         <td className="px-6 py-4">-1</td>
         <td className="px-6 py-4">Nowhere!</td>

@@ -3,22 +3,44 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
+const LogoUrl =
+  "https://raw.githubusercontent.com/Nusab19/Nusab19/main/assets/contest-hive%202-modified%20(1).svg";
+
+const SideBarLinks = {
+  "Getting Started": "#getting-started",
+  Platforms: {
+    "All Platforms": "#all-platforms",
+    AtCoder: "#atcoder",
+    CodeChef: "#codechef",
+    Codeforces: "#codeforces",
+    HackerEarth: "#hackerearth",
+    HackerRank: "#hackerrank",
+    LeetCode: "#leetcode",
+    Toph: "#toph",
+  },
+};
+
 const SideBar = () => {
   // Start of Sidebar Responsiveness
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [isDesktop, setDesktop] = useState(
-    typeof window !== "undefined" ? window.innerWidth >= 768 : false,
-  );
+  // const [isDesktop, setDesktop] = useState(
+  //   typeof window !== "undefined" ? window.innerWidth >= 768 : false,
+  // );
+
+  const [isDesktop, setDesktop] = useState(false);
 
   useEffect(() => {
     // Close the sidebar when the screen is less than 768px
+    console.log("Hello World");
     function handleResize() {
-      setDesktop(window.innerWidth >= 768);
-      if (window.innerWidth < 768) {
+      if (window.innerWidth >= 768) {
+        setDesktop(true);
+        setSidebarOpen(true);
+      } else {
+        setDesktop(false);
         setSidebarOpen(false);
       }
     }
-
     // Bind the event listener
     window.addEventListener("resize", handleResize);
 
@@ -26,13 +48,13 @@ const SideBar = () => {
       // Unbind the event listener on clean up
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
-  const sidebarRef = useRef(null);
+  });
 
   function handleSidebar() {
-    setSidebarOpen(!sidebarOpen);
+    setSidebarOpen(true);
   }
 
+  const sidebarRef = useRef(null);
   useEffect(() => {
     // Close the sidebar when clicked outside
     function handleClickOutside(event) {
@@ -51,29 +73,18 @@ const SideBar = () => {
   }, [sidebarOpen]);
 
   function getClassName() {
-    if (isDesktop) {
+    if (isDesktop || sidebarOpen) {
       return "fixed left-0 top-0 z-40 h-screen w-64 translate-x-0 transition-transform";
-    } else {
-      if (sidebarOpen) {
-        return "fixed left-0 top-0 z-40 h-screen w-64 translate-x-0 transition-transform";
-      }
-      return "fixed left-0 top-0 z-40 h-screen w-64 -translate-x-full transition-transform";
     }
+
+    return "fixed left-0 top-0 z-40 h-screen w-64 -translate-x-full transition-transform";
   }
   // End of Sidebar
 
-  // Start of Multi-level Dropdown
   const [dropdownOpen1, setDropdownOpen1] = useState(false);
   function handleDropdown1() {
     setDropdownOpen1(!dropdownOpen1);
   }
-
-  const [dropdownOpen2, setDropdownOpen2] = useState(false);
-
-  function handleDropdown2() {
-    setDropdownOpen2(!dropdownOpen2);
-  }
-  // End of Multi-level Dropdown
 
   return (
     <>
@@ -110,7 +121,9 @@ const SideBar = () => {
         <div className="h-full overflow-y-auto bg-gray-900 px-3 py-4">
           <Link href="/" className="mb-5 flex items-center pl-2.5">
             <Image
-              src="https://flowbite.com/docs/images/logo.svg"
+              src={LogoUrl}
+              width={50}
+              height={50}
               className="mr-3 h-6 sm:h-7"
               alt="Contest Hive Logo"
             />
@@ -121,7 +134,7 @@ const SideBar = () => {
           <ul className="space-y-2 font-medium">
             <li>
               <Link
-                href="#"
+                href={SideBarLinks["Getting Started"]}
                 className="group flex items-center rounded-lg p-2 text-white hover:bg-gray-800"
               >
                 <svg
@@ -134,7 +147,7 @@ const SideBar = () => {
                   <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
                   <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
                 </svg>
-                <span className="ml-3">Dashboard</span>
+                <span className="ml-3">Getting Started</span>
               </Link>
             </li>
             {/* Drop list */}
@@ -156,7 +169,7 @@ const SideBar = () => {
                   <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
                 </svg>
                 <span className="ml-3 flex-1 whitespace-nowrap text-left">
-                  E-commerce
+                  Platforms
                 </span>
                 <svg
                   className="h-3 w-3"
@@ -178,6 +191,42 @@ const SideBar = () => {
                 id="dropdown-example"
                 className={dropdownOpen1 ? "mt-2 space-y-2" : "hidden"}
               >
+                <li>
+                  <Link
+                    href={SideBarLinks.Platforms["All Platforms"]}
+                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-75 hover:bg-gray-800"
+                  >
+                    All Platforms
+                  </Link>
+                </li>
+
+                <li>
+                  <Link
+                    href={SideBarLinks.Platforms["AtCoder"]}
+                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-75 hover:bg-gray-800"
+                  >
+                    AtCoder
+                  </Link>
+                </li>
+
+                <li>
+                  <Link
+                    href={SideBarLinks.Platforms["CodeChef"]}
+                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-75 hover:bg-gray-800"
+                  >
+                    CodeChef
+                  </Link>
+                </li>
+
+                <li>
+                  <Link
+                    href={SideBarLinks.Platforms["Codeforces"]}
+                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-75 hover:bg-gray-800"
+                  >
+                    Codeforces
+                  </Link>
+                </li>
+
                 <li>
                   <Link
                     href="#"
@@ -324,9 +373,6 @@ const SideBar = () => {
           </ul>
         </div>
       </aside>
-      {/* Sep */}
-
-      <div className="p-4 md:ml-64">Hello World</div>
     </>
   );
 };
