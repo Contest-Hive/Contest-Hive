@@ -7,23 +7,23 @@ const LogoUrl =
   "https://raw.githubusercontent.com/Nusab19/Nusab19/main/assets/contest-hive%202-modified%20(1).svg";
 
 const SideBarLinks = {
-  "Getting Started": "#getting-started",
+  Introduction: "",
   Platforms: {
-    "All Platforms": "#all-platforms",
-    AtCoder: "#atcoder",
-    CodeChef: "#codechef",
-    Codeforces: "#codeforces",
-    HackerEarth: "#hackerearth",
-    HackerRank: "#hackerrank",
-    LeetCode: "#leetcode",
-    Toph: "#toph",
+    "All Platforms": "platforms/all",
+    AtCoder: "platforms/atcoder",
+    CodeChef: "platforms/codechef",
+    Codeforces: "platforms/codeforces",
+    HackerEarth: "platforms/hackerearth",
+    HackerRank: "platforms/hackerrank",
+    LeetCode: "platforms/leetcode",
+    Toph: "platforms/toph",
   },
 };
 
 const SideBar = () => {
   // Everything is set to false as default
   // So, mobile users don't see the sidebar when they first visit the page
-  
+
   // Desktop users will see the sidebar sliding from the left at first
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isDesktop, setDesktop] = useState(false);
@@ -157,7 +157,7 @@ const SideBar = () => {
           <ul className="space-y-2 font-medium">
             <li>
               <Link
-                href={SideBarLinks["Getting Started"]}
+                href={SideBarLinks["Introduction"]}
                 className="group flex items-center rounded-lg p-2 text-white hover:bg-gray-800"
               >
                 <svg
@@ -170,7 +170,7 @@ const SideBar = () => {
                   <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
                   <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
                 </svg>
-                <span className="ml-3">Getting Started</span>
+                <span className="ml-3">Introduction</span>
               </Link>
             </li>
             {/* Drop list */}
@@ -225,7 +225,7 @@ const SideBar = () => {
 
                 <li>
                   <Link
-                    href={SideBarLinks.Platforms["AtCoder"]}
+                    href={SideBarLinks.Platforms.AtCoder}
                     className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-75 hover:bg-gray-800"
                   >
                     AtCoder
@@ -234,7 +234,7 @@ const SideBar = () => {
 
                 <li>
                   <Link
-                    href={SideBarLinks.Platforms["CodeChef"]}
+                    href={SideBarLinks.Platforms.CodeChef}
                     className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-75 hover:bg-gray-800"
                   >
                     CodeChef
@@ -243,7 +243,7 @@ const SideBar = () => {
 
                 <li>
                   <Link
-                    href={SideBarLinks.Platforms["Codeforces"]}
+                    href={SideBarLinks.Platforms.Codeforces}
                     className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-75 hover:bg-gray-800"
                   >
                     Codeforces
@@ -252,26 +252,37 @@ const SideBar = () => {
 
                 <li>
                   <Link
-                    href="#"
+                    href={SideBarLinks.Platforms.HackerEarth}
                     className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-75 hover:bg-gray-800"
                   >
-                    Products
+                    HackerEarth
                   </Link>
                 </li>
+
                 <li>
                   <Link
-                    href="#"
+                    href={SideBarLinks.Platforms.HackerRank}
                     className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-75 hover:bg-gray-800"
                   >
-                    Billing
+                    HackerRank
                   </Link>
                 </li>
+
                 <li>
                   <Link
-                    href="#"
+                    href={SideBarLinks.Platforms.LeetCode}
                     className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-75 hover:bg-gray-800"
                   >
-                    Invoice
+                    LeetCode
+                  </Link>
+                </li>
+
+                <li>
+                  <Link
+                    href={SideBarLinks.Platforms.Toph}
+                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-75 hover:bg-gray-800"
+                  >
+                    Toph
                   </Link>
                 </li>
               </ul>
@@ -317,7 +328,7 @@ const SideBar = () => {
                 </span>
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 href="#"
                 className="group flex items-center rounded-lg p-2 text-white hover:bg-gray-800"
@@ -392,7 +403,7 @@ const SideBar = () => {
                 </svg>
                 <span className="ml-3 flex-1 whitespace-nowrap">Sign Up</span>
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </aside>
