@@ -7,7 +7,7 @@ const LogoUrl =
   "https://raw.githubusercontent.com/Nusab19/Nusab19/main/assets/contest-hive%202-modified%20(1).svg";
 
 const SideBarLinks = {
-  Introduction: "#introduction",
+  Introduction: "/docs/#introduction",
   Platforms: {
     "All Platforms": "docs/all",
     AtCoder: "docs/atcoder",

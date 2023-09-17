@@ -62,7 +62,7 @@ const Content = () => {
             href="/api/"
             className="rounded-lg bg-slate-800 px-2 py-1 font-mono text-gray-300"
           >
-            https://contest-hive.vercel.app/api/
+            contest-hive.vercel.app/api/
           </Link>
         </p>
         <p className="mt-5 text-gray-300">
@@ -95,10 +95,6 @@ const Content = () => {
                   >
                     /{platforms.indexOf(platform) + 1}
                   </Link>
-                  {/* <span className="ml-5">
-                    Returns JSON data of{" "}
-                    <span className="font-bold">{platform}</span>
-                  </span> */}
                 </div>
               ))}
             </div>
@@ -119,14 +115,15 @@ const Content = () => {
           response will be a JSON object containing the upcoming contests.
         </p>
 
-        <p className="title-font text-1xl mt-2 font-bold sm:text-2xl">Format</p>
+        <p className="title-font text-1xl mt-5 font-bold sm:text-2xl">Format</p>
 
-        <p className="mt-1 font-mono">
-          <span className="mb-1 block text-gray-300">
+        <p className="mt-1">
+          <span className="mb-1 block font-mono text-gray-300">
             https://contest-hive.vercel.app/api/
             <span className="text-red-400">&lt;platform-name&gt;</span>
           </span>
-          Replace <span className="text-red-400">&lt;platform-name&gt;</span>{" "}
+          Replace{" "}
+          <span className="font-mono text-red-400">&lt;platform-name&gt;</span>{" "}
           with the name of the platform you want
         </p>
       </div>

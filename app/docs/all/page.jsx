@@ -131,7 +131,7 @@ const page = () => {
         </p>
 
         <div className="mt-5 flex flex-col">
-          <div className="relative w-full overflow-x-auto rounded">
+          <div className="w-full overflow-x-auto rounded-lg">
             <table className="w-full text-left text-sm text-gray-400">
               <thead className="bg-gray-800 text-xs uppercase text-gray-300">
                 <tr>
@@ -161,19 +161,17 @@ const page = () => {
                 ))}
               </tbody>
             </table>
-
-            {/* Now let's add the sample response in html */}
-            <div className="mt-10">
-              <p className="title-font mb-5 text-2xl font-bold text-gray-300">
-                Example response:
-              </p>
-              <div className="rounded-lg bg-slate-900 px-4 py-2">
-                <pre className="text-gray-300">
-                  {JSON.stringify(exampleResponse, null, 2)}
-                </pre>
-              </div>
+          </div>
+          <div className="mt-10">
+            <p className="title-font mb-5 text-2xl font-bold text-gray-300">
+              Example response:
+            </p>
+            <div className="overflow-x-auto rounded-lg bg-slate-900 px-4 py-2">
+              {/* Add `copy` button so the user can copy the response by clicking it */}
+              <pre className="text-xs text-gray-300">
+                {JSON.stringify(exampleResponse, null, 2)}
+              </pre>
             </div>
-
           </div>
         </div>
       </div>

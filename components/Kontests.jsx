@@ -1,9 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import {
-  getTable,
-} from "../components/helpers/KontestsHelper.jsx";
+import { getTable } from "../components/helpers/KontestsHelper.jsx";
 
 const Kontests = () => {
   const [pltName, setPltName] = useState("all");
@@ -87,10 +85,10 @@ const Kontests = () => {
               <th scope="col" className="px-6 py-3">
                 Contest name
               </th>
-              <th scope="col" className="px-6 py-3">
-                Starting In
+              <th scope="col" className="py-3 pl-6 pr-8">
+                Starting<span className="mr-1"></span>In
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="py-3 pl-6 pr-20">
                 Duration
               </th>
               <th scope="col" className="px-6 py-3">
