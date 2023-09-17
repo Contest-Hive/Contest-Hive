@@ -27,7 +27,7 @@ const Content = () => {
         </p>
 
         <Link
-          href="#"
+          href="#request-format"
           className="group relative mt-5 inline-flex items-center justify-center overflow-hidden rounded-lg bg-slate-800 px-5 py-3 font-mono font-medium tracking-tighter text-white ring-2 ring-slate-800 transition-all duration-200 hover:bg-opacity-80"
         >
           <span className="relative">Get Started</span>
@@ -105,6 +105,32 @@ const Content = () => {
           </div>
         </div>
       </div>
+
+      {/* Requests Format */}
+      <div className="container mx-auto my-5 px-5 py-6" id="request-format">
+        <Link
+          href="#request-format"
+          className="title-font text-2xl font-bold sm:text-3xl"
+        >
+          Request Format
+        </Link>
+        <p className="mt-5 text-gray-300">
+          Make a <b>GET</b> request to the API endpoint of your choice. The
+          response will be a JSON object containing the upcoming contests.
+        </p>
+
+        <p className="title-font text-1xl mt-2 font-bold sm:text-2xl">Format</p>
+
+        <p className="mt-1 font-mono">
+          <span className="mb-1 block text-gray-300">
+            https://contest-hive.vercel.app/api/
+            <span className="text-red-400">&lt;platform-name&gt;</span>
+          </span>
+          Replace <span className="text-red-400">&lt;platform-name&gt;</span>{" "}
+          with the name of the platform you want
+        </p>
+      </div>
+      {/*  */}
     </>
   );
 };

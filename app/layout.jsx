@@ -1,10 +1,7 @@
 // Vercel Analytics
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
-
-import NavBar from "@/components/NavBar";
-import Footer from "@/components/Footer";
-
+import Head from "next/head";
 
 const layout = ({ children }) => {
   return (

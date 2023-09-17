@@ -25,7 +25,7 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: hsl(233, 27%, 23%);;
+  background: hsl(233, 27%, 23%);
   border-radius: 7px;
 }
 
@@ -34,3 +34,14 @@
   background: hsl(233, 27%, 30%);
 }
 
+/* For smooth scrolling behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+.preload * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+ }
