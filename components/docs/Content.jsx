@@ -81,7 +81,7 @@ const Content = () => {
                 </Link>
               </div>
               {platforms.map((platform) => (
-                <div>
+                <div key={platform}>
                   <Link
                     href={`/docs/${platform}`}
                     className="rounded-lg bg-slate-800 px-2 py-0.5 font-mono text-gray-300"

@@ -93,7 +93,7 @@ const SideBar = () => {
       // Unbind the event listener on clean up
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [sidebarOpen]);
+  }, [sidebarOpen, isDesktop]);
 
   function getClassName() {
     if (isDesktop || sidebarOpen) {
