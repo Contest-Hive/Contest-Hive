@@ -1,8 +1,6 @@
 const layout = ({ children }) => {
   return (
-    <>
-    {children}
-    </>
+    <main className="scroll-smooth">{children}</main>
   );
 };
 
