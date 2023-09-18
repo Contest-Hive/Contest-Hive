@@ -117,9 +117,9 @@ const Content = () => {
 
         <p className="title-font text-1xl mt-5 font-bold sm:text-2xl">Format</p>
 
-        <p className="mt-1">
-          <span className="mb-1 block font-mono text-gray-300">
-            https://contest-hive.vercel.app/api/
+        <p className="mt-3">
+          <span className="mb-4 block font-mono text-gray-300">
+            contest-hive.vercel.app/api/
             <span className="text-red-400">&lt;platform-name&gt;</span>
           </span>
           Replace{" "}

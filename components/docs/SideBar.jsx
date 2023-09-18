@@ -95,15 +95,6 @@ const SideBar = () => {
     };
   }, [sidebarOpen, isDesktop]);
 
-  function getClassName() {
-    if (isDesktop || sidebarOpen) {
-      return "fixed left-0 top-0 z-40 h-screen w-64 translate-x-0 transition-transform";
-    }
-
-    return "fixed left-0 top-0 z-40 h-screen w-64 -translate-x-full transition-transform";
-  }
-  // End of Sidebar
-
   const [dropdownOpen1, setDropdownOpen1] = useState(false);
   function handleDropdown1() {
     setDropdownOpen1(!dropdownOpen1);
@@ -142,18 +133,54 @@ const SideBar = () => {
         aria-label="Sidebar"
       >
         <div className="h-full overflow-y-auto bg-gray-900 px-3 py-4">
-          <Link href="/" className="mb-5 flex items-center pl-2.5">
-            <Image
-              src={LogoUrl}
-              width={50}
-              height={50}
-              className="mr-3 h-6 sm:h-7"
-              alt="Contest Hive Logo"
-            />
-            <span className="self-center whitespace-nowrap text-xl font-semibold text-white">
-              Contest Hive
-            </span>
-          </Link>
+          <div className="flex flex-row">
+            {isDesktop ? (
+              <Link href="/">
+                <Image
+                  src={LogoUrl}
+                  width={50}
+                  height={50}
+                  className="-mt-0.5 mr-3 h-10"
+                  alt="Contest Hive Logo"
+                />
+              </Link>
+            ) : (
+              <button
+                data-drawer-target="logo-sidebar"
+                data-drawer-toggle="logo-sidebar"
+                aria-controls="logo-sidebar"
+                type="button"
+                className="mb-10 mr-3 inline-flex items-center rounded-lg bg-gray-800 pb-[7px] pl-[7px] pr-[8px] pt-[7px] text-sm text-gray-400 md:hidden"
+                onClick={() => setSidebarOpen(false)}
+              >
+                <span className="sr-only">Close sidebar</span>
+                <svg
+                  className="h-6 w-6"
+                  aria-hidden="true"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clipRule="evenodd"
+                    fillRule="evenodd"
+                    d="M17.66 4.34a.75.75 0 010 1.06L5.41 17.66a.75.75 0 11-1.06-1.06L16.59 4.34a.75.75 0 011.06 0z"
+                  ></path>
+                  <path
+                    clipRule="evenodd"
+                    fillRule="evenodd"
+                    d="M4.34 4.34a.75.75 0 000 1.06L16.59 16.59a.75.75 0 101.06-1.06L5.41 4.34a.75.75 0 00-1 0z"
+                  ></path>
+                </svg>
+              </button>
+            )}
+
+            <Link href="/" className="mb-10 mt-1">
+              <span className="self-center whitespace-nowrap text-xl font-semibold text-white">
+                Contest Hive
+              </span>
+            </Link>
+          </div>
           <ul className="space-y-2 font-medium">
             <li>
               <Link
@@ -180,47 +207,47 @@ const SideBar = () => {
             </li>
             {/* Drop list */}
             <li>
-                <button
-                  type="button"
-                  className="group flex w-full items-center rounded-lg p-2 text-base text-white transition duration-75 hover:bg-gray-800"
-                  aria-controls="dropdown-example"
-                  data-collapse-toggle="dropdown-example"
-                  onClick={handleDropdown1}
+              <button
+                type="button"
+                className="group flex w-full items-center rounded-lg p-2 text-base text-white transition duration-75 hover:bg-gray-800"
+                aria-controls="dropdown-example"
+                data-collapse-toggle="dropdown-example"
+                onClick={handleDropdown1}
+              >
+                <svg
+                  className="ml-1 h-5 w-5"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 20 16"
                 >
-                  <svg
-                    className="ml-1 h-5 w-5"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 20 16"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M9 5h6M9 8h6m-6 3h6M4.996 5h.01m-.01 3h.01m-.01 3h.01M2 1h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1Z"
-                    />
-                  </svg>
-                  <span className="ml-3 flex-1 whitespace-nowrap text-left">
-                    Platforms
-                  </span>
-                  <svg
-                    className="h-3 w-3"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 10 6"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="m1 1 4 4 4-4"
-                    />
-                  </svg>
-                </button>
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M9 5h6M9 8h6m-6 3h6M4.996 5h.01m-.01 3h.01m-.01 3h.01M2 1h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1Z"
+                  />
+                </svg>
+                <span className="ml-3 flex-1 whitespace-nowrap text-left">
+                  Platforms
+                </span>
+                <svg
+                  className="h-3 w-3"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 10 6"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="m1 1 4 4 4-4"
+                  />
+                </svg>
+              </button>
               <ul
                 id="dropdown-example"
                 className={dropdownOpen1 ? "mt-2 space-y-2" : "hidden"}
