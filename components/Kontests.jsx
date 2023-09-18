@@ -59,7 +59,7 @@ const Kontests = () => {
           </label>
           <select
             id="platforms"
-            className="mx-auto mb-1 block w-2/3 rounded-lg border border-gray-800 bg-gray-900 p-2.5 text-sm text-gray-200 placeholder-gray-800  focus:outline-none focus:ring-2 focus:ring-gray-900"
+            className="mx-auto mb-1 block w-2/3 rounded-lg border-gray-800 bg-gray-900 p-2.5 text-sm text-gray-200 placeholder-gray-800  outline-none focus:ring-2 focus:ring-gray-900"
             onChange={changePlatform}
           >
             <option defaultValue="all">All</option>
