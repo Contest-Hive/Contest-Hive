@@ -181,7 +181,7 @@ const GetPlatformPage = ({ platformName }) => {
               Example response:
             </p>
             <div className="overflow-x-auto rounded-lg py-2">
-              <pre className="rounded-lg text-xs text-gray-300">
+              <pre className="rounded-lg text-sm text-gray-300">
                 <button
                   className="absolute right-14 rounded-md bg-gray-700 px-2 py-1 text-base ring-2 ring-gray-900 hover:bg-opacity-70 hover:ring-gray-800"
                   onClick={copyCode2Clipboard}

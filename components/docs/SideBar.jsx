@@ -180,7 +180,6 @@ const SideBar = () => {
             </li>
             {/* Drop list */}
             <li>
-              <Link href="#endpoints">
                 <button
                   type="button"
                   className="group flex w-full items-center rounded-lg p-2 text-base text-white transition duration-75 hover:bg-gray-800"
@@ -222,7 +221,6 @@ const SideBar = () => {
                     />
                   </svg>
                 </button>
-              </Link>
               <ul
                 id="dropdown-example"
                 className={dropdownOpen1 ? "mt-2 space-y-2" : "hidden"}
