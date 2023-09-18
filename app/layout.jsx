@@ -1,7 +1,6 @@
 // Vercel Analytics
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
-import Head from "next/head";
 
 const layout = ({ children }) => {
   return (

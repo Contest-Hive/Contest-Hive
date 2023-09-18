@@ -9,14 +9,14 @@ const LogoUrl =
 const SideBarLinks = {
   Introduction: "/docs/#introduction",
   Platforms: {
-    "All Platforms": "docs/all",
-    AtCoder: "docs/atcoder",
-    CodeChef: "docs/codechef",
-    Codeforces: "docs/codeforces",
-    HackerEarth: "docs/hackerearth",
-    HackerRank: "docs/hackerrank",
-    LeetCode: "docs/leetcode",
-    Toph: "docs/toph",
+    "All Platforms": "/docs/all",
+    AtCoder: "/docs/atcoder",
+    CodeChef: "/docs/codechef",
+    Codeforces: "/docs/codeforces",
+    HackerEarth: "/docs/hackerearth",
+    HackerRank: "/docs/hackerrank",
+    LeetCode: "/docs/leetcode",
+    Toph: "/docs/toph",
   },
 };
 

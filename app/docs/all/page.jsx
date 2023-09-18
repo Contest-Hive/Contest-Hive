@@ -1,4 +1,9 @@
+"use client";
+import { useEffect } from "react";
+import Prism from "prismjs";
 import Link from "next/link";
+import getCodeExamples from "../../../components/docs/CodeExamples";
+import "../../../styles/highlight.css";
 
 const exampleResponse = {
   ok: true,
@@ -88,7 +93,13 @@ const properties = [
   },
 ];
 
+const codeExamples = getCodeExamples("AtCoder");
+
 const page = () => {
+  useEffect(() => {
+    Prism.highlightAll();
+  }, []);
+
   return (
     <>
       <div id="#" className="container mx-auto my-6 mt-12 px-5">
@@ -166,10 +177,12 @@ const page = () => {
             <p className="title-font mb-5 text-2xl font-bold text-gray-300">
               Example response:
             </p>
-            <div className="overflow-x-auto rounded-lg bg-slate-900 px-4 py-2">
+            <div className="overflow-x-auto rounded-lg py-2">
               {/* Add `copy` button so the user can copy the response by clicking it */}
-              <pre className="text-xs text-gray-300">
-                {JSON.stringify(exampleResponse, null, 2)}
+              <pre className="rounded-lg text-xs text-gray-300">
+                <code className="language-js">
+                  {JSON.stringify(exampleResponse, null, 2)}
+                </code>
               </pre>
             </div>
           </div>
@@ -177,6 +190,31 @@ const page = () => {
       </div>
 
       {/* Sample code example starts here */}
+
+      <div className="container mx-auto my-1 px-5 py-6">
+        <Link
+          href="#code-examples"
+          className="title-font text-2xl font-bold sm:text-3xl"
+        >
+          Code Examples
+        </Link>
+        <p className="mt-5 text-gray-300">
+          Here are some sample code examples to get you started:
+        </p>
+
+        <div className="mt-5 flex flex-col">
+          {codeExamples.map((codeExample, index) => (
+            <div className="mt-5" key={index}>
+              <p className="title-font mb-5 text-2xl font-bold text-gray-300">
+                {codeExample.language}
+              </p>
+              <pre className="rounded-lg text-gray-300">
+                <code className="language-js">{codeExample.code.trim()}</code>
+              </pre>
+            </div>
+          ))}
+        </div>
+      </div>
     </>
   );
 };
