@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import Prism from "prismjs";
 import Link from "next/link";
 import getCodeExamples from "../../../components/docs/CodeExamples";
@@ -96,9 +96,9 @@ const properties = [
 const codeExamples = getCodeExamples("AtCoder");
 
 const page = () => {
-  useEffect(() => {
-    Prism.highlightAll();
-  }, []);
+  // useEffect(() => {
+  //   Prism.highlightAll();
+  // }, []);
 
   return (
     <>
