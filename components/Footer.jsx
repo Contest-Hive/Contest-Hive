@@ -47,7 +47,7 @@ const Footer = () => {
         <span className="mt-4 inline-flex justify-center sm:ml-auto sm:mt-0 sm:justify-start">
           <Link
             href={contactInfo.facebook}
-            className="rounded px-1 py-1 hover:bg-blue-900"
+            className="rounded px-1 py-1 transition duration-300 hover:bg-blue-900 "
             title="Facebook Profile of Nusab Taha"
             target="_blank"
           >
@@ -56,7 +56,7 @@ const Footer = () => {
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth="2"
-              className="h-7 w-7 transition  duration-300 hover:-rotate-[360deg]"
+              className="h-7 w-7"
               viewBox="0 0 24 24"
             >
               <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
@@ -66,7 +66,7 @@ const Footer = () => {
           {/* Twitter */}
           <Link
             href={contactInfo.twitter}
-            className="ml-3 rounded px-1 py-1 hover:bg-blue-600"
+            className="ml-3 rounded px-1 py-1 transition duration-300  hover:bg-blue-600"
             title="Twitter of Nusab Taha"
             target="_blank"
           >
@@ -75,7 +75,7 @@ const Footer = () => {
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth="2"
-              className="h-7 w-7 transition  duration-300 hover:rotate-[360deg]  "
+              className="h-7 w-7"
               viewBox="0 0 24 24"
             >
               <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
@@ -103,7 +103,7 @@ const Footer = () => {
           {/* Linkedin */}
           <Link
             href={contactInfo.linkedin}
-            className="ml-3 rounded px-1 py-1 hover:bg-blue-800"
+            className="ml-3 rounded px-1 py-1 transition duration-300 hover:bg-blue-800 "
             title="Linkedin of Nusab Taha"
             target="_blank"
           >
