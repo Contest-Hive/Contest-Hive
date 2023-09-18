@@ -1,9 +1,9 @@
 import GetPlatformPage from "@/components/docs/GetPlatformPage";
 
-const page = () => {
+const page = ({ params }) => {
   return (
     <>
-      <GetPlatformPage />
+      <GetPlatformPage platformName={params.platformName} />
     </>
   );
 };

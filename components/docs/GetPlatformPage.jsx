@@ -2,33 +2,9 @@
 import { useEffect } from "react";
 import Prism from "prismjs";
 import Link from "next/link";
-import getCodeExamples from "./CodeExamples";
+import getCodeExamples from "./CodeExamples.js";
+import GetExampleResponse from "./GetExampleResponse.js";
 import "../../styles/highlight.css";
-
-const exampleResponse = {
-  ok: true,
-  data: [
-    {
-      name: "SuntoryProgrammingContest2023（AtCoder Beginner Contest 321）",
-      url: "https://atcoder.jp/contests/abc321",
-      startTime: "2023-09-23T12:00:00.000+00:00",
-      readableStartTime: "23rd September, 2023 12:00:00 PM UTC",
-      startingIn: "5 days",
-      duration: "1 hour 40 minutes",
-      durationSeconds: 6000,
-    },
-    {
-      name: "Marubeni Programming Contest 2023 (AtCoder Heuristic Contest 024)",
-      url: "https://atcoder.jp/contests/ahc024",
-      startTime: "2023-09-24T06:00:00.000+00:00",
-      readableStartTime: "24th September, 2023 06:00:00 AM UTC",
-      startingIn: "6 days",
-      duration: "4 hours",
-      durationSeconds: 14400,
-    },
-  ],
-  lastUpdated: "17-09-2023 18:39:30 UTC",
-};
 
 const properties = [
   {
@@ -93,9 +69,22 @@ const properties = [
   },
 ];
 
-const codeExamples = getCodeExamples("AtCoder");
+const pascalNames = {
+  all: "All",
+  atcoder: "Atcoder",
+  codechef: "CodeChef",
+  codeforces: "Codeforces",
+  hackerearth: "HackerEarth",
+  hackerrank: "HackerRank",
+  leetcode: "LeetCode",
+  toph: "Toph",
+};
 
-const GetPlatformPage = () => {
+const GetPlatformPage = ({ platformName }) => {
+  const pltName = String(platformName).toLowerCase();
+  const codeExamples = getCodeExamples(pltName);
+  const exampleResponse = GetExampleResponse(pltName);
+
   useEffect(() => {
     Prism.highlightAll();
   }, []);
@@ -104,7 +93,7 @@ const GetPlatformPage = () => {
     <>
       <div id="#" className="container mx-auto my-6 mt-12 px-5">
         <header className="title-font text-3xl font-bold text-white sm:text-4xl">
-          AtCoder
+          {pascalNames[pltName]}
         </header>
         <p className="mt-5 text-gray-300">
           As mentioned in{" "}
@@ -114,7 +103,7 @@ const GetPlatformPage = () => {
           before, the format of the request is the same.
         </p>
       </div>
-      {/* Request Format for AtCoder */}
+      {/* Request Format for {pascalNames[pltName]} */}
       <div className="container mx-auto my-1 px-5 py-6" id="request-format">
         <Link
           href="#request-format"
@@ -124,8 +113,11 @@ const GetPlatformPage = () => {
         </Link>
         <p className="mt-5 text-gray-300">
           Make a <b>GET</b> request to{" "}
-          <Link href="/api/atcoder" className="font-mono text-red-400">
-            /api/atcoder
+          <Link
+            href={`/api/${pascalNames[pltName].toLowerCase()}`}
+            className="font-mono text-red-400"
+          >
+            /api/{pascalNames[pltName].toLowerCase()}
           </Link>
         </p>
       </div>
