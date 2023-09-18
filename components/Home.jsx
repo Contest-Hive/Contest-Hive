@@ -16,7 +16,7 @@ const Home = () => {
         {/* API Docs and Github Button */}
         <div className="mt-16 flex justify-center">
           <Link href="/docs">
-            <button className="inline-flex rounded border-0 bg-purple-800 px-6 py-2 text-lg text-white hover:bg-indigo-700 focus:outline-none">
+            <button className="inline-flex rounded border-0 bg-purple-800 px-6 py-2 text-lg text-white hover:bg-indigo-800 focus:outline-none">
               API Docs
               <span>
                 <svg

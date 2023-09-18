@@ -4,16 +4,30 @@ const Features = () => {
   return (
     <section className="body-font tracking-wide">
       <div className="container mx-auto my-20 mb-11 flex flex-wrap px-5 py-10">
-        {/* Add Section to Select Platform */}
         <div className="w-full text-center">
-          <header className="title-font mb-10 text-3xl font-medium text-white sm:text-5xl">
+          <header className="title-font mb-7 text-3xl font-medium text-white sm:text-5xl">
             Why Contest Hive?
           </header>
         </div>
+
+        <div className="mx-auto w-full text-center text-sm md:w-10/12 md:text-base">
+          {/* Telling about the Features */}
+          <p className="mb-8 leading-relaxed">
+            <q className="font-mono text-xl font-bold">It Saves Your Time!</q>
+            <span className="mb-2 block"></span>
+            Competitive Programming is all about time management. <br />
+            Keeping track of future contests manually is tough, right? So,{" "}
+            <span className="font-bold">Contest Hive</span> is here for you.
+            <br />
+            It shows all the contests from all the platforms in one place,
+            boosting your productivity.
+          </p>
+        </div>
+
         <div className="-m-4 flex flex-wrap">
           <div className="p-4 md:w-1/3">
             <div className="flex h-full flex-col rounded-lg bg-gray-800 bg-opacity-60 p-8">
-              <div className="mb-3 flex items-center">
+              <div className="mb-3 flex items-center ">
                 <div className="mr-3 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center  rounded-full text-white">
                   <svg
                     className="transition  duration-300 hover:-rotate-[360deg]"
@@ -25,13 +39,14 @@ const Features = () => {
                   </svg>
                 </div>
                 <h2 className="title-font text-lg font-medium text-white">
-                  Reliable
+                  Be Productive
                 </h2>
               </div>
-              <div className="flex-grow">
-                <p className="text-base leading-relaxed">
-                  With Contest-Hive's steady API clocking in at 99% uptime, your
-                  projects are in safe hands.
+              <div className="flex-grow ">
+                <p className="text-sm leading-relaxed md:w-10/12 md:text-base">
+                  No more going back and forth between multiple platforms.
+                  <br />
+                  Contest Hive is the place to be.
                 </p>
               </div>
             </div>
@@ -39,7 +54,7 @@ const Features = () => {
           <div className="p-4 md:w-1/3">
             <div className="flex h-full flex-col rounded-lg bg-gray-800 bg-opacity-60 p-8">
               <div className="mb-3 flex items-center">
-                <div className="rounded-fulltext0-white mr-3 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center">
+                <div className="text0-white mr-3 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full">
                   <svg
                     className="transition  duration-300 hover:-rotate-45"
                     viewBox="0 0 24.00 24.00"
@@ -170,13 +185,13 @@ const Features = () => {
                   </svg>
                 </div>
                 <h2 className="title-font text-lg font-medium text-white">
-                  Seamless
+                  Reliable
                 </h2>
               </div>
               <div className="flex-grow">
-                <p className="text-base leading-relaxed">
-                  Count on Contest Hive API for minimal latency, processing your
-                  requests in a flash.
+                <p className="text-sm leading-relaxed md:w-10/12 md:text-base">
+                  With Contest-Hive's steady API clocking in at 99% uptime, your
+                  projects are in safe hands.
                 </p>
                 {/* Learn More */}
               </div>
@@ -206,9 +221,57 @@ const Features = () => {
                 </h2>
               </div>
               <div className="flex-grow">
-                <p className="text-base leading-relaxed">
+                <p className="text-sm leading-relaxed md:w-10/12 md:text-base">
                   Contest Hive is free forever. No sign-in or authentication is
-                  required to use the API.
+                  required to use.
+                  <br />
+                  {/* <span className="mt-1 flex">
+                    <svg
+                      class="mr-1 h-5 w-5 text-gray-400"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 12 10"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="m7 9 4-4-4-4M1 9l4-4-4-4"
+                      />
+                    </svg>
+                    <svg
+                      class="mr-1 h-5 w-5 text-gray-400"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 12 10"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="m7 9 4-4-4-4M1 9l4-4-4-4"
+                      />
+                    </svg>
+                    <svg
+                      class="h-5 w-5 text-gray-400"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 12 10"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="m7 9 4-4-4-4M1 9l4-4-4-4"
+                      />
+                    </svg>
+                  </span> */}
                 </p>
               </div>
             </div>

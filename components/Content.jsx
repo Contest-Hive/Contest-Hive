@@ -10,8 +10,10 @@ const Content = () => {
           <header className="title-font mb-10 text-3xl font-medium text-white sm:text-5xl">
             We Build Open-Source
           </header>
-          <p className="mb-8 leading-relaxed">
-            <q className="font-bold">Software Freedom For All</q>
+          <p className="mb-8 text-sm leading-relaxed md:text-base">
+            <q className="font-mono text-xl font-bold">
+              Software Freedom For All
+            </q>
             <span className="mb-2 block"></span>
             We're not only providing the API for free, but also the source code.
             So that you can make this better by your contribution too!
