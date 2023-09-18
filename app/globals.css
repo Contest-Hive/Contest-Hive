@@ -5,9 +5,9 @@
 /*
 ----------------------------------------
 
-    Custom ScrollBar -> Nusab19
-    
-    https://nusab19.pages.dev/
+    Custom ScrollBar -> @Nusab19
+    Email   : nusabtaha33@gmail.com
+    Website : https://nusab19.pages.dev/
 
 ----------------------------------------
 
@@ -38,10 +38,3 @@
 html {
   scroll-behavior: smooth;
 }
-
-.preload * {
-  -webkit-transition: none !important;
-  -moz-transition: none !important;
-  -ms-transition: none !important;
-  -o-transition: none !important;
- }

@@ -59,17 +59,6 @@ const svgIcons = {
 // ----------------------------------------------------------------------
 
 // ----------- Time Related Functions ----------- //
-
-/**
- *
- * @param {string} utcDate - The date in UTC ISO 8601 format
- * @returns {Date} - The date in local time
- */
-function convertToLocalDate(utcDate) {
-  const x = new Date(utcDate);
-  return x;
-}
-
 /**
  *
  * @param {string} date - The date in UTC ISO 8601 format

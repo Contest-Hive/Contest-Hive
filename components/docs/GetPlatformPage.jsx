@@ -1,7 +1,8 @@
 "use client";
 import { useEffect } from "react";
-import Prism from "prismjs";
 import Link from "next/link";
+import Prism from "prismjs";
+// import "prismjs/components/prism-python.js";
 import getCodeExamples from "./CodeExamples.js";
 import GetExampleResponse from "./GetExampleResponse.js";
 import "../../styles/highlight.css";
@@ -89,6 +90,16 @@ const GetPlatformPage = ({ platformName }) => {
     Prism.highlightAll();
   }, []);
 
+  function copyCode2Clipboard(event) {
+    // Copies the code to clipboard
+    const text = event.target.parentNode.querySelector("code").innerText.trim();
+    navigator.clipboard.writeText(text);
+    event.target.innerText = "Copied!";
+    setTimeout(() => {
+      event.target.innerText = "Copy";
+    }, 1300);
+  }
+
   return (
     <>
       <div id="#" className="container mx-auto my-6 mt-12 px-5">
@@ -170,8 +181,13 @@ const GetPlatformPage = ({ platformName }) => {
               Example response:
             </p>
             <div className="overflow-x-auto rounded-lg py-2">
-              {/* Add `copy` button so the user can copy the response by clicking it */}
               <pre className="rounded-lg text-xs text-gray-300">
+                <button
+                  className="absolute right-14 rounded-md bg-gray-700 px-2 py-1 text-base ring-2 ring-gray-900 hover:bg-opacity-70 hover:ring-gray-800"
+                  onClick={copyCode2Clipboard}
+                >
+                  Copy
+                </button>
                 <code className="language-js">
                   {JSON.stringify(exampleResponse, null, 2)}
                 </code>
@@ -201,7 +217,15 @@ const GetPlatformPage = ({ platformName }) => {
                 {codeExample.language}
               </p>
               <pre className="rounded-lg text-gray-300">
-                <code className="language-js">{codeExample.code.trim()}</code>
+                <button
+                  className="absolute right-14 rounded-md bg-gray-700 px-2 py-1 text-base ring-2 ring-gray-900 hover:bg-opacity-70 hover:ring-gray-800"
+                  onClick={copyCode2Clipboard}
+                >
+                  Copy
+                </button>
+                <code className={`lang-${codeExample.className}`}>
+                  {codeExample.code.trim()}
+                </code>
               </pre>
             </div>
           ))}
