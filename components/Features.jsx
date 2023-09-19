@@ -5,7 +5,10 @@ const Features = () => {
     <section className="body-font tracking-wide">
       <div className="container mx-auto my-20 mb-11 flex flex-wrap px-5 py-10">
         <div className="w-full text-center">
-          <header className="title-font mb-7 text-3xl font-medium text-white sm:text-5xl">
+          <header
+            className="title-font mb-7 text-3xl font-medium text-white sm:text-5xl"
+            id="why-us"
+          >
             Why Contest Hive?
           </header>
         </div>
