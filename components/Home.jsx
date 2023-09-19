@@ -10,7 +10,7 @@ const Home = () => {
           Contest Hive
         </h1>
         <h2 className="title-font mb-1 mt-3 font-medium tracking-widest text-indigo-400">
-          Contests' Information at your Fingertips
+          Contests at Your Fingertips
         </h2>
 
         {/* API Docs and Github Button */}
@@ -50,7 +50,7 @@ const Home = () => {
               </span>
             </button>
           </Link>
-          <div className="md:h-70 -z-10 absolute -inset-0.5 mx-auto mt-48 h-52 w-52 rounded-lg bg-gradient-to-r from-indigo-800 to-fuchsia-800 opacity-40 blur-3xl md:w-96 md:opacity-40"></div>
+          <div className="md:h-70 absolute -inset-0.5 -z-10 mx-auto mt-48 h-52 w-52 rounded-lg bg-gradient-to-r from-indigo-800 to-fuchsia-800 opacity-40 blur-3xl md:w-96 md:opacity-40"></div>
         </div>
       </div>
     </div>

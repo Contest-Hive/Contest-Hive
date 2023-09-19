@@ -15,10 +15,10 @@ const Content = () => {
               Software Freedom For All
             </q>
             <span className="mb-2 block"></span>
-            We're not only providing the API for free, but also the source code.
-            So that you can make this better by your contribution too!
+            We believe in the power of open-source. So, we made this website
+            open-source too.
             <br />
-            Feel free to visit the{" "}
+            If you want to make this project better, you can contribute in our{" "}
             <Link
               href={GithubUrl}
               className="text-blue-500 md:hover:text-purple-400"
@@ -28,6 +28,8 @@ const Content = () => {
               <b>Github </b>
             </Link>
             repository.
+            <br />
+            Your ideas can make a big difference!
           </p>
         </div>
       </div>

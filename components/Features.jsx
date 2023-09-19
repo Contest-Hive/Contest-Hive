@@ -16,14 +16,18 @@ const Features = () => {
         <div className="mx-auto w-full text-center text-sm md:w-10/12 md:text-base">
           {/* Telling about the Features */}
           <p className="mb-8 leading-relaxed">
-            <q className="font-mono text-xl font-bold">It Saves Your Time!</q>
+            {/* <q className="font-mono text-xl font-bold">It Saves Your Time!</q> */}
+            <q className="font-mono text-xl font-bold">
+              All Contests in One Place
+            </q>
             <span className="mb-2 block"></span>
-            Competitive Programming is all about time management. <br />
-            Keeping track of future contests manually is tough, right? So,{" "}
-            <span className="font-bold">Contest Hive</span> is here for you.
+            Competitive Programming needs proper time management. <br />
+            Keeping track of future contests on your own can be challenging,
+            right?
             <br />
-            It shows all the contests from all the platforms in one place,
-            boosting your productivity.
+            That's where <b>Contest Hive</b> comes in to help you out. It
+            gathers all the contests from different platforms in one easy-to-use
+            place, making it a breeze to boost your productivity.
           </p>
         </div>
 
@@ -46,8 +50,8 @@ const Features = () => {
                 </h2>
               </div>
               <div className="flex-grow ">
-                <p className="text-sm leading-relaxed md:w-10/12 md:text-base">
-                  No more going back and forth between multiple platforms.
+                <p className="text-sm leading-relaxed md:text-base">
+                  No more going back and forth between platforms.
                   <br />
                   Contest Hive is the place to be.
                 </p>
@@ -192,7 +196,7 @@ const Features = () => {
                 </h2>
               </div>
               <div className="flex-grow">
-                <p className="text-sm leading-relaxed md:w-10/12 md:text-base">
+                <p className="text-sm leading-relaxed md:text-base">
                   With Contest-Hive's steady API clocking in at 99% uptime, your
                   projects are in safe hands.
                 </p>
@@ -224,7 +228,7 @@ const Features = () => {
                 </h2>
               </div>
               <div className="flex-grow">
-                <p className="text-sm leading-relaxed md:w-10/12 md:text-base">
+                <p className="text-sm leading-relaxed md:text-base">
                   Contest Hive is free forever. No sign-in or authentication is
                   required to use.
                   <br />
