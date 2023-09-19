@@ -2,6 +2,21 @@ import os
 import time
 from pprint import pprint
 from datetime import datetime
+
+# needs to run from the /public folder
+
+if os.getcwd().split("\\")[-1] != "public":
+    if "public" in os.listdir():
+        print("Running from the root folder...")
+        print()
+        os.chdir("public/")
+
+    else:
+        pprint("Please run this script from the /public folder or from the root folder")
+else:
+    print("Running from the /public folder...")
+    print()
+
 os.chdir("../app/")
 
 
