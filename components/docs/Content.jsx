@@ -60,7 +60,7 @@ const Content = () => {
           The base url of the API is{" "}
           <Link
             href="/api/"
-            className="rounded-lg bg-slate-800 px-2 py-1 font-mono text-gray-300"
+            className="rounded-lg bg-slate-800 px-2 py-1 font-mono text-gray-300 transition duration-200 hover:bg-slate-900 hover:text-gray-100"
           >
             contest-hive.vercel.app/api/
           </Link>
@@ -75,7 +75,7 @@ const Content = () => {
               <div>
                 <Link
                   href={`/docs/all`}
-                  className="rounded-lg bg-slate-800 px-2 py-0.5 font-mono text-gray-300"
+                  className="rounded-lg bg-slate-800 px-2 py-0.5 font-mono text-gray-300 transition duration-200 hover:bg-slate-900 hover:text-gray-100"
                 >
                   /all
                 </Link>
@@ -84,14 +84,14 @@ const Content = () => {
                 <div key={platform}>
                   <Link
                     href={`/docs/${platform}`}
-                    className="rounded-lg bg-slate-800 px-2 py-0.5 font-mono text-gray-300"
+                    className="rounded-lg bg-slate-800 px-2 py-0.5 font-mono text-gray-300 transition duration-200 hover:bg-slate-900 hover:text-gray-100"
                   >
                     /{platform}
                   </Link>
                   <span className="ml-2 mr-2">or</span>
                   <Link
                     href={`/docs/${platform}`}
-                    className="rounded-lg bg-slate-800 px-2 py-0.5 font-mono text-gray-300"
+                    className="rounded-lg bg-slate-800 px-2 py-0.5 font-mono text-gray-300 transition duration-200 hover:bg-slate-900 hover:text-gray-100"
                   >
                     /{platforms.indexOf(platform) + 1}
                   </Link>
