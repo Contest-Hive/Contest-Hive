@@ -3,8 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-const LogoUrl =
-  "https://raw.githubusercontent.com/Nusab19/Nusab19/main/assets/contest-hive%202-modified%20(1).svg";
+const logoUrl = "favicon.svg";
 
 const SideBarLinks = {
   Introduction: "/docs/#introduction",
@@ -137,10 +136,10 @@ const SideBar = () => {
             {isDesktop ? (
               <Link href="/">
                 <Image
-                  src={LogoUrl}
+                  src={logoUrl}
                   width={50}
                   height={50}
-                  className="-mt-0.5 mr-3 h-10"
+                  className="ml-1 mr-3 mt-0.5 h-10 w-10"
                   alt="Contest Hive Logo"
                 />
               </Link>
@@ -150,16 +149,33 @@ const SideBar = () => {
                 data-drawer-toggle="logo-sidebar"
                 aria-controls="logo-sidebar"
                 type="button"
-                className="mb-10 mr-3 inline-flex items-center rounded-lg bg-gray-800 pb-[7px] pl-[7px] pr-[8px] pt-[7px] text-sm text-gray-400 md:hidden"
+                className="mb-10 mr-3 mt-1 inline-flex items-center rounded-lg bg-gray-800 pb-[7px] pl-[7px] pr-[8px] pt-[7px] text-sm text-gray-400 md:hidden"
                 onClick={() => setSidebarOpen(false)}
               >
                 <span className="sr-only">Close sidebar</span>
-                <svg class="h-6 w-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" fill-rule="evenodd" d="M17.66 4.34a.75.75 0 010 1.06L5.41 17.66a.75.75 0 11-1.06-1.06L16.59 4.34a.75.75 0 011.06 0z"></path><path clip-rule="evenodd" fill-rule="evenodd" d="M4.34 4.34a.75.75 0 000 1.06L16.59 16.59a.75.75 0 101.06-1.06L5.41 4.34a.75.75 0 00-1 0z"></path></svg>
+                <svg
+                  class="h-6 w-6"
+                  aria-hidden="true"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clip-rule="evenodd"
+                    fill-rule="evenodd"
+                    d="M17.66 4.34a.75.75 0 010 1.06L5.41 17.66a.75.75 0 11-1.06-1.06L16.59 4.34a.75.75 0 011.06 0z"
+                  ></path>
+                  <path
+                    clip-rule="evenodd"
+                    fill-rule="evenodd"
+                    d="M4.34 4.34a.75.75 0 000 1.06L16.59 16.59a.75.75 0 101.06-1.06L5.41 4.34a.75.75 0 00-1 0z"
+                  ></path>
+                </svg>
               </button>
             )}
 
-            <Link href="/" className="mb-10 mt-1">
-              <span className="self-center whitespace-nowrap text-xl font-semibold text-white">
+            <Link href="/" className="mb-10 mt-[5px]">
+              <span className="self-center whitespace-nowrap text-2xl font-semibold text-white">
                 Contest Hive
               </span>
             </Link>
