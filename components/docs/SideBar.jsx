@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-const logoUrl = "favicon.svg";
+const logoUrl = "/favicon.svg";
 
 const SideBarLinks = {
   Introduction: "/docs/#introduction",
