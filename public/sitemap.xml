@@ -4,7 +4,10 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
     http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-    
+    <url>
+    <loc>https://contest-hive.vercel.app</loc>
+    <lastmod>2023-09-19T22:28:24.903151Z</lastmod>
+</url>
 <url>
     <loc>https://contest-hive.vercel.app/about</loc>
     <lastmod>2023-09-19T11:13:46Z</lastmod>
