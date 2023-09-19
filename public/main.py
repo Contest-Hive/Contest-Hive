@@ -87,7 +87,14 @@ def main():
             url = f"{rootUrl}/{url}"
             sitemapData[url] = modTime
 
-    allSites = ""
+    allSites = f"""
+<url>
+    <loc>{rootUrl}</loc>
+    <lastmod>{datetime.utcfromtimestamp(time.time()).isoformat() + "Z"}</lastmod>
+</url>
+""".strip()
+
+
     for url, modTime in sitemapData.items():
         allSites += f"""
 <url>
