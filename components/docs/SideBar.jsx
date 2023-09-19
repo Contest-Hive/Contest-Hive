@@ -184,7 +184,7 @@ const SideBar = () => {
             <li>
               <Link
                 href={SideBarLinks["Introduction"]}
-                className="group flex items-center rounded-lg p-2"
+                className="group flex items-center rounded-lg p-2 transition duration-200 ease-in-out hover:bg-slate-800"
               >
                 <svg
                   className="ml-1 h-5 w-5"
@@ -208,7 +208,7 @@ const SideBar = () => {
             <li>
               <button
                 type="button"
-                className="group flex w-full items-center rounded-lg p-2 text-base text-white transition duration-75 hover:bg-gray-800"
+                className="group flex w-full items-center rounded-lg p-2 text-base text-white hover:bg-slate-800 transition duration-200 ease-in-out"
                 aria-controls="dropdown-example"
                 data-collapse-toggle="dropdown-example"
                 onClick={handleDropdown1}
@@ -254,7 +254,7 @@ const SideBar = () => {
                 <li>
                   <Link
                     href={SideBarLinks.Platforms["All Platforms"]}
-                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-75 hover:bg-gray-800"
+                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-200 ease-in-out hover:bg-slate-800"
                   >
                     All Platforms
                   </Link>
@@ -263,7 +263,7 @@ const SideBar = () => {
                 <li>
                   <Link
                     href={SideBarLinks.Platforms.AtCoder}
-                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-75 hover:bg-gray-800"
+                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white hover:bg-slate-800 transition duration-200 ease-in-out"
                   >
                     AtCoder
                   </Link>
@@ -272,7 +272,7 @@ const SideBar = () => {
                 <li>
                   <Link
                     href={SideBarLinks.Platforms.CodeChef}
-                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-75 hover:bg-gray-800"
+                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white hover:bg-slate-800 transition duration-200 ease-in-out"
                   >
                     CodeChef
                   </Link>
@@ -281,7 +281,7 @@ const SideBar = () => {
                 <li>
                   <Link
                     href={SideBarLinks.Platforms.Codeforces}
-                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-75 hover:bg-gray-800"
+                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white hover:bg-slate-800 transition duration-200 ease-in-out"
                   >
                     Codeforces
                   </Link>
@@ -290,7 +290,7 @@ const SideBar = () => {
                 <li>
                   <Link
                     href={SideBarLinks.Platforms.HackerEarth}
-                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-75 hover:bg-gray-800"
+                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white hover:bg-slate-800 transition duration-200 ease-in-out"
                   >
                     HackerEarth
                   </Link>
@@ -299,7 +299,7 @@ const SideBar = () => {
                 <li>
                   <Link
                     href={SideBarLinks.Platforms.HackerRank}
-                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-75 hover:bg-gray-800"
+                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white hover:bg-slate-800 transition duration-200 ease-in-out"
                   >
                     HackerRank
                   </Link>
@@ -308,7 +308,7 @@ const SideBar = () => {
                 <li>
                   <Link
                     href={SideBarLinks.Platforms.LeetCode}
-                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-75 hover:bg-gray-800"
+                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white hover:bg-slate-800 transition duration-200 ease-in-out"
                   >
                     LeetCode
                   </Link>
@@ -317,7 +317,7 @@ const SideBar = () => {
                 <li>
                   <Link
                     href={SideBarLinks.Platforms.Toph}
-                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-75 hover:bg-gray-800"
+                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white hover:bg-slate-800 transition duration-200 ease-in-out"
                   >
                     Toph
                   </Link>
