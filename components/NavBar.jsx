@@ -7,7 +7,7 @@ import Link from "next/link";
 
 // Change these to your own links
 const navTitle = "Contest Hive";
-const logoUrl = "favicon.svg";
+const logoUrl = "/favicon.svg";
 const blueLink = {
   name: "About",
   url: "/about",
