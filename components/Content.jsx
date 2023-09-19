@@ -1,10 +1,3 @@
-import { Inter } from "next/font/google";
-
-const font = Inter({
-  weight: "400",
-  subsets: ["latin"],
-});
-
 import Link from "next/link";
 
 const GithubUrl = "https://github.com/Nusab19/Contest-Hive";
@@ -17,9 +10,7 @@ const Content = () => {
           <header className="title-font mb-10 text-3xl font-medium text-white sm:text-5xl">
             We Built Open-Source
           </header>
-          <p
-            className={`${font.className} mb-8 text-sm leading-relaxed md:text-base`}
-          >
+          <p className="mb-8 text-sm leading-relaxed md:text-base">
             <q className="font-mono text-xl font-bold">
               Software Freedom For All
             </q>

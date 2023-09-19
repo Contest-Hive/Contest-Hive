@@ -1,19 +1,12 @@
-import { Inter } from "next/font/google";
-
-const font = Inter({
-  subsets: ["latin"],
-});
-
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 
 const page = () => {
-  const myClass = `${font.className} py-15 container mx-auto mb-20 mt-10 flex w-11/12 flex-col items-center justify-center px-5 text-center tracking-wide md:w-10/12`;
   return (
     <>
       <NavBar />
-      <div className={myClass}>
+      <div className="py-15 container mx-auto mb-20 mt-10 flex w-11/12 flex-col items-center justify-center px-5 text-center tracking-wide md:w-10/12">
         <h1 className="mb-8 text-3xl font-bold text-gray-100 md:text-5xl">
           About Contest Hive
         </h1>
