@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 const page = () => {
   return (
-    <main>
+    <main >
       <NavBar />
       <Home />
       <Kontests />

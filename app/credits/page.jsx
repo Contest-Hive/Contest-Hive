@@ -1,3 +1,9 @@
+import { Inter } from "next/font/google";
+
+const font = Inter({
+  subsets: ["latin"],
+});
+
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
@@ -7,21 +13,28 @@ const page = () => {
   return (
     <>
       <NavBar />
-      <div className="py-15 container mx-auto mb-20 mt-10 flex w-11/12 flex-col items-center justify-center px-5 text-center tracking-wide md:w-10/12">
+      <div
+        className={`${font.className} py-15 container mx-auto mb-20 mt-10 flex w-11/12 flex-col items-center justify-center px-5 text-center tracking-wide md:w-10/12`}
+      >
         <h1 className="mb-8 text-3xl font-bold text-gray-100 md:text-5xl">
           Credits
         </h1>
         <p className="mb-5 text-lg text-gray-100">
-          As this is my first ever project with Next.js and Tailwind CSS, I had
-          to take help from a lot of resources. I am listing all the resources
-          that I used to build this website.
+          Creating this website with Next.js and Tailwind CSS was a bit like
+          trying to assemble a furniture without the instructions - a few
+          stumbles and a lot of{" "}
+          <q>
+            <i>what does this part even do?</i>
+          </q>{" "}
+          moments.
           <br />
-          These great resources helped me a lot to build this website.
+          But hey, even the best chefs use recipes, right? I took help from some
+          cool resources to make this project.
           <br />
           <br />
+          Here are my secret weapons that made this project possible. 🚀
         </p>
-        {/* Describe about Flowbite, TailwindCss components and how you used them */}
-        <div className="mb-8 flex flex-col text-base">
+        <div className="mb-14 mt-5 flex flex-col text-base">
           <Link
             href="https://flowbite.com"
             target="_blank"
@@ -37,12 +50,16 @@ const page = () => {
             Flowbite
           </Link>
           <span>
-            I used many components from Flowbite. I used the <b>Navbar</b>,{" "}
-            <b>Footer</b> and
-            <b>SVG icons</b> and so on from Flowbite.
+            I went on a bit of a component shopping🛒 spree at Flowbite,
+            grabbing awesome stuff like the <b>Navbar</b>, <b>Footer</b>, and
+            some snazzy <b>SVG icons</b>. You could say it was a component heist
+            of epic proportions! 💎
             <br />
-            Though I took the components from Flowbite, I had to make them
-            responsive with my own logic as I didn't use the <b>flowbite.js</b>
+            <br />
+            But here's where it gets interesting. While I borrowed these goodies
+            from Flowbite, I had to sprinkle some of my own coding magic to make
+            them responsive. I mean, who needs a <b>flowbite.js</b> wizard when
+            you've got your own skills? 😎
             <br />
           </span>
         </div>
@@ -63,12 +80,12 @@ const page = () => {
             Tailblock
           </Link>
           <span>
-            Tailblock is a nice website too. I used the{" "}
+            Tailblock, another gem of a website!
+            <br />I snatched the{" "}
             <Link href="/#why-us" className="font-bold text-blue-400">
               <q>Why Contest Hive?</q>
             </Link>{" "}
-            from Tailblock.
-            <br />
+            section straight from Tailblock. 😉🌟
           </span>
         </div>
       </div>

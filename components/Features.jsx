@@ -1,3 +1,10 @@
+import { Inter } from "next/font/google";
+
+const font = Inter({
+  weight: "400",
+  subsets: ["latin"],
+});
+
 import Link from "next/link";
 
 const Features = () => {
@@ -13,7 +20,9 @@ const Features = () => {
           </header>
         </div>
 
-        <div className="mx-auto w-full text-center text-sm md:w-10/12 md:text-base">
+        <div
+          className={`${font.className} mx-auto w-full text-center text-sm md:w-10/12 md:text-base`}
+        >
           {/* Telling about the Features */}
           <p className="mb-8 leading-relaxed">
             {/* <q className="font-mono text-xl font-bold">It Saves Your Time!</q> */}
