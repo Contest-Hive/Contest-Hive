@@ -7,9 +7,7 @@ import Link from "next/link";
 
 // Change these to your own links
 const navTitle = "Contest Hive";
-// const logoUrl = "/assets/icons/apple-touch-icon.png";
-const logoUrl =
-  "https://raw.githubusercontent.com/Nusab19/Nusab19/main/assets/contest-hive%202-modified%20(1).svg";
+const logoUrl = "favicon.svg";
 const blueLink = {
   name: "About",
   url: "/about",
@@ -54,13 +52,13 @@ export const NavBar = () => {
     <nav>
       <div className="top-0 mx-auto flex flex-wrap items-center justify-between p-4">
         <Link href="/" className="flex items-center">
-          <Image
+          <img
             src={logoUrl}
             width={50}
             height={50}
             className="mr-3 mt-0.5 h-10 w-10"
             alt={`${navTitle} Logo`}
-          ></Image>
+          ></img>
           <span className="self-center whitespace-nowrap text-2xl font-semibold text-gray-100">
             {navTitle}
           </span>
