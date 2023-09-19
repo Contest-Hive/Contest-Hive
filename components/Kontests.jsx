@@ -1,29 +1,37 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getTable } from "../components/helpers/KontestsHelper.jsx";
+import {
+  getTable,
+  placeholderContests,
+} from "@/components/helpers/KontestsHelper";
 
 const Kontests = () => {
+  const [isDesktop, setDesktop] = useState(false);
+  useEffect(() => {
+    setDesktop(window.innerWidth > 768);
+  }, []);
+
   const [pltName, setPltName] = useState("all");
   const [allContestsData, setAllContestsData] = useState({
     ok: true,
     data: {
       atcoder: [
         {
-          name: "Loading",
+          name: "Worlds Best Contest Ever Organized by Meow...",
           url: "#",
           startTime: "",
           startingIn: "never",
-          duration: "-1",
+          duration: "3 hours",
         },
       ],
-      codechef: [],
-      codeforces: [],
-      hackerearth: [],
-      hackerrank: [],
-      leetcode: [],
-      toph: [],
     },
+    codechef: [],
+    codeforces: [],
+    hackerearth: [],
+    hackerrank: [],
+    leetcode: [],
+    toph: [],
   });
 
   useEffect(() => {
@@ -32,7 +40,6 @@ const Kontests = () => {
       .then((res) => res.json())
       .then((json) => {
         setAllContestsData(json);
-        setLoading(false);
       })
       .catch((err) => {
         console.log("error:", err);
@@ -85,7 +92,7 @@ const Kontests = () => {
               <th scope="col" className="px-6 py-3">
                 Contest name
               </th>
-              <th scope="col" className="py-3 pl-6">
+              <th scope="col" className="py-3 pl-6 pr-5">
                 Starting<span className="mr-1"></span>In
               </th>
               <th scope="col" className="py-3 pl-6 pr-32">
@@ -96,7 +103,12 @@ const Kontests = () => {
               </th>
             </tr>
           </thead>
-          <tbody>{getTable(allContestsData.data, pltName)}</tbody>
+          <tbody>
+            {getTable(allContestsData.data, pltName, isDesktop)}
+            {allContestsData.data.atcoder[0].startTime === ""
+              ? placeholderContests(isDesktop)
+              : ""}
+          </tbody>
         </table>
       </div>
     </>

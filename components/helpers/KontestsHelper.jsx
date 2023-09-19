@@ -72,7 +72,7 @@ function humanReadableTime(startTime) {
  * @returns {string} - The time in human readable format eg. 1 day or 5 days or 3 hours
  */
 function whenIsItStarting(s) {
-  if (!s) return "never";
+  if (!s) return "13 seconds";
 
   let m = Math.floor(s / 60);
   s %= 60;
@@ -130,7 +130,9 @@ function trimString(str, maxLen) {
  * @param {string} platform - Name of the platform
  * @returns {JSX.Element} - The table containing the contests
  */
-function getTable(data, platform) {
+function getTable(data, platform, isDesktop) {
+  const maxLen = isDesktop ? 50 : 33;
+
   const contests = [];
   platform = platform.toLowerCase();
 
@@ -168,13 +170,6 @@ function getTable(data, platform) {
         <td className="px-6 py-4">Nowhere!</td>
       </tr>
     );
-  }
-
-  let maxLen = 50;
-
-  if (typeof window !== "undefined") {
-    // Client-side-only code
-    maxLen = window.innerWidth < 768 ? 33 : 50;
   }
 
   const table = contests.map((contest) => {
@@ -217,4 +212,67 @@ function getTable(data, platform) {
   return table;
 }
 
-export { getTable, getSecondsDifference };
+function placeholderContests(isDesktop) {
+  const maxLen = isDesktop ? 50 : 33;
+  const contests = [
+    {
+      name: "World's Best Contest Ever Organized by Meow and Doggo",
+      startingIn: "33 seconds",
+    },
+    {
+      name: "Meow vs Doggo Contest",
+      startingIn: "33 seconds",
+    },
+    {
+      name: "Elon Musk vs Mark Zuckerberg Coding Contest",
+      startingIn: "1 hour",
+    },
+    {
+      name: "Tourist vs Benq Live Coding Contest",
+      startingIn: "2 hours",
+    },
+    {
+      name: "Soumya1 vs YouKn0wWho",
+      startingIn: "2 days",
+    },
+    {
+      name: "Nusab19 vs Safin01 Live Coding Contest",
+      startingIn: "now...",
+    },
+  ];
+
+  const table = contests.map((contest) => {
+    const contestName = contest.name;
+    const url = "#";
+    const startTime = humanReadableTime(contest.startTime);
+    const startingIn = contest.startingIn;
+    const plt = "Loading";
+
+    return (
+      <tr className="border-b border-gray-800 bg-gray-900" key={contests.indexOf(contest)}>
+        <th scope="row" className="px-6 py-4 font-medium" title={plt}>
+          {plt}
+        </th>
+        <th
+          className="whitespace-nowrap px-6 py-4 font-medium text-white"
+          title={contestName}
+        >
+          {trimString(contestName, maxLen)}
+        </th>
+        <td className="px-6 py-4" title={startTime}>
+          {startingIn}
+        </td>
+        <td className="px-6 py-4" title="0">
+          0
+        </td>
+        <td className="px-6 py-4 font-medium text-blue-500" title={url}>
+          Nowhere!
+        </td>
+      </tr>
+    );
+  });
+
+  return table;
+}
+
+export { getTable, getSecondsDifference, placeholderContests };

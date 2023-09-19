@@ -58,7 +58,7 @@ export const NavBar = () => {
             src={logoUrl}
             width={50}
             height={50}
-            className="mr-3 mt-0.5 h-10"
+            className="mr-3 mt-0.5 h-10 w-10"
             alt={`${navTitle} Logo`}
           ></Image>
           <span className="self-center whitespace-nowrap text-2xl font-semibold text-gray-100">
