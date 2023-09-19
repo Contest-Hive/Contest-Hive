@@ -1,9 +1,10 @@
+
 // import { NextResponse } from "next/server";
 
 import { getSecondsDifference } from "@/components/helpers/KontestsHelper";
 
-const API_URL =
-  "https://raw.githubusercontent.com/Nusab19/__contest-hive-backend/main/cache/Data/atcoder.json";
+const API_URL = "https://raw.githubusercontent.com/Nusab19/__contest-hive-backend/main/cache/Data/atcoder.json";
+
 
 export async function GET() {
   const response = await fetch(API_URL, {
