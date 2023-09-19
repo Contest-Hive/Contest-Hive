@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+    http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    
+<url>
+    <loc>https://contest-hive.vercel.app/about</loc>
+    <lastmod>2023-09-19T11:13:46Z</lastmod>
+</url>
+<url>
+    <loc>https://contest-hive.vercel.app/credits</loc>
+    <lastmod>2023-09-19T11:12:50Z</lastmod>
+</url>
+<url>
+    <loc>https://contest-hive.vercel.app/docs</loc>
+    <lastmod>2023-09-19T15:32:47Z</lastmod>
+</url>
+<url>
+    <loc>https://contest-hive.vercel.app/docs/all</loc>
+    <lastmod>2023-09-19T15:32:47Z</lastmod>
+</url>
+<url>
+    <loc>https://contest-hive.vercel.app/docs/atcoder</loc>
+    <lastmod>2023-09-19T15:32:47Z</lastmod>
+</url>
+<url>
+    <loc>https://contest-hive.vercel.app/docs/codechef</loc>
+    <lastmod>2023-09-19T15:32:47Z</lastmod>
+</url>
+<url>
+    <loc>https://contest-hive.vercel.app/docs/codeforces</loc>
+    <lastmod>2023-09-19T15:32:47Z</lastmod>
+</url>
+<url>
+    <loc>https://contest-hive.vercel.app/docs/hackerearth</loc>
+    <lastmod>2023-09-19T15:32:47Z</lastmod>
+</url>
+<url>
+    <loc>https://contest-hive.vercel.app/docs/hackerrank</loc>
+    <lastmod>2023-09-19T15:32:47Z</lastmod>
+</url>
+<url>
+    <loc>https://contest-hive.vercel.app/docs/leetcode</loc>
+    <lastmod>2023-09-19T15:32:47Z</lastmod>
+</url>
+<url>
+    <loc>https://contest-hive.vercel.app/docs/toph</loc>
+    <lastmod>2023-09-19T15:32:47Z</lastmod>
+</url>
+</urlset>
