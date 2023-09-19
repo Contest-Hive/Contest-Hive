@@ -6,6 +6,9 @@ const nextConfig = (module.exports = {
   compiler: {
     styledComponents: true,
   },
+  images: {
+    domains: ["tailblocks.cc"],
+  },
 });
 
 module.exports = nextConfig;

@@ -27,9 +27,11 @@ const page = () => {
             target="_blank"
             className="title-font mb-3 text-2xl font-bold text-teal-400 hover:text-indigo-400"
           >
-            <img
+            <Image
               src="https://flowbite.com/images/logo.svg"
-              alt="Tailblock"
+              width={30}
+              height={30}
+              alt="Flowbite Icon"
               className="mb-1 mr-2 inline w-7"
             />
             Flowbite
@@ -51,9 +53,11 @@ const page = () => {
             target="_blank"
             className="title-font mb-3 text-2xl font-bold text-teal-400 hover:text-indigo-400"
           >
-            <img
+            <Image
               src="https://tailblocks.cc/favicon.png"
-              alt="Tailblock"
+              width={30}
+              height={30}
+              alt="Tailblock Icon"
               className="mb-1 mr-2 inline w-7"
             />
             Tailblock
