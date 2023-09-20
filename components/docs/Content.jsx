@@ -10,9 +10,31 @@ const platforms = [
   "toph",
 ];
 
+/**
+ *
+ * @param {string} text - Text to be displayed
+ * @param {string} href - Link to be redirected to
+ * @param {true} target - _blank or not
+ * @returns
+ */
+function makeLink(text, href, target) {
+  if (!target) target = "_self";
+  else target = "_blank";
+
+  return (
+    <Link
+      href={href}
+      target={target}
+      className="rounded-lg bg-slate-800 px-2 py-0.5 font-mono text-gray-300 transition duration-200 hover:bg-slate-900 hover:text-gray-100"
+    >
+      {text}
+    </Link>
+  );
+}
+
 const Content = () => {
   return (
-    <>
+    <main id="content">
       <div
         id="#introduction"
         className="container mx-auto my-6 mt-10 px-5 py-6"
@@ -31,9 +53,9 @@ const Content = () => {
 
         <Link
           href="#request-format"
-          className="group relative mt-5 inline-flex items-center justify-center overflow-hidden rounded-lg bg-slate-800 px-5 py-3 font-mono font-medium tracking-tighter text-white ring-2 ring-slate-800 transition-all duration-200 hover:bg-opacity-80"
+          className="mt-5 inline-flex items-center justify-center overflow-hidden rounded-lg bg-slate-800 px-5 py-3 font-mono font-medium tracking-tighter text-white ring-2 ring-slate-800 transition-all duration-200 hover:bg-opacity-80"
         >
-          <span className="relative">Get Started</span>
+          <span>Get Started</span>
           <svg
             viewBox="0 0 20 20"
             fill="none"
@@ -61,12 +83,7 @@ const Content = () => {
         </Link>
         <p className="mt-5 text-gray-300">
           The base url of the API is{" "}
-          <Link
-            href="/api/"
-            className="rounded-lg bg-slate-800 px-2 py-1 font-mono text-gray-300 transition duration-200 hover:bg-slate-900 hover:text-gray-100"
-          >
-            contest-hive.vercel.app/api/
-          </Link>
+          {makeLink("contest-hive.vercel.app/api/", "/api/", true)}
         </p>
         <p className="mt-5 text-gray-300">
           The API supports the following endpoints:
@@ -75,29 +92,15 @@ const Content = () => {
         <div className="mt-5">
           <div className="flex flex-col sm:flex-row sm:space-x-5">
             <div className="flex flex-col space-y-2">
-              <div>
-                <Link
-                  href={`/docs/all`}
-                  className="rounded-lg bg-slate-800 px-2 py-0.5 font-mono text-gray-300 transition duration-200 hover:bg-slate-900 hover:text-gray-100"
-                >
-                  /all
-                </Link>
-              </div>
+              <div>{makeLink("/all", "/docs/all")}</div>
               {platforms.map((platform) => (
                 <div key={platform}>
-                  <Link
-                    href={`/docs/${platform}`}
-                    className="rounded-lg bg-slate-800 px-2 py-0.5 font-mono text-gray-300 transition duration-200 hover:bg-slate-900 hover:text-gray-100"
-                  >
-                    /{platform}
-                  </Link>
+                  {makeLink("/" + platform, `/docs/${platform}`)}
                   <span className="ml-2 mr-2">or</span>
-                  <Link
-                    href={`/docs/${platform}`}
-                    className="rounded-lg bg-slate-800 px-2 py-0.5 font-mono text-gray-300 transition duration-200 hover:bg-slate-900 hover:text-gray-100"
-                  >
-                    /{platforms.indexOf(platform) + 1}
-                  </Link>
+                  {makeLink(
+                    `/${platforms.indexOf(platform) + 1}`,
+                    `/docs/${platform}`,
+                  )}
                 </div>
               ))}
             </div>
@@ -131,7 +134,7 @@ const Content = () => {
         </p>
       </div>
       {/*  */}
-    </>
+    </main>
   );
 };
 

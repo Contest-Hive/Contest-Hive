@@ -19,96 +19,102 @@ const SideBarLinks = {
   },
 };
 
-const SideBar = () => {
-  // Everything is set to false as default
-  // So, mobile users don't see the sidebar when they first visit the page
+const classWhenSidebarOpen =
+  "fixed left-0 top-0 z-40 h-screen w-64 translate-x-0 transition-transform";
+const classWhenSidebarClosed =
+  "fixed left-0 top-0 z-40 h-screen w-64 -translate-x-full transition-transform";
 
+const classForEachPlatform =
+  "group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-200 ease-in-out hover:bg-slate-800";
+
+const SideBar = () => {
+  // mobile users don't see the sidebar when they first visit the page
   // Desktop users will see the sidebar sliding from the left at first
+
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isDesktop, setDesktop] = useState(false);
   const [classForSidebar, setClassForSidebar] = useState(
-    "fixed left-0 top-0 z-40 h-screen w-64 -translate-x-full transition-transform",
+    classWhenSidebarClosed,
   ); // closed as default
 
   function handleResize() {
-    // Close the sidebar when the screen is less than 768px
+    // only called when the screen is resized
 
+    // Close the sidebar when the screen is less than 768px
     if (window.innerWidth >= 768) {
       setDesktop(true);
       setSidebarOpen(true);
-      setClassForSidebar(
-        "fixed left-0 top-0 z-40 h-screen w-64 translate-x-0 transition-transform",
-      );
+      setClassForSidebar(classWhenSidebarOpen);
     } else {
       setDesktop(false);
       setSidebarOpen(false);
-      setClassForSidebar(
-        "fixed left-0 top-0 z-40 h-screen w-64 -translate-x-full transition-transform",
-      );
+      setClassForSidebar(classWhenSidebarClosed);
     }
   }
-  useEffect(() => {
-    handleResize();
-  }, []);
+
+  useEffect(() => handleResize(), []); // only called once
 
   useEffect(() => {
     // toggles the sidebar for mobile
     if (sidebarOpen) {
-      setClassForSidebar(
-        "fixed left-0 top-0 z-40 h-screen w-64 translate-x-0 transition-transform",
-      );
+      setClassForSidebar(classWhenSidebarOpen);
     } else {
-      setClassForSidebar(
-        "fixed left-0 top-0 z-40 h-screen w-64 -translate-x-full transition-transform",
-      );
+      setClassForSidebar(classWhenSidebarClosed);
     }
 
     // Bind the event listener
     window.addEventListener("resize", handleResize);
 
-    return () => {
-      // Unbind the event listener on clean up
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => window.removeEventListener("resize", handleResize);
   }, [sidebarOpen]);
 
-  function handleSidebar() {
+  function openSidebar() {
     setSidebarOpen(true);
+    if (document.getElementById("content"))
+      document.getElementById("content").className =
+        "pointer-events-none	opacity-50";
+  }
+
+  function closeSidebar() {
+    setSidebarOpen(false);
+    if (document.getElementById("content"))
+      document.getElementById("content").className = "";
   }
 
   const sidebarRef = useRef(null);
+
   useEffect(() => {
-    // Close the sidebar when clicked outside
     function handleClickOutside(event) {
-      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
-        if (!isDesktop) setSidebarOpen(false);
-      }
+      // Close the sidebar when clicked outside of it
+      if (
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target) &&
+        !isDesktop
+      )
+        closeSidebar();
     }
 
     // Bind the event listener
     document.addEventListener("mousedown", handleClickOutside);
 
-    return () => {
-      // Unbind the event listener on clean up
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [sidebarOpen, isDesktop]);
 
-  const [dropdownOpen1, setDropdownOpen1] = useState(false);
-  function handleDropdown1() {
-    setDropdownOpen1(!dropdownOpen1);
+  const [platformDropdown, setPlatformDropdown] = useState(false);
+  function handlePlatformDropdown() {
+    setPlatformDropdown((prev) => !prev);
   }
 
   return (
     <>
-      <div className="fixed h-16 w-full bg-gray-800 bg-opacity-50 md:hidden"></div>
+      <div className="fixed h-16 w-full bg-gray-950 bg-opacity-80 md:hidden"></div>
       <button
         data-drawer-target="logo-sidebar"
         data-drawer-toggle="logo-sidebar"
         aria-controls="logo-sidebar"
         type="button"
         className="fixed ml-3 mt-5 block items-center rounded-lg  p-2 text-sm text-gray-400 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-900 md:hidden"
-        onClick={handleSidebar}
+        onClick={openSidebar}
       >
         <span className="sr-only">Open sidebar</span>
         <svg
@@ -151,7 +157,7 @@ const SideBar = () => {
                 aria-controls="logo-sidebar"
                 type="button"
                 className="mb-10 mr-3 mt-1 inline-flex items-center rounded-lg bg-gray-800 pb-[7px] pl-[7px] pr-[8px] pt-[7px] text-sm text-gray-400 md:hidden"
-                onClick={() => setSidebarOpen(false)}
+                onClick={() => closeSidebar()}
               >
                 <span className="sr-only">Close sidebar</span>
                 <svg
@@ -212,7 +218,7 @@ const SideBar = () => {
                 className="group flex w-full items-center rounded-lg p-2 text-base text-white transition duration-200 ease-in-out hover:bg-slate-800"
                 aria-controls="dropdown-example"
                 data-collapse-toggle="dropdown-example"
-                onClick={handleDropdown1}
+                onClick={handlePlatformDropdown}
               >
                 <svg
                   className="ml-1 h-5 w-5"
@@ -250,12 +256,12 @@ const SideBar = () => {
               </button>
               <ul
                 id="dropdown-example"
-                className={dropdownOpen1 ? "mt-2 space-y-2" : "hidden"}
+                className={platformDropdown ? "mt-2 space-y-2" : "hidden"}
               >
                 <li>
                   <Link
                     href={SideBarLinks.Platforms["All Platforms"]}
-                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-200 ease-in-out hover:bg-slate-800"
+                    className={classForEachPlatform}
                   >
                     All Platforms
                   </Link>
@@ -264,7 +270,7 @@ const SideBar = () => {
                 <li>
                   <Link
                     href={SideBarLinks.Platforms.AtCoder}
-                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-200 ease-in-out hover:bg-slate-800"
+                    className={classForEachPlatform}
                   >
                     AtCoder
                   </Link>
@@ -273,7 +279,7 @@ const SideBar = () => {
                 <li>
                   <Link
                     href={SideBarLinks.Platforms.CodeChef}
-                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-200 ease-in-out hover:bg-slate-800"
+                    className={classForEachPlatform}
                   >
                     CodeChef
                   </Link>
@@ -282,7 +288,7 @@ const SideBar = () => {
                 <li>
                   <Link
                     href={SideBarLinks.Platforms.Codeforces}
-                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-200 ease-in-out hover:bg-slate-800"
+                    className={classForEachPlatform}
                   >
                     Codeforces
                   </Link>
@@ -291,7 +297,7 @@ const SideBar = () => {
                 <li>
                   <Link
                     href={SideBarLinks.Platforms.HackerEarth}
-                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-200 ease-in-out hover:bg-slate-800"
+                    className={classForEachPlatform}
                   >
                     HackerEarth
                   </Link>
@@ -300,7 +306,7 @@ const SideBar = () => {
                 <li>
                   <Link
                     href={SideBarLinks.Platforms.HackerRank}
-                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-200 ease-in-out hover:bg-slate-800"
+                    className={classForEachPlatform}
                   >
                     HackerRank
                   </Link>
@@ -309,7 +315,7 @@ const SideBar = () => {
                 <li>
                   <Link
                     href={SideBarLinks.Platforms.LeetCode}
-                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-200 ease-in-out hover:bg-slate-800"
+                    className={classForEachPlatform}
                   >
                     LeetCode
                   </Link>
@@ -318,7 +324,7 @@ const SideBar = () => {
                 <li>
                   <Link
                     href={SideBarLinks.Platforms.Toph}
-                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-200 ease-in-out hover:bg-slate-800"
+                    className={classForEachPlatform}
                   >
                     Toph
                   </Link>
