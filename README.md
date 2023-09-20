@@ -4,6 +4,9 @@
 <img height="100px" src="public/favicon.svg" alt="Contest Hive Logo">
 </p>
 
+[![Build](https://github.com/Nusab19/Contest-Hive/actions/workflows/npm-publish-github-packages.yml/badge.svg)](https://github.com/Nusab19/Contest-Hive/actions/workflows/npm-publish-github-packages.yml)
+[![MIT LICENSE](https://img.shields.io/pypi/l/pyNekobin.svg)](LICENSE.md)
+
 Live at [contest-hive.vercel.app](https://contest-hive.vercel.app/)
 
 ## Table of Contents
