@@ -107,7 +107,7 @@ const SideBar = () => {
 
   return (
     <>
-      <div className="fixed h-16 w-full bg-gray-950 bg-opacity-80 backdrop-blur-[2px] md:hidden"></div>
+      <div className="fixed h-16 w-full bg-gray-950 bg-opacity-60 backdrop-blur-sm md:hidden"></div>
       <button
         data-drawer-target="logo-sidebar"
         data-drawer-toggle="logo-sidebar"
