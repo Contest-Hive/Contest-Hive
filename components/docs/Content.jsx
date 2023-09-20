@@ -123,8 +123,8 @@ const Content = () => {
 
         <p className="title-font text-1xl mt-5 font-bold sm:text-2xl">Format</p>
 
-        <p className="mt-3">
-          <span className="mb-4 block font-mono text-gray-300">
+        <p className="mt-3 text-sm text-gray-200">
+          <span className="mb-4 block font-mono text-base text-gray-300">
             contest-hive.vercel.app/api/
             <span className="text-red-400">&lt;platform-name&gt;</span>
           </span>
