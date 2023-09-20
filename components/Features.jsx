@@ -27,7 +27,7 @@ const Features = () => {
             <br />
             That's where <b>Contest Hive</b> comes in to help you out. It
             gathers all the contests from different platforms in one easy-to-use
-            place, making it a breeze to boost your productivity.
+            place, making it a breeze to boost your productivity. <br />
           </p>
         </div>
 
