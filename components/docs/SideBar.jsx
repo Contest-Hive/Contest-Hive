@@ -101,12 +101,13 @@ const SideBar = () => {
 
   return (
     <>
+      <div className="fixed h-16 w-full bg-gray-800 bg-opacity-50"></div>
       <button
         data-drawer-target="logo-sidebar"
         data-drawer-toggle="logo-sidebar"
         aria-controls="logo-sidebar"
         type="button"
-        className="ml-3 mt-2 inline-flex items-center rounded-lg p-2 text-sm text-gray-400 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-900 md:hidden"
+        className="fixed ml-3 mt-5 block items-center rounded-lg  p-2 text-sm text-gray-400 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-900 md:hidden"
         onClick={handleSidebar}
       >
         <span className="sr-only">Open sidebar</span>
@@ -154,20 +155,20 @@ const SideBar = () => {
               >
                 <span className="sr-only">Close sidebar</span>
                 <svg
-                  class="h-6 w-6"
+                  className="h-6 w-6"
                   aria-hidden="true"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    clip-rule="evenodd"
-                    fill-rule="evenodd"
+                    clipRule="evenodd"
+                    fillRule="evenodd"
                     d="M17.66 4.34a.75.75 0 010 1.06L5.41 17.66a.75.75 0 11-1.06-1.06L16.59 4.34a.75.75 0 011.06 0z"
                   ></path>
                   <path
-                    clip-rule="evenodd"
-                    fill-rule="evenodd"
+                    clipRule="evenodd"
+                    fillRule="evenodd"
                     d="M4.34 4.34a.75.75 0 000 1.06L16.59 16.59a.75.75 0 101.06-1.06L5.41 4.34a.75.75 0 00-1 0z"
                   ></path>
                 </svg>
@@ -208,7 +209,7 @@ const SideBar = () => {
             <li>
               <button
                 type="button"
-                className="group flex w-full items-center rounded-lg p-2 text-base text-white hover:bg-slate-800 transition duration-200 ease-in-out"
+                className="group flex w-full items-center rounded-lg p-2 text-base text-white transition duration-200 ease-in-out hover:bg-slate-800"
                 aria-controls="dropdown-example"
                 data-collapse-toggle="dropdown-example"
                 onClick={handleDropdown1}
@@ -263,7 +264,7 @@ const SideBar = () => {
                 <li>
                   <Link
                     href={SideBarLinks.Platforms.AtCoder}
-                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white hover:bg-slate-800 transition duration-200 ease-in-out"
+                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-200 ease-in-out hover:bg-slate-800"
                   >
                     AtCoder
                   </Link>
@@ -272,7 +273,7 @@ const SideBar = () => {
                 <li>
                   <Link
                     href={SideBarLinks.Platforms.CodeChef}
-                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white hover:bg-slate-800 transition duration-200 ease-in-out"
+                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-200 ease-in-out hover:bg-slate-800"
                   >
                     CodeChef
                   </Link>
@@ -281,7 +282,7 @@ const SideBar = () => {
                 <li>
                   <Link
                     href={SideBarLinks.Platforms.Codeforces}
-                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white hover:bg-slate-800 transition duration-200 ease-in-out"
+                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-200 ease-in-out hover:bg-slate-800"
                   >
                     Codeforces
                   </Link>
@@ -290,7 +291,7 @@ const SideBar = () => {
                 <li>
                   <Link
                     href={SideBarLinks.Platforms.HackerEarth}
-                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white hover:bg-slate-800 transition duration-200 ease-in-out"
+                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-200 ease-in-out hover:bg-slate-800"
                   >
                     HackerEarth
                   </Link>
@@ -299,7 +300,7 @@ const SideBar = () => {
                 <li>
                   <Link
                     href={SideBarLinks.Platforms.HackerRank}
-                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white hover:bg-slate-800 transition duration-200 ease-in-out"
+                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-200 ease-in-out hover:bg-slate-800"
                   >
                     HackerRank
                   </Link>
@@ -308,7 +309,7 @@ const SideBar = () => {
                 <li>
                   <Link
                     href={SideBarLinks.Platforms.LeetCode}
-                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white hover:bg-slate-800 transition duration-200 ease-in-out"
+                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-200 ease-in-out hover:bg-slate-800"
                   >
                     LeetCode
                   </Link>
@@ -317,7 +318,7 @@ const SideBar = () => {
                 <li>
                   <Link
                     href={SideBarLinks.Platforms.Toph}
-                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white hover:bg-slate-800 transition duration-200 ease-in-out"
+                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-200 ease-in-out hover:bg-slate-800"
                   >
                     Toph
                   </Link>

@@ -13,7 +13,10 @@ const platforms = [
 const Content = () => {
   return (
     <>
-      <div id="#introduction" className="container mx-auto my-6 px-5 py-6">
+      <div
+        id="#introduction"
+        className="container mx-auto my-6 mt-10 px-5 py-6"
+      >
         <header className="title-font text-3xl font-bold text-white sm:text-4xl">
           Introduction
         </header>
