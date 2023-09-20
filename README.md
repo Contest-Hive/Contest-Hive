@@ -5,7 +5,7 @@
 </p>
 
 [![Build](https://github.com/Nusab19/Contest-Hive/actions/workflows/npm-publish-github-packages.yml/badge.svg)](https://github.com/Nusab19/Contest-Hive/actions/workflows/npm-publish-github-packages.yml)
-[![MIT LICENSE](https://img.shields.io/pypi/l/pyNekobin.svg)](LICENSE.md)
+[![Apache License](https://img.shields.io/badge/LICENSE-Apache%20License-blue)](LICENSE)
 
 Live at [contest-hive.vercel.app](https://contest-hive.vercel.app/)
 
@@ -53,7 +53,7 @@ Contributions are always welcome! Feel free to raise a PR. If you have any sugge
 
 ## License
 
-Contest Hive is licensed under the [MIT License](LICENSE).
+Contest Hive is licensed under the [Apache License](LICENSE)
 
 <!-- Links -->
 
