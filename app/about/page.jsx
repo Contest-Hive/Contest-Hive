@@ -10,7 +10,7 @@ const page = () => {
         <h1 className="mb-8 text-3xl font-bold text-gray-100 md:text-5xl">
           About Contest Hive
         </h1>
-        <p className="text-lg text-gray-100">
+        <p className="text-base text-gray-300 md:text-lg">
           Contest Hive was created to make your life as a competitive programmer
           easier.
           <br />

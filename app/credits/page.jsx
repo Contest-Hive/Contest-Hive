@@ -11,7 +11,7 @@ const page = () => {
         <h1 className="mb-8 text-3xl font-bold text-gray-100 md:text-5xl">
           Credits
         </h1>
-        <p className="mb-5 text-lg text-gray-100">
+        <p className="mb-5 text-base text-gray-200 md:text-lg">
           Creating this website with Next.js and Tailwind CSS was a bit like
           trying to assemble a furniture without the instructions - a few
           stumbles and a lot of{" "}
@@ -26,14 +26,14 @@ const page = () => {
           <br />
           Here are my secret weapons that made this project possible. 🚀
         </p>
-        <div className="mb-14 mt-5 flex flex-col text-base">
+        <div className="mb-14 mt-5 flex flex-col text-base text-gray-200 md:text-lg">
           <Link
             href="https://flowbite.com"
             target="_blank"
             className="title-font mb-3 text-2xl font-bold text-teal-400 hover:text-indigo-400"
           >
             <Image
-              src="https://flowbite.com/images/logo.svg"
+              src="/assets/images/flowbite.svg"
               width={30}
               height={30}
               alt="Flowbite Icon"
@@ -56,14 +56,14 @@ const page = () => {
           </span>
         </div>
         {/* tailblock */}
-        <div className="flex flex-col text-base">
+        <div className="flex flex-col text-base text-gray-200 md:text-lg">
           <Link
             href="https://tailblocks.cc/"
             target="_blank"
             className="title-font mb-3 text-2xl font-bold text-teal-400 hover:text-indigo-400"
           >
             <Image
-              src="https://tailblocks.cc/favicon.png"
+              src="/assets/images/tailblock.png"
               width={30}
               height={30}
               alt="Tailblock Icon"
