@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect, useRef } from "react";
 
 import Image from "next/image";
@@ -17,25 +16,47 @@ const navLinks = {
   Credits: "/credits",
 };
 
-// Don't Change this unless you know what you are doing
-const classWhenClosed = "hidden w-full md:block md:w-auto";
-const classWhenOpen =
-  "absolute w-[90%] md:block md:w-auto right-5 top-16 items-center justify-center";
+// NavBar Class
+const navBarClassOpen = "absolute w-[90%] right-0 top-14 mx-6";
+const navBarClassClosed = "hidden w-full md:block md:w-auto";
 
 export const NavBar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
+  const [isDesktop, setDesktop] = useState(false);
+  const [navBarClass, setNavBarClass] = useState(navBarClassClosed);
 
   const ref = useRef(null);
 
   function handleNavbar() {
-    setNavbarOpen(!navbarOpen);
+    if (navbarOpen) {
+      setNavbarOpen(false);
+      setNavBarClass(navBarClassClosed);
+    } else {
+      setNavbarOpen(true);
+      setNavBarClass(navBarClassOpen);
+    }
   }
+
+  // useEffect for resize
+  useEffect(() => {
+    function handleResize() {
+      setDesktop(window.innerWidth >= 768);
+      if (window.innerWidth >= 768) {
+        setNavBarClass(navBarClassClosed);
+        setNavbarOpen(false);
+      }
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     // Close the navbar when clicked outside
     function handleClickOutside(event) {
       if (ref.current && !ref.current.contains(event.target)) {
         setNavbarOpen(false);
+        setNavBarClass(navBarClassClosed);
       }
     }
 
@@ -52,13 +73,13 @@ export const NavBar = () => {
     <nav>
       <div className="top-0 mx-auto flex flex-wrap items-center justify-between p-4">
         <Link href="/" className="flex items-center">
-          <img
+          <Image
             src={logoUrl}
             width={50}
             height={50}
             className="mr-3 mt-0.5 h-10 w-10"
             alt={`${navTitle} Logo`}
-          ></img>
+          ></Image>
           <span className="self-center whitespace-nowrap text-2xl font-semibold text-gray-100">
             {navTitle}
           </span>
@@ -96,8 +117,8 @@ export const NavBar = () => {
             </button>
 
             {/* DropDown Links */}
-            <div className={navbarOpen ? classWhenOpen : classWhenClosed}>
-              <ul className="mt-4 flex flex-col rounded-lg border border-gray-800 bg-gray-900 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-hidden md:bg-gray-950 md:p-0">
+            <div className={navBarClass}>
+              <ul className="mt-4 flex flex-col rounded-lg border border-gray-800 bg-gray-900 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-hidden md:bg-transparent md:p-0">
                 <li>
                   <Link
                     href={blueLink.url}
