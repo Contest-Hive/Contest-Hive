@@ -52,7 +52,7 @@ const SideBar = () => {
     }
   }
 
-  useEffect(() => handleResize(), []); // only called once
+  useEffect(() => handleResize(), []); // only called at the first render
 
   useEffect(() => {
     // toggles the sidebar for mobile
