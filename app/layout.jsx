@@ -1,5 +1,6 @@
 // Vercel Analytics
-// import { Analytics } from "@vercel/analytics/react";
+import { Analytics } from "@vercel/analytics/react";
+import UnderMaintenance from "@/components/UnderUnderMaintenance";
 import "@/app/globals.css";
 
 const title = "Contest Hive";
@@ -23,7 +24,15 @@ export const metadata = {
 const layout = ({ children }) => {
   return (
     <html lang="en">
-      <body className="bg-gray-950 text-gray-200">{children}</body>
+      <body className="bg-gray-950 text-gray-200">
+        {/* Under Maintenance */}
+
+        {/* <body className="bg-gray-950 text-gray-200">
+        <UnderMaintenance />
+      </body> */}
+
+        {children}
+      </body>
     </html>
   );
 };
