@@ -1,4 +1,4 @@
-// import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 import { getSecondsDifference } from "@/components/helpers/KontestsHelper";
 
@@ -25,7 +25,8 @@ export async function GET() {
     data.data[key] = contests;
   }
 
-  return new Response(JSON.stringify(data, null, 2), {
+  return new NextResponse(JSON.stringify(data, null, 2), {
+    status: 200,
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET",
