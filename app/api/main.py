@@ -32,6 +32,7 @@ const urlData = {
   atcoder: "https://atcoder.jp/contests/",
   codechef: "https://www.codechef.com/contests/",
   codeforces: "https://codeforces.com/contests/",
+  codeforces_gym: "https://codeforces.com/gymRegistration/",
   hackerearth: "https://",
   hackerrank: "https://www.hackerrank.com/contests/",
   leetcode: "https://leetcode.com/contest/",

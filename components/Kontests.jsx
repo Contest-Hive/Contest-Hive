@@ -6,6 +6,9 @@ import {
   placeholderContests,
 } from "@/components/helpers/KontestsHelper";
 
+
+
+
 const Kontests = () => {
   const [isDesktop, setDesktop] = useState(false);
   useEffect(() => {
@@ -32,6 +35,7 @@ const Kontests = () => {
     hackerrank: [],
     leetcode: [],
     toph: [],
+    codeforces_gym: [],
   });
 
   useEffect(() => {
@@ -73,6 +77,7 @@ const Kontests = () => {
             <option value="atcoder">AtCoder</option>
             <option value="codechef">CodeChef</option>
             <option value="codeforces">CodeForces</option>
+            <option value="codeforces_gym">CodeForces GYM</option>
             <option value="hackerearth">HackerEarth</option>
             <option value="hackerrank">HackerRank</option>
             <option value="leetcode">LeetCode</option>

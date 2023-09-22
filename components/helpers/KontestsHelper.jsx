@@ -157,6 +157,19 @@ function trimString(str, maxLen) {
   return `${str.slice(0, maxLen - 3)}...`;
 }
 
+const pascalNames = {
+  all: "All",
+  atcoder: "Atcoder",
+  codechef: "CodeChef",
+  codeforces: "Codeforces",
+  "codeforces-gym": "CF GYM",
+  codeforces_gym: "CF GYM",
+  hackerearth: "HackerEarth",
+  hackerrank: "HackerRank",
+  leetcode: "LeetCode",
+  toph: "Toph",
+};
+
 /**
  *
  * @param {object} data - The data object containing the contests
@@ -196,7 +209,7 @@ function getTable(data, platform, isDesktop) {
     // If no contest is available
     return (
       <tr className="bg-gray-900" key={1}>
-        <td className="px-6 py-4 font-medium">{capitalizeString(platform)}</td>
+        <td className="px-6 py-4 font-medium">{pascalNames[platform]}</td>
         <td className="px-6 py-4 font-medium">No Contests Available</td>
         <td className="px-6 py-4">never</td>
         <td className="px-6 py-4">-1</td>
@@ -213,7 +226,7 @@ function getTable(data, platform, isDesktop) {
     const startingIn = whenIsItStarting(
       getSecondsDifference(contest.startTime),
     );
-    const plt = capitalizeString(contest.platform);
+    const plt = pascalNames[contest.platform];
 
     return (
       <tr className="border-b border-gray-800 bg-gray-900" key={url}>
