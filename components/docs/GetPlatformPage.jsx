@@ -75,6 +75,7 @@ const pascalNames = {
   atcoder: "Atcoder",
   codechef: "CodeChef",
   codeforces: "Codeforces",
+  "codeforces-gym": "Codeforces-GYM",
   hackerearth: "HackerEarth",
   hackerrank: "HackerRank",
   leetcode: "LeetCode",

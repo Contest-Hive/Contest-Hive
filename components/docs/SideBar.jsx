@@ -12,6 +12,7 @@ const SideBarLinks = {
     AtCoder: "/docs/atcoder",
     CodeChef: "/docs/codechef",
     Codeforces: "/docs/codeforces",
+    Codeforces_GYM: "/docs/codeforces-gym",
     HackerEarth: "/docs/hackerearth",
     HackerRank: "/docs/hackerrank",
     LeetCode: "/docs/leetcode",
@@ -327,6 +328,15 @@ const SideBar = () => {
                     className={classForEachPlatform}
                   >
                     Toph
+                  </Link>
+                </li>
+
+                <li>
+                  <Link
+                    href={SideBarLinks.Platforms.Codeforces_GYM}
+                    className={classForEachPlatform}
+                  >
+                    CodeForces-GYM
                   </Link>
                 </li>
               </ul>

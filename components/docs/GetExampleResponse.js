@@ -192,6 +192,8 @@ const exampleResponses = {
   },
 };
 
+exampleResponses["codeforces_gym"] = exampleResponses.codeforces;
+
 function GetExampleResponse(platformName) {
   return exampleResponses[platformName.toLowerCase()];
 }

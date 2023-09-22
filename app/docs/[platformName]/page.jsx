@@ -6,6 +6,7 @@ const platforms = [
   "atcoder",
   "codechef",
   "codeforces",
+  "codeforces-gym",
   "hackerearth",
   "hackerrank",
   "leetcode",
@@ -13,7 +14,9 @@ const platforms = [
 ];
 
 const page = ({ params }) => {
-  const platformName = String(params.platformName).toLowerCase();
+  const platformName = String(params.platformName)
+    .toLowerCase()
+    .replace("_", "-");
   if (!platforms.includes(platformName)) {
     return notFound();
   }

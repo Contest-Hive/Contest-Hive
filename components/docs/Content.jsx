@@ -8,6 +8,7 @@ const platforms = [
   "hackerrank",
   "leetcode",
   "toph",
+  "codeforces_gym",
 ];
 
 /**
