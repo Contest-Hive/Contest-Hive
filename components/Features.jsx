@@ -3,35 +3,31 @@ import Link from "next/link";
 const Features = () => {
   return (
     <section className="body-font tracking-wide">
-      <div className="container mx-auto my-20 mb-11 flex flex-wrap px-5 py-10">
+      <div className="container mx-auto -mb-10 mt-20 flex flex-wrap px-5 py-10">
         <div className="w-full text-center">
           <header
-            className="title-font mb-7 text-3xl font-medium text-white sm:text-5xl"
+            className="title-font mb-7 text-4xl font-medium text-white md:text-6xl"
             id="why-us"
           >
             Why Contest Hive?
           </header>
         </div>
 
-        <div className="mx-auto w-full text-center text-sm md:w-10/12 md:text-base">
-          {/* Telling about the Features */}
-          <p className="mb-8 leading-relaxed">
-            {/* <q className="font-mono text-xl font-bold">It Saves Your Time!</q> */}
-            <q className="font-mono text-xl font-bold">
+        <div className="mx-auto w-full text-center text-gray-300 md:w-11/12 mb-8">
+          <p className="mb-8 text-base leading-relaxed md:text-lg">
+            <q className="mb-2 block font-mono text-xl font-bold text-gray-100 md:text-2xl">
               All Contests in One Place
             </q>
-            <span className="mb-2 block"></span>
-            Competitive Programming needs proper time management. <br />
-            Keeping track of future contests on your own can be challenging,
-            right?
+            
+            Keeping track of future contests on your own can be challenging, right?
             <br />
-            That's where <b>Contest Hive</b> comes in to help you out. It
-            gathers all the contests from different platforms in one easy-to-use
-            place, making it a breeze to boost your productivity. <br />
+            That's where <b className="text-gray-100">Contest Hive</b> comes in to help you out.
+            <br />
+            It gathers all the contests from different platforms in one easy-to-use place, making it a breeze to boost your productivity.
           </p>
         </div>
 
-        <div className="-m-4 flex flex-wrap">
+        <div className="-m-4 mx-auto flex flex-wrap">
           <div className="p-4 md:w-1/3">
             <div className="flex h-full flex-col rounded-lg bg-gray-800 bg-opacity-60 p-8">
               <div className="mb-3 flex items-center ">
@@ -51,9 +47,8 @@ const Features = () => {
               </div>
               <div className="flex-grow ">
                 <p className="text-sm leading-relaxed md:text-base">
-                  No more going back and forth between platforms.
-                  <br />
-                  Contest Hive is the place to be.
+                  No more going back and forth between platforms. Contest Hive
+                  is the place to be.
                 </p>
               </div>
             </div>

@@ -10,7 +10,7 @@ const contactInfo = {
 
 const Footer = () => {
   return (
-    <footer className=" body-font">
+    <footer>
       <div className="container mx-auto flex flex-col items-center px-5 py-8 sm:flex-row">
         <Link
           title="Github Repository of Contest Hive"

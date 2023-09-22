@@ -7,14 +7,13 @@ const Content = () => {
     <section className="body-font">
       <div className="py-15 container mx-auto mb-20 flex flex-col items-center justify-center px-5 tracking-wide">
         <div className="my-10 w-full text-center lg:w-2/3 ">
-          <header className="title-font mb-10 text-3xl font-medium text-white sm:text-5xl">
+          <header className="mb-10 text-4xl font-medium text-white md:text-6xl">
             We Built Open-Source
           </header>
-          <p className="mb-8 text-sm leading-relaxed md:text-base">
-            <q className="font-mono text-xl font-bold">
+          <p className="mb-8 text-base leading-relaxed text-gray-300 md:text-lg">
+            <q className="mb-2 block font-mono text-xl font-bold text-gray-100 md:text-2xl">
               Software Freedom For All
             </q>
-            <span className="mb-2 block"></span>
             We believe in the power of open-source. So, we made this website
             open-source too.
             <br />
