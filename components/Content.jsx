@@ -10,7 +10,7 @@ const Content = () => {
           <header className="mb-10 text-4xl font-medium text-white md:text-6xl">
             We Built Open-Source
           </header>
-          <p className="mb-8 text-base leading-relaxed text-gray-300 md:text-lg">
+          <p className="mb-8 text-base leading-relaxed tracking-wide text-gray-300 md:text-lg">
             <q className="mb-2 block font-mono text-xl font-bold text-gray-100 md:text-2xl">
               Software Freedom For All
             </q>

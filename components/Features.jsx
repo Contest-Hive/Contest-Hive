@@ -14,7 +14,7 @@ const Features = () => {
         </div>
 
         <div className="mx-auto w-full text-center text-gray-300 md:w-11/12 mb-8">
-          <p className="mb-8 text-base leading-relaxed md:text-lg">
+          <p className="mb-8 text-base leading-relaxed md:text-lg tracking-wider">
             <q className="mb-2 block font-mono text-xl font-bold text-gray-100 md:text-2xl">
               All Contests in One Place
             </q>
