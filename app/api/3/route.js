@@ -1,10 +1,47 @@
-
 import { NextResponse } from "next/server";
 
-import { getSecondsDifference } from "@/components/helpers/KontestsHelper";
+import {
+  getSecondsDifference,
+  humanReadableTimeUTC,
+  seconds2Time,
+} from "@/components/helpers/KontestsHelper";
 
-const API_URL = "https://raw.githubusercontent.com/Nusab19/__contest-hive-backend/main/cache/Data/codeforces.json";
+const API_URL =
+  "https://raw.githubusercontent.com/Nusab19/__contest-hive-backend/cache/cache/Data/codeforces.json";
 
+const urlData = {
+  atcoder: "https://atcoder.jp/contests/",
+  codechef: "https://www.codechef.com/contests/",
+  codeforces: "https://codeforces.com/contests/",
+  hackerearth: "https://",
+  hackerrank: "https://www.hackerrank.com/contests/",
+  leetcode: "https://leetcode.com/contest/",
+  toph: "https://toph.co/c/",
+};
+
+/**
+ *
+ * @param {list} contest - contest data. [name, url, start, duration]
+ * @returns {Object} - contest data. {name, url, startTime, readableStateTime, duration, durationSeconds}
+ */
+function getContestData(contest, platformName) {
+  platformName = "codeforces"
+  const contestName = contest[0];
+  const contestUrl = urlData[platformName] + contest[1];
+  const startTime = contest[2];
+  const readableStateTime = humanReadableTimeUTC(startTime);
+  const durationSeconds = contest[3];
+  const duration = seconds2Time(durationSeconds);
+  const contestData = {
+    name: contestName,
+    url: contestUrl,
+    startTime,
+    readableStateTime,
+    duration,
+    durationSeconds,
+  };
+  return contestData;
+}
 
 export async function GET() {
   const response = await fetch(API_URL, {
@@ -18,8 +55,12 @@ export async function GET() {
   const contests = [];
   for (let i = 0; i < allContests.length; i++) {
     const contest = allContests[i];
-    if (getSecondsDifference(contest.startTime) < 0) continue;
-    contests.push({ ...contest });
+
+    // Skip if contest has already ended
+    if (getSecondsDifference(contest.start) < 0) continue;
+
+    const contestData = getContestData(contest);
+    contests.push({ ...contestData });
   }
   data.data = contests;
 

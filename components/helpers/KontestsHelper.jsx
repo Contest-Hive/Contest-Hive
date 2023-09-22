@@ -22,7 +22,7 @@ function getSecondsDifference(date) {
 
 /**
  *
- * @param {string} startTime - The start time of the contest in UTC ISO 8601 format
+ * @param {string} startTime - The start time of the contest in UTC ISO 8601 format like "2021-09-14T09:00:00Z"
  * @returns {string} - The start time of the contest in human readable format eg. 14th September, 2021 at 9:00:00
  */
 function humanReadableTime(startTime) {
@@ -100,6 +100,39 @@ function whenIsItStarting(s) {
   const y = result[1];
 
   return `${x} ${y}`;
+}
+
+/**
+ *
+ * @param {number} s - The time in seconds
+ * @returns {string} - The time in human readable format eg. 1 day or 5 days or 3 hours or 13 seconds
+ */
+function seconds2Time(s) {
+  if (!s) return "13 seconds";
+
+  let m = Math.floor(s / 60);
+  s %= 60;
+  let h = Math.floor(m / 60);
+  m %= 60;
+  let d = Math.floor(h / 24);
+  h %= 24;
+
+  let result = "";
+
+  if (d > 0) {
+    result += `${d} day${d > 1 ? "s" : ""}`;
+  }
+  if (h > 0) {
+    result += `${result ? " " : ""}${h} hour${h > 1 ? "s" : ""}`;
+  }
+  if (m > 0) {
+    result += `${result ? " " : ""}${m} minute${m > 1 ? "s" : ""}`;
+  }
+  if (!result) {
+    result = `${s} second${s > 1 ? "s" : ""}`;
+  }
+
+  return result;
 }
 
 // ----------- Table Related Functions ----------- //
@@ -249,7 +282,10 @@ function placeholderContests(isDesktop) {
     const plt = "Loading";
 
     return (
-      <tr className="border-b border-gray-800 bg-gray-900" key={contests.indexOf(contest)}>
+      <tr
+        className="border-b border-gray-800 bg-gray-900"
+        key={contests.indexOf(contest)}
+      >
         <th scope="row" className="px-6 py-4 font-medium" title={plt}>
           {plt}
         </th>
@@ -275,4 +311,58 @@ function placeholderContests(isDesktop) {
   return table;
 }
 
-export { getTable, getSecondsDifference, placeholderContests };
+/**
+ *
+ * @param {string} startTime - The start time of the contest in UTC ISO 8601 format like "2021-09-14T09:00:00Z"
+ * @returns {string} - The start time of the contest in human readable format eg. 14th September, 2021 at 9:00:00
+ */
+function humanReadableTimeUTC(startTime) {
+  const dt = new Date(startTime);
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const day = dt.getUTCDate();
+  const month = months[dt.getUTCMonth()];
+  const year = dt.getUTCFullYear();
+  let hours = dt.getUTCHours();
+  let minutes = dt.getUTCMinutes();
+  let seconds = dt.getUTCSeconds();
+
+  if (hours.toString().length === 1) hours = `0${hours}`;
+  if (minutes.toString().length === 1) minutes = `0${minutes}`;
+  if (seconds.toString().length === 1) seconds = `0${seconds}`;
+
+  let daySuffix = "th";
+  if (day === 1 || day === 21 || day === 31) {
+    daySuffix = "st";
+  } else if (day === 2 || day === 22) {
+    daySuffix = "nd";
+  } else if (day === 3 || day === 23) {
+    daySuffix = "rd";
+  }
+
+  const timeString = `${day}${daySuffix} ${month}, ${year} at ${hours}:${minutes}:${seconds}`;
+
+  return timeString;
+}
+
+export {
+  getTable,
+  placeholderContests,
+  getSecondsDifference,
+  humanReadableTimeUTC,
+  whenIsItStarting,
+  seconds2Time,
+};
