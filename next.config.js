@@ -7,7 +7,7 @@ const nextConfig = (module.exports = {
     styledComponents: true,
   },
   images: {
-    domains: ["tailblocks.cc"],
+    domains: ["tailblocks.cc", "dummyimage.com"],
   },
 });
 
