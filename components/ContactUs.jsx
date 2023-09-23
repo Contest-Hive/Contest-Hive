@@ -5,19 +5,12 @@ const labelClassName =
 
 const ContactUs = () => {
   return (
-    <form className="mx-auto w-[90%] max-w-screen-lg md:w-2/3 mb-32">
+    <form className="mx-auto mb-32 w-[90%] max-w-screen-lg md:w-2/3">
       <header className="mb-14 text-center text-4xl font-medium text-white md:text-6xl">
         Contact Us
       </header>
-      <div className="group relative z-0 mb-6 w-full">
-        <input
-          type="email"
-          className={inputClassName}
-          placeholder=" "
-          required
-        />
-        <label className={labelClassName}>Email Address</label>
-      </div>
+
+      {/* Name */}
       <div className="group relative z-0 mb-6 w-full">
         <input
           type="text"
@@ -27,6 +20,19 @@ const ContactUs = () => {
         />
         <label className={labelClassName}>Name</label>
       </div>
+
+      {/* Email */}
+      <div className="group relative z-0 mb-6 w-full">
+        <input
+          type="email"
+          className={inputClassName}
+          placeholder=" "
+          required
+        />
+        <label className={labelClassName}>Email Address</label>
+      </div>
+
+      {/* Message */}
       <div className="group relative z-0 mb-6 w-full">
         <input
           type="text"
