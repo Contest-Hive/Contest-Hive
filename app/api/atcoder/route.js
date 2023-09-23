@@ -26,7 +26,7 @@ const urlData = {
  * @returns {Object} - contest data. {name, url, startTime, readableStateTime, duration, durationSeconds}
  */
 function getContestData(contest, platformName) {
-  platformName = "atcoder"
+  platformName = "atcoder";
   const contestName = contest[0];
   const contestUrl = urlData[platformName] + contest[1];
   const startTime = contest[2];
