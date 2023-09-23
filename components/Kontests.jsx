@@ -6,9 +6,6 @@ import {
   placeholderContests,
 } from "@/components/helpers/KontestsHelper";
 
-
-
-
 const Kontests = () => {
   const [isDesktop, setDesktop] = useState(false);
   useEffect(() => {
@@ -51,6 +48,20 @@ const Kontests = () => {
       });
   }, []);
 
+  const [totalContests, setTotalContests] = useState(0);
+  useEffect(() => {
+    let count = 0;
+    const plt = pltName.toLowerCase();
+    if (plt == "all") {
+      for (let key in allContestsData.data) {
+        count += allContestsData.data[key].length;
+      }
+    } else {
+      count = allContestsData.data[plt].length;
+    }
+    setTotalContests(count);
+  }, [pltName, allContestsData]);
+
   const changePlatform = (event) => {
     const plt = event.target.value;
     setPltName(plt);
@@ -59,9 +70,8 @@ const Kontests = () => {
   return (
     <>
       {/* Options to Select the Platform */}
-
       <div className="container mx-auto flex flex-wrap px-5 py-10">
-        <div className="mb-2 flex w-full flex-col text-center">
+        <div className="mb-0 flex w-full flex-col text-center">
           <label
             htmlFor="platforms"
             className="mb-2 block text-sm font-medium text-gray-200"
@@ -70,7 +80,7 @@ const Kontests = () => {
           </label>
           <select
             id="platforms"
-            className="mx-auto mb-1 block w-2/3 rounded-lg border-gray-800 bg-gray-900 p-2.5 text-sm text-gray-200 placeholder-gray-800  outline-none focus:ring-2 focus:ring-gray-900"
+            className="mx-auto mb-1 block w-2/3 rounded-lg border-gray-900 bg-gray-900 p-2.5 text-sm text-gray-200 placeholder-gray-800  outline-none focus:ring-2 focus:ring-gray-900 "
             onChange={changePlatform}
           >
             <option defaultValue="all">All</option>
@@ -86,6 +96,10 @@ const Kontests = () => {
         </div>
       </div>
 
+      <div className="-mt-5 mb-7 text-center text-lg font-medium text-gray-200 md:text-xl">
+        {totalContests} Upcoming Contests
+      </div>
+
       {/* Table of Contests */}
       <div className="relative mx-auto w-11/12 overflow-x-auto rounded md:w-3/4">
         <table className="w-full text-left text-sm text-gray-400">
@@ -94,8 +108,8 @@ const Kontests = () => {
               <th scope="col" className="px-6 py-3">
                 Platform
               </th>
-              <th scope="col" className="px-6 py-3">
-                Contest name
+              <th scope="col" className="py-3 pl-6 pr-10">
+                Contest<span className="mr-1"></span>name
               </th>
               <th scope="col" className="py-3 pl-6 pr-5">
                 Starting<span className="mr-1"></span>In
