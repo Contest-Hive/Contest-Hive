@@ -17,12 +17,12 @@ export async function GET() {
           justifyContent: "center",
         }}
       >
-        Hello world!
+        {`Hash: ${Math.random().toString(36).substring(7)}`}
       </div>
     ),
     {
-      width: 1200,
-      height: 600,
-    }
+      width: 1920,
+      height: 1090,
+    },
   );
 }
