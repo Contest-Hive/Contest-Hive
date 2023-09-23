@@ -240,7 +240,7 @@ function getTable(data, platform, isDesktop) {
         >
           {trimString(contestName, maxLen)}
         </th>
-        <td className="px-6 py-4">
+        <td className="select-none px-6 py-4 md:select-text">
           <span id="startTime">{startingIn}</span>
           <span
             className="tooltip absolute mx-auto -mt-1 ml-5 inline-block w-56 select-none rounded-lg bg-slate-800 px-0 pb-[7px] pt-[5px] text-center text-sm font-medium text-gray-200 opacity-0 transition-opacity duration-200 md:w-64"
