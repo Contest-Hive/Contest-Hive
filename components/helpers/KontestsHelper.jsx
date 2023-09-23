@@ -230,7 +230,11 @@ function getTable(data, platform, isDesktop) {
 
     return (
       <tr className="border-b border-gray-800 bg-gray-900" key={url}>
-        <th scope="row" className="px-6 py-4 font-medium" title={plt}>
+        <th
+          scope="row"
+          className="select-none px-6 py-4 font-medium md:select-text"
+          title={plt}
+        >
           {plt}
         </th>
         <th
@@ -266,7 +270,7 @@ function getTable(data, platform, isDesktop) {
             {startTime}
           </span>
         </td>
-        <td className="px-6 py-4" title={duration}>
+        <td className="select-none px-6 py-4 md:select-text" title={duration}>
           {duration}
         </td>
         <td className="px-6 py-4 font-medium text-blue-500" title={url}>
