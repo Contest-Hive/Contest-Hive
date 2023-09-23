@@ -2,9 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* startTime tooltip */
-#startTime:hover + #tooltip {
+/* tooltip */
+.toolText:hover + .tooltip {
   opacity: 1;
+  display: inline-block;
 }
 
 /*

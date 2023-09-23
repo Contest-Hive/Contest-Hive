@@ -236,16 +236,24 @@ function getTable(data, platform, isDesktop) {
         <th
           scope="row"
           className="whitespace-nowrap px-6 py-4 font-medium text-white"
-          title={contestName}
         >
-          {trimString(contestName, maxLen)}
+          <span className="toolText">{trimString(contestName, maxLen)}</span>
+          <span className="tooltip absolute mx-auto -mt-1 ml-5 hidden select-none rounded-lg bg-slate-800 px-2 pb-[7px] pt-[5px] text-center text-sm font-medium text-gray-200 opacity-0 transition-opacity duration-200">
+            <svg
+              className="absolute -ml-[19px] mt-[3px] h-4 w-4 text-gray-800"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 10 16"
+            >
+              <path d="M8.766.566A2 2 0 0 0 6.586 1L1 6.586a2 2 0 0 0 0 2.828L6.586 15A2 2 0 0 0 10 13.586V2.414A2 2 0 0 0 8.766.566Z" />
+            </svg>
+            {contestName}
+          </span>
         </th>
         <td className="select-none px-6 py-4 md:select-text">
-          <span id="startTime">{startingIn}</span>
-          <span
-            className="tooltip absolute mx-auto -mt-1 ml-5 inline-block w-56 select-none rounded-lg bg-slate-800 px-0 pb-[7px] pt-[5px] text-center text-sm font-medium text-gray-200 opacity-0 transition-opacity duration-200 md:w-64"
-            id="tooltip"
-          >
+          <span className="toolText">{startingIn}</span>
+          <span className="tooltip absolute mx-auto -mt-1 ml-5 hidden w-56 select-none rounded-lg bg-slate-800 px-0 pb-[7px] pt-[5px] text-center text-sm font-medium text-gray-200 opacity-0 transition-opacity duration-200">
             <svg
               className="absolute -ml-[10px] mt-[3px] h-4 w-4 text-gray-800"
               aria-hidden="true"
