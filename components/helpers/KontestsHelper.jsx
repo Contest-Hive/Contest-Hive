@@ -235,10 +235,10 @@ function getTable(data, platform, isDesktop) {
         </th>
         <th
           scope="row"
-          className="whitespace-nowrap px-6 py-4 font-medium text-white"
+          className="select-none whitespace-nowrap px-6 py-4 font-medium text-gray-100 md:select-text"
         >
           <span className="toolText">{trimString(contestName, maxLen)}</span>
-          <span className="tooltip absolute mx-auto -mt-1 ml-5 hidden select-none rounded-lg bg-slate-800 px-2 pb-[7px] pt-[5px] text-center text-sm font-medium text-gray-200 opacity-0 transition-opacity duration-200">
+          <span className="tooltip absolute mx-auto -mt-1 ml-5 hidden rounded-lg bg-slate-800 px-2 pb-[7px] pt-[5px] text-center text-sm font-medium text-gray-200 opacity-0 transition-opacity duration-200">
             <svg
               className="absolute -ml-[19px] mt-[3px] h-4 w-4 text-gray-800"
               aria-hidden="true"
@@ -253,7 +253,7 @@ function getTable(data, platform, isDesktop) {
         </th>
         <td className="select-none px-6 py-4 md:select-text">
           <span className="toolText">{startingIn}</span>
-          <span className="tooltip absolute mx-auto -mt-1 ml-5 hidden w-56 select-none rounded-lg bg-slate-800 px-0 pb-[7px] pt-[5px] text-center text-sm font-medium text-gray-200 opacity-0 transition-opacity duration-200">
+          <span className="tooltip absolute mx-auto -mt-1 ml-5 hidden w-56 rounded-lg bg-slate-800 px-0 pb-[7px] pt-[5px] text-center text-sm font-medium text-gray-200 opacity-0 transition-opacity duration-200">
             <svg
               className="absolute -ml-[10px] mt-[3px] h-4 w-4 text-gray-800"
               aria-hidden="true"
