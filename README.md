@@ -1,8 +1,8 @@
-# Contest Hive - Contests at Your Fingertips
-
 <p align="center">
 <img height="100px" src="public/favicon.svg" alt="Contest Hive Logo">
 </p>
+
+# Contest Hive - Contests at Your Fingertips
 
 [![Build](https://github.com/Nusab19/Contest-Hive/actions/workflows/npm-publish-github-packages.yml/badge.svg)](https://github.com/Nusab19/Contest-Hive/actions/workflows/npm-publish-github-packages.yml)
 [![Apache License](https://img.shields.io/badge/LICENSE-Apache%20License-blue)](LICENSE)
