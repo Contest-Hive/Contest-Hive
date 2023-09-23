@@ -13,34 +13,43 @@ const ContactUs = () => {
       {/* Name */}
       <div className="group relative z-0 mb-6 w-full">
         <input
+          id="name"
           type="text"
           className={inputClassName}
           placeholder=" "
           required
         />
-        <label className={labelClassName}>Name</label>
+        <label className={labelClassName} htmlFor="name">
+          Name
+        </label>
       </div>
 
       {/* Email */}
       <div className="group relative z-0 mb-6 w-full">
         <input
+          id="email"
           type="email"
           className={inputClassName}
           placeholder=" "
           required
         />
-        <label className={labelClassName}>Email Address</label>
+        <label htmlFor="email" className={labelClassName}>
+          Email Address
+        </label>
       </div>
 
       {/* Message */}
       <div className="group relative z-0 mb-6 w-full">
         <input
+          id="message"
           type="text"
-          className={`${inputClassName} h-20`}
+          className={`${inputClassName} h-16`}
           placeholder=" "
           required
         />
-        <label className={labelClassName}>Message</label>
+        <label className={labelClassName} htmlFor="message">
+          Message
+        </label>
       </div>
       <button
         type="submit"

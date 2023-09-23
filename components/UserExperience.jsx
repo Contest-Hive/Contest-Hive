@@ -50,7 +50,6 @@ const UserExperience = () => {
           <div className="w-full p-4 md:w-1/2">
             <div className="h-full rounded-lg bg-gray-800 bg-opacity-40 p-8">
               {QUOTE}
-
               <p className="mb-6 leading-relaxed">
                 It's so straightforward and easy to use. I didn't even need to
                 sign up to use it. I just started using it and it's so good. I
