@@ -247,7 +247,7 @@ function getTable(data, platform, isDesktop) {
             id="tooltip"
           >
             <svg
-              className="absolute -ml-3 mt-[3px] h-4 w-4 text-gray-800"
+              className="absolute -ml-[10px] mt-[3px] h-4 w-4 text-gray-800"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
