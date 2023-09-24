@@ -4,7 +4,7 @@ const GithubUrl = "https://github.com/Nusab19/Contest-Hive";
 
 const Content = () => {
   return (
-    <section className="body-font">
+    <section className="body-font" data-aos="fade-up">
       <div className="py-15 container mx-auto mb-20 flex flex-col items-center justify-center px-5 tracking-wide">
         <div className="my-10 w-full text-center lg:w-2/3 ">
           <header className="mb-10 text-4xl font-medium text-white md:text-6xl">

@@ -14,13 +14,14 @@ const QUOTE = (
 
 const UserExperience = () => {
   return (
-    <section className="body-font mx-auto w-[90%] text-gray-300">
+    <section className="body-font mx-auto w-[90%] text-gray-300" data-aos="fade-up">
       <div className="container mx-auto px-5 py-24">
         <header className="mb-12 text-center text-4xl font-medium text-white md:text-6xl">
           Testimonials
         </header>
         <div className="-m-4 flex flex-wrap">
-          <div className="w-full p-4 md:w-1/2">
+          {/* one */}
+          <div className="w-full p-4 md:w-1/2" data-aos="fade-up-right">
             <div className="h-full rounded-lg bg-gray-800 bg-opacity-40 p-8">
               {QUOTE}
               <p className="mb-6 leading-relaxed">
@@ -47,7 +48,9 @@ const UserExperience = () => {
               </Link>
             </div>
           </div>
-          <div className="w-full p-4 md:w-1/2">
+
+          {/* Two */}
+          <div className="w-full p-4 md:w-1/2" data-aos="fade-up-left">
             <div className="h-full rounded-lg bg-gray-800 bg-opacity-40 p-8">
               {QUOTE}
               <p className="mb-6 leading-relaxed">

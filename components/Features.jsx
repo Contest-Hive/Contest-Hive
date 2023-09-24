@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Features = () => {
   return (
-    <section className="body-font tracking-wide">
+    <section className="body-font tracking-wide" data-aos="fade-up">
       <div className="container mx-auto -mb-10 mt-20 flex flex-wrap px-5 py-10">
         <div className="w-full text-center">
           <header
@@ -13,22 +13,25 @@ const Features = () => {
           </header>
         </div>
 
-        <div className="mx-auto w-full text-center text-gray-300 md:w-11/12 mb-8">
-          <p className="mb-8 text-base leading-relaxed md:text-lg tracking-wider">
+        <div className="mx-auto mb-8 w-full text-center text-gray-300 md:w-11/12">
+          <p className="mb-8 text-base leading-relaxed tracking-wider md:text-lg">
             <q className="mb-2 block font-mono text-xl font-bold text-gray-100 md:text-2xl">
               All Contests in One Place
             </q>
-            
-            Keeping track of future contests on your own can be challenging, right?
+            Keeping track of future contests on your own can be challenging,
+            right?
             <br />
-            That's where <b className="text-gray-100">Contest Hive</b> comes in to help you out.
+            That's where <b className="text-gray-100">Contest Hive</b> comes in
+            to help you out.
             <br />
-            It gathers all the contests from different platforms in one easy-to-use place, making it a breeze to boost your productivity.
+            It gathers all the contests from different platforms in one
+            easy-to-use place, making it a breeze to boost your productivity.
           </p>
         </div>
 
         <div className="-m-4 mx-auto flex flex-wrap">
-          <div className="p-4 md:w-1/3">
+          {/* One */}
+          <div className="p-4 md:w-1/3" data-aos="flip-down">
             <div className="flex h-full flex-col rounded-lg bg-gray-800 bg-opacity-60 p-8">
               <div className="mb-3 flex items-center ">
                 <div className="mr-3 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center  rounded-full text-white">
@@ -53,7 +56,9 @@ const Features = () => {
               </div>
             </div>
           </div>
-          <div className="p-4 md:w-1/3">
+
+          {/* Two */}
+          <div className="p-4 md:w-1/3" data-aos="flip-down">
             <div className="flex h-full flex-col rounded-lg bg-gray-800 bg-opacity-60 p-8">
               <div className="mb-3 flex items-center">
                 <div className="text0-white mr-3 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full">
@@ -199,7 +204,9 @@ const Features = () => {
               </div>
             </div>
           </div>
-          <div className="p-4 md:w-1/3">
+
+          {/* Three */}
+          <div className="p-4 md:w-1/3" data-aos="flip-down">
             <div className="flex h-full flex-col rounded-lg bg-gray-800 bg-opacity-60 p-8">
               <div className="mb-3 flex items-center">
                 <div className="mr-3 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-white">

@@ -148,6 +148,7 @@ const Kontests = () => {
           if (showAll && totalContests > 7) window.location.href = "#contests";
           setShowAll(!showAll);
         }}
+        data-aos="flip-right"
       >
         {showAll ? "Show Less" : "Show More"}
       </div>

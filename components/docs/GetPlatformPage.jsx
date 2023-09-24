@@ -2,10 +2,9 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import Prism from "prismjs";
-// import "prismjs/components/prism-python.js";
-import getCodeExamples from "./CodeExamples.js";
-import GetExampleResponse from "./GetExampleResponse.js";
-import "../../styles/highlight.css";
+import getCodeExamples from "@/components/docs/CodeExamples.js";
+import GetExampleResponse from "@/components/docs/GetExampleResponse.js";
+import "@/others/highlight.css";
 
 const properties = [
   {

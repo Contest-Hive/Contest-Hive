@@ -21,8 +21,8 @@ export async function POST(req) {
   }
 
   const content = `
-Name   : <b>${userName}</b>
-Email  : <code>${email}</code>
+Name : <b>${userName}</b>
+Email : <code>${email}</code>
 Message:
 ${message}
 `.replace(/(?:\r\n|\r|\n)/g, "%0A");
