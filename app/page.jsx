@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 const page = () => {
   return (
-    <main className="overflow-hidden">
+    <main className="overflow-x-hidden">
       <NavBar />
       <Hero />
       <Kontests />
