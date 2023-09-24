@@ -10,8 +10,7 @@ const Kontests = () => {
   const [showAll, setShowAll] = useState(false);
   const [sortBy, setSortBy] = useState("startTime");
   const [isDesktop, setDesktop] = useState(false);
-  useEffect(() => setDesktop(window.innerWidth > 768), []);
-
+  const [totalContests, setTotalContests] = useState(0);
   const [pltName, setPltName] = useState("all");
   const [allContestsData, setAllContestsData] = useState({
     ok: true,
@@ -19,8 +18,19 @@ const Kontests = () => {
     justLoaded: true,
   });
 
-  // Fetching the data from the API on page load
   useEffect(() => {
+    setDesktop(window.innerWidth > 768);
+  }, []);
+
+  useEffect(() => {
+    fetchContestData();
+  }, []);
+
+  useEffect(() => {
+    calculateTotalContests();
+  }, [pltName, allContestsData]);
+
+  const fetchContestData = () => {
     fetch("/api/all")
       .then((res) => res.json())
       .then((json) => {
@@ -29,19 +39,20 @@ const Kontests = () => {
       .catch((err) => {
         console.log("error:", err);
       });
-  }, []);
+  };
 
-  const [totalContests, setTotalContests] = useState(0);
-  useEffect(() => {
+  const calculateTotalContests = () => {
     let count = 0;
     const plt = pltName.toLowerCase();
-    if (plt == "all")
-      for (let key in allContestsData.data)
+    if (plt === "all") {
+      for (let key in allContestsData.data) {
         count += allContestsData.data[key].length;
-    else count = allContestsData.data[plt].length;
-
+      }
+    } else {
+      count = allContestsData.data[plt].length;
+    }
     setTotalContests(count);
-  }, [pltName, allContestsData]);
+  };
 
   return (
     <>
@@ -81,7 +92,7 @@ const Kontests = () => {
 
       <div className="mx-auto mb-5 w-11/12 md:w-3/4">
         <div>
-          <span className="mr-5 text-lg font-medium">Sort By:</span>
+          <span className="mr-5 pl-1 text-lg font-medium">Sort By:</span>
           <div
             className={`${
               sortBy == "startTime" ? "bg-opacity-100" : "bg-opacity-40"
@@ -134,7 +145,7 @@ const Kontests = () => {
       <div
         className="container mx-auto mt-5 w-32 cursor-pointer select-none rounded-md bg-gray-800 px-4 py-2 text-center font-medium text-gray-200 hover:bg-gray-900"
         onClick={() => {
-          if (showAll) window.location.href = "#contests";
+          if (showAll && totalContests > 7) window.location.href = "#contests";
           setShowAll(!showAll);
         }}
       >
