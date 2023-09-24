@@ -123,7 +123,7 @@ const Kontests = () => {
               <th scope="col" className="py-3 pl-6 pr-10">
                 Contest<span className="mr-1"></span>name
               </th>
-              <th scope="col" className="py-3 pl-6 pr-5">
+              <th scope="col" className="py-3 pl-6 pr-8">
                 Starting<span className="mr-1"></span>In
               </th>
               <th scope="col" className="py-3 pl-6 pr-32">
