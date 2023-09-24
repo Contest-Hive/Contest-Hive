@@ -40,27 +40,23 @@ const urlData = {
 };
 
 /**
- *
- * @param {list} contest - contest data. [name, url, start, duration]
- * @returns {Object} - contest data. {name, url, startTime, readableStateTime, duration, durationSeconds}
+ * Formats contest data.
+ * @param {Array} contest - contest data. [name, url, start, duration]
+ * @returns {Object} - formatted contest data. {name, url, startTime, readableStateTime, duration, durationSeconds}
  */
-function getContestData(contest, platformName) {
+function getContestData(contest) {
   😥
-  const contestName = contest[0];
-  const contestUrl = urlData[platformName] + contest[1];
-  const startTime = contest[2];
+  const [contestName, contestUrl, startTime, durationSeconds] = contest;
   const readableStateTime = humanReadableTimeUTC(startTime);
-  const durationSeconds = contest[3];
   const duration = seconds2Time(durationSeconds);
-  const contestData = {
+  return {
     name: contestName,
-    url: contestUrl,
+    url: urlData[platformName] + contestUrl,
     startTime,
     readableStateTime,
     duration,
     durationSeconds,
   };
-  return contestData;
 }
 
 export async function GET() {
@@ -72,7 +68,7 @@ export async function GET() {
 
   const data = await response.json();
   const allContests = data.data;
-""".strip().replace("😀", name).replace("😥", "" if name == "all"else f"platformName = \"{name}\"")
+""".strip().replace("😀", name).replace("😥", f"const platformName = \"{name}\"")
 
     if name == "all":
         middlePart = """

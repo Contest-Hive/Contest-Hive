@@ -21,27 +21,23 @@ const urlData = {
 };
 
 /**
- *
- * @param {list} contest - contest data. [name, url, start, duration]
- * @returns {Object} - contest data. {name, url, startTime, readableStateTime, duration, durationSeconds}
+ * Formats contest data.
+ * @param {Array} contest - contest data. [name, url, start, duration]
+ * @returns {Object} - formatted contest data. {name, url, startTime, readableStateTime, duration, durationSeconds}
  */
-function getContestData(contest, platformName) {
-  platformName = "codeforces"
-  const contestName = contest[0];
-  const contestUrl = urlData[platformName] + contest[1];
-  const startTime = contest[2];
+function getContestData(contest) {
+  const platformName = "codeforces"
+  const [contestName, contestUrl, startTime, durationSeconds] = contest;
   const readableStateTime = humanReadableTimeUTC(startTime);
-  const durationSeconds = contest[3];
   const duration = seconds2Time(durationSeconds);
-  const contestData = {
+  return {
     name: contestName,
-    url: contestUrl,
+    url: urlData[platformName] + contestUrl,
     startTime,
     readableStateTime,
     duration,
     durationSeconds,
   };
-  return contestData;
 }
 
 export async function GET() {
