@@ -31,7 +31,7 @@ const Features = () => {
 
         <div className="-m-4 mx-auto flex flex-wrap">
           {/* One */}
-          <div className="p-4 md:w-1/3" data-aos="flip-down">
+          <div className="p-4 md:w-1/3" data-aos="flip-down"     data-aos-duration="400">
             <div className="flex h-full flex-col rounded-lg bg-gray-800 bg-opacity-60 p-8">
               <div className="mb-3 flex items-center ">
                 <div className="mr-3 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center  rounded-full text-white">
@@ -58,7 +58,7 @@ const Features = () => {
           </div>
 
           {/* Two */}
-          <div className="p-4 md:w-1/3" data-aos="flip-down">
+          <div className="p-4 md:w-1/3" data-aos="flip-down" data-aos-duration="400">
             <div className="flex h-full flex-col rounded-lg bg-gray-800 bg-opacity-60 p-8">
               <div className="mb-3 flex items-center">
                 <div className="text0-white mr-3 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full">
@@ -206,7 +206,7 @@ const Features = () => {
           </div>
 
           {/* Three */}
-          <div className="p-4 md:w-1/3" data-aos="flip-down">
+          <div className="p-4 md:w-1/3" data-aos="flip-down" data-aos-duration="400">
             <div className="flex h-full flex-col rounded-lg bg-gray-800 bg-opacity-60 p-8">
               <div className="mb-3 flex items-center">
                 <div className="mr-3 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-white">
