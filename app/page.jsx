@@ -14,21 +14,29 @@ import Content from "@/components/Content";
 import ContactUs from "@/components/ContactUs";
 import Footer from "@/components/Footer";
 
-const page = () => {
+const AnimatedComponents = () => {
   useEffect(() => {
     {
       AOS.init({});
     }
   });
   return (
-    <main className="overflow-hidden">
-      <NavBar />
-      <Hero />
-      <Kontests />
+    <>
       <Features />
       <UserExperience />
       <Content />
       <ContactUs />
+    </>
+  );
+};
+
+const page = () => {
+  return (
+    <main className="overflow-hidden">
+      <NavBar />
+      <Hero />
+      <Kontests />
+      <AnimatedComponents />
       <Footer />
     </main>
   );
