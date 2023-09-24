@@ -95,16 +95,16 @@ const Kontests = () => {
           <span className="mr-5 pl-1 text-lg font-medium">Sort By:</span>
           <div
             className={`${
-              sortBy == "startTime" ? "bg-opacity-100" : "bg-opacity-40"
-            } inline-block cursor-pointer select-none rounded-bl-md rounded-tl-md bg-slate-800 px-4 py-2 text-center font-medium text-gray-200`}
+              sortBy == "startTime" ? "bg-blue-700" : "bg-slate-800"
+            } inline-block cursor-pointer select-none rounded-bl-md rounded-tl-md px-4 py-2 text-center font-medium text-gray-200`}
             onClick={() => setSortBy("startTime")}
           >
             Start Time
           </div>
           <div
             className={`${
-              sortBy == "platform" ? "bg-opacity-100" : "bg-opacity-40"
-            } inline-block cursor-pointer select-none rounded-br-md rounded-tr-md bg-slate-800 px-4 py-2 text-center font-medium text-gray-200`}
+              sortBy == "platform" ? "bg-blue-700" : "bg-slate-800"
+            } inline-block cursor-pointer select-none rounded-br-md rounded-tr-md px-4 py-2 text-center font-medium text-gray-200`}
             onClick={() => setSortBy("platform")}
           >
             Platform

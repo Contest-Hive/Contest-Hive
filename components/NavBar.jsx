@@ -22,7 +22,6 @@ const navBarClassClosed = "hidden w-full md:block md:w-auto";
 
 export const NavBar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
-  const [isDesktop, setDesktop] = useState(false);
   const [navBarClass, setNavBarClass] = useState(navBarClassClosed);
 
   const ref = useRef(null);
@@ -40,7 +39,6 @@ export const NavBar = () => {
   // useEffect for resize
   useEffect(() => {
     function handleResize() {
-      setDesktop(window.innerWidth >= 768);
       if (window.innerWidth >= 768) {
         setNavBarClass(navBarClassClosed);
         setNavbarOpen(false);
@@ -80,7 +78,7 @@ export const NavBar = () => {
             className="mr-3 mt-0.5 h-10 w-10"
             alt={`${navTitle} Logo`}
           ></Image>
-          <span className="self-center whitespace-nowrap text-2xl font-semibold text-gray-100">
+          <span className="self-center whitespace-nowrap text-2xl font-bold text-gray-100 transition-all duration-100 hover:text-sky-400">
             {navTitle}
           </span>
         </Link>
