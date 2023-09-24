@@ -1,10 +1,8 @@
 "use client";
-
 import { useEffect, useState } from "react";
-import {
-  getTable,
-  placeholderContests,
-} from "@/components/helpers/KontestsHelper";
+import AOS from "@/others/applyAOS.js";
+
+import { getTable } from "@/components/helpers/KontestsHelper";
 
 const Kontests = () => {
   const [showAll, setShowAll] = useState(false);
@@ -96,7 +94,7 @@ const Kontests = () => {
           <div
             className={`${
               sortBy == "startTime" ? "bg-blue-700" : "bg-slate-800"
-            } duration-300 inline-block cursor-pointer select-none rounded-bl-md rounded-tl-md px-4 py-2 text-center font-medium text-gray-200 transition-all`}
+            } inline-block cursor-pointer select-none rounded-bl-md rounded-tl-md px-4 py-2 text-center font-medium text-gray-200 transition-all duration-300`}
             onClick={() => setSortBy("startTime")}
           >
             Start Time
@@ -143,10 +141,13 @@ const Kontests = () => {
         </table>
       </div>
       <div
-        className="duration-300 container mx-auto mt-5 w-32 cursor-pointer select-none rounded-md bg-gray-800 px-4 py-2 text-center font-medium text-gray-200 transition-all hover:bg-gray-900"
+        className="container mx-auto mt-5 w-32 cursor-pointer select-none rounded-md bg-gray-800 px-4 py-2 text-center font-medium text-gray-200 transition-all duration-300 hover:bg-gray-900"
         onClick={() => {
           if (showAll && totalContests > 7) window.location.href = "#contests";
           setShowAll(!showAll);
+          setTimeout(() => {
+            AOS.refresh();
+          }, 200);
         }}
         data-aos="flip-right"
       >

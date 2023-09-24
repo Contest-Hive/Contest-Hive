@@ -10,13 +10,12 @@ import ContactUs from "@/components/ContactUs";
 
 const AnimatedComponents = () => {
   useEffect(() => {
-    {
-      AOS.init({
-        easing: "ease-in-out",
-        duration: 450,
-      });
-    }
-  });
+    AOS.init({
+      easing: "ease-in-out",
+      duration: 450,
+    });
+  }, []);
+
   return (
     <>
       <Features />
