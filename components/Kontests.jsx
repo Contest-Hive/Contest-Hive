@@ -96,7 +96,7 @@ const Kontests = () => {
           <div
             className={`${
               sortBy == "startTime" ? "bg-blue-700" : "bg-slate-800"
-            } inline-block cursor-pointer select-none rounded-bl-md rounded-tl-md px-4 py-2 text-center font-medium text-gray-200`}
+            } duration-300 inline-block cursor-pointer select-none rounded-bl-md rounded-tl-md px-4 py-2 text-center font-medium text-gray-200 transition-all`}
             onClick={() => setSortBy("startTime")}
           >
             Start Time
@@ -143,7 +143,7 @@ const Kontests = () => {
         </table>
       </div>
       <div
-        className="container mx-auto mt-5 w-32 cursor-pointer select-none rounded-md bg-gray-800 px-4 py-2 text-center font-medium text-gray-200 hover:bg-gray-900"
+        className="duration-300 container mx-auto mt-5 w-32 cursor-pointer select-none rounded-md bg-gray-800 px-4 py-2 text-center font-medium text-gray-200 transition-all hover:bg-gray-900"
         onClick={() => {
           if (showAll && totalContests > 7) window.location.href = "#contests";
           setShowAll(!showAll);
