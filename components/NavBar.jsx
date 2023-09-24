@@ -122,11 +122,8 @@ export const NavBar = () => {
                 <li>
                   <Link
                     href={blueLink.url}
-                    className="block rounded bg-sky-900 px-4 py-2 text-white md:rounded-b-lg
-         md:rounded-t-lg
-         md:px-4
-         md:py-2 md:text-gray-100 md:hover:bg-slate-800 md:hover:text-gray-100 "
-                    aria-current="page"
+                    className="block rounded bg-purple-800 px-4 py-2 text-white
+         md:rounded-lg md:text-gray-100 md:hover:bg-opacity-80 md:hover:text-gray-100 "
                   >
                     {blueLink.name}
                   </Link>
@@ -137,7 +134,7 @@ export const NavBar = () => {
                     <Link
                       href={navLinks[key]}
                       className="block rounded px-4
-          py-2 hover:text-white md:hover:bg-slate-800 md:hover:text-white"
+          py-2 hover:text-white md:rounded-lg md:hover:bg-purple-900 md:hover:text-white"
                     >
                       {key}
                     </Link>

@@ -4,9 +4,9 @@ const URL = process.env.URL;
 
 export async function POST(req) {
   const jsonData = await req.json();
-  const userName = jsonData.name;
-  const email = jsonData.email;
-  const message = jsonData.message;
+  const userName = String(jsonData.name).trim();
+  const email = String(jsonData.email).trim();
+  const message = String(jsonData.message).trim();
 
   if (!userName || !email || !message) {
     return NextResponse.json(

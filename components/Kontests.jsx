@@ -7,36 +7,20 @@ import {
 } from "@/components/helpers/KontestsHelper";
 
 const Kontests = () => {
+  const [showAll, setShowAll] = useState(false);
+  const [sortBy, setSortBy] = useState("startTime");
   const [isDesktop, setDesktop] = useState(false);
-  useEffect(() => {
-    setDesktop(window.innerWidth > 768);
-  }, []);
+  useEffect(() => setDesktop(window.innerWidth > 768), []);
 
   const [pltName, setPltName] = useState("all");
   const [allContestsData, setAllContestsData] = useState({
     ok: true,
-    data: {
-      atcoder: [
-        {
-          name: "Worlds Best Contest Ever Organized by Meow...",
-          url: "#",
-          startTime: "",
-          startingIn: "never",
-          duration: "3 hours",
-        },
-      ],
-    },
-    codechef: [],
-    codeforces: [],
-    hackerearth: [],
-    hackerrank: [],
-    leetcode: [],
-    toph: [],
-    codeforces_gym: [],
+    data: {},
+    justLoaded: true,
   });
 
+  // Fetching the data from the API on page load
   useEffect(() => {
-    // Gets api/all endpoint
     fetch("/api/all")
       .then((res) => res.json())
       .then((json) => {
@@ -44,7 +28,6 @@ const Kontests = () => {
       })
       .catch((err) => {
         console.log("error:", err);
-        // alert("Something went wrong! Please refresh the page.");
       });
   }, []);
 
@@ -52,25 +35,21 @@ const Kontests = () => {
   useEffect(() => {
     let count = 0;
     const plt = pltName.toLowerCase();
-    if (plt == "all") {
-      for (let key in allContestsData.data) {
+    if (plt == "all")
+      for (let key in allContestsData.data)
         count += allContestsData.data[key].length;
-      }
-    } else {
-      count = allContestsData.data[plt].length;
-    }
+    else count = allContestsData.data[plt].length;
+
     setTotalContests(count);
   }, [pltName, allContestsData]);
-
-  const changePlatform = (event) => {
-    const plt = event.target.value;
-    setPltName(plt);
-  };
 
   return (
     <>
       {/* Options to Select the Platform */}
-      <div className="container mx-auto flex flex-wrap px-5 py-10">
+      <div
+        className="container mx-auto flex flex-wrap px-5 py-10"
+        id="contests"
+      >
         <div className="mb-0 flex w-full flex-col text-center">
           <label
             htmlFor="platforms"
@@ -81,7 +60,7 @@ const Kontests = () => {
           <select
             id="platforms"
             className="mx-auto mb-1 block w-2/3 rounded-lg border-gray-900 bg-gray-900 p-2.5 text-sm text-gray-200 placeholder-gray-800  outline-none focus:ring-2 focus:ring-gray-900 "
-            onChange={changePlatform}
+            onChange={(event) => setPltName(event.target.value)}
           >
             <option defaultValue="all">All</option>
             <option value="atcoder">AtCoder</option>
@@ -97,7 +76,29 @@ const Kontests = () => {
       </div>
 
       <div className="-mt-5 mb-7 text-center text-lg font-medium text-gray-200 md:text-xl">
-        {totalContests} Upcoming Contests
+        {totalContests} Future Contests
+      </div>
+
+      <div className="mx-auto mb-5 w-11/12 md:w-3/4">
+        <div>
+          <span className="mr-5 text-lg font-medium">Sort By:</span>
+          <div
+            className={`${
+              sortBy == "startTime" ? "bg-opacity-100" : "bg-opacity-40"
+            } inline-block cursor-pointer select-none rounded-bl-md rounded-tl-md bg-slate-800 px-4 py-2 text-center font-medium text-gray-200`}
+            onClick={() => setSortBy("startTime")}
+          >
+            Start Time
+          </div>
+          <div
+            className={`${
+              sortBy == "platform" ? "bg-opacity-100" : "bg-opacity-40"
+            } inline-block cursor-pointer select-none rounded-br-md rounded-tr-md bg-slate-800 px-4 py-2 text-center font-medium text-gray-200`}
+            onClick={() => setSortBy("platform")}
+          >
+            Platform
+          </div>
+        </div>
       </div>
 
       {/* Table of Contests */}
@@ -123,12 +124,21 @@ const Kontests = () => {
             </tr>
           </thead>
           <tbody>
-            {getTable(allContestsData.data, pltName, isDesktop)}
-            {allContestsData.data.atcoder[0].startTime === ""
-              ? placeholderContests(isDesktop)
-              : ""}
+            {getTable(allContestsData, pltName, isDesktop, sortBy).slice(
+              0,
+              showAll ? 9999 : 7,
+            )}
           </tbody>
         </table>
+      </div>
+      <div
+        className="container mx-auto mt-5 w-32 cursor-pointer select-none rounded-md bg-gray-800 px-4 py-2 text-center font-medium text-gray-200 hover:bg-gray-900"
+        onClick={() => {
+          if (showAll) window.location.href = "#contests";
+          setShowAll(!showAll);
+        }}
+      >
+        {showAll ? "Show Less" : "Show More"}
       </div>
     </>
   );

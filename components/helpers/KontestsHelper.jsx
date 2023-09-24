@@ -174,39 +174,55 @@ const pascalNames = {
  *
  * @param {object} data - The data object containing the contests
  * @param {string} platform - Name of the platform
+ * @param {boolean} isDesktop - Whether the device is desktop or not
+ * @param {string} sortBy - The sorting method
  * @returns {JSX.Element} - The table containing the contests
  */
-function getTable(data, platform, isDesktop) {
-  const maxLen = isDesktop ? 50 : 33;
+function getTable(data, platform, isDesktop, sortBy) {
+  if (data.justLoaded) return placeholderContests(isDesktop);
 
+  data = data.data;
+  const maxLen = isDesktop ? 50 : 33;
   const contests = [];
   platform = platform.toLowerCase();
 
   if (platform === "all") {
     for (const [key, value] of Object.entries(data)) {
       for (const contest of value) {
-        // if the contest is already over, skip it
         if (getSecondsDifference(contest.startTime) < 0) continue;
         contests.push({ ...contest, platform: key });
       }
     }
   } else {
     for (const contest of data[platform]) {
-      // if the contest is already over, skip it
       if (getSecondsDifference(contest.startTime) < 0) continue;
       contests.push({ ...contest, platform });
     }
   }
 
-  // sort the contests by starting time
-  contests.sort((a, b) => {
-    return (
-      getSecondsDifference(a.startTime) - getSecondsDifference(b.startTime)
-    );
-  });
+  // Sort the contests
+  if (sortBy === "startTime") {
+    contests.sort((a, b) => {
+      return (
+        getSecondsDifference(a.startTime) - getSecondsDifference(b.startTime)
+      );
+    });
+  } else {
+    contests.sort((a, b) => {
+      const platformA = a.platform.toLowerCase();
+      const platformB = b.platform.toLowerCase();
+
+      if (platformA < platformB) {
+        return -1;
+      }
+      if (platformA > platformB) {
+        return 1;
+      }
+      return 0;
+    });
+  }
 
   if (contests.length === 0) {
-    // If no contest is available
     return (
       <tr className="bg-gray-900" key={1}>
         <td className="px-6 py-4 font-medium">{pascalNames[platform]}</td>
@@ -289,12 +305,12 @@ function placeholderContests(isDesktop) {
   const maxLen = isDesktop ? 50 : 33;
   const contests = [
     {
-      name: "World's Best Contest Ever Organized by Meow and Doggo",
-      startingIn: "33 seconds",
+      name: "World's Best Contest Ever Organized by Meow",
+      startingIn: "10 seconds",
     },
     {
-      name: "Meow vs Doggo Contest",
-      startingIn: "33 seconds",
+      name: "Meow vs Doge Contest",
+      startingIn: "23 seconds",
     },
     {
       name: "Elon Musk vs Mark Zuckerberg Coding Contest",
@@ -305,10 +321,6 @@ function placeholderContests(isDesktop) {
       startingIn: "2 hours",
     },
     {
-      name: "Soumya1 vs YouKn0wWho",
-      startingIn: "2 days",
-    },
-    {
       name: "Nusab19 vs Safin01 Live Coding Contest",
       startingIn: "now...",
     },
@@ -316,34 +328,20 @@ function placeholderContests(isDesktop) {
 
   const table = contests.map((contest) => {
     const contestName = contest.name;
-    const url = "#";
-    const startTime = humanReadableTime(contest.startTime);
     const startingIn = contest.startingIn;
     const plt = "Loading";
 
     return (
-      <tr
-        className="border-b border-gray-800 bg-gray-900"
-        key={contests.indexOf(contest)}
-      >
-        <th scope="row" className="px-6 py-4 font-medium" title={plt}>
+      <tr className="border-b border-gray-800 bg-gray-900" key={contestName}>
+        <th scope="row" className="px-6 py-4 font-medium">
           {plt}
         </th>
-        <th
-          className="whitespace-nowrap px-6 py-4 font-medium text-white"
-          title={contestName}
-        >
+        <th className="whitespace-nowrap px-6 py-4 font-medium text-white">
           {trimString(contestName, maxLen)}
         </th>
-        <td className="px-6 py-4" title={startTime}>
-          {startingIn}
-        </td>
-        <td className="px-6 py-4" title="0">
-          0
-        </td>
-        <td className="px-6 py-4 font-medium text-blue-500" title={url}>
-          Nowhere!
-        </td>
+        <td className="px-6 py-4">{startingIn}</td>
+        <td className="px-6 py-4">0</td>
+        <td className="px-6 py-4 font-medium text-blue-500">Nowhere!</td>
       </tr>
     );
   });
