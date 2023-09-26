@@ -44,7 +44,7 @@ const urlData = {
  * @param {Array} contest - contest data. [name, url, start, duration]
  * @returns {Object} - formatted contest data. {name, url, startTime, readableStateTime, duration, durationSeconds}
  */
-function getContestData(contest) {
+function getContestData(contest, platformName) {
   😥
   const [contestName, contestUrl, startTime, durationSeconds] = contest;
   const readableStateTime = humanReadableTimeUTC(startTime);
@@ -68,7 +68,7 @@ export async function GET() {
 
   const data = await response.json();
   const allContests = data.data;
-""".strip().replace("😀", name).replace("😥", f"const platformName = \"{name}\"")
+""".strip().replace("😀", name).replace("😥", f"platformName = \"{name}\""if name != "all" else "")
 
     if name == "all":
         middlePart = """

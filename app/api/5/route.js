@@ -25,8 +25,8 @@ const urlData = {
  * @param {Array} contest - contest data. [name, url, start, duration]
  * @returns {Object} - formatted contest data. {name, url, startTime, readableStateTime, duration, durationSeconds}
  */
-function getContestData(contest) {
-  const platformName = "hackerrank"
+function getContestData(contest, platformName) {
+  platformName = "hackerrank"
   const [contestName, contestUrl, startTime, durationSeconds] = contest;
   const readableStateTime = humanReadableTimeUTC(startTime);
   const duration = seconds2Time(durationSeconds);
