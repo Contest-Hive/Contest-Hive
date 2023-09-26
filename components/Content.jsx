@@ -14,7 +14,7 @@ const Content = () => {
             <q className="mb-2 block font-mono text-xl font-bold text-gray-100 md:text-2xl">
               Software Freedom For All
             </q>
-            We believe in the power of open-source. So, we made this website
+            We believe in the power of open-source. So, we made this project
             open-source too.
             <br />
             If you want to make this project better, you can contribute in our{" "}
