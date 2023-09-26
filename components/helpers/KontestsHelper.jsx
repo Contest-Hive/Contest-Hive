@@ -2,7 +2,7 @@ import Link from "next/link";
 
 /**
  * Calculates the difference in seconds between the current time and a given date in UTC ISO 8601 format.
- * 
+ *
  * @param {string} date - The date in UTC ISO 8601 format.
  * @returns {number} - The difference in seconds between the current time and the given date.
  */
@@ -23,15 +23,26 @@ function getSecondsDifference(date) {
 function humanReadableTime(startTime) {
   const dt = new Date(startTime);
   const months = [
-    "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
   ];
 
   const day = dt.getDate();
   const month = months[dt.getMonth()];
   const year = dt.getFullYear();
-  const hours = dt.getHours().toString().padStart(2, '0');
-  const minutes = dt.getMinutes().toString().padStart(2, '0');
-  const seconds = dt.getSeconds().toString().padStart(2, '0');
+  const hours = dt.getHours().toString().padStart(2, "0");
+  const minutes = dt.getMinutes().toString().padStart(2, "0");
+  const seconds = dt.getSeconds().toString().padStart(2, "0");
 
   let daySuffix = "th";
   if (day === 1 || day === 21 || day === 31) {
@@ -204,12 +215,34 @@ function getTable(data, platform, isDesktop, sortBy) {
         <td className="px-6 py-4">never</td>
         <td className="px-6 py-4">0</td>
         <td className="px-6 py-4">Nowhere!</td>
+        <td className="py-4">
+          {googleCalendarLink(
+            "2021-09-14T09:00:00Z",
+            0,
+            "No Contests Available",
+            "",
+            platform,
+          )}
+        </td>
       </tr>,
     ];
   }
 
+  const urlData = {
+    atcoder: "https://atcoder.jp/contests/",
+    codechef: "https://www.codechef.com/contests/",
+    codeforces: "https://codeforces.com/contests/",
+    codeforces_gym: "https://codeforces.com/gymRegistration/",
+    hackerearth: "https://",
+    hackerrank: "https://www.hackerrank.com/contests/",
+    leetcode: "https://leetcode.com/contest/",
+    toph: "https://toph.co/c/",
+  };
+
   return contests.map((contest) => {
-    const { name, duration, url, startTime, platform } = contest;
+    const { name, duration, durationSeconds, url, startTime, platform } =
+      contest;
+
     const contestName = trimString(name, maxLen);
     const startingIn = whenIsItStarting(getSecondsDifference(startTime));
     const plt = pascalNames[platform];
@@ -264,6 +297,10 @@ function getTable(data, platform, isDesktop, sortBy) {
             Open
           </Link>
         </td>
+
+        <td className="py-4">
+          {googleCalendarLink(startTime, durationSeconds, name, url, plt)}
+        </td>
       </tr>
     );
   });
@@ -300,19 +337,6 @@ function placeholderContests(isDesktop) {
     },
   ];
 
-  /**
-   * Trims the given string to the specified maximum length.
-   * @param {string} str - The string to be trimmed.
-   * @param {number} maxLength - The maximum length of the trimmed string.
-   * @returns {string} - The trimmed string.
-   */
-  const trimString = (str, maxLength) => {
-    if (str.length <= maxLength) {
-      return str;
-    }
-    return str.slice(0, maxLength) + "...";
-  };
-
   const table = contests.map((contest) => {
     const { name, startingIn } = contest;
     const placeholder = "Loading";
@@ -328,6 +352,15 @@ function placeholderContests(isDesktop) {
         <td className="px-6 py-4">{startingIn}</td>
         <td className="px-6 py-4">0</td>
         <td className="px-6 py-4 font-medium text-blue-500">Nowhere!</td>
+        <td className="py-4">
+          {googleCalendarLink(
+            "2021-09-14T09:00:00Z",
+            0,
+            "No Contests Available",
+            "",
+            "None",
+          )}
+        </td>
       </tr>
     );
   });
@@ -378,6 +411,93 @@ function humanReadableTimeUTC(startTime) {
   return timeString;
 }
 
+function getEncodedDate(date) {
+  const dt = new Date(date);
+  const year = dt.getFullYear();
+  const month = (dt.getMonth() + 1).toString().padStart(2, "0");
+  const day = dt.getDate().toString().padStart(2, "0");
+  const hours = dt.getHours().toString().padStart(2, "0");
+  const minutes = dt.getMinutes().toString().padStart(2, "0");
+  const seconds = dt.getSeconds().toString().padStart(2, "0");
+  const encodedDate = `${year}${month}${day}T${hours}${minutes}${seconds}Z`;
+  return encodedDate;
+}
+
+function googleCalendarLink(startTime, durationSeconds, name, url, platform) {
+  const startDate = new Date(startTime);
+  const endDate = new Date(startDate.getTime() + durationSeconds * 1000);
+  const encodedStartDate = getEncodedDate(startDate);
+  const encodedEndDate = getEncodedDate(endDate);
+  const details = `
+<b>Contest Name:</b> ${name}
+<b>Contest URL:</b> ${url}
+<b>Platform:</b> ${platform}
+  `.trim();
+
+  const eventLink = `https://calendar.google.com/calendar/u/0/r/eventedit?text=${name}&dates=${encodedStartDate}/${encodedEndDate}&details=${details}&location=${url}`;
+  const linkJsx = (
+    <Link
+      href={encodeURI(eventLink)}
+      title="Google Calendar Reminder"
+      target="_blank"
+    >
+      <svg version="1.1" viewBox="0 0 200 200" className="mx-5 h-6 w-6">
+        <g>
+          <g transform="translate(3.75 3.75)">
+            <path
+              fill="#FFFFFF"
+              d="M148.882,43.618l-47.368-5.263l-57.895,5.263L38.355,96.25l5.263,52.632l52.632,6.579l52.632-6.579
+			l5.263-53.947L148.882,43.618z"
+            />
+            <path
+              fill="#1A73E8"
+              d="M65.211,125.276c-3.934-2.658-6.658-6.539-8.145-11.671l9.132-3.763c0.829,3.158,2.276,5.605,4.342,7.342
+			c2.053,1.737,4.553,2.592,7.474,2.592c2.987,0,5.553-0.908,7.697-2.724s3.224-4.132,3.224-6.934c0-2.868-1.132-5.211-3.395-7.026
+			s-5.105-2.724-8.5-2.724h-5.276v-9.039H76.5c2.921,0,5.382-0.789,7.382-2.368c2-1.579,3-3.737,3-6.487
+			c0-2.447-0.895-4.395-2.684-5.855s-4.053-2.197-6.803-2.197c-2.684,0-4.816,0.711-6.395,2.145s-2.724,3.197-3.447,5.276
+			l-9.039-3.763c1.197-3.395,3.395-6.395,6.618-8.987c3.224-2.592,7.342-3.895,12.342-3.895c3.697,0,7.026,0.711,9.974,2.145
+			c2.947,1.434,5.263,3.421,6.934,5.947c1.671,2.539,2.5,5.382,2.5,8.539c0,3.224-0.776,5.947-2.329,8.184
+			c-1.553,2.237-3.461,3.947-5.724,5.145v0.539c2.987,1.25,5.421,3.158,7.342,5.724c1.908,2.566,2.868,5.632,2.868,9.211
+			s-0.908,6.776-2.724,9.579c-1.816,2.803-4.329,5.013-7.513,6.618c-3.197,1.605-6.789,2.421-10.776,2.421
+			C73.408,129.263,69.145,127.934,65.211,125.276z"
+            />
+            <path
+              fill="#1A73E8"
+              d="M121.25,79.961l-9.974,7.25l-5.013-7.605l17.987-12.974h6.895v61.197h-9.895L121.25,79.961z"
+            />
+            <path
+              fill="#EA4335"
+              d="M148.882,196.25l47.368-47.368l-23.684-10.526l-23.684,10.526l-10.526,23.684L148.882,196.25z"
+            />
+            <path
+              fill="#34A853"
+              d="M33.092,172.566l10.526,23.684h105.263v-47.368H43.618L33.092,172.566z"
+            />
+            <path
+              fill="#4285F4"
+              d="M12.039-3.75C3.316-3.75-3.75,3.316-3.75,12.039v136.842l23.684,10.526l23.684-10.526V43.618h105.263
+			l10.526-23.684L148.882-3.75H12.039z"
+            />
+            <path
+              fill="#188038"
+              d="M-3.75,148.882v31.579c0,8.724,7.066,15.789,15.789,15.789h31.579v-47.368H-3.75z"
+            />
+            <path
+              fill="#FBBC04"
+              d="M148.882,43.618v105.263h47.368V43.618l-23.684-10.526L148.882,43.618z"
+            />
+            <path
+              fill="#1967D2"
+              d="M196.25,43.618V12.039c0-8.724-7.066-15.789-15.789-15.789h-31.579v47.368H196.25z"
+            />
+          </g>
+        </g>
+      </svg>
+    </Link>
+  );
+  return linkJsx;
+}
+
 export {
   getTable,
   placeholderContests,
@@ -385,6 +505,5 @@ export {
   humanReadableTimeUTC,
   whenIsItStarting,
   seconds2Time,
-
-
+  googleCalendarLink,
 };
