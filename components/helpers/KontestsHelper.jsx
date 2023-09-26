@@ -429,7 +429,7 @@ function googleCalendarLink(startTime, durationSeconds, name, url, platform) {
   const details = `
 <b>Name      :</b> ${name}
 <b>Platform  :</b> ${platform}
-<b>Link      :</b> <a href="${url}">${url}</a>
+<b>Link      :</b> <a href="${url}">here</a>
 
 <b>Created by:</b> <a href="https://contest-hive.vercel.app/">Contest Hive</a>
   `.trim();
