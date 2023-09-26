@@ -2,13 +2,7 @@ import { NextResponse } from "next/server";
 import requestIp from "request-ip";
 
 export async function GET(req) {
-  const detectedIp = requestIp.getClientIp(req);
-  const forwarded = req.headers["x-forwarded-for"];
-
-  const ip =
-    typeof forwarded === "string"
-      ? forwarded.split(/, /)[0]
-      : req.socket.remoteAddress;
+  const ip = req.ip ?? "127.0.0.1";
 
   const data = {
     ok: true,
