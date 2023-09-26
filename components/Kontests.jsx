@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import AOS from "@/others/applyAOS.js";
-
 import { getTable } from "@/components/helpers/KontestsHelper";
 
 const Kontests = () => {
@@ -11,10 +10,15 @@ const Kontests = () => {
   const [totalContests, setTotalContests] = useState(0);
   const [pltName, setPltName] = useState("all");
   const [allContestsData, setAllContestsData] = useState({
-    ok: true,
     data: {},
     justLoaded: true,
   });
+
+  useEffect(() => {
+    setTimeout(() => {
+      AOS.refresh();
+    }, 200);
+  }, [showAll, sortBy, pltName]);
 
   useEffect(() => {
     setDesktop(window.innerWidth > 768);
@@ -145,11 +149,7 @@ const Kontests = () => {
         onClick={() => {
           if (showAll && totalContests > 7) window.location.href = "#contests";
           setShowAll(!showAll);
-          setTimeout(() => {
-            AOS.refresh();
-          }, 200);
         }}
-        data-aos="flip-right"
       >
         {showAll ? "Show Less" : "Show More"}
       </div>
