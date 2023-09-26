@@ -296,7 +296,7 @@ function getTable(data, platform, isDesktop, sortBy) {
           {externalLink(url, plt)}
         </td>
 
-        <td className="py-4">
+        <td className="px-6 py-4">
           {googleCalendarLink(startTime, durationSeconds, name, url, plt)}
         </td>
       </tr>
@@ -353,7 +353,7 @@ function placeholderContests(isDesktop) {
         <td className="px-6 py-4">{startingIn}</td>
         <td className="px-6 py-4">0</td>
         <td className="px-6 py-4">{externalLink("#", "Atcoder")}</td>
-        <td className="py-4">
+        <td className="px-6 py-4">
           {googleCalendarLink(
             "2021-09-14T09:00:00Z",
             0,
@@ -448,7 +448,7 @@ function googleCalendarLink(startTime, durationSeconds, name, url, platform) {
       <svg
         version="1.1"
         viewBox="0 0 200 200"
-        className="absolute -mt-3 ml-4 h-6 w-6 transition-all duration-300 hover:h-7 hover:w-7"
+        className="absolute -mt-3 h-6 w-6 transition-all duration-300 hover:h-7 hover:w-7"
       >
         <g>
           <g transform="translate(3.75 3.75)">
