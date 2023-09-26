@@ -36,6 +36,11 @@ Live at [contest-hive.vercel.app](https://contest-hive.vercel.app/)
 - [Features](#features)
 - [Platforms](#platforms)
 - [API](#api)
+  - [API Endpoints](#api-endpoints)
+  - [API Response Format](#api-response-format)
+- [Contributing](#contributing)
+- [License](#license)
+- [Links](#links)
 
 ## Why Contest Hive?
 
@@ -48,6 +53,7 @@ All contests in one place. Isn't it cool?
 - [x] Upcoming contests from 7 platforms
 - [x] Filter contests by platform
 - [x] Contests Update Every 10 Minutes
+- [x] Google Calendar Integration
 - [x] API for developers
 - [x] No Rate Limit on API
 - [x] Fully Responsive Design
