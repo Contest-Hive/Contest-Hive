@@ -16,7 +16,12 @@ const Home = () => {
         {/* API Docs and Github Button */}
         <div className="mt-16 flex justify-center">
           <Link href="/docs">
-            <button className="inline-flex rounded border-0 bg-purple-800 px-6 py-2 text-lg text-white hover:bg-indigo-800 focus:outline-none">
+            <button
+              className="inline-flex rounded border-0 bg-purple-800 px-6 py-2 text-lg text-white hover:bg-indigo-800 focus:outline-none"
+              data-aos="fade-up-right"
+              data-aos-once="true"
+              data-aos-duration="100"
+            >
               API Docs
               <span>
                 <svg
@@ -37,7 +42,12 @@ const Home = () => {
             </button>
           </Link>
           <Link href={GithubUrl} target="_blank">
-            <button className="ml-4 inline-flex  rounded border-0 bg-gray-800 px-8 py-2 text-lg hover:bg-indigo-800 hover:text-white focus:outline-none">
+            <button
+              className="ml-4 inline-flex  rounded border-0 bg-gray-800 px-8 py-2 text-lg hover:bg-indigo-800 hover:text-white focus:outline-none"
+              data-aos="fade-up-left"
+              data-aos-once="true"
+              data-aos-duration="100"
+            >
               Github
               <span>
                 <svg
