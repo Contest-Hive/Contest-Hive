@@ -26,18 +26,18 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #111827;
+  background: #030712;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: hsl(233, 27%, 23%);
+  background: hsl(232, 27%, 21%);
   border-radius: 7px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(233, 27%, 30%);
+  background: hsl(233, 27%, 27%);
 }
 
 /* For smooth scrolling behavior */
