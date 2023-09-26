@@ -314,23 +314,23 @@ function placeholderContests(isDesktop) {
 
   const contests = [
     {
-      name: "World's Best Contest Ever Organized by Meow",
+      name: "Loading Contests...........................",
       startingIn: "10 seconds",
     },
     {
-      name: "Meow vs Doge Contest",
+      name: "Loading Contests...........................",
       startingIn: "23 seconds",
     },
     {
-      name: "Elon Musk vs Mark Zuckerberg Coding Contest",
+      name: "Loading Contests...........................",
       startingIn: "1 hour",
     },
     {
-      name: "Tourist vs Benq Live Coding Contest",
+      name: "Loading Contests...........................",
       startingIn: "2 hours",
     },
     {
-      name: "Nusab19 vs Safin01 Live Coding Contest",
+      name: "Loading Contests...........................",
       startingIn: "now...",
     },
   ];
@@ -340,7 +340,10 @@ function placeholderContests(isDesktop) {
     const placeholder = "Loading";
 
     return (
-      <tr className="border-b border-gray-800 bg-gray-900" key={name}>
+      <tr
+        className="border-b border-gray-800 bg-gray-900"
+        key={contests.indexOf(contest)}
+      >
         <th scope="row" className="px-6 py-4 font-medium">
           {placeholder}
         </th>
