@@ -131,10 +131,10 @@ const Kontests = () => {
               <th scope="col" className="py-3 pl-6 pr-20">
                 Duration
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="pl-5 pr-7 py-3">
                 Link
               </th>
-              <th scope="col" className="px-1 py-3">
+              <th scope="col" className="pl-1 py-3">
                 Reminder
               </th>
             </tr>

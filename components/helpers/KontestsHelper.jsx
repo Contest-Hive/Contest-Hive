@@ -213,9 +213,9 @@ function getTable(data, platform, isDesktop, sortBy) {
         <td className="px-6 py-4 font-medium">{pascalNames[platform]}</td>
         <td className="px-6 py-4 font-medium">No Contests Available</td>
         <td className="px-6 py-4">never</td>
-        <td className="px-6 py-4">0</td>
-        <td className="px-6 py-4">Nowhere!</td>
-        <td className="py-4">
+        <td className="px-6 py-4">1 hours 30 minutes</td>
+        <td className="px-6 py-4">{externalLink("#", "Atcoder")}</td>
+        <td className="px-6 py-4">
           {googleCalendarLink(
             "2021-09-14T09:00:00Z",
             0,
@@ -293,9 +293,7 @@ function getTable(data, platform, isDesktop, sortBy) {
           {duration}
         </td>
         <td className="px-6 py-4 font-medium text-blue-500" title={url}>
-          <Link href={url} target="_blank">
-            Open
-          </Link>
+          {externalLink(url, plt)}
         </td>
 
         <td className="py-4">
@@ -351,7 +349,7 @@ function placeholderContests(isDesktop) {
         </th>
         <td className="px-6 py-4">{startingIn}</td>
         <td className="px-6 py-4">0</td>
-        <td className="px-6 py-4 font-medium text-blue-500">Nowhere!</td>
+        <td className="px-6 py-4">{externalLink("#", "Atcoder")}</td>
         <td className="py-4">
           {googleCalendarLink(
             "2021-09-14T09:00:00Z",
@@ -429,19 +427,26 @@ function googleCalendarLink(startTime, durationSeconds, name, url, platform) {
   const encodedStartDate = getEncodedDate(startDate);
   const encodedEndDate = getEncodedDate(endDate);
   const details = `
-<b>Contest Name:</b> ${name}
-<b>Contest URL:</b> ${url}
-<b>Platform:</b> ${platform}
-  `.trim();
+<b>Name      :</b> ${name}
+<b>Platform  :</b> ${platform}
+<b>Link      :</b> <a href="${url}">${url}</a>
 
-  const eventLink = `https://calendar.google.com/calendar/u/0/r/eventedit?text=${name}&dates=${encodedStartDate}/${encodedEndDate}&details=${details}&location=${url}`;
+<b>Created by:</b> <a href="https://contest-hive.vercel.app/">Contest Hive</a>
+  `.trim();
+  const title = `Contest at ${platform}: ${name}`;
+
+  const eventLink = `https://calendar.google.com/calendar/u/0/r/eventedit?text=${title}&dates=${encodedStartDate}/${encodedEndDate}&details=${details}&location=${url}`;
   const linkJsx = (
     <Link
       href={encodeURI(eventLink)}
       title="Google Calendar Reminder"
       target="_blank"
     >
-      <svg version="1.1" viewBox="0 0 200 200" className="mx-5 h-6 w-6">
+      <svg
+        version="1.1"
+        viewBox="0 0 200 200"
+        className="absolute -mt-3 ml-4 h-6 w-6 transition-all duration-300 hover:h-7 hover:w-7"
+      >
         <g>
           <g transform="translate(3.75 3.75)">
             <path
@@ -492,6 +497,29 @@ function googleCalendarLink(startTime, durationSeconds, name, url, platform) {
             />
           </g>
         </g>
+      </svg>
+    </Link>
+  );
+  return linkJsx;
+}
+
+function externalLink(url, alt) {
+  const linkJsx = (
+    <Link href={url} alt={alt} target="_blank">
+      <svg
+        className="absolute -mt-3 h-5 w-5 text-gray-400 transition-all duration-200 hover:h-6 hover:w-6 hover:text-gray-300"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 18 18"
+      >
+        <path
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          d="M15 11v4.833A1.166 1.166 0 0 1 13.833 17H2.167A1.167 1.167 0 0 1 1 15.833V4.167A1.166 1.166 0 0 1 2.167 3h4.618m4.447-2H17v5.768M9.111 8.889l7.778-7.778"
+        />
       </svg>
     </Link>
   );
