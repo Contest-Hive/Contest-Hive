@@ -25,36 +25,36 @@ const Kontests = () => {
   }, []);
 
   useEffect(() => {
+    const fetchContestData = () => {
+      fetch("/api/all")
+        .then((res) => res.json())
+        .then((json) => {
+          setAllContestsData(json);
+        })
+        .catch((err) => {
+          console.log("error:", err);
+        });
+    };
+
     fetchContestData();
   }, []);
 
   useEffect(() => {
+    const calculateTotalContests = () => {
+      let count = 0;
+      const plt = pltName.toLowerCase();
+      if (plt === "all") {
+        for (let key in allContestsData.data) {
+          count += allContestsData.data[key].length;
+        }
+      } else {
+        count = allContestsData.data[plt].length;
+      }
+      setTotalContests(count);
+    };
+
     calculateTotalContests();
   }, [pltName, allContestsData]);
-
-  const fetchContestData = () => {
-    fetch("/api/all")
-      .then((res) => res.json())
-      .then((json) => {
-        setAllContestsData(json);
-      })
-      .catch((err) => {
-        console.log("error:", err);
-      });
-  };
-
-  const calculateTotalContests = () => {
-    let count = 0;
-    const plt = pltName.toLowerCase();
-    if (plt === "all") {
-      for (let key in allContestsData.data) {
-        count += allContestsData.data[key].length;
-      }
-    } else {
-      count = allContestsData.data[plt].length;
-    }
-    setTotalContests(count);
-  };
 
   return (
     <>
@@ -131,10 +131,10 @@ const Kontests = () => {
               <th scope="col" className="py-3 pl-6 pr-20">
                 Duration
               </th>
-              <th scope="col" className="pl-5 pr-7 py-3">
+              <th scope="col" className="py-3 pl-5 pr-7">
                 Link
               </th>
-              <th scope="col" className="pl-1 py-3">
+              <th scope="col" className="py-3 pl-1">
                 Reminder
               </th>
             </tr>
