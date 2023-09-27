@@ -30,7 +30,7 @@ const API_URL =
 
 const urlData = {
   atcoder: "https://atcoder.jp/contests/",
-  codechef: "https://www.codechef.com/contests/",
+  codechef: "https://www.codechef.com/",
   codeforces: "https://codeforces.com/contests/",
   codeforces_gym: "https://codeforces.com/gymRegistration/",
   hackerearth: "https://",
