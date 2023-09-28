@@ -10,8 +10,8 @@ const page = () => {
     <main className="overflow-x-hidden">
       <NavBar />
       <Hero />
-      {/* <Stats /> */}
       <Kontests />
+      <Stats />
       <AnimatedComponents />
       <Footer />
     </main>

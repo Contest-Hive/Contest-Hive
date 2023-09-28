@@ -3,10 +3,10 @@ import Link from "next/link";
 const Features = () => {
   return (
     <section className="body-font tracking-wide" data-aos="fade-up">
-      <div className="container mx-auto -mb-10 mt-20 flex flex-wrap px-5 py-10">
+      <div className="container mx-auto -mb-10 mt-10 flex flex-wrap px-5 py-10">
         <div className="w-full text-center">
           <header
-            className="title-font mb-7 text-4xl font-medium text-white md:text-6xl"
+            className="mb-7 text-4xl font-medium text-white md:text-6xl"
             id="why-us"
           >
             Why Contest Hive?

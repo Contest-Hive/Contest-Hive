@@ -1,5 +1,4 @@
-// "use client";
-// import { useEffect, useState } from "react";
+import { use } from "react";
 
 /**
  * Takes a number as input and returns a simplified version of the number with a suffix indicating the magnitude.
@@ -21,49 +20,94 @@ function simplifyNumber(number) {
   }
 }
 
-const Stats = () => {
-  let stats = [];
-  const url = "https://contest-hive.vercel.app/api/all";
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-      stats = data;
-      console.log(stats);
-    })
-    .catch((err) => console.log(err));
+async function getData() {
+  const res = await fetch("https://contest-hive.vercel.app/api/others/stats", {
+    cache: "no-cache",
+  });
+  const data = await res.json();
+  return data;
+}
 
-  console.log(stats);
-  let { api, page, total, past24 } = stats;
+const Stats = () => {
+  const data = use(getData());
+
+  let { api, page, total, past24 } = data;
   api = simplifyNumber(api);
   page = simplifyNumber(page);
   total = simplifyNumber(total);
   past24 = simplifyNumber(past24);
 
   return (
-    <section>
-      <div className="mx-auto max-w-screen-xl px-4 py-8 text-center lg:px-6 lg:py-16">
-        <dl className="mx-auto grid max-w-screen-md gap-8 text-gray-900 dark:text-white sm:grid-cols-3">
+    <section data-aos="fade-up" data-aos-duration="300">
+      <div className="mx-auto mt-14 max-w-screen-xl px-4 py-8 text-center">
+        <h2 className="mb-7 text-4xl font-medium text-white md:text-6xl">
+          People Love Us
+        </h2>
+        <p className="mt-4 text-lg leading-6 text-gray-400">
+          Here are some realtime traffic stats
+        </p>
+      </div>
+
+      <div className="mx-auto mb-0 max-w-screen-md px-4 py-8 text-center">
+        <dl className="mx-auto grid max-w-screen-lg gap-5 text-white sm:grid-cols-3">
+          {/* 1 */}
           <div className="flex flex-col items-center justify-center">
-            <dt className="mb-2 text-3xl font-extrabold md:text-4xl">
-              {past24}+
+            <dt className="mb-2 text-3xl font-bold md:text-4xl">
+              <span className="toolText">{past24}+</span>
+              <span className="tooltip absolute mx-auto ml-5 hidden select-none rounded-lg bg-slate-800 px-2 pb-[7px] pt-[5px] text-center text-2xl font-medium text-gray-200 opacity-0 transition-opacity duration-200">
+                <svg
+                  className="absolute -ml-[18px] mt-[10px] h-4 w-4 text-gray-800"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 10 16"
+                >
+                  <path d="M8.766.566A2 2 0 0 0 6.586 1L1 6.586a2 2 0 0 0 0 2.828L6.586 15A2 2 0 0 0 10 13.586V2.414A2 2 0 0 0 8.766.566Z" />
+                </svg>
+                <span className="font-mono">{data.past24}</span>
+              </span>
             </dt>
-            <dd className="font-light text-gray-500 dark:text-gray-400">
-              visits in the past 24 hours
-            </dd>
+            <dd className="font-light text-gray-400">Visits Today</dd>
           </div>
+
+          {/* 2 */}
           <div className="flex flex-col items-center justify-center">
-            <dt className="mb-2 text-3xl font-extrabold md:text-4xl">{api}+</dt>
-            <dd className="font-light text-gray-500 dark:text-gray-400">
-              requests to the API
-            </dd>
-          </div>
-          <div className="flex flex-col items-center justify-center">
-            <dt className="mb-2 text-3xl font-extrabold md:text-4xl">
-              {total}+
+            <dt className="mb-2 text-3xl font-bold md:text-4xl">
+              <span className="toolText">{api}+</span>
+              <span className="tooltip absolute mx-auto ml-5 hidden select-none rounded-lg bg-slate-800 px-2 pb-[7px] pt-[5px] text-center text-2xl font-medium text-gray-200 opacity-0 transition-opacity duration-200">
+                <svg
+                  className="absolute -ml-[18px] mt-[10px] h-4 w-4 text-gray-800"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 10 16"
+                >
+                  <path d="M8.766.566A2 2 0 0 0 6.586 1L1 6.586a2 2 0 0 0 0 2.828L6.586 15A2 2 0 0 0 10 13.586V2.414A2 2 0 0 0 8.766.566Z" />
+                </svg>
+                <span className="font-mono">{data.api}</span>
+              </span>
             </dt>
-            <dd className="font-light text-gray-500 dark:text-gray-400">
-              Total Visits
-            </dd>
+            <dd className="font-light text-gray-400">API calls served</dd>
+          </div>
+
+          {/* 3 */}
+          <div className="flex flex-col items-center justify-center">
+            <dt className="mb-2 text-3xl font-bold md:text-4xl">
+              <span className="toolText">{total}+</span>
+              <span className="tooltip absolute mx-auto ml-5 hidden select-none rounded-lg bg-slate-800 px-2 pb-[7px] pt-[5px] text-center text-2xl font-medium text-gray-200 opacity-0 transition-opacity duration-200">
+                <svg
+                  className="absolute -ml-[18px] mt-[10px] h-4 w-4 text-gray-800"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 10 16"
+                >
+                  <path d="M8.766.566A2 2 0 0 0 6.586 1L1 6.586a2 2 0 0 0 0 2.828L6.586 15A2 2 0 0 0 10 13.586V2.414A2 2 0 0 0 8.766.566Z" />
+                </svg>
+                <span className="font-mono">{data.total}</span>
+              </span>
+            </dt>
+            <dd className="font-light text-gray-400">Total Visits</dd>
           </div>
         </dl>
       </div>
