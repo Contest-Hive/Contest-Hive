@@ -4,10 +4,10 @@ export async function middleware(req) {
   const { nextUrl } = req;
   const origin = String(nextUrl.origin) + "/";
   const href = String(nextUrl.href);
-  const path = href.toLowerCase().includes("api") ? "api" : "page";
+
 
   if (href === origin) return NextResponse.next(); // Don't count the home page
-
+  if (origin.startsWith("http://localhost")) return NextResponse.next(); // Don't count local requests
   // Exclude some paths
   const excludedValues = ["_next", "favicon", "assets", "api/others"];
   for (const value of excludedValues) {
@@ -20,10 +20,10 @@ export async function middleware(req) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ path }),
+      body: JSON.stringify({ href }),
     });
   }
-  // console.log("middleware done:", href);
+  console.log("middleware done:", href);
 
   makeReq();
   return NextResponse.next();

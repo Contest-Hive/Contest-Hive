@@ -34,12 +34,6 @@ async function getData() {
 const Stats = () => {
   const data = use(getData());
 
-  let { api, page, total, past24 } = data;
-  api = simplifyNumber(api);
-  page = simplifyNumber(page);
-  total = simplifyNumber(total);
-  past24 = simplifyNumber(past24);
-
   return (
     <section data-aos="fade-up" data-aos-duration="300">
       <div className="mx-auto mt-14 max-w-screen-xl px-4 py-8 text-center">
@@ -56,7 +50,7 @@ const Stats = () => {
           {/* 1 */}
           <div className="flex flex-col items-center justify-center">
             <dt className="mb-2 text-3xl font-bold md:text-4xl">
-              <span className="toolText">{past24}+</span>
+              <span className="toolText">{simplifyNumber(data.past24)}+</span>
               <span className="tooltip absolute mx-auto ml-5 hidden select-none rounded-lg bg-slate-800 px-2 pb-[7px] pt-[5px] text-center text-2xl font-medium text-gray-200 opacity-0 transition-opacity duration-200">
                 <svg
                   className="absolute -ml-[18px] mt-[10px] h-4 w-4 text-gray-800"
@@ -76,7 +70,7 @@ const Stats = () => {
           {/* 2 */}
           <div className="flex flex-col items-center justify-center">
             <dt className="mb-2 text-3xl font-bold md:text-4xl">
-              <span className="toolText">{api}+</span>
+              <span className="toolText">{simplifyNumber(data.api)}+</span>
               <span className="tooltip absolute mx-auto ml-5 hidden select-none rounded-lg bg-slate-800 px-2 pb-[7px] pt-[5px] text-center text-2xl font-medium text-gray-200 opacity-0 transition-opacity duration-200">
                 <svg
                   className="absolute -ml-[18px] mt-[10px] h-4 w-4 text-gray-800"
@@ -96,7 +90,7 @@ const Stats = () => {
           {/* 3 */}
           <div className="flex flex-col items-center justify-center">
             <dt className="mb-2 text-3xl font-bold md:text-4xl">
-              <span className="toolText">{total}+</span>
+              <span className="toolText">{simplifyNumber(data.total)}+</span>
               <span className="tooltip absolute mx-auto ml-5 hidden select-none rounded-lg bg-slate-800 px-2 pb-[7px] pt-[5px] text-center text-2xl font-medium text-gray-200 opacity-0 transition-opacity duration-200">
                 <svg
                   className="absolute -ml-[18px] mt-[10px] h-4 w-4 text-gray-800"

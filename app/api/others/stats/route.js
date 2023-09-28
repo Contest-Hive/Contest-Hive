@@ -42,10 +42,14 @@ async function reset24hoursData() {
 
 export async function POST(req) {
   try {
+    console.log("hi")
     const jsonData = await req.json();
     await reset24hoursData(); // Reset the 24 hours data if needed
 
-    const { path } = jsonData;
+    const { href } = jsonData;
+    const path = href.toLowerCase().includes("api") ? "api" : "page";
+    if (href.includes("api/others/"))
+      return new NextResponse(JSON.stringify({ ok: false }, null, 2));
 
     await updateData(path);
 
