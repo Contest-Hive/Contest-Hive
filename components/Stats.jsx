@@ -50,7 +50,9 @@ const Stats = () => {
           {/* 1 */}
           <div className="flex flex-col items-center justify-center">
             <dt className="mb-2 text-3xl font-bold md:text-4xl">
-              <span className="toolText">{simplifyNumber(data.past24)}+</span>
+              <span className="toolText">
+                {simplifyNumber(data.past24page)}+
+              </span>
               <span className="tooltip absolute mx-auto ml-5 hidden select-none rounded-lg bg-slate-800 px-2 pb-[7px] pt-[5px] text-center text-2xl font-medium text-gray-200 opacity-0 transition-opacity duration-200">
                 <svg
                   className="absolute -ml-[18px] mt-[10px] h-4 w-4 text-gray-800"
@@ -61,7 +63,7 @@ const Stats = () => {
                 >
                   <path d="M8.766.566A2 2 0 0 0 6.586 1L1 6.586a2 2 0 0 0 0 2.828L6.586 15A2 2 0 0 0 10 13.586V2.414A2 2 0 0 0 8.766.566Z" />
                 </svg>
-                <span className="font-mono">{data.past24}</span>
+                <span className="font-mono">{data.past24page}</span>
               </span>
             </dt>
             <dd className="font-light text-gray-400">Visits Today</dd>
@@ -90,7 +92,7 @@ const Stats = () => {
           {/* 3 */}
           <div className="flex flex-col items-center justify-center">
             <dt className="mb-2 text-3xl font-bold md:text-4xl">
-              <span className="toolText">{simplifyNumber(data.total)}+</span>
+              <span className="toolText">{simplifyNumber(data.page)}+</span>
               <span className="tooltip absolute mx-auto ml-5 hidden select-none rounded-lg bg-slate-800 px-2 pb-[7px] pt-[5px] text-center text-2xl font-medium text-gray-200 opacity-0 transition-opacity duration-200">
                 <svg
                   className="absolute -ml-[18px] mt-[10px] h-4 w-4 text-gray-800"
@@ -101,7 +103,7 @@ const Stats = () => {
                 >
                   <path d="M8.766.566A2 2 0 0 0 6.586 1L1 6.586a2 2 0 0 0 0 2.828L6.586 15A2 2 0 0 0 10 13.586V2.414A2 2 0 0 0 8.766.566Z" />
                 </svg>
-                <span className="font-mono">{data.total}</span>
+                <span className="font-mono">{data.page}</span>
               </span>
             </dt>
             <dd className="font-light text-gray-400">Total Visits</dd>

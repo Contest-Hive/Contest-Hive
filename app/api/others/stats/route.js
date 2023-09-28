@@ -13,14 +13,23 @@ await MongoConnection(); // Make sure we're connected to the database
  */
 const updateData = async (key) => {
   try {
-    const updateObj = { past24: 1, total: 1 };
+    const updateObj = { total: 1, past24: 1 };
     updateObj[key] = 1;
+    if (key === "page") {
+      updateObj["past24page"] = 1;
+      updateObj["page"] = 1;
+    } else if (key === "api") {
+      updateObj["past24api"] = 1;
+      updateObj["api"] = 1;
+    } else {
+      console.log("Error: Invalid Key");
+      return;
+    }
 
     const updated = await STATS.findOneAndUpdate(
       { _id: 1 },
       { $inc: updateObj },
     );
-
     if (!updated) console.log("Error in Mongo Update: Key Not Found");
   } catch (error) {
     console.error("Error: ", error);
@@ -36,13 +45,16 @@ async function reset24hoursData() {
   if (localData.date !== date) {
     localData.date = date;
     console.log("Resetting 24 hours data");
-    await STATS.findOneAndUpdate({ _id: 1 }, { $set: { past24: 0 } });
+    await STATS.findOneAndUpdate(
+      { _id: 1 },
+      { $set: { past24: 1, past24page: 1, past24api: 1 } },
+    );
   }
 }
 
 export async function POST(req) {
   try {
-    console.log("hi")
+    console.log("hi");
     const jsonData = await req.json();
     await reset24hoursData(); // Reset the 24 hours data if needed
 
