@@ -42,7 +42,7 @@ const SideBar = () => {
     // only called when the screen is resized
 
     // Close the sidebar when the screen is less than 768px
-    if (window.innerWidth > 768) {
+    if (window.innerWidth >= 768) {
       setDesktop(true);
       setSidebarOpen(true);
       setClassForSidebar(classWhenSidebarOpen);

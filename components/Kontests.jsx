@@ -1,7 +1,8 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, use } from "react";
 import AOS from "@/others/applyAOS.js";
 import { getTable } from "@/components/helpers/KontestsHelper";
+// import LoadKontests from "@/components/helpers/LoadKontests";
 
 const Kontests = () => {
   const [showAll, setShowAll] = useState(false);

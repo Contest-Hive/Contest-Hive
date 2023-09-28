@@ -1,24 +1,18 @@
 import { NextResponse } from "next/server";
 
-export const config = {
-  matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     */
-    "/((?!_next/static|_next/image|favicon.ico).*)",
-  ],
-};
-
 export async function middleware(req) {
   const { nextUrl } = req;
-  const origin = String(nextUrl.origin);
+  const origin = String(nextUrl.origin) + "/";
   const href = String(nextUrl.href);
   const path = href.toLowerCase().includes("api") ? "api" : "page";
 
-  // if (href.includes("_next")) return NextResponse.next(); // don't track next.js files
+  if (href === origin) return NextResponse.next(); // Don't count the home page
+
+  // Exclude some paths
+  const excludedValues = ["_next", "favicon", "assets", "api/others"];
+  for (const value of excludedValues) {
+    if (href.toLowerCase().includes(value)) return NextResponse.next();
+  }
 
   async function makeReq() {
     await fetch(`${origin}/api/others/stats`, {
@@ -29,6 +23,7 @@ export async function middleware(req) {
       body: JSON.stringify({ path }),
     });
   }
+  // console.log("middleware done:", href);
 
   makeReq();
   return NextResponse.next();
