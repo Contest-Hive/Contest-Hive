@@ -29,7 +29,7 @@ const ContactUs = () => {
   async function sendMessage(name, email, message) {
     setLoading(true);
 
-    let response = await fetch("/api/plt", {
+    let response = await fetch("/api/others/send", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
