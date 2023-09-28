@@ -5,5 +5,12 @@ export async function GET() {
       "Contest Hive API gives you contests information from 7 different platforms. Documentation at: https://contests.pages.dev/docs",
   };
 
-  return new Response(JSON.stringify(data, null, 4));
+  return new NextResponse(JSON.stringify(data, null, 2), {
+    status: 200,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET",
+      "Access-Control-Allow-Headers": "*",
+    },
+  });
 }
