@@ -50,6 +50,7 @@ export async function GET(req) {
   const data = {
     ok: true,
     ...stats._doc,
+    href: req.nextUrl.href,
   };
   delete data._id;
 

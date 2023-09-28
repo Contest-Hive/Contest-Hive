@@ -6,14 +6,14 @@ export async function middleware(req) {
   const href = String(nextUrl.href);
   const path = href.toLowerCase().includes("api") ? "api" : "page";
 
-  if (href.includes("_next")) return NextResponse.next(); // don't track next.js files
+  // if (href.includes("_next")) return NextResponse.next(); // don't track next.js files
   async function makeReq() {
     await fetch(`${origin}/api/others/stats`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ path }),
+      body: JSON.stringify({ path, href }),
     });
   }
 
