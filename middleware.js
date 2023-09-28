@@ -18,6 +18,7 @@ export async function middleware(req) {
   }
 
   
-  setTimeout(makeReq, 0);
+  // setTimeout(makeReq, 0);
+  makeReq();
   return NextResponse.next();
 }
