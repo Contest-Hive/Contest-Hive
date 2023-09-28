@@ -21,9 +21,12 @@ function simplifyNumber(number) {
 }
 
 async function getData() {
-  const res = await fetch("https://contest-hive.vercel.app/api/others/stats", {
-    cache: "no-cache",
-  });
+  const res = await fetch(
+    "https://contest-hive-5p9v162ml-nusab19.vercel.app/api/others/stats",
+    {
+      cache: "no-cache",
+    },
+  );
   const data = await res.json();
   return data;
 }

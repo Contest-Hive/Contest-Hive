@@ -2,7 +2,6 @@
 import { Analytics } from "@vercel/analytics/react";
 import UnderMaintenance from "@/components/UnderUnderMaintenance";
 import "@/app/globals.css";
-import Head from "next/head";
 
 const title = "Contest Hive";
 const description =
@@ -32,7 +31,7 @@ const layout = ({ children }) => {
         <UnderMaintenance />
       </body> */}
 
-        {children}
+        <main>{children}</main>
       </body>
     </html>
   );
