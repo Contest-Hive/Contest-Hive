@@ -8,6 +8,7 @@ export async function middleware(req) {
 
   // if (href.includes("_next")) return NextResponse.next(); // don't track next.js files
   async function makeReq() {
+    console.log("middleware call start");
     await fetch(`${origin}/api/others/stats`, {
       method: "POST",
       headers: {
@@ -15,10 +16,10 @@ export async function middleware(req) {
       },
       body: JSON.stringify({ path, href }),
     });
+    console.log("middleware call end");
   }
 
-  
-  // setTimeout(makeReq, 0);
+  setTimeout(makeReq, 0);
   makeReq();
   return NextResponse.next();
 }
