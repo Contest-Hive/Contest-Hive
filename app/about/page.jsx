@@ -217,6 +217,17 @@ const page = () => {
                 <div className="ml-1 mt-1">{CROSS}</div>
               </div>
               <div className="grid grid-cols-4 gap-x-16 border-b border-gray-700 px-4 py-5 text-sm">
+                <div className="text-gray-400">
+                  Shows Local Time{" "}
+                  <sup className="text-xs text-red-400">
+                    <Link href="#3">[3]</Link>
+                  </sup>
+                </div>
+                <div className="ml-1 mt-1">{MARK}</div>
+                <div className="ml-1 mt-1">{CROSS}</div>
+                <div className="ml-1 mt-1">{MARK}</div>
+              </div>
+              <div className="grid grid-cols-4 gap-x-16 border-b border-gray-700 px-4 py-5 text-sm">
                 <div className="text-gray-400">Sorting Option</div>
                 <div className="ml-1 mt-1">{MARK}</div>
                 <div className="ml-1 mt-1">{CROSS}</div>
@@ -241,6 +252,7 @@ const page = () => {
               <p className="mb-5 text-4xl font-semibold text-gray-200">
                 KeyNotes
               </p>
+              {/* 1 */}
               <div className="mb-10">
                 <p
                   className="mb-3 border-b-2 border-gray-700 text-2xl font-semibold text-gray-200"
@@ -257,11 +269,15 @@ const page = () => {
                   <li className="text-gray-100">
                     Contest Hive updates the data every 5 minutes.
                   </li>
-                  <li className="text-gray-100">StopStalk updates the data every 1 hour. </li>
-                  <li className="text-gray-100">Kontests updates the data every 24 hours.</li>
+                  <li className="text-gray-100">
+                    StopStalk updates the data every 1 hour.{" "}
+                  </li>
+                  <li className="text-gray-100">
+                    Kontests updates the data every 24 hours.
+                  </li>
                 </ul>
               </div>
-
+              {/* 2 */}
               <div className="mb-10">
                 <p
                   className="mb-3 border-b-2 border-gray-700 text-2xl font-semibold text-gray-200"
@@ -304,6 +320,24 @@ const page = () => {
                   </li>
                 </ul>
               </div>
+
+              {/* 3 */}
+              <div className="mb-10">
+                <p
+                  className="mb-3 border-b-2 border-gray-700 text-2xl font-semibold text-gray-200"
+                  id="3"
+                >
+                  <span className="inline-block text-gray-400">#[3]</span> Shows
+                  Local Time
+                </p>
+                <p className="text-base text-gray-300 md:text-lg">
+                  Whether the website shows the local time of the contest start
+                  time or not.
+                  <br />
+                </p>
+              </div>
+
+              {/* -------- */}
             </div>
           </div>
         </div>
@@ -314,3 +348,21 @@ const page = () => {
 };
 
 export default page;
+
+const title = "About | Contest Hive";
+const description =
+  "About Page of Contest Hive. How are we different from other websites?";
+const keywords =
+  "contest hive about, contest hive, contest api about, upcoming contest about, codeforces api, toph api, kontests api, hackerearth api, hackerrank api, codechef api, atcoder api, leetcode api, nusab taha, nusab19, toph leaderboard";
+const url = "https://contest-hive.vercel.app/about";
+
+export const metadata = {
+  title: title,
+  description: description,
+  keywords: keywords,
+  openGraph: {
+    title: title,
+    description: description,
+    url: url,
+  },
+};
