@@ -1,7 +1,7 @@
 const UnderMaintenance = () => {
   return (
-    <section>
-      <div className="mx-auto mt-20 max-w-screen-md px-4 py-8 text-center lg:px-12 lg:py-16">
+    <section className="flex items-center justify-center h-screen">
+      <div className="text-center">
         <svg
           className="mx-auto mb-4 h-10 w-10 text-gray-400"
           xmlns="http://www.w3.org/2000/svg"

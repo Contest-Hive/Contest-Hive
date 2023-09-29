@@ -1,7 +1,10 @@
-// Vercel Analytics
-import { Analytics } from "@vercel/analytics/react";
 import UnderMaintenance from "@/components/UnderUnderMaintenance";
 import "@/app/globals.css";
+
+
+// Change When Maintaining
+const IS_MAINTENANCE = false;
+
 
 const title = "Contest Hive";
 const description =
@@ -25,13 +28,7 @@ const layout = ({ children }) => {
   return (
     <html lang="en">
       <body className="bg-gray-950 text-gray-200">
-        {/* Under Maintenance */}
-
-        {/* <body className="bg-gray-950 text-gray-200">
-        <UnderMaintenance />
-      </body> */}
-
-        <main>{children}</main>
+        <main>{IS_MAINTENANCE ? <UnderMaintenance /> : children}</main>
       </body>
     </html>
   );
