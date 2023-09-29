@@ -10,7 +10,7 @@ const Home = () => {
           Contests At Your Fingertips
         </h1>
         <h2 className="mb-1 mt-3 text-sm font-medium tracking-widest text-indigo-400 md:text-lg">
-          Boost Your Productivity with Contest Hive
+          Never Miss a Contest Again
         </h2>
 
         {/* API Docs and Github Button */}
