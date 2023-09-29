@@ -2,6 +2,14 @@ import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 
+const PAGE_SPEED = {
+  ContestHive:
+    "https://pagespeed.web.dev/analysis/https-contest-hive-vercel-app/rpcslk4tb1",
+  StopStalk:
+    "https://pagespeed.web.dev/analysis/https-www-stopstalk-com-contests/7ggfeyzkq1",
+  Kontests: "https://pagespeed.web.dev/analysis/https-kontests-net/ng0dnqivsn",
+};
+
 const MARK = (
   <svg
     className="h-3 w-3 text-green-500"
@@ -43,7 +51,7 @@ const MakeLink = (text, link, target) => {
   return (
     <Link
       href={link}
-      className="roundedLg mx-1 px-1 py-1 font-bold text-sky-500 transition-all duration-200 hover:bg-gray-800 hover:bg-opacity-60 hover:text-emerald-500"
+      className="roundedLg mx-1 rounded-lg px-1 py-1 font-bold text-sky-500 transition-all duration-200 hover:bg-gray-800 hover:bg-opacity-60 hover:text-emerald-500"
       target={target}
     >
       {text}
@@ -92,7 +100,7 @@ const page = () => {
             From the beginning, the goal was to make the website as simple as
             possible. I shared this site with my friends and some senior coders.
             They liked the idea and suggested me to add/modify some features.
-            Lots of unslept nights and hard work later, we are here.
+            Lots of sleepless nights and hard work later, we are here.
             <br />
             <br />
             The ones who helped me in this journey are listed in the
@@ -113,7 +121,9 @@ const page = () => {
             How are We Different?
           </header>
           <p className="mt-5">
-            <span className="font-semibold font-white">It really depends on what you are looking for.</span>
+            <span className="font-white font-semibold">
+              It really depends on what you are looking for.
+            </span>
             <br />
             <b className="text-gray-100">Contest Hive</b> focuses on managing
             everything related to future contests while{" "}
@@ -153,7 +163,7 @@ const page = () => {
                 <div className="text-gray-400">
                   Data Updates{" "}
                   <sup className="text-xs text-red-400">
-                    <Link href="#1">every [1]</Link>
+                    <Link href="#1">[1]</Link>
                   </sup>
                 </div>
                 <div className="ml-1 mt-1 font-bold">~5 min</div>
@@ -173,7 +183,12 @@ const page = () => {
                 <div className="ml-1 mt-1">{MARK}</div>
               </div>
               <div className="grid grid-cols-4 gap-x-16 border-b border-gray-700 px-4 py-5 text-sm">
-                <div className="text-gray-400">Best Performance</div>
+                <div className="text-gray-400">
+                  Best Performance{" "}
+                  <sup className="text-xs text-red-400">
+                    <Link href="#2">[2]</Link>
+                  </sup>
+                </div>
                 <div className="ml-1 mt-1">{MARK}</div>
                 <div className="ml-1 mt-1">{CROSS}</div>
                 <div className="ml-1 mt-1">{CROSS}</div>
@@ -195,6 +210,68 @@ const page = () => {
                 <div className="ml-1 mt-1">{CROSS}</div>
                 <div className="ml-1 mt-1">{MARK}</div>
                 <div className="ml-1 mt-1">{CROSS}</div>
+              </div>
+            </div>
+
+            {/* KeyNotes */}
+            <div className="mt-10 text-sm">
+              <p className="mb-5 text-4xl font-semibold text-gray-200">
+                KeyNotes
+              </p>
+              <div className="mb-10">
+                <p
+                  className="mb-3 border-b-2 border-gray-700 text-2xl font-semibold text-gray-200"
+                  id="1"
+                >
+                  <span className="inline-block text-gray-400">#[1]</span> Data
+                  Update Time
+                </p>
+                <p className="text-base text-gray-300 md:text-lg">
+                  The interval of time after which the data fetched and updated.
+                </p>
+              </div>
+
+              <div className="mb-10">
+                <p
+                  className="mb-3 border-b-2 border-gray-700 text-2xl font-semibold text-gray-200"
+                  id="2"
+                >
+                  <span className="inline-block text-gray-400">#[2]</span> Best
+                  Performance
+                </p>
+                <p className="text-base text-gray-300 md:text-lg">
+                  The website that loads the fastest. It was measured using
+                  {MakeLink(
+                    "PageSpeed Insights",
+                    "https://pagespeed.web.dev/",
+                    "_blank",
+                  )}
+                  by Google.
+                  <br />
+                  <ul className="mt-2 list-inside list-disc pl-7 font-mono">
+                    <li className="text-gray-100">
+                      {MakeLink(
+                        "Contest Hive scored 100 in Mobile and 99 in Desktop",
+                        PAGE_SPEED.ContestHive,
+                        "_blank",
+                      )}
+                    </li>
+                    <li className="text-gray-100">
+                      {MakeLink(
+                        "StopStalk scored 61 in Mobile and 97 in Desktop",
+                        PAGE_SPEED.StopStalk,
+                        "_blank",
+                      )}
+                    </li>
+                    <li className="text-gray-100">
+                      {MakeLink(
+                        "Kontests scored 73 in Mobile and 82 in Desktop",
+                        PAGE_SPEED.Kontests,
+                        "_blank",
+                      )}
+                    </li>
+                  </ul>
+                </p>
               </div>
             </div>
           </div>
