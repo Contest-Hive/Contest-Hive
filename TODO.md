@@ -1,3 +1,2 @@
 - 1 ) Reset 24 hours data from actions, not from `route.js`
-- 2 ) *Compare* Contest Hive with other similar websites
-- 3 ) Change /credits page
+- 2 ) Change /credits page
