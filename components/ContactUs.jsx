@@ -87,6 +87,7 @@ const ContactUs = () => {
         className="mx-auto mb-32 w-[90%] max-w-screen-lg md:w-2/3"
         onSubmit={submitForm}
         data-aos="fade-up"
+        id="contact-us"
       >
         <header className="mb-14 text-center text-4xl font-medium text-white md:text-6xl">
           Contact Us
