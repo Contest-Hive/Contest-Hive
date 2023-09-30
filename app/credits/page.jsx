@@ -8,7 +8,7 @@ const ME = {
   role: "Programmer",
   image: "/assets/images/me.png",
   description:
-    "And I am the one who put all the ideas together to make this website😀.",
+    "And I am the one who put all the ideas together to make this website. 😀",
   links: {
     github: "https://github.com/Nusab19",
     telegram: "https://t.me/Nusab19",
@@ -21,21 +21,20 @@ const TOOLS = [
     name: "Flowbite",
     role: "Tailwind UI Kit",
     image: "/assets/images/flowbite.svg",
-    description: "Flowbite gave me UI components to start building quickly.",
+    description:
+      "The most popular and open-source library of Tailwind CSS components.",
     links: {
-      github: "#",
-      telegram: "#",
+      github: "https://github.com/themesberg/flowbite",
     },
     tool: true,
   },
   {
-    name: "Tailblock",
+    name: "Tailblocks",
     role: "Tailwind UI Kit",
     image: "/assets/images/tailblock.png",
-    description: "Tailblock's Features component came to use in Contest Hive.",
+    description: "Ready-to-use Tailwind CSS blocks in your future projects.",
     links: {
-      github: "#",
-      telegram: "#",
+      github: "https://github.com/mertJF/tailblocks",
     },
     tool: true,
   },
@@ -43,13 +42,14 @@ const TOOLS = [
 
 const PEOPLE = [
   {
-    name: "Ah Nayef",
+    name: "Ahsan Habib Nayef",
     role: "Full-Stack Developer",
     image: "/assets/images/ahn.jpg",
-    description: "AHN is the one who gave the idea of Animations and Sorting.",
+    description: "AH Nayef is the one who gave the idea of Animations and Sorting.",
     links: {
-      github: "#",
-      telegram: "#",
+      github: "https://github.com/ahnayef",
+      telegram: "https://t.me/AHNayef",
+      facebook: "https://www.facebook.com/ahsanhabibnayef",
     },
   },
   {
@@ -95,6 +95,7 @@ const MakeCard = (list) => {
                         href={person.links.facebook || "#"}
                         className="text-[#4c6ebe] hover:text-[#4b81ff]"
                         title={person.name + "'s Facebook"}
+                        target="_blank"
                       >
                         <svg
                           className="h-6 w-6"
@@ -103,18 +104,19 @@ const MakeCard = (list) => {
                           aria-hidden="true"
                         >
                           <path
-                            fill-rule="evenodd"
+                            fillRule="evenodd"
                             d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-                            clip-rule="evenodd"
+                            clipRule="evenodd"
                           />
                         </svg>
                       </Link>
                     </li>
                     <li>
                       <Link
-                        href={person.links.telegram|| "#"}
+                        href={person.links.telegram || "#"}
                         className="text-[#26A5E4] hover:text-[#3e8acc]"
                         title={person.name + "'s Telegram"}
+                        target="_blank"
                       >
                         <svg
                           className="mt-[2px] h-[22px] w-[22px]"
@@ -130,9 +132,10 @@ const MakeCard = (list) => {
                 )}
                 <li>
                   <Link
-                    href={person.links.github|| "#"}
+                    href={person.links.github || "#"}
                     className="text-gray-300 hover:text-gray-100"
                     title={person.name + "'s Github"}
+                    target="_blank"
                   >
                     <svg
                       className="h-6 w-6"
@@ -141,9 +144,9 @@ const MakeCard = (list) => {
                       aria-hidden="true"
                     >
                       <path
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                        clip-rule="evenodd"
+                        clipRule="evenodd"
                       />
                     </svg>
                   </Link>
