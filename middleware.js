@@ -5,7 +5,7 @@ export async function middleware(req) {
   const origin = String(nextUrl.origin) + "/";
   const href = String(nextUrl.href);
 
-  // if (origin.startsWith("http://localhost")) return NextResponse.next(); // Don't count local requests
+  if (origin.startsWith("http://localhost")) return NextResponse.next(); // Don't count local requests
   // Exclude some paths
   const excludedValues = ["_next", "favicon", "assets"];
   for (const value of excludedValues) {
