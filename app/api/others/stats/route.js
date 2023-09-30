@@ -30,31 +30,12 @@ const updateData = async (key) => {
   if (!updated) console.log("Error in Mongo Update: Key Not Found");
 };
 
-const localData = { date: new Date().getDate() };
-async function reset24hoursData() {
-  // Update the date if it's not set
-  // change the date if it's not the same
-
-  const date = new Date().getDate();
-  if (localData.date !== date) {
-    localData.date = date;
-    console.log("Resetting 24 hours data");
-    await STATS.findOneAndUpdate(
-      { _id: 1 },
-      { $set: { past24: 1, past24page: 1, past24api: 1 } },
-    );
-  }
-}
-
 export async function POST(req) {
   try {
     const jsonData = await req.json();
-    await reset24hoursData(); // Reset the 24 hours data if needed
 
     const { href } = jsonData;
     const path = href.toLowerCase().includes("api") ? "api" : "page";
-    if (href.includes("api/others/"))
-      return new NextResponse(JSON.stringify({ ok: false }, null, 2));
 
     await updateData(path);
 
