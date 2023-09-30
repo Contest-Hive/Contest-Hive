@@ -7,7 +7,7 @@ const Home = () => {
     <div className="container mx-auto flex flex-wrap px-5 py-24">
       <div className="flex w-full flex-col text-center">
         <h1 className="title-font text-4xl font-bold text-white md:text-7xl">
-          Contests At Your Fingertips
+          Contest Hive is All You Need
         </h1>
         <h2 className="mb-1 mt-3 text-sm font-medium tracking-widest text-indigo-400 md:text-lg">
           Never Miss a Contest Again
