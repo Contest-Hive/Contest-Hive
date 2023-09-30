@@ -195,7 +195,7 @@ const page = () => {
 export default page;
 
 const title = "Credits | Contest Hive";
-const description = "Credits page of Contest Hive. Who made this possible?";
+const description = "Credits page of Contest Hive. Who made Contest Hive possible?";
 const keywords =
   "contest hive credits, contest hive, contest api credits, upcoming contest credits, codeforces api, toph api, kontests api, hackerearth api, hackerrank api, codechef api, atcoder api, leetcode api, nusab taha, nusab19, toph leaderboard";
 const url = "https://contest-hive.vercel.app/credits";
