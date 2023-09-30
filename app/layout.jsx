@@ -18,7 +18,7 @@ export default layout;
 
 const title = "Contest Hive";
 const description =
-  "Contests at Your Fingertips. All upcoming contests at one place. Never miss a contest again.";
+  "Contest Hive provides all the upcoming contests in one place. You will never miss a contest again. With the help of our API, you can integrate it with your website or app.";
 const keywords =
   "contest, contest hive, contest api, upcoming contest, codeforces api, toph api, kontests api, hackerearth api, hackerrank api, codechef api, atcoder api, leetcode api, nusab taha, nusab19, toph leaderboard";
 const url = "https://contest-hive.vercel.app/";
