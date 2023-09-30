@@ -168,8 +168,8 @@ const page = () => {
 
           {/* Table */}
 
-          <div className="mt-10 overflow-x-auto">
-            <div className="min-w-max overflow-hidden">
+          <section className="mt-10 overflow-x-auto">
+            <div className="overflow-hidden min-w-max">
               <div className="roundedLg grid grid-cols-4 gap-x-16 bg-gray-800 p-4 text-sm font-medium text-gray-100">
                 <div>Feature</div>
                 <div>Contest Hive</div>
@@ -246,100 +246,99 @@ const page = () => {
                 <div className="ml-1 mt-1">{CROSS}</div>
               </div>
             </div>
-
-            {/* KeyNotes */}
-            <div className="mt-10 text-sm">
-              <p className="mb-5 text-4xl font-semibold text-gray-200">
-                KeyNotes
+          </section>
+          {/* KeyNotes */}
+          <section className="mt-10 text-sm">
+            <p className="mb-5 text-4xl font-semibold text-gray-200">
+              KeyNotes
+            </p>
+            {/* 1 */}
+            <div className="mb-10">
+              <p
+                className="mb-3 border-b-2 border-gray-700 text-2xl font-semibold text-gray-200"
+                id="1"
+              >
+                <span className="inline-block text-gray-400">#[1]</span> Data
+                Update Time
               </p>
-              {/* 1 */}
-              <div className="mb-10">
-                <p
-                  className="mb-3 border-b-2 border-gray-700 text-2xl font-semibold text-gray-200"
-                  id="1"
-                >
-                  <span className="inline-block text-gray-400">#[1]</span> Data
-                  Update Time
-                </p>
-                <p className="text-base text-gray-300 md:text-lg">
-                  The interval of time after which the data fetched and updated.{" "}
-                  <br />
-                </p>
-                <ul className="mt-2 list-inside list-disc pl-7 font-mono text-xl">
-                  <li className="text-gray-100">
-                    Contest Hive updates the data every 5 minutes.
-                  </li>
-                  <li className="text-gray-100">
-                    StopStalk updates the data every 1 hour.{" "}
-                  </li>
-                  <li className="text-gray-100">
-                    Kontests updates the data every 24 hours.
-                  </li>
-                </ul>
-              </div>
-              {/* 2 */}
-              <div className="mb-10">
-                <p
-                  className="mb-3 border-b-2 border-gray-700 text-2xl font-semibold text-gray-200"
-                  id="2"
-                >
-                  <span className="inline-block text-gray-400">#[2]</span> Best
-                  Performance
-                </p>
-                <p className="text-base text-gray-300 md:text-lg">
-                  The website that loads the fastest. It was measured using
+              <p className="text-base text-gray-300 md:text-lg">
+                The interval of time after which the data fetched and updated.{" "}
+                <br />
+              </p>
+              <ul className="mt-2 list-inside list-disc pl-7 font-mono md:text-xl text-lg">
+                <li className="text-gray-100">
+                  Contest Hive updates the data every 5 minutes.
+                </li>
+                <li className="text-gray-100">
+                  StopStalk updates the data every 1 hour.{" "}
+                </li>
+                <li className="text-gray-100">
+                  Kontests updates the data every 24 hours.
+                </li>
+              </ul>
+            </div>
+            {/* 2 */}
+            <div className="mb-10">
+              <p
+                className="mb-3 border-b-2 border-gray-700 text-2xl font-semibold text-gray-200"
+                id="2"
+              >
+                <span className="inline-block text-gray-400">#[2]</span> Best
+                Performance
+              </p>
+              <p className="text-base text-gray-300 md:text-lg">
+                The website that loads the fastest. It was measured using
+                {MakeLink(
+                  "PageSpeed Insights",
+                  "https://pagespeed.web.dev/",
+                  "_blank",
+                )}
+                by Google.
+                <br />
+              </p>
+              <ul className="mt-2 list-inside list-disc pl-7 font-mono md:text-xl text-lg">
+                <li className="text-gray-100">
                   {MakeLink(
-                    "PageSpeed Insights",
-                    "https://pagespeed.web.dev/",
+                    "Contest Hive scored 100 in Mobile and 99 in Desktop",
+                    PAGE_SPEED.ContestHive,
                     "_blank",
                   )}
-                  by Google.
-                  <br />
-                </p>
-                <ul className="mt-2 list-inside list-disc pl-7 font-mono text-xl">
-                  <li className="text-gray-100">
-                    {MakeLink(
-                      "Contest Hive scored 100 in Mobile and 99 in Desktop",
-                      PAGE_SPEED.ContestHive,
-                      "_blank",
-                    )}
-                  </li>
-                  <li className="text-gray-100">
-                    {MakeLink(
-                      "StopStalk scored 61 in Mobile and 97 in Desktop",
-                      PAGE_SPEED.StopStalk,
-                      "_blank",
-                    )}
-                  </li>
-                  <li className="text-gray-100">
-                    {MakeLink(
-                      "Kontests scored 73 in Mobile and 82 in Desktop",
-                      PAGE_SPEED.Kontests,
-                      "_blank",
-                    )}
-                  </li>
-                </ul>
-              </div>
-
-              {/* 3 */}
-              <div className="mb-10">
-                <p
-                  className="mb-3 border-b-2 border-gray-700 text-2xl font-semibold text-gray-200"
-                  id="3"
-                >
-                  <span className="inline-block text-gray-400">#[3]</span> Shows
-                  Local Time
-                </p>
-                <p className="text-base text-gray-300 md:text-lg">
-                  Whether the website shows the local time of the contest start
-                  time or not.
-                  <br />
-                </p>
-              </div>
-
-              {/* -------- */}
+                </li>
+                <li className="text-gray-100">
+                  {MakeLink(
+                    "StopStalk scored 61 in Mobile and 97 in Desktop",
+                    PAGE_SPEED.StopStalk,
+                    "_blank",
+                  )}
+                </li>
+                <li className="text-gray-100">
+                  {MakeLink(
+                    "Kontests scored 73 in Mobile and 82 in Desktop",
+                    PAGE_SPEED.Kontests,
+                    "_blank",
+                  )}
+                </li>
+              </ul>
             </div>
-          </div>
+
+            {/* 3 */}
+            <div className="mb-10">
+              <p
+                className="mb-3 border-b-2 border-gray-700 text-2xl font-semibold text-gray-200"
+                id="3"
+              >
+                <span className="inline-block text-gray-400">#[3]</span> Shows
+                Local Time
+              </p>
+              <p className="text-base text-gray-300 md:text-lg">
+                Whether the website shows the local time of the contest start
+                time or not.
+                <br />
+              </p>
+            </div>
+
+            {/* -------- */}
+          </section>
         </div>
       </div>
       <Footer />
