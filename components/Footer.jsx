@@ -26,11 +26,11 @@ const Footer = () => {
           <Link
             title="Portfolio of Nusab Taha"
             href={contactInfo.portfolio}
-            className="text-md ml-3 font-mono text-base font-semibold text-rose-500 hover:text-purple-400"
+            className="text-md ml-3 font-mono text-base font-semibold text-rose-500 hover:text-emerald-400"
             target="_blank"
             rel="noopener noreferrer"
           >
-            @ NusabTaha
+            NusabTaha
             <svg
               className="mb-1 ml-2 inline-block h-5 w-5"
               xmlns="http://www.w3.org/2000/svg"
