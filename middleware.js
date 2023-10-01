@@ -22,6 +22,6 @@ export async function middleware(req) {
   }
   console.log("middleware done:", href);
 
-  makeReq();
+  await makeReq();
   return NextResponse.next();
 }
