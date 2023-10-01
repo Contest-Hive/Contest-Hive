@@ -20,8 +20,8 @@ export async function middleware(req) {
       body: JSON.stringify({ href }),
     });
   }
-  console.log("middleware done:", href);
-
+  
   await makeReq();
+  console.log("middleware done:", href);
   return NextResponse.next();
 }

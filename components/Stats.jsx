@@ -22,7 +22,7 @@ function simplifyNumber(number) {
 
 async function getData() {
   const res = await fetch(
-    "https://contest-hive.vercel.app/api/others/stats",
+    "http://127.0.0.1:3000/api/others/stats",
     {
       cache: "no-cache",
     },
