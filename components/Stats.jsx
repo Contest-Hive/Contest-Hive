@@ -47,7 +47,7 @@ const Stats = () => {
           {/* 1 */}
           <div className="flex flex-col items-center justify-center">
             <dt className="mb-2 text-3xl font-bold md:text-4xl">
-              <span className="toolText">
+              <span className="toolText select-none">
                 {simplifyNumber(data.past24page)}+
               </span>
               <span className="tooltip absolute mx-auto ml-5 hidden select-none rounded-lg bg-slate-800 px-2 pb-[7px] pt-[5px] text-center text-2xl font-medium text-gray-200 opacity-0 transition-opacity duration-200">
@@ -69,7 +69,7 @@ const Stats = () => {
           {/* 2 */}
           <div className="flex flex-col items-center justify-center">
             <dt className="mb-2 text-3xl font-bold md:text-4xl">
-              <span className="toolText">{simplifyNumber(data.api)}+</span>
+              <span className="toolText select-none">{simplifyNumber(data.api)}+</span>
               <span className="tooltip absolute mx-auto ml-5 hidden select-none rounded-lg bg-slate-800 px-2 pb-[7px] pt-[5px] text-center text-2xl font-medium text-gray-200 opacity-0 transition-opacity duration-200">
                 <svg
                   className="absolute -ml-[18px] mt-[10px] h-4 w-4 text-gray-800"
@@ -89,7 +89,7 @@ const Stats = () => {
           {/* 3 */}
           <div className="flex flex-col items-center justify-center">
             <dt className="mb-2 text-3xl font-bold md:text-4xl">
-              <span className="toolText">{simplifyNumber(data.total)}+</span>
+              <span className="toolText select-none">{simplifyNumber(data.total)}+</span>
               <span className="tooltip absolute mx-auto ml-5 hidden select-none rounded-lg bg-slate-800 px-2 pb-[7px] pt-[5px] text-center text-2xl font-medium text-gray-200 opacity-0 transition-opacity duration-200">
                 <svg
                   className="absolute -ml-[18px] mt-[10px] h-4 w-4 text-gray-800"
