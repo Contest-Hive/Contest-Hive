@@ -21,12 +21,9 @@ function simplifyNumber(number) {
 }
 
 async function getData() {
-  const res = await fetch(
-    "http://127.0.0.1:3000/api/others/stats",
-    {
-      cache: "no-cache",
-    },
-  );
+  const res = await fetch("http://127.0.0.1:3000/api/others/stats", {
+    cache: "no-cache",
+  });
   const data = await res.json();
   return data;
 }
