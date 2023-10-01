@@ -7,7 +7,7 @@
 <p align="center">
 
 <a href="https://github.com/Nusab19/Contest-Hive/actions/workflows/npm-publish-github-packages.yml">
-  <img src="https://github.com/Nusab19/Contest-Hive/actions/workflows/npm-publish-github-packages.yml/badge.svg" alt="Build">
+  <img src="https://github.com/Nusab19/Contest-Hive/actions/workflows/test-build.yml/badge.svg" alt="Build">
 </a>
 <a href="https://contest-hive.vercel.app/docs/">
   <img src="https://img.shields.io/badge/Docs-passing-33cb56" alt="Docs">
@@ -38,6 +38,7 @@ Live at [contest-hive.vercel.app](https://contest-hive.vercel.app/)
 - [API](#api)
   - [API Endpoints](#api-endpoints)
   - [API Response Format](#api-response-format)
+- [How Does It Work?](#how-does-it-work)
 - [Contributing](#contributing)
 - [License](#license)
 - [Links](#links)
@@ -51,8 +52,8 @@ All contests in one place. Isn't it cool?
 ## Features
 
 - [x] Upcoming contests from 7 platforms
-- [x] Filter contests by platform
-- [x] Contests Update Every 10 Minutes
+- [x] Filter contests by **start time** or **platform**
+- [x] Contests Update Every **5** Minutes
 - [x] Google Calendar Integration
 - [x] API for developers
 - [x] No Rate Limit on API
@@ -63,8 +64,7 @@ All contests in one place. Isn't it cool?
 
 - [x] Atcoder
 - [x] Codechef
-- [x] Codeforces
-- [x] Codeforces GYM
+- [x] Codeforces `includes Codeforces GYM`
 - [x] Hackerearth
 - [x] Hackerrank
 - [x] Leetcode
@@ -80,15 +80,15 @@ The documentation fully explains how to use the API and the response formats.
 
 | Endpoint                                                                    | Alias                                                      | Description                                                     |
 | --------------------------------------------------------------------------- | ---------------------------------------------------------- | --------------------------------------------------------------- |
-| [`/api`](https://contest-hive.vercel.app/api)                               | [`/`](https://contest-hive.vercel.app/api/)                | Root Endpoint of api                                            |
-| [`/api/atcoder`](https://contest-hive.vercel.app/api/atcoder)               | [`/1`](https://contest-hive.vercel.app/api/atcoder)        | Returns all the future contests information from AtCoder        |
-| [`/api/codechef`](https://contest-hive.vercel.app/api/codechef)             | [`/2`](https://contest-hive.vercel.app/api/codechef)       | Returns all the future contests information from Codechef       |
-| [`/api/codeforces`](https://contest-hive.vercel.app/api/codeforces)         | [`/3`](https://contest-hive.vercel.app/api/codeforces)     | Returns all the future contests information from Codeforces     |
-| [`/api/hackerearth`](https://contest-hive.vercel.app/api/hackerearth)       | [`/4`](https://contest-hive.vercel.app/api/hackerearth)    | Returns all the future contests information from Hackerearth    |
-| [`/api/hackerrank`](https://contest-hive.vercel.app/api/hackerrank)         | [`/5`](https://contest-hive.vercel.app/api/hackerrank)     | Returns all the future contests information from Hackerrank     |
-| [`/api/leetcode`](https://contest-hive.vercel.app/api/leetcode)             | [`/6`](https://contest-hive.vercel.app/api/leetcode)       | Returns all the future contests information from Leetcode       |
-| [`/api/toph`](https://contest-hive.vercel.app/api/toph)                     | [`/7`](https://contest-hive.vercel.app/api/toph)           | Returns all the future contests information from Toph           |
-| [`/api/codeforces-gym`](https://contest-hive.vercel.app/api/codeforces-gym) | [`/8`](https://contest-hive.vercel.app/api/codeforces-gym) | Returns all the future contests information from Codeforces GYM |
+| [`/api`](https://contest-hive.vercel.app/api)                               | [](https://contest-hive.vercel.app/api/)                | Root Endpoint of api                                            |
+| [`/atcoder`](https://contest-hive.vercel.app/api/atcoder)               | [`/1`](https://contest-hive.vercel.app/api/atcoder)        | Returns all the future contests information from AtCoder        |
+| [`/codechef`](https://contest-hive.vercel.app/api/codechef)             | [`/2`](https://contest-hive.vercel.app/api/codechef)       | Returns all the future contests information from Codechef       |
+| [`/codeforces`](https://contest-hive.vercel.app/api/codeforces)         | [`/3`](https://contest-hive.vercel.app/api/codeforces)     | Returns all the future contests information from Codeforces     |
+| [`/hackerearth`](https://contest-hive.vercel.app/api/hackerearth)       | [`/4`](https://contest-hive.vercel.app/api/hackerearth)    | Returns all the future contests information from Hackerearth    |
+| [`/hackerrank`](https://contest-hive.vercel.app/api/hackerrank)         | [`/5`](https://contest-hive.vercel.app/api/hackerrank)     | Returns all the future contests information from Hackerrank     |
+| [`/leetcode`](https://contest-hive.vercel.app/api/leetcode)             | [`/6`](https://contest-hive.vercel.app/api/leetcode)       | Returns all the future contests information from Leetcode       |
+| [`/toph`](https://contest-hive.vercel.app/api/toph)                     | [`/7`](https://contest-hive.vercel.app/api/toph)           | Returns all the future contests information from Toph           |
+| [`/codeforces-gym`](https://contest-hive.vercel.app/api/codeforces-gym) | [`/8`](https://contest-hive.vercel.app/api/codeforces-gym) | Returns all the future contests information from Codeforces GYM |
 
 ### API Response Format
 
@@ -120,6 +120,17 @@ The API returns a JSON object with the following format for each platform:
 ```
 
 The response types and details are explained in the [API Documentation](https://contest-hive.vercel.app/docs/all).
+
+
+
+
+## How Does It Work?
+
+Contest Hive uses **Github Actions** to run a python script every 5 minutes which fetches the contests info and stores them in a JSON file. The JSON file is then used and cached by the Contest Hive API to serve the data to the users.
+
+This way, the API doesn't have to fetch the data from the platforms every time a user makes a request.
+
+The Backend repository of Contest Hive can be found [here](https://github.com/Nusab19/__contest-hive-backend)
 
 ## Contributing
 
