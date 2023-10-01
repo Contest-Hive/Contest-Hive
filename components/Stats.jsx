@@ -21,9 +21,17 @@ function simplifyNumber(number) {
 }
 
 async function getData() {
-  const res = await fetch("http://127.0.0.1:3000/api/others/stats", {
-    cache: "no-cache",
-  });
+  try {
+    const res = await fetch("http://127.0.0.1:3000/api/others/stats", {
+      cache: "no-cache",
+    });
+  } catch (e) {
+    console.log("Error on fetch. Maybe on build?");
+    const res = await fetch("https:/contest-hive.vercel.app/api/others/stats", {
+      cache: "no-cache",
+    });
+  }
+
   const data = await res.json();
   return data;
 }
