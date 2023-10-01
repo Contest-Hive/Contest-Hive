@@ -34,8 +34,7 @@ export async function POST(req) {
   try {
     const jsonData = await req.json();
 
-    const { href } = jsonData;
-    const path = href.toLowerCase().includes("api") ? "api" : "page";
+    const { path } = jsonData;
 
     await updateData(path);
 
