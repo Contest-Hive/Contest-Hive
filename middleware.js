@@ -10,7 +10,7 @@ export async function middleware(req) {
   for (const value of excludedValues) {
     if (href.toLowerCase().includes(value)) return NextResponse.next();
   }
-  1;
+  
   async function makeReq() {
     await fetch(`${origin}/api/others/stats`, {
       method: "POST",
@@ -20,7 +20,7 @@ export async function middleware(req) {
       body: JSON.stringify({ href }),
     });
   }
-  
+
   await makeReq();
   console.log("middleware done:", href);
   return NextResponse.next();
