@@ -49,6 +49,8 @@ Contest Hive saves your time by providing you all the upcoming contests from var
 
 All contests in one place. Isn't it cool?
 
+If you want to know how this is different from **StopStalk**, then you can read the [About Page](https://contest-hive.vercel.app/about/) of Contest Hive. It explains the differences between Contest Hive, StopStalk and Kontests.
+
 ## Features
 
 - [x] Upcoming contests from 7 platforms
