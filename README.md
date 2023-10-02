@@ -132,7 +132,8 @@ Contest Hive uses **Github Actions** to run a python script every 5 minutes whic
 
 This way, the API doesn't have to fetch the data from the platforms every time a user makes a request.
 
-The Backend repository of Contest Hive can be found [here](https://github.com/Nusab19/__contest-hive-backend)
+
+The Backend repository of Contest Hive can be found [here](https://github.com/Contest-Hive/__contest-hive-backend)
 
 ## Contributing
 

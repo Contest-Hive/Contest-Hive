@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const GithubUrl = "https://github.com/Nusab19/Contest-Hive";
+const GithubUrl = "https://github.com/Contest-Hive/Contest-Hive";
 
 const Home = () => {
   return (

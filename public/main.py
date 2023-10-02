@@ -29,6 +29,7 @@ paths = {
         "docs/atcoder",
         "docs/codechef",
         "docs/codeforces",
+        "docs/codeforces-gym",
         "docs/hackerearth",
         "docs/hackerrank",
         "docs/leetcode",
