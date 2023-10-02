@@ -6,13 +6,17 @@ export async function middleware(req) {
   const href = String(nextUrl.href);
 
   // Exclude some paths
+
   const excludedValues = ["_next", "favicon", "assets", "icon", "image"];
+
 
   for (const value of excludedValues) {
     if (href.toLowerCase().includes(value)) return NextResponse.next();
   }
   
+
   const path = href.toLowerCase().includes("api") ? "api" : "page";
+
 
   async function makeReq() {
     await fetch(`${origin}/api/others/stats`, {
