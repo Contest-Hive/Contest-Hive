@@ -1,2 +1,1 @@
 - 1 ) Reset 24 hours data from actions, not from `route.js`
-- 2 ) Change /credits page

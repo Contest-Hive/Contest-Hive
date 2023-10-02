@@ -21,12 +21,12 @@ import { NextResponse } from "next/server";
 
 import {
   getSecondsDifference,
-  humanReadableTimeUTC,
+  utcReadableTime,
   seconds2Time,
 } from "@/components/helpers/KontestsHelper";
 
 const API_URL =
-  "https://raw.githubusercontent.com/Nusab19/__contest-hive-backend/cache/cache/Data/😀.json";
+  "https://raw.githubusercontent.com/Contest-Hive/__contest-hive-backend/cache/cache/Data/😀.json";
 
 const urlData = {
   atcoder: "https://atcoder.jp/contests/",
@@ -47,7 +47,7 @@ const urlData = {
 function getContestData(contest, platformName) {
   😥
   const [contestName, contestUrl, startTime, durationSeconds] = contest;
-  const readableStateTime = humanReadableTimeUTC(startTime);
+  const readableStateTime = utcReadableTime(startTime);
   const duration = seconds2Time(durationSeconds);
   return {
     name: contestName,

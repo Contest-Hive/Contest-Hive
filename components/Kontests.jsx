@@ -1,61 +1,88 @@
 "use client";
-import { useEffect, useState, use } from "react";
+import { useEffect, useState } from "react";
 import AOS from "@/others/applyAOS.js";
-import { getTable } from "@/components/helpers/KontestsHelper";
-// import LoadKontests from "@/components/helpers/LoadKontests";
+import {
+  sortContests,
+  paginateContests,
+  GenerateContestTable,
+  generatePageNumbers,
+} from "@/components/helpers/KontestsHelper";
 
 const Kontests = () => {
-  const [showAll, setShowAll] = useState(false);
-  const [sortBy, setSortBy] = useState("startTime");
-  const [isDesktop, setDesktop] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(5);
+  const [contestsPerPage, setContestsPerPage] = useState(7);
+  const [allContests, setAllContests] = useState([]);
   const [totalContests, setTotalContests] = useState(0);
   const [pltName, setPltName] = useState("all");
-  const [allContestsData, setAllContestsData] = useState({
-    data: {},
-    justLoaded: true,
-  });
+  const [sortBy, setSortBy] = useState("startTime");
+  const [isDesktop, setDesktop] = useState(false);
+  const [contestsJson, setContestsJson] = useState([
+    {
+      justLoaded: true,
+    },
+  ]);
 
   useEffect(() => {
+    const contests = sortContests(contestsJson, pltName, sortBy);
+    setAllContests(contests);
+    setTotalContests(contests.length);
+
+    // refresh AOS
     setTimeout(() => {
       AOS.refresh();
     }, 200);
-  }, [showAll, sortBy, pltName]);
-
-  useEffect(() => {
-    setDesktop(window.innerWidth > 768);
-  }, []);
+  }, [sortBy, pltName]);
 
   useEffect(() => {
     const fetchContestData = () => {
       fetch("/api/all")
         .then((res) => res.json())
         .then((json) => {
-          setAllContestsData(json);
+          setContestsJson(json); // set the contests json
+          const contests = sortContests(json, pltName, sortBy); // sort the contests according to the platform and sortBy
+          setAllContests(contests); // set the contests
+
+          setTotalContests(contests.length);
+          setTotalPages(Math.ceil(contests.length / contestsPerPage));
+          setDesktop(window.innerWidth > 768);
         })
         .catch((err) => {
+          setDesktop(window.innerWidth > 768);
+          setJustLoaded(false);
+
           console.log("error:", err);
         });
     };
-
     fetchContestData();
   }, []);
 
-  useEffect(() => {
-    const calculateTotalContests = () => {
-      let count = 0;
-      const plt = pltName.toLowerCase();
-      if (plt === "all") {
-        for (let key in allContestsData.data) {
-          count += allContestsData.data[key].length;
-        }
+  function navigation() {
+    const list = generatePageNumbers(currentPage, totalPages);
+    return list.map((page) => {
+      if (currentPage === page) {
+        return (
+          <button
+            className="mr-2 rounded-md bg-blue-600 px-3 py-1"
+            onClick={() => setCurrentPage(page)}
+            key={page}
+          >
+            {page}
+          </button>
+        );
       } else {
-        count = allContestsData.data[plt].length;
+        return (
+          <button
+            className="mr-2 rounded-md bg-gray-600 px-3 py-1"
+            onClick={() => setCurrentPage(page)}
+            key={page}
+          >
+            {page}
+          </button>
+        );
       }
-      setTotalContests(count);
-    };
-
-    calculateTotalContests();
-  }, [pltName, allContestsData]);
+    });
+  }
 
   return (
     <>
@@ -140,23 +167,72 @@ const Kontests = () => {
               </th>
             </tr>
           </thead>
+
           <tbody>
-            {getTable(allContestsData, pltName, isDesktop, sortBy).slice(
-              0,
-              showAll ? 9999 : 7,
+            {GenerateContestTable(
+              paginateContests(allContests, currentPage, contestsPerPage),
+              pltName,
+              isDesktop,
+              contestsJson.justLoaded??false,
             )}
           </tbody>
         </table>
       </div>
-      <div
-        className="container mx-auto mt-5 w-32 cursor-pointer select-none rounded-md bg-gray-800 px-4 py-2 text-center font-medium text-gray-200 transition-all duration-300 hover:bg-gray-900"
-        onClick={() => {
-          if (showAll && totalContests > 7) window.location.href = "#contests";
-          setShowAll(!showAll);
-        }}
-      >
-        {showAll ? "Show Less" : "Show More"}
-      </div>
+
+      <section className="mx-auto mt-5 flex w-11/12 justify-between rounded-lg bg-gray-900 px-5 pb-3 pt-3 text-lg font-semibold text-gray-200 md:w-3/4">
+        <p className="pt-1">
+          Page {currentPage} of {totalPages}
+        </p>
+        <div className="flex">
+          <button
+            className="mr-2 rounded-md bg-sky-700 px-1 py-2"
+            onClick={() => {
+              if (totalPages === 1) return;
+              if (currentPage === 1) return setCurrentPage(totalPages);
+              setCurrentPage((prev) => prev - 1);
+            }}
+          >
+            <svg
+              className="h-5 w-5"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 8 14"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M7 1 1.3 6.326a.91.91 0 0 0 0 1.348L7 13"
+              />
+            </svg>
+          </button>
+          {navigation()}
+          <button
+            className="rounded-md bg-sky-700 px-1 py-2"
+            onClick={() => {
+              if (totalPages === 1) return;
+              if (currentPage === totalPages) return setCurrentPage(1);
+              setCurrentPage((prev) => prev + 1);
+            }}
+          >
+            <svg
+              className="h-5 w-5"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 8 14"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="m1 13 5.7-5.326a.909.909 0 0 0 0-1.348L1 1"
+              />
+            </svg>
+          </button>
+        </div>
+      </section>
     </>
   );
 };

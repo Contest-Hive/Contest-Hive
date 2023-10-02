@@ -20,7 +20,7 @@ function getSecondsDifference(date) {
  * @param {string} startTime - The start time of the contest in UTC ISO 8601 format (e.g., "2021-09-14T09:00:00Z").
  * @returns {string} - The start time of the contest in human-readable format (e.g., "14th September, 2021 at 9:00:00").
  */
-function humanReadableTime(startTime) {
+function readableTime(startTime) {
   const dt = new Date(startTime);
   const months = [
     "January",
@@ -59,11 +59,54 @@ function humanReadableTime(startTime) {
 }
 
 /**
- * Converts time in seconds to a human-readable format.
+ * Converts a start time in UTC ISO 8601 format into a human-readable format.
+ * @param {string} startTime - The start time of the contest in UTC ISO 8601 format like "2021-09-14T09:00:00Z"
+ * @returns {string} - The start time of the contest in human-readable format e.g., "14th September, 2021 at 9:00:00"
+ */
+function utcReadableTime(startTime) {
+  const dt = new Date(startTime);
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const day = dt.getUTCDate();
+  const month = months[dt.getUTCMonth()];
+  const year = dt.getUTCFullYear();
+  const hours = dt.getUTCHours().toString().padStart(2, "0");
+  const minutes = dt.getUTCMinutes().toString().padStart(2, "0");
+  const seconds = dt.getUTCSeconds().toString().padStart(2, "0");
+
+  let daySuffix = "th";
+  if (day === 1 || day === 21 || day === 31) {
+    daySuffix = "st";
+  } else if (day === 2 || day === 22) {
+    daySuffix = "nd";
+  } else if (day === 3 || day === 23) {
+    daySuffix = "rd";
+  }
+
+  const timeString = `${day}${daySuffix} ${month}, ${year} at ${hours}:${minutes}:${seconds}`;
+
+  return timeString;
+}
+
+/**
+ * Converts time in seconds to a short human-readable format.
  * @param {number} s - The time in seconds.
  * @returns {string} - The formatted time.
  */
-function whenIsItStarting(s) {
+function shortenStartTime(s) {
   if (!s) return "13 seconds";
 
   const seconds = s % 60;
@@ -124,17 +167,6 @@ function seconds2Time(s) {
 }
 
 /**
- * Capitalizes the first letter of a string and converts the rest of the letters to lowercase.
- * @param {string} str - The string to capitalize.
- * @returns {string} - The capitalized string.
- */
-function capitalizeString(str) {
-  const firstChar = str.charAt(0).toUpperCase();
-  const restOfString = str.slice(1).toLowerCase();
-  return firstChar + restOfString;
-}
-
-/**
  * Trims a string if it exceeds the maximum length, adding an ellipsis at the end.
  * @param {string} str - The string to trim.
  * @param {number} maxLen - The maximum length of the trimmed string, including the ellipsis.
@@ -160,92 +192,37 @@ const pascalNames = {
   toph: "Toph",
 };
 
-/**
- * Returns a table containing the contests based on the provided data, platform, isDesktop, and sortBy.
- *
- * @param {object} data - The data object containing the contests.
- * @param {string} platform - The name of the platform.
- * @param {boolean} isDesktop - Whether the device is desktop or not.
- * @param {string} sortBy - The sorting method.
- * @returns {JSX.Element} - The table containing the contests.
- */
-function getTable(data, platform, isDesktop, sortBy) {
-  if (data.justLoaded) {
-    return placeholderContests(isDesktop);
-  }
-
+function GenerateContestTable(contests, platformName, isDesktop, justLoaded) {
   const maxLen = isDesktop ? 50 : 33;
-
-  const contests = [];
-  const platforms = { ...data.data };
-  platform = platform.toLowerCase();
-
-  if (platform === "all")
-    for (const [key, value] of Object.entries(platforms))
-      for (const contest of value) {
-        if (getSecondsDifference(contest.startTime) < 0) continue;
-        contests.push({ ...contest, platform: key });
-      }
-  else
-    for (const contest of platforms[platform]) {
-      if (getSecondsDifference(contest.startTime) < 0) continue;
-      contests.push({ ...contest, platform });
-    }
-  contests.sort((a, b) => {
-    if (sortBy === "startTime" || platform !== "all") {
-      return (
-        getSecondsDifference(a.startTime) - getSecondsDifference(b.startTime)
-      );
-    } else {
-      const platformA = a.platform.toLowerCase();
-      const platformB = b.platform.toLowerCase();
-
-      if (platformA < platformB) return -1;
-      if (platformA > platformB) return 1;
-
-      return 0;
-    }
-  });
+  if (justLoaded) return placeholderContests(isDesktop); // if still fetching, show placeholder contests
 
   if (contests.length === 0) {
     return [
       <tr className="bg-gray-900" key={1}>
-        <td className="px-6 py-4 font-medium">{pascalNames[platform]}</td>
+        <td className="px-6 py-4 font-medium">{pascalNames[platformName]}</td>
         <td className="px-6 py-4 font-medium">No Contests Available</td>
         <td className="px-6 py-4">never</td>
-        <td className="px-6 py-4">1 hours 30 minutes</td>
+        <td className="px-6 py-4">30 minutes</td>
         <td className="px-6 py-4">{externalLink("#", "Atcoder")}</td>
         <td className="px-6 py-4">
-          {googleCalendarLink(
-            "2021-09-14T09:00:00Z",
+          {generateGoogleCalendarLink(
+            "2027-09-14T09:00:00Z",
             0,
             "No Contests Available",
             "",
-            platform,
+            platformName,
           )}
         </td>
       </tr>,
     ];
   }
-
-  const urlData = {
-    atcoder: "https://atcoder.jp/contests/",
-    codechef: "https://www.codechef.com/contests/",
-    codeforces: "https://codeforces.com/contests/",
-    codeforces_gym: "https://codeforces.com/gymRegistration/",
-    hackerearth: "https://",
-    hackerrank: "https://www.hackerrank.com/contests/",
-    leetcode: "https://leetcode.com/contest/",
-    toph: "https://toph.co/c/",
-  };
-
   return contests.map((contest) => {
     const { name, duration, durationSeconds, url, startTime, platform } =
       contest;
 
     const contestName = trimString(name, maxLen);
-    const startingIn = whenIsItStarting(getSecondsDifference(startTime));
-    const plt = pascalNames[platform];
+    const startingIn = shortenStartTime(getSecondsDifference(startTime));
+    const plt = pascalNames[platform]; // platform name in pascal case
 
     return (
       <tr className="border-b border-gray-800 bg-gray-900" key={url}>
@@ -286,7 +263,7 @@ function getTable(data, platform, isDesktop, sortBy) {
             >
               <path d="M8.766.566A2 2 0 0 0 6.586 1L1 6.586a2 2 0 0 0 0 2.828L6.586 15A2 2 0 0 0 10 13.586V2.414A2 2 0 0 0 8.766.566Z" />
             </svg>
-            {humanReadableTime(startTime)}
+            {readableTime(startTime)}
           </span>
         </td>
         <td className="select-none px-6 py-4 md:select-text" title={duration}>
@@ -297,11 +274,63 @@ function getTable(data, platform, isDesktop, sortBy) {
         </td>
 
         <td className="px-6 py-4">
-          {googleCalendarLink(startTime, durationSeconds, name, url, plt)}
+          {generateGoogleCalendarLink(
+            startTime,
+            durationSeconds,
+            name,
+            url,
+            plt,
+          )}
         </td>
       </tr>
     );
   });
+}
+
+/**
+ * Returns a table containing the contests based on the provided data, platform, isDesktop, and sortBy.
+ *
+ * @param {object} data - The data object containing the contests.
+ * @param {string} platform - The name of the platform.
+ * @param {boolean} isDesktop - Whether the device is desktop or not.
+ * @param {string} sortBy - The sorting method.
+ * @returns {JSX.Element} - The table containing the contests.
+ */
+function sortContests(data, platform, sortBy) {
+  const contests = [];
+  const platforms = { ...data.data };
+  platform = platform.toLowerCase();
+
+  if (platform === "all")
+    for (const [key, value] of Object.entries(platforms))
+      for (const contest of value) {
+        if (getSecondsDifference(contest.startTime) < 0) continue;
+        contests.push({ ...contest, platform: key });
+      }
+  else
+    for (const contest of platforms[platform]) {
+      if (getSecondsDifference(contest.startTime) < 0) continue;
+      contests.push({ ...contest, platform });
+    }
+
+  // sort the contests based on the sortBy parameter
+  contests.sort((a, b) => {
+    if (sortBy === "startTime" || platform !== "all") {
+      return (
+        getSecondsDifference(a.startTime) - getSecondsDifference(b.startTime)
+      );
+    } else {
+      const platformA = a.platform.toLowerCase();
+      const platformB = b.platform.toLowerCase();
+
+      if (platformA < platformB) return -1;
+      if (platformA > platformB) return 1;
+
+      return 0;
+    }
+  });
+
+  return contests;
 }
 
 /**
@@ -354,7 +383,7 @@ function placeholderContests(isDesktop) {
         <td className="px-6 py-4">0</td>
         <td className="px-6 py-4">{externalLink("#", "Atcoder")}</td>
         <td className="px-6 py-4">
-          {googleCalendarLink(
+          {generateGoogleCalendarLink(
             "2021-09-14T09:00:00Z",
             0,
             "No Contests Available",
@@ -369,49 +398,6 @@ function placeholderContests(isDesktop) {
   return table;
 }
 
-/**
- * Converts a start time in UTC ISO 8601 format into a human-readable format.
- * @param {string} startTime - The start time of the contest in UTC ISO 8601 format like "2021-09-14T09:00:00Z"
- * @returns {string} - The start time of the contest in human-readable format e.g., "14th September, 2021 at 9:00:00"
- */
-function humanReadableTimeUTC(startTime) {
-  const dt = new Date(startTime);
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
-  const day = dt.getUTCDate();
-  const month = months[dt.getUTCMonth()];
-  const year = dt.getUTCFullYear();
-  const hours = dt.getUTCHours().toString().padStart(2, "0");
-  const minutes = dt.getUTCMinutes().toString().padStart(2, "0");
-  const seconds = dt.getUTCSeconds().toString().padStart(2, "0");
-
-  let daySuffix = "th";
-  if (day === 1 || day === 21 || day === 31) {
-    daySuffix = "st";
-  } else if (day === 2 || day === 22) {
-    daySuffix = "nd";
-  } else if (day === 3 || day === 23) {
-    daySuffix = "rd";
-  }
-
-  const timeString = `${day}${daySuffix} ${month}, ${year} at ${hours}:${minutes}:${seconds}`;
-
-  return timeString;
-}
-
 function getEncodedDate(date) {
   const dt = new Date(date);
   const year = dt.getFullYear();
@@ -424,7 +410,13 @@ function getEncodedDate(date) {
   return encodedDate;
 }
 
-function googleCalendarLink(startTime, durationSeconds, name, url, platform) {
+function generateGoogleCalendarLink(
+  startTime,
+  durationSeconds,
+  name,
+  url,
+  platform,
+) {
   const startDate = new Date(startTime);
   const endDate = new Date(startDate.getTime() + durationSeconds * 1000);
   const encodedStartDate = getEncodedDate(startDate);
@@ -529,12 +521,52 @@ function externalLink(url, alt) {
   return linkJsx;
 }
 
+// function that will take a list of contests and make slices of it.
+function paginateContests(contests, currentPage, contestsPerPage) {
+  const startIndex = (currentPage - 1) * contestsPerPage;
+  const endIndex = startIndex + contestsPerPage;
+  const paginatedContests = contests.slice(startIndex, endIndex);
+  return paginatedContests;
+}
+
+function generatePageNumbers(currentPage, totalPages) {
+  const numberList = [];
+
+  if (totalPages <= 4) {
+    for (let i = 1; i <= totalPages; i++) {
+      numberList.push(i);
+    }
+  } else {
+    const midpoint = Math.floor((currentPage + totalPages) / 2);
+
+    if (currentPage <= 3) {
+      for (let i = 1; i <= 4; i++) {
+        numberList.push(i);
+      }
+    } else if (currentPage >= totalPages - 2) {
+      for (let i = totalPages - 3; i <= totalPages; i++) {
+        numberList.push(i);
+      }
+    } else {
+      for (let i = currentPage - 1; i <= currentPage + 1; i++) {
+        numberList.push(i);
+      }
+      numberList.push(midpoint);
+    }
+  }
+
+  return numberList;
+}
+
 export {
-  getTable,
-  placeholderContests,
-  getSecondsDifference,
-  humanReadableTimeUTC,
-  whenIsItStarting,
-  seconds2Time,
-  googleCalendarLink,
+  seconds2Time, // convert seconds to time
+  sortContests, // sort contests based on the sortBy parameter
+  utcReadableTime, // convert utc time to readable time
+  paginateContests, // return contests for the current page
+  shortenStartTime, // converts seconds to a short human-readable format
+  generatePageNumbers, // generate page numbers for pagination
+  placeholderContests, // generate placeholder contests
+  getSecondsDifference, // seconds diff between the current time and UTC ISO 8601 date
+  GenerateContestTable, // generate contest table from contests list
+  generateGoogleCalendarLink, // generate google calendar link
 };
