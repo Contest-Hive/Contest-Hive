@@ -1,24 +1,6 @@
 import { use } from "react";
+import { simplifyNumber } from "@/components/helpers/KontestsHelper";
 
-/**
- * Takes a number as input and returns a simplified version of the number with a suffix indicating the magnitude.
- * @param {number} number - The number to be simplified.
- * @returns {string} - The simplified version of the input number with a suffix indicating the magnitude.
- */
-function simplifyNumber(number) {
-  if (number < 1000) {
-    return number.toString();
-  } else if (number < 1000000) {
-    const simplified = (number / 1000).toFixed(1);
-    return simplified.replace(".0", "") + "K";
-  } else if (number < 1000000000) {
-    const simplified = (number / 1000000).toFixed(1);
-    return simplified.replace(".0", "") + "M";
-  } else {
-    const simplified = (number / 1000000000).toFixed(1);
-    return simplified.replace(".0", "") + "B";
-  }
-}
 
 async function getData() {
   const res = await fetch("https:/contest-hive.vercel.app/api/others/stats", {

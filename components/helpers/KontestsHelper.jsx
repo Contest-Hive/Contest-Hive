@@ -558,9 +558,32 @@ function generatePageNumbers(currentPage, totalPages) {
   return numberList;
 }
 
+/**
+ * Takes a number as input and returns a simplified version of the number with a suffix indicating the magnitude.
+ * @param {number} number - The number to be simplified.
+ * @returns {string} - The simplified version of the input number with a suffix indicating the magnitude.
+ */
+function simplifyNumber(number) {
+  if (number < 1000) {
+    return number.toString();
+  } else if (number < 1000000) {
+    const simplified = (number / 1000).toFixed(1);
+    return simplified.replace(".0", "") + "K";
+  } else if (number < 1000000000) {
+    const simplified = (number / 1000000).toFixed(1);
+    return simplified.replace(".0", "") + "M";
+  } else {
+    const simplified = (number / 1000000000).toFixed(1);
+    return simplified.replace(".0", "") + "B";
+  }
+}
+
+
+
 export {
   seconds2Time, // convert seconds to time
   sortContests, // sort contests based on the sortBy parameter
+  simplifyNumber, // simplifies a number
   utcReadableTime, // convert utc time to readable time
   paginateContests, // return contests for the current page
   shortenStartTime, // converts seconds to a short human-readable format
