@@ -39,8 +39,6 @@ const SideBar = () => {
   ); // closed as default
 
   function handleResize() {
-    // only called when the screen is resized
-
     // Close the sidebar when the screen is less than 768px
     if (window.innerWidth >= 768) {
       setDesktop(true);
@@ -101,7 +99,7 @@ const SideBar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [sidebarOpen, isDesktop]);
 
-  const [platformDropdown, setPlatformDropdown] = useState(false);
+  const [platformDropdown, setPlatformDropdown] = useState(true);
   function handlePlatformDropdown() {
     setPlatformDropdown((prev) => !prev);
   }
@@ -217,8 +215,6 @@ const SideBar = () => {
               <button
                 type="button"
                 className="group flex w-full items-center rounded-lg p-2 text-base text-white transition duration-200 ease-in-out hover:bg-slate-800"
-                aria-controls="dropdown-example"
-                data-collapse-toggle="dropdown-example"
                 onClick={handlePlatformDropdown}
               >
                 <svg

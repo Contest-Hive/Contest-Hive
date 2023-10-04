@@ -58,7 +58,6 @@ export function readableTime(startTime) {
   return timeString;
 }
 
-
 /**
  * Converts time in seconds to a short human-readable format.
  * @param {number} s - The time in seconds.
@@ -150,7 +149,12 @@ export const pascalNames = {
   toph: "Toph",
 };
 
-export function GenerateContestTable(contests, platformName, isDesktop, justLoaded) {
+export function GenerateContestTable(
+  contests,
+  platformName,
+  isDesktop,
+  justLoaded,
+) {
   const maxLen = isDesktop ? 50 : 33;
   if (justLoaded) return placeholderContests(isDesktop); // if still fetching, show placeholder contests
 
@@ -175,12 +179,12 @@ export function GenerateContestTable(contests, platformName, isDesktop, justLoad
     ];
   }
   return contests.map((contest) => {
-    const { name, duration, durationSeconds, url, startTime, platform } =
-      contest;
+    const { title, duration, url, startTime, platform } = contest;
+    const readableDuration = seconds2Time(duration);
 
-    const contestName = trimString(name, maxLen);
+    const contestName = trimString(title, maxLen);
     const startingIn = shortenStartTime(getSecondsDifference(startTime));
-    const plt = pascalNames[platform]; // platform name in pascal case
+    const plt = pascalNames[platform]; // platform title in pascal case
 
     return (
       <tr className="border-b border-gray-800 bg-gray-900" key={url}>
@@ -206,7 +210,7 @@ export function GenerateContestTable(contests, platformName, isDesktop, justLoad
             >
               <path d="M8.766.566A2 2 0 0 0 6.586 1L1 6.586a2 2 0 0 0 0 2.828L6.586 15A2 2 0 0 0 10 13.586V2.414A2 2 0 0 0 8.766.566Z" />
             </svg>
-            {name}
+            {title}
           </span>
         </th>
         <td className="select-none px-6 py-4 md:select-text">
@@ -224,21 +228,18 @@ export function GenerateContestTable(contests, platformName, isDesktop, justLoad
             {readableTime(startTime)}
           </span>
         </td>
-        <td className="select-none px-6 py-4 md:select-text" title={duration}>
-          {duration}
+        <td
+          className="select-none px-6 py-4 md:select-text"
+          title={readableDuration}
+        >
+          {readableDuration}
         </td>
         <td className="px-6 py-4 font-medium text-blue-500" title={url}>
           {externalLink(url, plt)}
         </td>
 
         <td className="px-6 py-4">
-          {generateGoogleCalendarLink(
-            startTime,
-            durationSeconds,
-            name,
-            url,
-            plt,
-          )}
+          {generateGoogleCalendarLink(startTime, duration, title, url, plt)}
         </td>
       </tr>
     );
@@ -249,7 +250,7 @@ export function GenerateContestTable(contests, platformName, isDesktop, justLoad
  * Returns a table containing the contests based on the provided data, platform, isDesktop, and sortBy.
  *
  * @param {object} data - The data object containing the contests.
- * @param {string} platform - The name of the platform.
+ * @param {string} platform - The title of the platform.
  * @param {boolean} isDesktop - Whether the device is desktop or not.
  * @param {string} sortBy - The sorting method.
  * @returns {JSX.Element} - The table containing the contests.
@@ -536,12 +537,13 @@ export function simplifyNumber(number) {
   }
 }
 
-
-
 // function that will take a utc 8601 format date and a duration seconds and return the end time in utc 8601 format.
 export function getEndTime(startTime, durationSeconds) {
   const startDate = new Date(startTime);
-  const endDate = new Date(startDate.getTime() + durationSeconds * 1000).toISOString().slice(0, -5) + "Z";
+  const endDate =
+    new Date(startDate.getTime() + durationSeconds * 1000)
+      .toISOString()
+      .slice(0, -5) + "Z";
 
   return endDate;
 }
