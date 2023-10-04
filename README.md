@@ -2,7 +2,6 @@
 <img height="100px" src="public/favicon.svg" alt="Contest Hive Logo">
 </p>
 
-
 # Contest Hive - Contests at Your Fingertips
 
 <p align="center">
@@ -81,9 +80,9 @@ The documentation fully explains how to use the API and the response formats.
 
 ### API Endpoints
 
-| Endpoint                                                                    | Alias                                                      | Description                                                     |
-| --------------------------------------------------------------------------- | ---------------------------------------------------------- | --------------------------------------------------------------- |
-| [`/api`](https://contest-hive.vercel.app/api)                               | [](https://contest-hive.vercel.app/api/)                | Root Endpoint of api                                            |
+| Endpoint                                                                | Alias                                                      | Description                                                     |
+| ----------------------------------------------------------------------- | ---------------------------------------------------------- | --------------------------------------------------------------- |
+| [`/api/`](https://contest-hive.vercel.app/api)                           | [](https://contest-hive.vercel.app/api/)                   | Root Endpoint of api                                            |
 | [`/atcoder`](https://contest-hive.vercel.app/api/atcoder)               | [`/1`](https://contest-hive.vercel.app/api/atcoder)        | Returns all the future contests information from AtCoder        |
 | [`/codechef`](https://contest-hive.vercel.app/api/codechef)             | [`/2`](https://contest-hive.vercel.app/api/codechef)       | Returns all the future contests information from Codechef       |
 | [`/codeforces`](https://contest-hive.vercel.app/api/codeforces)         | [`/3`](https://contest-hive.vercel.app/api/codeforces)     | Returns all the future contests information from Codeforces     |
@@ -102,20 +101,20 @@ The API returns a JSON object with the following format for each platform:
   "ok": true,
   "data": [
     {
-      "name": "AtCoder Beginner Contest 322",
-      "url": "https://atcoder.jp/contests/abc322",
-      "startTime": "2023-09-30T12:00:00Z",
-      "readableStateTime": "30th September, 2023 at 12:00:00",
-      "duration": "1 hour 40 minutes",
-      "durationSeconds": 6000
-    },
-    {
-      "name": "UNIQUE VISION Programming Contest 2023 Autumn(AtCoder Beginner Contest 323)",
+      "title": "UNIQUE VISION Programming Contest 2023 Autumn(AtCoder Beginner Contest 323)",
       "url": "https://atcoder.jp/contests/abc323",
       "startTime": "2023-10-07T12:00:00Z",
-      "readableStateTime": "7th October, 2023 at 12:00:00",
-      "duration": "1 hour 40 minutes",
-      "durationSeconds": 6000
+      "endTime": "2023-10-07T13:40:00Z",
+      "duration": 6000,
+      "platform": "Atcoder"
+    },
+    {
+      "title": "AtCoder Regular Contest 166",
+      "url": "https://atcoder.jp/contests/arc166",
+      "startTime": "2023-10-08T12:00:00Z",
+      "endTime": "2023-10-08T14:00:00Z",
+      "duration": 7200,
+      "platform": "Atcoder"
     }
   ],
   "lastUpdated": "2023-09-26T14:31:22Z"
@@ -123,9 +122,6 @@ The API returns a JSON object with the following format for each platform:
 ```
 
 The response types and details are explained in the [API Documentation](https://contest-hive.vercel.app/docs/all).
-
-
-
 
 ## How Does It Work?
 
