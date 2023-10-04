@@ -23,6 +23,8 @@ const Stats = () => {
         </h2>
         <p className="mt-4 text-lg leading-6 text-gray-400">
           Here are some realtime traffic stats
+          <br />
+          <span className="md:text-sm text-xs text-gray-500">Updates Every 30 Seconds</span>
         </p>
       </div>
 
