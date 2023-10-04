@@ -1,7 +1,6 @@
 import { use } from "react";
 import { simplifyNumber } from "@/components/helpers/KontestsHelper";
 
-
 async function getData() {
   const res = await fetch("https:/contest-hive.vercel.app/api/others/stats", {
     next: {
@@ -24,7 +23,9 @@ const Stats = () => {
         <p className="mt-4 text-lg leading-6 text-gray-400">
           Here are some realtime traffic stats
           <br />
-          <span className="md:text-sm text-xs text-gray-500">Updates Every 30 Seconds</span>
+          <span className="text-xs text-gray-500 md:text-sm">
+            Updates Every 30 Seconds
+          </span>
         </p>
       </div>
 
@@ -49,13 +50,14 @@ const Stats = () => {
                 <span className="font-mono">{data.past24page}</span>
               </span>
             </dt>
-            <dd className="font-light text-gray-400">Visits Today</dd>
+            <dd className="mr-3 select-none font-light text-gray-400">
+              Visits Today
+            </dd>
           </div>
 
           {/* 2 */}
           <div className="flex flex-col items-center justify-center">
             <dt className="mb-2 text-3xl font-bold md:text-4xl">
-
               <span className="toolText select-none">
                 {simplifyNumber(data.api)}+
               </span>
@@ -73,13 +75,14 @@ const Stats = () => {
                 <span className="font-mono">{data.api}</span>
               </span>
             </dt>
-            <dd className="font-light text-gray-400">API calls served</dd>
+            <dd className="mr-3 select-none font-light text-gray-400">
+              API calls served
+            </dd>
           </div>
 
           {/* 3 */}
           <div className="flex flex-col items-center justify-center">
             <dt className="mb-2 text-3xl font-bold md:text-4xl">
-
               <span className="toolText select-none">
                 {simplifyNumber(data.total)}+
               </span>
@@ -97,7 +100,9 @@ const Stats = () => {
                 <span className="font-mono">{data.total}</span>
               </span>
             </dt>
-            <dd className="font-light text-gray-400">Total Visits</dd>
+            <dd className="mr-3 select-none font-light text-gray-400">
+              Total Visits
+            </dd>
           </div>
         </dl>
       </div>
