@@ -2,72 +2,6 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import Prism from "prismjs";
-import getCodeExamples from "@/components/docs/CodeExamples.js";
-import GetExampleResponse from "@/components/docs/GetExampleResponse.js";
-import "@/others/highlight.css";
-
-const properties = [
-  {
-    name: "ok",
-    type: "bool",
-    description: "Whether the request was successful - true or false",
-  },
-
-  {
-    name: "data",
-    type: "list",
-    description: "The data returned from the API",
-  },
-
-  {
-    name: "name",
-    type: "string",
-    description: "The name of the contest",
-  },
-
-  {
-    name: "url",
-    type: "string",
-
-    description: "The url of the contest",
-  },
-
-  {
-    name: "startTime",
-    type: "string",
-    description: "The start time of the contest",
-  },
-
-  {
-    name: "readableStartTime",
-    type: "string",
-    description: "The start time of the contest in a readable format",
-  },
-
-  {
-    name: "startingIn",
-    type: "string",
-    description: "The time left for the contest to start",
-  },
-
-  {
-    name: "duration",
-    type: "string",
-    description: "The duration of the contest",
-  },
-
-  {
-    name: "durationSeconds",
-    type: "number",
-    description: "The duration of the contest in seconds",
-  },
-
-  {
-    name: "lastUpdated",
-    type: "string",
-    description: "The last time the data was updated",
-  },
-];
 
 const pascalNames = {
   all: "All",
@@ -81,30 +15,24 @@ const pascalNames = {
   toph: "Toph",
 };
 
-const GetPlatformPage = ({ platformName }) => {
-  const pltName = String(platformName).toLowerCase();
-  const codeExamples = getCodeExamples(pltName);
-  const exampleResponse = GetExampleResponse(pltName);
+const GetPlatformPage = ({
+  platformName,
+  codeExamples,
+  exampleResponse,
+  properties,
+}) => {
+  // const codeExamples = getCodeExamples(platformName);
+  // const exampleResponse = GetExampleResponse(platformName);
 
   useEffect(() => {
     Prism.highlightAll();
   }, []);
 
-  function copyCode2Clipboard(event) {
-    // Copies the code to clipboard
-    const text = event.target.parentNode.querySelector("code").innerText.trim();
-    navigator.clipboard.writeText(text);
-    event.target.innerText = "Copied!";
-    setTimeout(() => {
-      event.target.innerText = "Copy";
-    }, 1300);
-  }
-
   return (
     <>
       <div id="#" className="container mx-auto my-6 mt-12 px-5">
         <header className="title-font text-3xl font-bold text-white sm:text-4xl">
-          {pascalNames[pltName]}
+          {pascalNames[platformName]}
         </header>
         <p className="mt-5 text-gray-300">
           As mentioned in{" "}
@@ -114,7 +42,8 @@ const GetPlatformPage = ({ platformName }) => {
           before, the format of the request is the same.
         </p>
       </div>
-      {/* Request Format for {pascalNames[pltName]} */}
+
+      {/* Request Format */}
       <div className="container mx-auto my-1 px-5 py-6" id="request-format">
         <Link
           href="#request-format"
@@ -125,10 +54,10 @@ const GetPlatformPage = ({ platformName }) => {
         <p className="mt-5 text-gray-300">
           Make a <b>GET</b> request to{" "}
           <Link
-            href={`/api/${pascalNames[pltName].toLowerCase()}`}
+            href={`/api/${platformName}`}
             className="font-mono text-red-400"
           >
-            /api/{pascalNames[pltName].toLowerCase()}
+            /api/{platformName}
           </Link>
         </p>
       </div>
@@ -236,3 +165,13 @@ const GetPlatformPage = ({ platformName }) => {
 };
 
 export default GetPlatformPage;
+
+function copyCode2Clipboard(event) {
+  // Copies the code to clipboard
+  const text = event.target.parentNode.querySelector("code").innerText.trim();
+  navigator.clipboard.writeText(text);
+  event.target.innerText = "Copied!";
+  setTimeout(() => {
+    event.target.innerText = "Copy";
+  }, 1300);
+}

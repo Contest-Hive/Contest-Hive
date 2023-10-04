@@ -49,7 +49,6 @@ const Kontests = () => {
         })
         .catch((err) => {
           setDesktop(window.innerWidth > 768);
-          setJustLoaded(false);
 
           console.log("error:", err);
         });

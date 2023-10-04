@@ -26,7 +26,7 @@ const classWhenSidebarClosed =
   "fixed left-0 top-0 z-40 h-screen w-64 -translate-x-full transition-transform";
 
 const classForEachPlatform =
-  "group flex w-full items-center rounded-lg p-2 pl-11 text-white transition duration-200 ease-in-out hover:bg-slate-800";
+  "group flex w-full items-center rounded-lg p-2 md:pl-11 pl-9 text-white transition duration-200 ease-in-out hover:bg-slate-800 text-sm";
 
 const SideBar = () => {
   // mobile users don't see the sidebar when they first visit the page
@@ -39,8 +39,6 @@ const SideBar = () => {
   ); // closed as default
 
   function handleResize() {
-    // only called when the screen is resized
-
     // Close the sidebar when the screen is less than 768px
     if (window.innerWidth >= 768) {
       setDesktop(true);
@@ -101,20 +99,20 @@ const SideBar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [sidebarOpen, isDesktop]);
 
-  const [platformDropdown, setPlatformDropdown] = useState(false);
+  const [platformDropdown, setPlatformDropdown] = useState(true);
   function handlePlatformDropdown() {
     setPlatformDropdown((prev) => !prev);
   }
 
   return (
     <>
-      <div className="fixed h-16 w-full bg-gray-950 bg-opacity-60 backdrop-blur-sm md:hidden"></div>
+      <div className="fixed z-10 h-16 w-full bg-gray-950 bg-opacity-60 backdrop-blur-sm md:hidden"></div>
       <button
         data-drawer-target="logo-sidebar"
         data-drawer-toggle="logo-sidebar"
         aria-controls="logo-sidebar"
         type="button"
-        className="fixed ml-3 mt-5 block items-center rounded-lg  p-2 text-sm text-gray-400 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-900 md:hidden"
+        className="fixed z-20 ml-3 mt-5 block items-center  rounded-lg p-2 text-sm text-gray-400 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-900 md:hidden"
         onClick={openSidebar}
       >
         <span className="sr-only">Open sidebar</span>
@@ -217,8 +215,6 @@ const SideBar = () => {
               <button
                 type="button"
                 className="group flex w-full items-center rounded-lg p-2 text-base text-white transition duration-200 ease-in-out hover:bg-slate-800"
-                aria-controls="dropdown-example"
-                data-collapse-toggle="dropdown-example"
                 onClick={handlePlatformDropdown}
               >
                 <svg
@@ -257,7 +253,7 @@ const SideBar = () => {
               </button>
               <ul
                 id="dropdown-example"
-                className={platformDropdown ? "mt-2 space-y-2" : "hidden"}
+                className={`bg-slate-800 bg-opacity-50 rounded-md ${platformDropdown ? "mt-2 space-y-2" : "hidden"}`}
               >
                 <li>
                   <Link

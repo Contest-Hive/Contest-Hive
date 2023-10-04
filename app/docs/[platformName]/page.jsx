@@ -1,5 +1,13 @@
+import "@/others/highlight.css"; // css for code highlight
+import getCodeExamples from "@/components/docs/CodeExamples.js";
+import {
+  properties,
+  GetExampleResponse,
+  pascalNames,
+} from "@/components/docs/DocsHelper";
 import GetPlatformPage from "@/components/docs/GetPlatformPage";
-import { notFound } from "next/navigation";
+
+import { notFound } from "next/navigation"; // 404 page
 
 const platforms = [
   "all",
@@ -20,27 +28,22 @@ const page = ({ params }) => {
   if (!platforms.includes(platformName)) {
     return notFound();
   }
+
+  const codeExamples = getCodeExamples(platformName);
+  const exampleResponse = GetExampleResponse(platformName);
   return (
     <>
-      <GetPlatformPage platformName={platformName} />
+      <GetPlatformPage
+        platformName={platformName} // lower case platform name
+        codeExamples={codeExamples}
+        exampleResponse={exampleResponse}
+        properties={properties}
+      />
     </>
   );
 };
 
 export default page;
-
-const pascalNames = {
-  all: "All",
-  atcoder: "Atcoder",
-  codechef: "CodeChef",
-  codeforces: "Codeforces",
-  "codeforces-gym": "CodeForces GYM",
-  codeforces_gym: "CodeForces GYM",
-  hackerearth: "HackerEarth",
-  hackerrank: "HackerRank",
-  leetcode: "LeetCode",
-  toph: "Toph",
-};
 
 export async function generateMetadata({ params }) {
   const platformName =
@@ -56,6 +59,5 @@ export async function generateMetadata({ params }) {
       description: `Documentation for Contest Hive's ${platformName} API.`,
       images: ["https://contest-hive.vercel.app/opengraph-image.png"],
     },
-
   };
 }

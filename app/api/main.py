@@ -21,8 +21,8 @@ import { NextResponse } from "next/server";
 
 import {
   getSecondsDifference,
-  utcReadableTime,
-  seconds2Time,
+  getEndTime,
+  pascalNames
 } from "@/components/helpers/KontestsHelper";
 
 const API_URL =
@@ -47,15 +47,15 @@ const urlData = {
 function getContestData(contest, platformName) {
   😥
   const [contestName, contestUrl, startTime, durationSeconds] = contest;
-  const readableStateTime = utcReadableTime(startTime);
-  const duration = seconds2Time(durationSeconds);
+  const duration = durationSeconds;
+  const endTime = getEndTime(startTime, durationSeconds);
   return {
-    name: contestName,
+    title: contestName,
     url: urlData[platformName] + contestUrl,
     startTime,
-    readableStateTime,
+    endTime,
     duration,
-    durationSeconds,
+    platform: pascalNames[platformName],
   };
 }
 
@@ -77,7 +77,7 @@ export async function GET() {
     for (const contest of value) {
       if (getSecondsDifference(contest.startTime) < 0) continue;
       const contestData = getContestData(contest, key);
-      contests.push({ ...contestData, platform: key });
+      contests.push({ ...contestData, platform: pascalNames[key] });
     }
     data.data[key] = contests;
   }
@@ -102,7 +102,6 @@ export async function GET() {
     status: 200,
     headers: {
       "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET",
       "Access-Control-Allow-Headers": "*",
     },
   });
