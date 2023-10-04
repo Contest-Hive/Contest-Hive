@@ -1,4 +1,3 @@
-import { pascalNames } from "../helpers/KontestsHelper";
 import { getEndTime } from "../helpers/KontestsHelper";
 
 export const properties = [
@@ -49,7 +48,18 @@ export const properties = [
     description: "Last time the data was updated",
   },
 ];
-
+export const pascalNames = {
+  all: "All",
+  atcoder: "Atcoder",
+  codechef: "CodeChef",
+  codeforces: "Codeforces",
+  "codeforces-gym": "CF GYM",
+  codeforces_gym: "CF GYM",
+  hackerearth: "HackerEarth",
+  hackerrank: "HackerRank",
+  leetcode: "LeetCode",
+  toph: "Toph",
+};
 export function GetExampleResponse(platformName) {
   const currentDate = new Date().toISOString().slice(0, -5) + "Z";
   if (platformName !== "all") {
@@ -63,17 +73,16 @@ export function GetExampleResponse(platformName) {
     };
   }
 
-  const keys = platformUrls.keys();
+  const keys = Object.keys(platformUrls);
   const data = {
     ok: true,
     data: {},
     lastUpdated: currentDate,
   };
   for (const key of keys) {
-    data.data[key] = [
-      generateExampleResponse(key, 1),
-      generateExampleResponse(key, 2),
-    ];
+    if (key.length % 2 === 1)
+      data.data[key] = [generateExampleResponse(key, 1)];
+    else data.data[key] = [];
   }
   return data;
 }

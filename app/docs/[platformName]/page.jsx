@@ -1,7 +1,10 @@
+import "@/others/highlight.css"; // css for code highlight
 import getCodeExamples from "@/components/docs/CodeExamples.js";
-import { properties, GetExampleResponse } from "@/components/docs/DocsHelper";
-import { pascalNames } from "@/components/helpers/KontestsHelper";
-
+import {
+  properties,
+  GetExampleResponse,
+  pascalNames,
+} from "@/components/docs/DocsHelper";
 import GetPlatformPage from "@/components/docs/GetPlatformPage";
 
 import { notFound } from "next/navigation"; // 404 page
