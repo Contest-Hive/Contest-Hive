@@ -6,7 +6,7 @@ import Link from "next/link";
  * @param {string} date - The date in UTC ISO 8601 format.
  * @returns {number} - The difference in seconds between the current time and the given date.
  */
-function getSecondsDifference(date) {
+export function getSecondsDifference(date) {
   const startDate = new Date();
   const endDate = new Date(date);
 
@@ -20,7 +20,7 @@ function getSecondsDifference(date) {
  * @param {string} startTime - The start time of the contest in UTC ISO 8601 format (e.g., "2021-09-14T09:00:00Z").
  * @returns {string} - The start time of the contest in human-readable format (e.g., "14th September, 2021 at 9:00:00").
  */
-function readableTime(startTime) {
+export function readableTime(startTime) {
   const dt = new Date(startTime);
   const months = [
     "January",
@@ -58,55 +58,13 @@ function readableTime(startTime) {
   return timeString;
 }
 
-/**
- * Converts a start time in UTC ISO 8601 format into a human-readable format.
- * @param {string} startTime - The start time of the contest in UTC ISO 8601 format like "2021-09-14T09:00:00Z"
- * @returns {string} - The start time of the contest in human-readable format e.g., "14th September, 2021 at 9:00:00"
- */
-function utcReadableTime(startTime) {
-  const dt = new Date(startTime);
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
-  const day = dt.getUTCDate();
-  const month = months[dt.getUTCMonth()];
-  const year = dt.getUTCFullYear();
-  const hours = dt.getUTCHours().toString().padStart(2, "0");
-  const minutes = dt.getUTCMinutes().toString().padStart(2, "0");
-  const seconds = dt.getUTCSeconds().toString().padStart(2, "0");
-
-  let daySuffix = "th";
-  if (day === 1 || day === 21 || day === 31) {
-    daySuffix = "st";
-  } else if (day === 2 || day === 22) {
-    daySuffix = "nd";
-  } else if (day === 3 || day === 23) {
-    daySuffix = "rd";
-  }
-
-  const timeString = `${day}${daySuffix} ${month}, ${year} at ${hours}:${minutes}:${seconds}`;
-
-  return timeString;
-}
 
 /**
  * Converts time in seconds to a short human-readable format.
  * @param {number} s - The time in seconds.
  * @returns {string} - The formatted time.
  */
-function shortenStartTime(s) {
+export function shortenStartTime(s) {
   if (!s) return "13 seconds";
 
   const seconds = s % 60;
@@ -138,7 +96,7 @@ function shortenStartTime(s) {
  * @param {number} s - The time in seconds.
  * @returns {string} - The time in a human-readable format.
  */
-function seconds2Time(s) {
+export function seconds2Time(s) {
   if (!s) {
     return "13 seconds";
   }
@@ -172,14 +130,14 @@ function seconds2Time(s) {
  * @param {number} maxLen - The maximum length of the trimmed string, including the ellipsis.
  * @returns {string} - The trimmed string.
  */
-function trimString(str, maxLen) {
+export function trimString(str, maxLen) {
   if (str.length <= maxLen) {
     return str;
   }
   return str.slice(0, maxLen - 3) + "...";
 }
 
-const pascalNames = {
+export const pascalNames = {
   all: "All",
   atcoder: "Atcoder",
   codechef: "CodeChef",
@@ -192,7 +150,7 @@ const pascalNames = {
   toph: "Toph",
 };
 
-function GenerateContestTable(contests, platformName, isDesktop, justLoaded) {
+export function GenerateContestTable(contests, platformName, isDesktop, justLoaded) {
   const maxLen = isDesktop ? 50 : 33;
   if (justLoaded) return placeholderContests(isDesktop); // if still fetching, show placeholder contests
 
@@ -296,7 +254,7 @@ function GenerateContestTable(contests, platformName, isDesktop, justLoaded) {
  * @param {string} sortBy - The sorting method.
  * @returns {JSX.Element} - The table containing the contests.
  */
-function sortContests(data, platform, sortBy) {
+export function sortContests(data, platform, sortBy) {
   const contests = [];
   const platforms = { ...data.data };
   platform = platform.toLowerCase();
@@ -338,7 +296,7 @@ function sortContests(data, platform, sortBy) {
  * @param {boolean} isDesktop - A boolean value indicating whether the table is being generated for a desktop view or not.
  * @returns {Array} - An array of table rows representing the placeholder contest data.
  */
-function placeholderContests(isDesktop) {
+export function placeholderContests(isDesktop) {
   const maxLen = isDesktop ? 50 : 33;
 
   const contests = [
@@ -398,7 +356,7 @@ function placeholderContests(isDesktop) {
   return table;
 }
 
-function getEncodedDate(date) {
+export function getEncodedDate(date) {
   const dt = new Date(date);
   const year = dt.getFullYear();
   const month = (dt.getMonth() + 1).toString().padStart(2, "0");
@@ -410,7 +368,7 @@ function getEncodedDate(date) {
   return encodedDate;
 }
 
-function generateGoogleCalendarLink(
+export function generateGoogleCalendarLink(
   startTime,
   durationSeconds,
   name,
@@ -498,7 +456,7 @@ function generateGoogleCalendarLink(
   return linkJsx;
 }
 
-function externalLink(url, alt) {
+export function externalLink(url, alt) {
   const linkJsx = (
     <Link href={url} alt={alt} target="_blank">
       <svg
@@ -522,14 +480,14 @@ function externalLink(url, alt) {
 }
 
 // function that will take a list of contests and make slices of it.
-function paginateContests(contests, currentPage, contestsPerPage) {
+export function paginateContests(contests, currentPage, contestsPerPage) {
   const startIndex = (currentPage - 1) * contestsPerPage;
   const endIndex = startIndex + contestsPerPage;
   const paginatedContests = contests.slice(startIndex, endIndex);
   return paginatedContests;
 }
 
-function generatePageNumbers(currentPage, totalPages) {
+export function generatePageNumbers(currentPage, totalPages) {
   const numberList = [];
 
   if (totalPages <= 4) {
@@ -563,7 +521,7 @@ function generatePageNumbers(currentPage, totalPages) {
  * @param {number} number - The number to be simplified.
  * @returns {string} - The simplified version of the input number with a suffix indicating the magnitude.
  */
-function simplifyNumber(number) {
+export function simplifyNumber(number) {
   if (number < 1000) {
     return number.toString();
   } else if (number < 1000000) {
@@ -580,16 +538,10 @@ function simplifyNumber(number) {
 
 
 
-export {
-  seconds2Time, // convert seconds to time
-  sortContests, // sort contests based on the sortBy parameter
-  simplifyNumber, // simplifies a number
-  utcReadableTime, // convert utc time to readable time
-  paginateContests, // return contests for the current page
-  shortenStartTime, // converts seconds to a short human-readable format
-  generatePageNumbers, // generate page numbers for pagination
-  placeholderContests, // generate placeholder contests
-  getSecondsDifference, // seconds diff between the current time and UTC ISO 8601 date
-  GenerateContestTable, // generate contest table from contests list
-  generateGoogleCalendarLink, // generate google calendar link
-};
+// function that will take a utc 8601 format date and a duration seconds and return the end time in utc 8601 format.
+export function getEndTime(startTime, durationSeconds) {
+  const startDate = new Date(startTime);
+  const endDate = new Date(startDate.getTime() + durationSeconds * 1000).toISOString().slice(0, -5) + "Z";
+
+  return endDate;
+}
