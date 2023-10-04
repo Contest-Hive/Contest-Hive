@@ -89,9 +89,26 @@ const ContactUs = () => {
         data-aos="fade-up"
         id="contact-us"
       >
-        <header className="mb-14 text-center text-4xl font-medium text-white md:text-6xl">
+        <header className="mb-10 text-center text-4xl font-medium text-white md:text-6xl">
           Contact Us
         </header>
+        <div className="mb-10 text-center">
+          <p className="text-base text-gray-300 md:text-lg mb-3">
+            <span className="font-medium">
+              Have a question, suggestion or just wanna say <q>hi</q>?
+            </span>
+            <br />
+            Feel free to contact us. We will get in touch with you as soon as
+            possible.
+          </p>
+
+          <p className="text-sm text-gray-400">
+            If you don't want to share email, just type <q>a@a</q> in email
+            field.
+            <br />
+            You can give your telegram or github username in message field.
+          </p>
+        </div>
 
         {/* Name */}
         <div className="group relative z-0 mb-6 w-full">

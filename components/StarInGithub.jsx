@@ -38,9 +38,9 @@ const StarInGithub = () => {
       <header className="mb-7 text-4xl font-semibold md:text-6xl">
         We Need Your Help
       </header>
-      <p className="text-base font-medium md:text-lg">
-        Contest Hive is an open source project. We need your <b>star</b> to grow
-        this project.
+      <p className="text-base font-normal md:text-lg">
+        Contest Hive is an open source project. We need <b>you</b> to grow
+        this project. Help us by starring this project in Github.
       </p>
       <div className="mx-auto my-32 flex w-fit justify-center text-gray-700 hover:text-sky-500">
         {/* 90deg */}

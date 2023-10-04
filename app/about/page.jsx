@@ -125,6 +125,9 @@ const page = () => {
             The ones who helped me in this journey are listed in the
             {MakeLink("Credits", "/credits")}
             Page.
+            <br />
+            Now, You just have to visit one place to manage all the upcoming
+            contests from different platforms. Isn't that cool?
           </p>
           <p className="mt-5">
             We are still in the early stages of development. We will be adding
@@ -169,7 +172,7 @@ const page = () => {
           {/* Table */}
 
           <section className="mt-10 overflow-x-auto">
-            <div className="overflow-hidden min-w-max">
+            <div className="min-w-max overflow-hidden">
               <div className="roundedLg grid grid-cols-4 gap-x-16 bg-gray-800 p-4 text-sm font-medium text-gray-100">
                 <div>Feature</div>
                 <div>Contest Hive</div>
@@ -265,7 +268,7 @@ const page = () => {
                 The interval of time after which the data fetched and updated.{" "}
                 <br />
               </p>
-              <ul className="mt-2 list-inside list-disc pl-7 font-mono md:text-xl text-lg">
+              <ul className="mt-2 list-inside list-disc pl-7 font-mono text-lg md:text-xl">
                 <li className="text-gray-100">
                   Contest Hive updates the data every 5 minutes.
                 </li>
@@ -296,7 +299,7 @@ const page = () => {
                 by Google.
                 <br />
               </p>
-              <ul className="mt-2 list-inside list-disc pl-7 font-mono md:text-xl text-lg">
+              <ul className="mt-2 list-inside list-disc pl-7 font-mono text-lg md:text-xl">
                 <li className="text-gray-100">
                   {MakeLink(
                     "Contest Hive scored 100 in Mobile and 99 in Desktop",

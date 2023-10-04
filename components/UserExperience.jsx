@@ -14,7 +14,10 @@ const QUOTE = (
 
 const UserExperience = () => {
   return (
-    <section className="body-font mx-auto w-[90%] text-gray-300" data-aos="fade-up">
+    <section
+      className="body-font mx-auto w-[90%] text-gray-300"
+      data-aos="fade-up"
+    >
       <div className="container mx-auto px-5 py-24">
         <header className="mb-12 text-center text-4xl font-medium text-white md:text-6xl">
           Testimonials
@@ -25,9 +28,9 @@ const UserExperience = () => {
             <div className="h-full rounded-lg bg-gray-800 bg-opacity-40 p-8">
               {QUOTE}
               <p className="mb-6 leading-relaxed">
-                Wow. This website helped me a lot to boost my productivity in
-                competitive programming. Everyone should try this. Totally real
-                review.
+                Wow! Contest Hive helped me a lot to boost my productivity in
+                competitive programming. Everyone should try this out. Totally
+                real review.
               </p>
               <Link href="#" className="inline-flex items-center">
                 <Image
@@ -39,7 +42,7 @@ const UserExperience = () => {
                 />
                 <span className="flex flex-grow flex-col pl-4">
                   <span className="title-font font-medium text-white">
-                    Cool User
+                    Random Guy
                   </span>
                   <span className="text-sm text-gray-400">
                     Product Designer
@@ -54,9 +57,9 @@ const UserExperience = () => {
             <div className="h-full rounded-lg bg-gray-800 bg-opacity-40 p-8">
               {QUOTE}
               <p className="mb-6 leading-relaxed">
-                It's so straightforward and easy to use. I didn't even need to
-                sign up to use it. I just started using it and it's so good. I
-                just love it.
+                Contest Hive is so straightforward and easy to use. I didn't
+                need to sign up to use it. This is my new tool to manage
+                contests.
               </p>
               <Link href="#" className="inline-flex items-center">
                 <Image

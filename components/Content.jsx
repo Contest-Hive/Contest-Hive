@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const GithubUrl = "https://github.com/Nusab19/Contest-Hive";
+const GithubUrl = "https://github.com/Contest-Hive";
 
 const Content = () => {
   return (
@@ -15,20 +15,20 @@ const Content = () => {
               Software Freedom For All
             </q>
             We believe in the power of open-source. So, we made this project
-            open-source too.
+            completely open-source too.
             <br />
-            If you want to make this project better, you can contribute in our{" "}
+            Check out the repositories of{" "}
             <Link
               href={GithubUrl}
               className="text-blue-500 md:hover:text-purple-400"
               target="_blank"
               title="Github Repository of Contest Hive"
             >
-              <b>Github </b>
+              <b>Contest Hive </b>
             </Link>
-            repository.
+            in Github.
             <br />
-            Your ideas can make a big difference!
+            Your contribution can make a big difference! 🔥
           </p>
         </div>
       </div>

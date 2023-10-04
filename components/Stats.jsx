@@ -20,7 +20,7 @@ const Stats = () => {
         <h2 className="mb-7 text-4xl font-medium text-white md:text-6xl">
           People Love Us
         </h2>
-        <p className="mt-4 text-lg leading-6 text-gray-400">
+        <p className="mt-4 text-lg leading-6 text-gray-300">
           Here are some realtime traffic stats
           <br />
           <span className="text-xs text-gray-500 md:text-sm">

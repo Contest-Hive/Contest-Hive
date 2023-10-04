@@ -17,11 +17,9 @@ const Kontests = () => {
   const [pltName, setPltName] = useState("all");
   const [sortBy, setSortBy] = useState("startTime");
   const [isDesktop, setDesktop] = useState(false);
-  const [contestsJson, setContestsJson] = useState([
-    {
-      justLoaded: true,
-    },
-  ]);
+  const [contestsJson, setContestsJson] = useState({
+    justLoaded: true,
+  });
 
   useEffect(() => {
     const contests = sortContests(contestsJson, pltName, sortBy);
@@ -62,7 +60,7 @@ const Kontests = () => {
       if (currentPage === page) {
         return (
           <button
-            className="mr-2 rounded-md bg-blue-600 px-3 py-1"
+            className="mr-2 rounded-md bg-blue-600 px-3 py-1 hover:bg-blue-700"
             onClick={() => setCurrentPage(page)}
             key={page}
           >
@@ -72,7 +70,7 @@ const Kontests = () => {
       } else {
         return (
           <button
-            className="mr-2 rounded-md bg-gray-600 px-3 py-1"
+            className="mr-2 rounded-md bg-gray-600 px-3 py-1 hover:bg-slate-700"
             onClick={() => setCurrentPage(page)}
             key={page}
           >
@@ -172,7 +170,7 @@ const Kontests = () => {
               paginateContests(allContests, currentPage, contestsPerPage),
               pltName,
               isDesktop,
-              contestsJson.justLoaded??false,
+              contestsJson.justLoaded ?? false,
             )}
           </tbody>
         </table>
@@ -184,7 +182,7 @@ const Kontests = () => {
         </p>
         <div className="flex">
           <button
-            className="mr-2 rounded-md bg-sky-700 px-1 py-2"
+            className="mr-2 rounded-md bg-gray-700 px-1 py-2 hover:bg-slate-800"
             onClick={() => {
               if (totalPages === 1) return;
               if (currentPage === 1) return setCurrentPage(totalPages);
@@ -208,7 +206,7 @@ const Kontests = () => {
           </button>
           {navigation()}
           <button
-            className="rounded-md bg-sky-700 px-1 py-2"
+            className="rounded-md bg-gray-700 px-1 py-2 hover:bg-slate-800"
             onClick={() => {
               if (totalPages === 1) return;
               if (currentPage === totalPages) return setCurrentPage(1);
