@@ -44,3 +44,23 @@
 html {
   scroll-behavior: smooth;
 }
+
+.arrow-animate {
+  animation-name: arrow;
+  animation-duration: 900ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.44, -0.2, 0.58, 1);
+  z-index: -1;
+}
+
+@keyframes arrow {
+  0% {
+    width: 225px;
+  }
+  50% {
+    width: 250px;
+  }
+  100% {
+    width: 225px;
+  }
+}
