@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import GenerateRssFeed from "@/components/GenerateRssFeed";
 
 export async function middleware(req) {
   const { nextUrl } = req;
