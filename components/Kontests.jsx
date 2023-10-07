@@ -25,6 +25,7 @@ const Kontests = () => {
     const contests = sortContests(contestsJson, pltName, sortBy);
     setAllContests(contests);
     setTotalContests(contests.length);
+    setTotalPages(Math.ceil(contests.length / contestsPerPage));
 
     // refresh AOS
     setTimeout(() => {
