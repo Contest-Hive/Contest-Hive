@@ -459,7 +459,7 @@ export function generateGoogleCalendarLink(
 
 export function externalLink(url, alt) {
   const linkJsx = (
-    <Link href={url} alt={alt} target="_blank">
+    <Link href={url} alt={alt} target="_blank" title="Open Contest Link in new Tab">
       <svg
         className="absolute -mt-3 h-5 w-5 text-gray-400 transition-all duration-200 hover:h-6 hover:w-6 hover:text-gray-300"
         aria-hidden="true"

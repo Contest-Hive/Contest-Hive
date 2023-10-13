@@ -25,6 +25,7 @@ const Kontests = () => {
     const contests = sortContests(contestsJson, pltName, sortBy);
     setAllContests(contests);
     setTotalContests(contests.length);
+    setCurrentPage(1);
     setTotalPages(Math.ceil(contests.length / contestsPerPage));
 
     // refresh AOS
@@ -64,6 +65,7 @@ const Kontests = () => {
             className="mr-2 rounded-md bg-blue-600 px-3 py-1 hover:bg-blue-700"
             onClick={() => setCurrentPage(page)}
             key={page}
+            title={`Current Page: ${page}`}
           >
             {page}
           </button>
@@ -74,6 +76,7 @@ const Kontests = () => {
             className="mr-2 rounded-md bg-gray-600 px-3 py-1 hover:bg-slate-700"
             onClick={() => setCurrentPage(page)}
             key={page}
+            title={`Go to Page: ${page}`}
           >
             {page}
           </button>
@@ -189,6 +192,7 @@ const Kontests = () => {
               if (currentPage === 1) return setCurrentPage(totalPages);
               setCurrentPage((prev) => prev - 1);
             }}
+            title="Previous Page"
           >
             <svg
               className="h-5 w-5"
@@ -213,6 +217,7 @@ const Kontests = () => {
               if (currentPage === totalPages) return setCurrentPage(1);
               setCurrentPage((prev) => prev + 1);
             }}
+            title="Next Page"
           >
             <svg
               className="h-5 w-5"
