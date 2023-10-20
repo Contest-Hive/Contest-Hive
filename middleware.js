@@ -12,7 +12,7 @@ export async function middleware(req) {
     const xml = await GenerateRssFeed();
     return new Response(xml, {
       headers: {
-        "content-type": "application/xml;charset=UTF-8",
+        "Content-Type": "application/xml;charset=UTF-8",
       },
     });
   }
