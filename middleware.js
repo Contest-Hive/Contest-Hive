@@ -6,8 +6,19 @@ export async function middleware(req) {
   const origin = String(nextUrl.origin) + "/";
   const href = String(nextUrl.href);
 
-  // Exclude some paths
 
+  // return rss feed
+  if (href.toLowerCase().endsWith("/rss.xml")) {
+    const xml = await GenerateRssFeed();
+    return new Response(xml, {
+      headers: {
+        "content-type": "application/xml;charset=UTF-8",
+      },
+    });
+  }
+
+
+  // Exclude some paths
   const excludedValues = ["_next", "favicon", "assets", "icon", "image"];
 
   for (const value of excludedValues) {

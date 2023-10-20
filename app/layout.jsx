@@ -1,13 +1,10 @@
 import "@/app/globals.css";
 import UnderMaintenance from "@/components/UnderUnderMaintenance";
-import GenerateRssFeed from "@/components/GenerateRssFeed";
 
 // Change When Maintaining
 const IS_MAINTENANCE = false;
 
 const layout = ({ children }) => {
-  GenerateRssFeed().then(() => console.log("RSS Feed Generated"));
-
   return (
     <html lang="en">
       <body className="bg-gray-950 text-gray-200">
