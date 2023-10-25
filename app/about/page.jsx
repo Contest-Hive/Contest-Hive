@@ -193,7 +193,7 @@ const page = () => {
                   </sup>
                 </div>
                 <div className="ml-1 mt-1 font-bold">~5 min</div>
-                <div className="ml-1 mt-1 font-bold">~1 hour</div>
+                <div className="ml-1 mt-1 font-bold">~3 hour</div>
                 <div className="ml-1 mt-1 font-bold">~24 hours</div>
               </div>
               <div className="grid grid-cols-4 gap-x-16 border-b border-gray-700 px-4 py-5 text-sm">
