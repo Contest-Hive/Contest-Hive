@@ -35,7 +35,7 @@ function makeLink(text, href, target) {
 
 const Content = () => {
   return (
-    <main id="content">
+    <main id="content" className="bg-gray-950 text-gray-200">
       <div
         id="#introduction"
         className="container mx-auto my-6 mt-10 px-5 py-6"

@@ -26,7 +26,7 @@ const classWhenSidebarClosed =
   "fixed left-0 top-0 z-40 h-screen w-64 -translate-x-full transition-transform";
 
 const classForEachPlatform =
-  "group flex w-full items-center rounded-lg p-2 md:pl-11 pl-9 text-white transition duration-200 ease-in-out hover:bg-slate-800 text-sm";
+  "group flex w-full items-center rounded-lg p-2 md:pl-11 pl-9 text-white transition duration-200 ease-in-out hover:bg-slate-700 text-sm";
 
 const SideBar = () => {
   // mobile users don't see the sidebar when they first visit the page
@@ -253,7 +253,7 @@ const SideBar = () => {
               </button>
               <ul
                 id="dropdown-example"
-                className={`bg-slate-800 bg-opacity-50 rounded-md ${platformDropdown ? "mt-2 space-y-2" : "hidden"}`}
+                className={`bg-slate-800 bg-opacity-50 rounded-md pb-5 pt-2 ${platformDropdown ? "mt-2 space-y-2" : "hidden"}`}
               >
                 <li>
                   <Link
