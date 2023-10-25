@@ -17,12 +17,12 @@ const AnimatedComponents = () => {
   }, []);
 
   return (
-    <>
+    <section>
       <Features />
       <UserExperience />
       <Content />
       <ContactUs />
-    </>
+    </section>
   );
 };
 

@@ -1,8 +1,6 @@
-import Link from "next/link";
-
 const Features = () => {
   return (
-    <section className="body-font tracking-wide" data-aos="fade-up">
+    <section data-aos="fade-up">
       <div className="container mx-auto -mb-10 mt-10 flex flex-wrap px-5 py-10">
         <div className="w-full text-center">
           <header
@@ -14,7 +12,7 @@ const Features = () => {
         </div>
 
         <div className="mx-auto mb-8 w-full text-center text-gray-300 md:w-11/12">
-          <p className="mb-8 text-base leading-relaxed tracking-wider md:text-lg">
+          <p className="mb-8 text-md md:text-lg">
             <q className="mb-2 block font-mono text-xl font-bold text-gray-100 md:text-2xl">
               All Contests in One Place
             </q>
@@ -31,12 +29,16 @@ const Features = () => {
 
         <div className="-m-4 mx-auto flex flex-wrap">
           {/* One */}
-          <div className="p-4 md:w-1/3" data-aos="flip-down"     data-aos-duration="400">
+          <div
+            className="p-4 md:w-1/3"
+            data-aos="flip-down"
+            data-aos-duration="400"
+          >
             <div className="flex h-full flex-col rounded-lg bg-gray-800 bg-opacity-60 p-8">
               <div className="mb-3 flex items-center ">
-                <div className="mr-3 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center  rounded-full text-white">
+                <div className="mr-3 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-white">
                   <svg
-                    className="transition  duration-300 hover:-rotate-[360deg]"
+                    className="transition duration-300 hover:-rotate-[360deg]"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 512 512"
                     fill="#6b9bd2"
@@ -49,7 +51,7 @@ const Features = () => {
                 </h2>
               </div>
               <div className="flex-grow ">
-                <p className="text-sm leading-relaxed md:text-base">
+                <p className="text-sm md:text-base">
                   No more going back and forth between platforms. Contest Hive
                   is the place to be.
                 </p>
@@ -58,12 +60,16 @@ const Features = () => {
           </div>
 
           {/* Two */}
-          <div className="p-4 md:w-1/3" data-aos="flip-down" data-aos-duration="400">
+          <div
+            className="p-4 md:w-1/3"
+            data-aos="flip-down"
+            data-aos-duration="400"
+          >
             <div className="flex h-full flex-col rounded-lg bg-gray-800 bg-opacity-60 p-8">
               <div className="mb-3 flex items-center">
                 <div className="text0-white mr-3 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full">
                   <svg
-                    className="transition  duration-300 hover:-rotate-45"
+                    className="transition duration-300 hover:-rotate-45"
                     viewBox="0 0 24.00 24.00"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -196,7 +202,7 @@ const Features = () => {
                 </h2>
               </div>
               <div className="flex-grow">
-                <p className="text-sm leading-relaxed md:text-base">
+                <p className="text-sm md:text-base">
                   With Contest-Hive's steady API clocking in at 99% uptime, your
                   projects are in safe hands.
                 </p>
@@ -206,12 +212,16 @@ const Features = () => {
           </div>
 
           {/* Three */}
-          <div className="p-4 md:w-1/3" data-aos="flip-down" data-aos-duration="400">
+          <div
+            className="p-4 md:w-1/3"
+            data-aos="flip-down"
+            data-aos-duration="400"
+          >
             <div className="flex h-full flex-col rounded-lg bg-gray-800 bg-opacity-60 p-8">
               <div className="mb-3 flex items-center">
                 <div className="mr-3 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-white">
                   <svg
-                    className="transition  duration-300 hover:-rotate-[360deg]"
+                    className="transition duration-300 hover:-rotate-[360deg]"
                     xmlns="http://www.w3.org/2000/svg"
                     width="28"
                     height="28"
@@ -230,57 +240,57 @@ const Features = () => {
                 </h2>
               </div>
               <div className="flex-grow">
-                <p className="text-sm leading-relaxed md:text-base">
+                <p className="text-sm md:text-base">
                   Contest Hive is free forever. No sign-in or authentication is
                   required to use.
                   <br />
                   {/* <span className="mt-1 flex">
-                    <svg
-                      class="mr-1 h-5 w-5 text-gray-400"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 12 10"
-                    >
-                      <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="m7 9 4-4-4-4M1 9l4-4-4-4"
-                      />
-                    </svg>
-                    <svg
-                      class="mr-1 h-5 w-5 text-gray-400"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 12 10"
-                    >
-                      <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="m7 9 4-4-4-4M1 9l4-4-4-4"
-                      />
-                    </svg>
-                    <svg
-                      class="h-5 w-5 text-gray-400"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 12 10"
-                    >
-                      <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="m7 9 4-4-4-4M1 9l4-4-4-4"
-                      />
-                    </svg>
-                  </span> */}
+          <svg
+           class="mr-1 h-5 w-5 text-gray-400"
+           aria-hidden="true"
+           xmlns="http://www.w3.org/2000/svg"
+           fill="none"
+           viewBox="0 0 12 10"
+          >
+           <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m7 9 4-4-4-4M1 9l4-4-4-4"
+           />
+          </svg>
+          <svg
+           class="mr-1 h-5 w-5 text-gray-400"
+           aria-hidden="true"
+           xmlns="http://www.w3.org/2000/svg"
+           fill="none"
+           viewBox="0 0 12 10"
+          >
+           <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m7 9 4-4-4-4M1 9l4-4-4-4"
+           />
+          </svg>
+          <svg
+           class="h-5 w-5 text-gray-400"
+           aria-hidden="true"
+           xmlns="http://www.w3.org/2000/svg"
+           fill="none"
+           viewBox="0 0 12 10"
+          >
+           <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m7 9 4-4-4-4M1 9l4-4-4-4"
+           />
+          </svg>
+         </span> */}
                 </p>
               </div>
             </div>

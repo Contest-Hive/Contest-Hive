@@ -27,7 +27,7 @@ const UserExperience = () => {
           <div className="w-full p-4 md:w-1/2" data-aos="fade-up-right">
             <div className="h-full rounded-lg bg-gray-800 bg-opacity-40 p-8">
               {QUOTE}
-              <p className="mb-6 leading-relaxed">
+              <p className="mb-6">
                 Wow! Contest Hive helped me a lot to boost my productivity in
                 competitive programming. Everyone should try this out. Totally
                 real review.
@@ -56,7 +56,7 @@ const UserExperience = () => {
           <div className="w-full p-4 md:w-1/2" data-aos="fade-up-left">
             <div className="h-full rounded-lg bg-gray-800 bg-opacity-40 p-8">
               {QUOTE}
-              <p className="mb-6 leading-relaxed">
+              <p className="mb-6">
                 Contest Hive is so straightforward and easy to use. I didn't
                 need to sign up to use it. This is my new tool to manage
                 contests.

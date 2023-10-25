@@ -35,6 +35,12 @@ const Kontests = () => {
   }, [sortBy, pltName]);
 
   useEffect(() => {
+    // init AOS
+    AOS.init({
+      easing: "ease-in-out",
+      duration: 400,
+    });
+
     const fetchContestData = () => {
       fetch("/api/all")
         .then((res) => res.json())

@@ -20,8 +20,11 @@ const Stats = () => {
         <h2 className="mb-7 text-4xl font-medium text-white md:text-6xl">
           People Love Us
         </h2>
-        <p className="mt-4 text-lg leading-6 text-gray-300">
-          Here are some realtime traffic stats
+        <p className="mt-4 text-md text-gray-300 md:text-lg">
+          Here are some traffic stats of our website. We are growing day by day.
+          <br />
+          We are thankful to our users for their support. We will keep on
+          improving our website.
           <br />
           <span className="text-xs text-gray-500 md:text-sm">
             Updates Every 30 Seconds
@@ -76,7 +79,7 @@ const Stats = () => {
               </span>
             </dt>
             <dd className="mr-3 select-none font-light text-gray-400">
-              API calls served
+              Total API Calls
             </dd>
           </div>
 
