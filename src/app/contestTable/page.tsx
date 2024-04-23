@@ -15,7 +15,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-export default function Component() {
+export default function ContestTable() {
   return (
     <Card>
       <CardHeader className="px-7">

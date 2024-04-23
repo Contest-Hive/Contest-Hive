@@ -3,6 +3,8 @@ import { Inter as FontSans } from "next/font/google";
 
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
+import { Toaster } from "@/components/ui/sonner";
+import { ThemeProvider } from "next-themes";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -12,14 +14,29 @@ const fontSans = FontSans({
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head />
+      <head>
+        <title>Contest Hive - HomePage</title>
+        <meta
+          name="description"
+          content="All upcoming contests in one place. Contest Hive is a platform to find all the upcoming contests on various competitive programming platforms."
+        />
+        <link rel="icon" href="/favicon.svg" />
+      </head>
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased ",
+          "min-h-screen bg-background font-sans antialiased",
           fontSans.variable,
         )}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+          <Toaster visibleToasts={1} />
+        </ThemeProvider>
       </body>
     </html>
   );
