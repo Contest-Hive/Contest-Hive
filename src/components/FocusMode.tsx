@@ -12,6 +12,7 @@ const FocusMode = ({
   setFocusMode: (focusMode: boolean) => void;
 }) => {
   useEffect(() => {
+    console.log("Focus Mode", isFocusMode);
     if (Object.keys(getCookies()).length === 0) {
       setCookie("focusMode", false);
       return;

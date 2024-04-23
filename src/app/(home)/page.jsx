@@ -2,8 +2,7 @@
 import { useState } from "react";
 
 import NavBar from "@/components/Navbar";
-import ContestTable from "../contestTable/page";
-
+import ContestsTable from "@/components/ContestsTable";
 import { getCookie } from "cookies-next";
 
 const Home = () => {
@@ -18,7 +17,7 @@ const Home = () => {
         setFocusMode={setFocusMode}
       />
       {isFocusMode ? (
-        <ContestTable isFocusMode={isFocusMode} setFocusMode={setFocusMode} />
+        <ContestsTable isFocusMode={isFocusMode} setFocusMode={setFocusMode} />
       ) : (
         <NavBar />
       )}
