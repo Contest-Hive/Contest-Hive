@@ -5,18 +5,8 @@ import { Separator } from "./ui/separator";
 import { buttonVariants } from "./ui/button";
 import MaxWidthWrapper from "./MaxWidthWrapper";
 import NavMenu from "./mobile/NavMenu";
-import FocusMode from "./FocusMode";
-import { Focus } from "lucide-react";
 
-const NavBar = ({
-  isHome,
-  isFocusMode,
-  setFocusMode,
-}: {
-  isHome?: boolean;
-  isFocusMode: boolean;
-  setFocusMode: (focusMode: boolean) => void;
-}) => {
+const NavBar = () => {
   return (
     <div className="sticky inset-0 top-0 z-50 h-14 backdrop-blur">
       <MaxWidthWrapper>
@@ -38,14 +28,6 @@ const NavBar = ({
           </Link>
 
           <div className="hidden items-center gap-4 md:flex">
-            {/* Load Focus Mode only when in the main page */}
-            {isHome && (
-              <FocusMode
-                isFocusMode={isFocusMode}
-                setFocusMode={setFocusMode}
-              />
-            )}
-
             <Link
               href="/about"
               className={buttonVariants({
