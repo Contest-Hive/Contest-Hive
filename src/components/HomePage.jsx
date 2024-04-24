@@ -23,7 +23,6 @@ const HomePage = ({ contestData }) => {
       return;
     }
 
-    console.log(`Focus Mode: ${isFocusMode}`);
     setCookie("focusMode", isFocusMode);
 
     toast.success(`Focus Mode <b>${isFocusMode ? "Enabled" : "Disabled"}</b>`, {

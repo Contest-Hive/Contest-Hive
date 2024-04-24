@@ -29,6 +29,34 @@ export function secondsToReadableTime(s: number) {
   return result;
 }
 
+export function secondsToShortReadableTime(s: number) {
+  if (!s) {
+    return "13s";
+  }
+
+  const seconds = s % 60;
+  const minutes = Math.floor(s / 60) % 60;
+  const hours = Math.floor(s / 3600) % 24;
+  const days = Math.floor(s / 86400);
+
+  let result = "";
+
+  if (days > 0) {
+    result += `${days}d`;
+  }
+  if (hours > 0) {
+    result += `${result ? " " : ""}${hours}h`;
+  }
+  if (minutes > 0) {
+    result += `${result ? " " : ""}${minutes}m`;
+  }
+  if (!result) {
+    result = `${seconds}s`;
+  }
+
+  return result;
+}
+
 export function getSecondsDifferencesFromNow(isoTime: string) {
   const startDate = new Date();
   const endDate = new Date(isoTime);
@@ -39,6 +67,10 @@ export function getSecondsDifferencesFromNow(isoTime: string) {
 }
 
 export function timeToReadableTime(isoTime: string) {
+  return secondsToShortReadableTime(getSecondsDifferencesFromNow(isoTime));
+}
+
+export function timeToLocalTime(isoTime: string) {
   const dt = new Date(isoTime);
   const months = [
     "January",

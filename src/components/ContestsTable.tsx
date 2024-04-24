@@ -1,4 +1,7 @@
-import { LinkedInLogoIcon } from "@radix-ui/react-icons";
+import { useState } from "react";
+
+import Image from "next/image";
+
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -11,55 +14,13 @@ import {
   Table,
   TableBody,
   TableCell,
-  TableHead,
-  TableHeader,
   TableRow,
+  TableHeader,
+  TableHead,
 } from "@/components/ui/table";
 
-function getRow() {
-  const names = [
-    "Liam",
-    "Emma",
-    "Olivia",
-    "Noah",
-    "Ava",
-    "Elijah",
-    "Sophia",
-    "William",
-    "Isabella",
-    "James",
-  ];
-  const randomName = names[Math.floor(Math.random() * names.length)];
-  const email = `${randomName.toLowerCase()}@example.com`;
-  const types = ["Sale", "Refund", "Sale", "Sale", "Sale"];
-  const randomType = types[Math.floor(Math.random() * types.length)];
-  const statuses = [
-    "Fulfilled",
-    "Pending",
-    "Fulfilled",
-    "Fulfilled",
-    "Pending",
-  ];
-  const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
-  const randomPrice = Math.floor(Math.random() * 1000);
-  return (
-    <TableRow key={Math.random().toString(36).substring(7)}>
-      <TableCell>
-        <div className="font-medium">{randomName}</div>
-        <div className="hidden text-sm text-muted-foreground md:inline">
-          {email}
-        </div>
-      </TableCell>
-      <TableCell className="hidden sm:table-cell">Sale</TableCell>
-      <TableCell className="hidden sm:table-cell">
-        <Badge className="text-xs" variant="secondary">
-          {randomStatus}
-        </Badge>
-      </TableCell>
-      <TableCell className="text-right">${randomPrice}.00</TableCell>
-    </TableRow>
-  );
-}
+import { timeToReadableTime, secondsToShortReadableTime } from "@/lib/utils";
+import SelectPlatform from "./SelectPlatform";
 
 type Contest = {
   title: string;
@@ -70,13 +31,14 @@ type Contest = {
   platform: string;
 };
 
-import { getSecondsDifferencesFromNow } from "@/lib/utils";
-
 export default function ContestsTable({
   contestData,
 }: {
   contestData: Contest[];
 }) {
+  const perPage = 10;
+  const totalPages = Math.ceil(contestData.length / perPage);
+  const [currentPage, setCurrentPage] = useState(1);
   return (
     <Card>
       <CardHeader className="px-7">
@@ -84,36 +46,18 @@ export default function ContestsTable({
         <CardDescription>Below are the upcoming contests</CardDescription>
       </CardHeader>
       <CardContent>
-        <Table>
+        <Table className="">
           <TableHeader>
             <TableRow>
-              <TableHead>Title</TableHead>
-              <TableHead className="hidden sm:table-cell">Starts In</TableHead>
-              <TableHead className="hidden sm:table-cell">Duration</TableHead>
-              <TableHead className="text-right">Action</TableHead>
+              <TableHead>Filter</TableHead>
+              <TableHead>
+                <SelectPlatform />
+              </TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            <TableRow className="bg-accent">
-              <TableCell>
-                <div className="font-medium">Liam Johnson</div>
-                <div className="hidden text-sm text-muted-foreground md:inline">
-                  liam@example.com
-                </div>
-              </TableCell>
-              <TableCell className="hidden sm:table-cell">Sale</TableCell>
-              <TableCell className="hidden sm:table-cell">
-                <Badge className="text-xs" variant="secondary">
-                  Fulfilled
-                </Badge>
-              </TableCell>
-              <TableCell className="hidden text-right md:table-cell">
-                13$
-              </TableCell>
-            </TableRow>
-
             {contestData.map((contest, index) => {
-              return getRow2(contest, index);
+              return getContestRow(contest, index);
             })}
           </TableBody>
         </Table>
@@ -122,22 +66,47 @@ export default function ContestsTable({
   );
 }
 
-function getRow2(contest: Contest, index: number) {
+function getContestRow(contest: Contest, index: number) {
+  const flexClass = "flex items-center justify-start my-0.5";
+  const HeaderClass =
+    "text-sm font-medium md:text-base w-20 flex justify-between mr-2";
   return (
-    <TableRow key={index}>
-      <TableCell>
-        <div className="font-medium">Title</div>
-        <div className="flex items-center justify-between text-sm text-muted-foreground md:inline">
-          <LinkedInLogoIcon /> Atcoder
+    <TableRow key={index} className="w-[700px]">
+      <TableCell className="table-cell">
+        <span className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
+          <Image
+            // src={`/assets/svgs/${contest.platform.toLocaleLowerCase()}.svg`}
+            src={`/assets/svgs/atcoder.svg`}
+            alt="meo"
+            width={1}
+            height={1}
+            className="h-4 w-4"
+          />
+          {contest.platform}
+        </span>
+        <div className={flexClass}>
+          <span className={HeaderClass}>
+            <p>Title</p>:
+          </span>
+          <p className="min-w-[300px] text-xs md:text-sm lg:text-base">
+            {contest.title}
+          </p>
+        </div>
+        <div className={flexClass}>
+          <span className={HeaderClass}>
+            <p>Starts In</p>:
+          </span>
+          <Badge>{timeToReadableTime(contest.startTime)}</Badge>
+        </div>
+        <div className={flexClass}>
+          <span className={HeaderClass}>
+            <p>Duration</p>:
+          </span>
+          <Badge variant="secondary">
+            {secondsToShortReadableTime(contest.duration)}
+          </Badge>
         </div>
       </TableCell>
-      <TableCell className="hidden sm:table-cell">2 hours</TableCell>
-      <TableCell className="hidden sm:table-cell">
-        <Badge className="text-xs" variant="secondary">
-          1 hour
-        </Badge>
-      </TableCell>
-      <TableCell className="text-right">:</TableCell>
     </TableRow>
   );
 }
