@@ -42,7 +42,7 @@ function getRow() {
   const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
   const randomPrice = Math.floor(Math.random() * 1000);
   return (
-    <TableRow>
+    <TableRow key={Math.random().toString(36).substring(7)}>
       <TableCell>
         <div className="font-medium">{randomName}</div>
         <div className="hidden text-sm text-muted-foreground md:inline">
@@ -63,12 +63,28 @@ function getRow() {
   );
 }
 
-export default function ContestsTable() {
+type Contests = {
+  title: string;
+  url: string;
+  startTime: string;
+  endTime: string;
+  duration: number;
+  platform: string;
+};
+
+import { getSecondsDifferencesFromNow } from "@/lib/utils";
+
+export default function ContestsTable({
+  contestData,
+}: {
+  contestData: Contests;
+}) {
+
   return (
     <Card>
       <CardHeader className="px-7">
-        <CardTitle>Orders</CardTitle>
-        <CardDescription>Recent orders from your store.</CardDescription>
+        <CardTitle>Contests</CardTitle>
+        <CardDescription>Below are the upcoming contests</CardDescription>
       </CardHeader>
       <CardContent>
         <Table>
