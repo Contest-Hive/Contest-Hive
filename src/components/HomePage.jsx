@@ -1,12 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
-import { toast } from "sonner";
+import { useToast } from "@/components/ui/use-toast";
 import { getCookie, getCookies, setCookie } from "cookies-next";
 
 import NavBar from "@/components/Navbar";
 import ContestsTable from "@/components/ContestsTable";
 
 const HomePage = ({ contestData }) => {
+  const { toast } = useToast();
   const [isFocusMode, setFocusMode] = useState(false);
   const [firstLoad, setFirstLoad] = useState(true);
 
@@ -20,18 +21,18 @@ const HomePage = ({ contestData }) => {
       setFirstLoad(false);
       const prevFocusMode = getCookie("focusMode") === "true";
       setFocusMode(prevFocusMode);
-      setTimeout(() => {
-        if (prevFocusMode)
-          toast.success(`Focus Mode <b>Enabled</b>`, {
-            duration: 1500,
-            icon: "🎯",
-          });
-      });
+      // if (prevFocusMode)
+      //   setTimeout(() => {
+      //     toast({
+      //       title: "Found saved Focus Mode",
+      //       description: "You can toggle it from the navbar",
+      //     });
+      //   });
       return;
     }
 
     setCookie("focusMode", isFocusMode);
-  }, [isFocusMode, firstLoad]);
+  }, [isFocusMode, firstLoad, toast]);
 
   return (
     <>

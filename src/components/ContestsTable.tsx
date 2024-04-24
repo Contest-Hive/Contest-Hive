@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -30,7 +30,9 @@ import {
   secondsToShortReadableTime,
   timeToLocalTime,
 } from "@/lib/utils";
+
 import SelectPlatform from "./SelectPlatform";
+import SearchBar from "./SearchBar";
 
 type Contest = {
   title: string;
@@ -47,8 +49,43 @@ export default function ContestsTable({
   contestData: Contest[];
 }) {
   const perPage = 5;
-  const totalPages = Math.ceil(contestData.length / perPage);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [filteredData, setFilteredData] = useState(contestData);
+  const length = filteredData.length;
+  const totalPages = Math.ceil(length / perPage);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [platform, setPlatform] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    if (platform === "All") {
+      setFilteredData(contestData);
+    } else {
+      setFilteredData(
+        contestData.filter(
+          (contest) =>
+            contest.platform === platform ||
+            (platform === "Codeforces Gym" && contest.platform === "CF GYM"),
+        ),
+      );
+    }
+    setCurrentPage(0);
+  }, [platform, contestData]);
+
+  useEffect(() => {
+    if (searchQuery === "") {
+      setFilteredData(contestData);
+    } else {
+      setFilteredData(
+        contestData.filter(
+          (contest) =>
+            contest.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            contest.platform.toLowerCase().includes(searchQuery.toLowerCase()),
+        ),
+      );
+    }
+    setCurrentPage(0);
+  }, [searchQuery, contestData]);
+
   return (
     <Card>
       <CardHeader className="px-7">
@@ -56,15 +93,21 @@ export default function ContestsTable({
         <CardDescription>Below are the upcoming contests</CardDescription>
       </CardHeader>
       <CardContent>
-        <Table className="">
+        <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Filter</TableHead>
-              <TableHead>{/* <SelectPlatform /> */}</TableHead>
+              <TableHead className="flex items-center gap-2 px-0.5 md:px-2">
+                <SelectPlatform platform={platform} setPlatform={setPlatform} />
+                <SearchBar
+                  searchQuery={searchQuery}
+                  setSearchQuery={setSearchQuery}
+                />
+              </TableHead>
+              {/* <TableHead><SelectPlatform /></TableHead> */}
             </TableRow>
           </TableHeader>
           <TableBody>
-            {contestData
+            {filteredData
               .slice(currentPage * perPage, perPage * (currentPage + 1))
               .map((contest, index) => {
                 return getContestRow(contest, index);
@@ -72,23 +115,29 @@ export default function ContestsTable({
           </TableBody>
         </Table>
       </CardContent>
-      <CardContent className="flex justify-end gap-2 select-none">
-        <Button
-          variant="default"
-          size="sm"
-          onClick={() => setCurrentPage((prev) => prev - 1)}
-          disabled={currentPage === 0}
-        >
-          Previous
-        </Button>
-        <Button
-          variant="default"
-          size="sm"
-          onClick={() => setCurrentPage((prev) => prev + 1)}
-          disabled={currentPage === totalPages - 1}
-        >
-          Next
-        </Button>
+      <CardContent className="flex items-center justify-between">
+        <p className="px-0.5 font-mono text-xs md:px-4 md:text-sm">
+          Showing {Math.min(currentPage * perPage + 1, length)}-
+          {Math.min((currentPage + 1) * perPage, length)} out of {length}
+        </p>
+        <span className="flex select-none justify-end gap-2">
+          <Button
+            variant="default"
+            size="sm"
+            onClick={() => setCurrentPage((prev) => prev - 1)}
+            disabled={currentPage === 0}
+          >
+            Previous
+          </Button>
+          <Button
+            variant="default"
+            size="sm"
+            onClick={() => setCurrentPage((prev) => prev + 1)}
+            disabled={currentPage === totalPages - 1}
+          >
+            Next
+          </Button>
+        </span>
       </CardContent>
     </Card>
   );

@@ -1,91 +1,70 @@
-"use client"
+import Image from "next/image";
 
-import * as React from "react"
-import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
-
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { ScrollArea } from "@/components/ui/scroll-area";
 import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-} from "@/components/ui/command"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuCheckboxItem,
+} from "./ui/dropdown-menu";
+import { Button } from "./ui/button";
+import { ListFilter } from "lucide-react";
 
-const frameworks = [
-  {
-    value: "next.js",
-    label: "Next.js",
-  },
-  {
-    value: "sveltekit",
-    label: "SvelteKit",
-  },
-  {
-    value: "nuxt.js",
-    label: "Nuxt.js",
-  },
-  {
-    value: "remix",
-    label: "Remix",
-  },
-  {
-    value: "astro",
-    label: "Astro",
-  },
-]
+const PLATFORMS = [
+  "All",
+  "Atcoder",
+  "Codeforces",
+  "Codeforces Gym",
+  "CodeChef",
+  "HackerEarth",
+  "HackerRank",
+  "LeetCode",
+  "Toph",
+];
 
-export default function ComboboxDemo() {
-  const [open, setOpen] = React.useState(false)
-  const [value, setValue] = React.useState("")
-
+export default function SelectPlatform({
+  platform,
+  setPlatform,
+}: {
+  platform: string;
+  setPlatform: (platform: string) => void;
+}) {
   return (
-    <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
-        <Button
-          variant="outline"
-          role="combobox"
-          aria-expanded={open}
-          className="w-[200px] justify-between"
-        >
-          {value
-            ? frameworks.find((framework) => framework.value === value)?.label
-            : "Select framework..."}
-          <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" size="sm" className="h-10 gap-1">
+          <ListFilter className="h-3.5 w-3.5" />
+          <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+            Platform
+          </span>
         </Button>
-      </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0">
-        <Command>
-          <CommandInput placeholder="Search framework..." className="h-9" />
-          <CommandEmpty>No framework found.</CommandEmpty>
-          <CommandGroup>
-            {frameworks.map((framework) => (
-              <CommandItem
-                key={framework.value}
-                value={framework.value}
-                onSelect={(currentValue) => {
-                  setValue(currentValue === value ? "" : currentValue)
-                  setOpen(false)
-                }}
-              >
-                {framework.label}
-                <CheckIcon
-                  className={cn(
-                    "ml-auto h-4 w-4",
-                    value === framework.value ? "opacity-100" : "opacity-0"
-                  )}
-                />
-              </CommandItem>
-            ))}
-          </CommandGroup>
-        </Command>
-      </PopoverContent>
-    </Popover>
-  )
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="start">
+        <ScrollArea className="h-52 w-44 rounded-md">
+          <DropdownMenuLabel>Select Platform</DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          {PLATFORMS.map((plt) => (
+            <DropdownMenuCheckboxItem
+              key={plt}
+              checked={plt === platform}
+              onClick={() => setPlatform(plt)}
+              className="flex items-center justify-start gap-2 text-xs md:text-sm"
+            >
+              <Image
+                // src={`/assets/svgs/${contest.platform.toLocaleLowerCase()}.svg`}
+                src={`/assets/svgs/atcoder.svg`}
+                alt="Platform Logo"
+                width={1}
+                height={1}
+                className="h-4 w-4"
+              />
+              {plt}
+            </DropdownMenuCheckboxItem>
+          ))}
+        </ScrollArea>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
 }
