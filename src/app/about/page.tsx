@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const About = () => {
   return (
-    <div className="text-4xl bg-red-600 text-center">
+    <div className="bg-red-600 text-center text-4xl">
       This is the about page. <Link href="/">Go back</Link>
     </div>
   );

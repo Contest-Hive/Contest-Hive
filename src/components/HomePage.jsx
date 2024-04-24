@@ -8,19 +8,29 @@ import ControlPanel from "@/components/ControlPanel";
 
 const HomePage = ({ contestData }) => {
   const [isFocusMode, setFocusMode] = useState(false);
+  const [firstLoad, setFirstLoad] = useState(true);
 
   useEffect(() => {
     if (Object.keys(getCookies()).length === 0) {
       setCookie("focusMode", false);
       return;
     }
-    const focusMode = getCookie("focusMode") === "true";
-    setCookie("focusMode", focusMode);
-    toast.success(`Focus Mode <b>${focusMode ? "Enabled" : "Disabled"}</b>`, {
+    if (firstLoad) {
+      console.log("First Load");
+      setFirstLoad(false);
+      const prevFocusMode = getCookie("focusMode") === "true";
+      setFocusMode(prevFocusMode);
+      return;
+    }
+
+    console.log(`Focus Mode: ${isFocusMode}`);
+    setCookie("focusMode", isFocusMode);
+
+    toast.success(`Focus Mode <b>${isFocusMode ? "Enabled" : "Disabled"}</b>`, {
       duration: 1500,
       icon: "🎯",
     });
-  }, [isFocusMode]);
+  }, [isFocusMode, firstLoad]);
 
   return (
     <>
@@ -32,7 +42,9 @@ const HomePage = ({ contestData }) => {
           </div>
         ) : (
           <div className="container mx-auto p-4">
-            <h1 className="text-center text-8xl font-bold my-10">Normal Mode</h1>
+            <h1 className="my-10 text-center text-8xl font-bold">
+              Normal Mode
+            </h1>
             {Array.from({ length: 15 }, (_, i) => (
               <div
                 key={i}
@@ -44,7 +56,7 @@ const HomePage = ({ contestData }) => {
           </div>
         )}
       </main>
-      <ControlPanel isFocusMode={isFocusMode} setFocusMode={setFocusMode} />
+      <ControlPanel setFocusMode={setFocusMode} />
     </>
   );
 };

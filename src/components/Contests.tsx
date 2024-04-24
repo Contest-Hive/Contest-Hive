@@ -1,5 +1,9 @@
-const Contests = () => {
-  return <div>Contests</div>;
-};
+import React from 'react'
 
-export default Contests;
+const Contests = () => {
+  return (
+    <div>Contests</div>
+  )
+}
+
+export default Contests

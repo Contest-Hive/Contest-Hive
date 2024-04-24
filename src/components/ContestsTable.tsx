@@ -1,3 +1,4 @@
+import { LinkedInLogoIcon } from "@radix-ui/react-icons";
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -55,15 +56,12 @@ function getRow() {
           {randomStatus}
         </Badge>
       </TableCell>
-      <TableCell className="hidden md:table-cell">
-        {new Date().toLocaleDateString()}
-      </TableCell>
       <TableCell className="text-right">${randomPrice}.00</TableCell>
     </TableRow>
   );
 }
 
-type Contests = {
+type Contest = {
   title: string;
   url: string;
   startTime: string;
@@ -77,9 +75,8 @@ import { getSecondsDifferencesFromNow } from "@/lib/utils";
 export default function ContestsTable({
   contestData,
 }: {
-  contestData: Contests;
+  contestData: Contest[];
 }) {
-
   return (
     <Card>
       <CardHeader className="px-7">
@@ -91,10 +88,9 @@ export default function ContestsTable({
           <TableHeader>
             <TableRow>
               <TableHead>Title</TableHead>
-              <TableHead className="hidden sm:table-cell">Type</TableHead>
-              <TableHead className="hidden sm:table-cell">Status</TableHead>
-              <TableHead className="hidden md:table-cell">Date</TableHead>
-              <TableHead className="text-right">Amount</TableHead>
+              <TableHead className="hidden sm:table-cell">Starts In</TableHead>
+              <TableHead className="hidden sm:table-cell">Duration</TableHead>
+              <TableHead className="text-right">Action</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -111,17 +107,37 @@ export default function ContestsTable({
                   Fulfilled
                 </Badge>
               </TableCell>
-              <TableCell className="hidden md:table-cell">2023-06-23</TableCell>
-              <TableCell className="text-right">$250.00</TableCell>
+              <TableCell className="hidden text-right md:table-cell">
+                13$
+              </TableCell>
             </TableRow>
 
-            {
-              // Add 5 random rows
-              Array.from({ length: 20 }, getRow)
-            }
+            {contestData.map((contest, index) => {
+              return getRow2(contest, index);
+            })}
           </TableBody>
         </Table>
       </CardContent>
     </Card>
+  );
+}
+
+function getRow2(contest: Contest, index: number) {
+  return (
+    <TableRow key={index}>
+      <TableCell>
+        <div className="font-medium">Title</div>
+        <div className="flex items-center justify-between text-sm text-muted-foreground md:inline">
+          <LinkedInLogoIcon /> Atcoder
+        </div>
+      </TableCell>
+      <TableCell className="hidden sm:table-cell">2 hours</TableCell>
+      <TableCell className="hidden sm:table-cell">
+        <Badge className="text-xs" variant="secondary">
+          1 hour
+        </Badge>
+      </TableCell>
+      <TableCell className="text-right">:</TableCell>
+    </TableRow>
   );
 }
