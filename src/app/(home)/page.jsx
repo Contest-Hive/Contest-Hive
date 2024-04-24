@@ -1,4 +1,3 @@
-import NavBar from "@/components/Navbar";
 import HomePage from "@/components/HomePage";
 
 import { getSecondsDifferencesFromNow } from "@/lib/utils";
@@ -16,7 +15,6 @@ const Home = async () => {
 
   return (
     <>
-      <NavBar />
       <HomePage contestData={contestData} />
     </>
   );

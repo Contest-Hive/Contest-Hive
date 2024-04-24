@@ -1,8 +1,13 @@
 import { useState } from "react";
-
 import Image from "next/image";
+import Link from "next/link";
 
 import { Badge } from "@/components/ui/badge";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
 import {
   Card,
   CardContent,
@@ -18,8 +23,13 @@ import {
   TableHeader,
   TableHead,
 } from "@/components/ui/table";
+import { Button, buttonVariants } from "@/components/ui/button";
 
-import { timeToReadableTime, secondsToShortReadableTime } from "@/lib/utils";
+import {
+  timeToReadableTime,
+  secondsToShortReadableTime,
+  timeToLocalTime,
+} from "@/lib/utils";
 import SelectPlatform from "./SelectPlatform";
 
 type Contest = {
@@ -36,7 +46,7 @@ export default function ContestsTable({
 }: {
   contestData: Contest[];
 }) {
-  const perPage = 10;
+  const perPage = 5;
   const totalPages = Math.ceil(contestData.length / perPage);
   const [currentPage, setCurrentPage] = useState(1);
   return (
@@ -50,17 +60,35 @@ export default function ContestsTable({
           <TableHeader>
             <TableRow>
               <TableHead>Filter</TableHead>
-              <TableHead>
-                <SelectPlatform />
-              </TableHead>
+              <TableHead>{/* <SelectPlatform /> */}</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {contestData.map((contest, index) => {
-              return getContestRow(contest, index);
-            })}
+            {contestData
+              .slice(currentPage * perPage, perPage * (currentPage + 1))
+              .map((contest, index) => {
+                return getContestRow(contest, index);
+              })}
           </TableBody>
         </Table>
+      </CardContent>
+      <CardContent className="flex justify-end gap-2 select-none">
+        <Button
+          variant="default"
+          size="sm"
+          onClick={() => setCurrentPage((prev) => prev - 1)}
+          disabled={currentPage === 0}
+        >
+          Previous
+        </Button>
+        <Button
+          variant="default"
+          size="sm"
+          onClick={() => setCurrentPage((prev) => prev + 1)}
+          disabled={currentPage === totalPages - 1}
+        >
+          Next
+        </Button>
       </CardContent>
     </Card>
   );
@@ -69,15 +97,15 @@ export default function ContestsTable({
 function getContestRow(contest: Contest, index: number) {
   const flexClass = "flex items-center justify-start my-0.5";
   const HeaderClass =
-    "text-sm font-medium md:text-base w-20 flex justify-between mr-2";
+    "text-sm font-medium md:text-base min-w-20 flex justify-between mr-2";
   return (
-    <TableRow key={index} className="w-[700px]">
+    <TableRow key={index}>
       <TableCell className="table-cell">
         <span className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
           <Image
             // src={`/assets/svgs/${contest.platform.toLocaleLowerCase()}.svg`}
             src={`/assets/svgs/atcoder.svg`}
-            alt="meo"
+            alt="Platform Logo"
             width={1}
             height={1}
             className="h-4 w-4"
@@ -88,15 +116,29 @@ function getContestRow(contest: Contest, index: number) {
           <span className={HeaderClass}>
             <p>Title</p>:
           </span>
-          <p className="min-w-[300px] text-xs md:text-sm lg:text-base">
+
+          <Link
+            href={contest.url}
+            className="min-w-48 text-xs font-semibold text-primary underline-offset-2 hover:underline md:text-sm lg:text-base"
+            target="_blank"
+          >
             {contest.title}
-          </p>
+          </Link>
         </div>
         <div className={flexClass}>
           <span className={HeaderClass}>
             <p>Starts In</p>:
           </span>
-          <Badge>{timeToReadableTime(contest.startTime)}</Badge>
+          <HoverCard>
+            <HoverCardTrigger>
+              <Badge>{timeToReadableTime(contest.startTime)}</Badge>
+            </HoverCardTrigger>
+            <HoverCardContent className="w-54">
+              <p className="font-semibold ">
+                {timeToLocalTime(contest.startTime)}
+              </p>
+            </HoverCardContent>
+          </HoverCard>
         </div>
         <div className={flexClass}>
           <span className={HeaderClass}>

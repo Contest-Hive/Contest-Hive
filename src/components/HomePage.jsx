@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { getCookie, getCookies, setCookie } from "cookies-next";
 
+import NavBar from "@/components/Navbar";
 import ContestsTable from "@/components/ContestsTable";
-import ControlPanel from "@/components/ControlPanel";
 
 const HomePage = ({ contestData }) => {
   const [isFocusMode, setFocusMode] = useState(false);
@@ -20,23 +20,26 @@ const HomePage = ({ contestData }) => {
       setFirstLoad(false);
       const prevFocusMode = getCookie("focusMode") === "true";
       setFocusMode(prevFocusMode);
+      setTimeout(() => {
+        if (prevFocusMode)
+          toast.success(`Focus Mode <b>Enabled</b>`, {
+            duration: 1500,
+            icon: "🎯",
+          });
+      });
       return;
     }
 
     setCookie("focusMode", isFocusMode);
-
-    toast.success(`Focus Mode <b>${isFocusMode ? "Enabled" : "Disabled"}</b>`, {
-      duration: 1500,
-      icon: "🎯",
-    });
   }, [isFocusMode, firstLoad]);
 
   return (
     <>
+      <NavBar setFocusMode={setFocusMode} />
+
       <main>
         {isFocusMode ? (
           <div className="container mx-auto p-4">
-            <h1 className="my-10 text-center text-4xl font-bold">Contests</h1>
             <ContestsTable contestData={contestData} />
           </div>
         ) : (
@@ -55,7 +58,6 @@ const HomePage = ({ contestData }) => {
           </div>
         )}
       </main>
-      <ControlPanel setFocusMode={setFocusMode} />
     </>
   );
 };
