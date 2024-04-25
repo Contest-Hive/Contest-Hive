@@ -21,7 +21,7 @@ import { Button } from "@/components/ui/button";
 import SelectPlatform from "./SelectPlatform";
 import SearchBar from "./SearchBar";
 import Contest from "./Contest";
-import ContestSkeleton from "./ContestSkeleton";
+// import ContestSkeleton from "./ContestSkeleton";
 
 import type { ContestType } from "@/lib/types";
 
@@ -38,22 +38,21 @@ export default function ContestsTable({
   const perPage = 5; // Number of contests per page
   const length = filteredData.length;
   const totalPages = Math.ceil(length / perPage);
+
   const [currentPage, setCurrentPage] = useState(
-    Number(searchParams.get("currentPage")) || 0,
+    Math.min(Number(searchParams.get("page")) || 0, totalPages - 1),
   );
   const [platform, setPlatform] = useState(
     searchParams.get("platform") || "All",
   );
   const [searchQuery, setSearchQuery] = useState(
-    searchParams.get("searchQuery") || "",
+    searchParams.get("search") || "",
   );
 
-  // Get a new searchParams string by merging the current
-  // searchParams with a provided key/value pair
   const createQueryString = useCallback(
-    (name: string, value: string) => {
+    (name: string, value: any) => {
       const params = new URLSearchParams(searchParams.toString());
-      params.set(name, value);
+      params.set(name, String(value));
 
       return params.toString();
     },
@@ -61,7 +60,16 @@ export default function ContestsTable({
   );
 
   useEffect(() => {
-    console.log(searchParams.get("platform"))
+    console.log(`platform: ${platform}`);
+    // router.push(
+    //   `${pathname}?${createQueryString("platform", platform)}&${createQueryString("page", 0)}`,
+    // );
+    setCurrentPage(0);
+
+    if (platform === undefined) {
+      setPlatform("All");
+      return;
+    }
     if (platform === "All") {
       setFilteredData(contestData);
     } else {
@@ -73,24 +81,35 @@ export default function ContestsTable({
         ),
       );
     }
-    router.push(`${pathname}?${createQueryString("platform", platform)}`)
-    setCurrentPage(0);
-  }, [platform, contestData, router, pathname, createQueryString, searchParams]);
 
-  useEffect(() => {
-    if (searchQuery === "") {
+    return;
+    if (platform === "All") {
       setFilteredData(contestData);
     } else {
       setFilteredData(
         contestData.filter(
           (contest) =>
-            contest.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            contest.platform.toLowerCase().includes(searchQuery.toLowerCase()),
+            contest.platform === platform ||
+            (platform === "Codeforces Gym" && contest.platform === "CF GYM"),
         ),
       );
     }
-    // setCurrentPage(0);
-  }, [searchQuery, contestData]);
+  }, [platform, contestData]);
+
+  // useEffect(() => {
+  //   if (searchQuery === "") {
+  //     setFilteredData(contestData);
+  //   } else {
+  //     setFilteredData(
+  //       contestData.filter(
+  //         (contest) =>
+  //           contest.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  //           contest.platform.toLowerCase().includes(searchQuery.toLowerCase()),
+  //       ),
+  //     );
+  //   }
+  //   // setCurrentPage(0);
+  // }, [searchQuery, contestData]);
 
   // arrow right and left = next and previous page
   useHotkeys("right", () => {
@@ -143,9 +162,12 @@ export default function ContestsTable({
           {Math.min((currentPage + 1) * perPage, length)} out of {length}
         </p>
         <span className="flex select-none justify-end gap-2">
-          <Button variant="default" size="sm" 
-          onClick={() => setCurrentPage((prev) => prev - 1)}
-          disabled={currentPage === 0}>
+          <Button
+            variant="default"
+            size="sm"
+            onClick={() => setCurrentPage((prev) => prev - 1)}
+            disabled={currentPage === 0}
+          >
             Previous
           </Button>
           <Button

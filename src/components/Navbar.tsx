@@ -26,10 +26,16 @@ const NavBar = ({
 }: {
   setFocusMode: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  useHotkeys("alt+f", (e) => {
-    e.preventDefault();
-    setFocusMode((prev) => !prev);
-  });
+  useHotkeys(
+    "alt+f",
+    (e) => {
+      e.preventDefault();
+      setFocusMode((prev) => !prev);
+    },
+    {
+      enableOnFormTags: true,
+    },
+  );
 
   return (
     <div className="sticky inset-0 top-0 z-50 h-12 backdrop-blur-lg md:h-14">
@@ -77,7 +83,7 @@ const NavBar = ({
             >
               Old Website
             </Link>
-            <Separator className="w-7 rotate-90 mr-5" />
+            <Separator className="mr-5 w-7 rotate-90" />
             <DropdownMenu>
               <DropdownMenuTrigger className="select-none focus-visible:outline-none">
                 <Button

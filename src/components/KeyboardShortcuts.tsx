@@ -9,14 +9,14 @@ import {
 
 const SHORTCUTS = [
   {
-    key: "cmd", // ⌘
+    key: "ctrl", // ⌘
     followedByKey: "k",
     description: "Search for a contest",
   },
   {
     key: "alt",
     followedByKey: "f",
-    description: "Focus Mode",
+    description: "Toggle Focus Mode",
   },
   {
     key: "right arrow",
@@ -58,9 +58,6 @@ export default function KeyboardShortcuts() {
           </div>
         ))}
       </CardContent>
-      <CardFooter className="text-xs font-semibold">
-        * Will not work when you are typing
-      </CardFooter>
     </Card>
   );
 }

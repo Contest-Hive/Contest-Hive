@@ -1,4 +1,5 @@
 import HomePage from "@/components/HomePage";
+import Temp from "@/components/Temp";
 
 import { getSecondsDifferencesFromNow } from "@/lib/utils";
 
@@ -22,6 +23,7 @@ const Home = async () => {
 
   return (
     <>
+      {/* <Temp /> */}
       <HomePage contestData={filteredContests} />
     </>
   );

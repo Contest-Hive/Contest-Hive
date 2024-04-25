@@ -13,16 +13,16 @@ const SearchBar = ({
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   // ctrl + k
-  useHotkeys("ctrl+k", (event) => {
-    console.log("Meow Meow ctrl+k");
-    event.preventDefault();
-    inputRef.current?.focus();
-  });
   useHotkeys(
-    "esc",
-    () => {
-      event?.preventDefault();
-      inputRef.current?.blur();
+    "ctrl+k",
+    (event) => {
+      event.preventDefault();
+      // if the input is focused, blur it
+      if (document.activeElement === inputRef.current) {
+        inputRef.current?.blur();
+        return;
+      }
+      inputRef.current?.focus();
     },
     {
       enableOnFormTags: true,

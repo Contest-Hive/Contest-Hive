@@ -60,7 +60,7 @@ export default function Contest(contest: ContestType, index: number) {
           <span className="flex items-center justify-start gap-2">
             <HoverCard>
               <HoverCardTrigger>
-                <Badge className="min-w-20">
+                <Badge className="flex min-w-20 items-center justify-center">
                   {timeToReadableTime(contest.startTime)}
                 </Badge>
               </HoverCardTrigger>
