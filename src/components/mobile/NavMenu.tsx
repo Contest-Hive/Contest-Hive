@@ -11,9 +11,38 @@ import {
 } from "@/components/ui/sheet";
 
 import { Menu } from "lucide-react";
+
 import Link from "next/link";
+import KeyboardShortcuts from "../KeyboardShortcuts";
+import { Separator } from "../ui/separator";
+
+const SHORTCUTS = [
+  {
+    key: "⌘",
+    followedByKey: "k",
+    description: "Search for a contest",
+  },
+  {
+    key: "alt",
+    followedByKey: "f",
+    description: "Focus Mode",
+  },
+  {
+    key: "right arrow",
+    followedByKey: "",
+    description: "Next Page",
+  },
+  {
+    key: "left arrow",
+    followedByKey: "",
+    description: "Previous Page",
+  },
+];
 
 export function NavMenu() {
+  const defaultClass =
+    "pointer-events-none inline-flex h-5 select-none items-center rounded border bg-muted px-1.5 font-mono font-medium text-primary text-sm";
+
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -23,7 +52,7 @@ export function NavMenu() {
       </SheetTrigger>
 
       <SheetContent side="right">
-        <div className=" my-10 flex flex-col gap-4">
+        <div className="flex flex-col mt-10">
           <Link
             href="/about"
             className={buttonVariants({
@@ -32,6 +61,26 @@ export function NavMenu() {
           >
             About
           </Link>
+          <Link
+            href="/credits"
+            className={buttonVariants({
+              variant: "link",
+            })}
+          >
+            Credits
+          </Link>
+
+          <Link
+            href="/old"
+            className={buttonVariants({
+              variant: "link",
+            })}
+          >
+            Old Website
+          </Link>
+
+          <Separator className="mb-10" />
+          <KeyboardShortcuts />
         </div>
       </SheetContent>
     </Sheet>

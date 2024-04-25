@@ -3,7 +3,6 @@ import { Inter as FontSans } from "next/font/google";
 
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
-import { Toaster } from "@/components/ui/toaster"
 import { ThemeProvider } from "next-themes";
 
 const fontSans = FontSans({
@@ -35,7 +34,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           disableTransitionOnChange
         >
           {children}
-          <Toaster />
+          {/* <Toaster /> */}
         </ThemeProvider>
       </body>
     </html>

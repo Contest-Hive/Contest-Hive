@@ -1,20 +1,38 @@
 import Link from "next/link";
 import Image from "next/image";
+import { useHotkeys } from "react-hotkeys-hook";
+
+import { CodeIcon } from "@radix-ui/react-icons";
+
 import { ModeToggle } from "./ui/theme-toggle";
 import { Separator } from "./ui/separator";
-import { buttonVariants } from "./ui/button";
+import { Button, buttonVariants } from "./ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu";
 
 import MaxWidthWrapper from "./MaxWidthWrapper";
 import NavMenu from "./mobile/NavMenu";
 import FocusMode from "./FocusMode";
+import KeyboardShortcuts from "./KeyboardShortcuts";
 
 const NavBar = ({
   setFocusMode,
 }: {
-  setFocusMode: (focusMode: boolean) => void;
+  setFocusMode: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
+  useHotkeys("alt+f", (e) => {
+    e.preventDefault();
+    setFocusMode((prev) => !prev);
+  });
+
   return (
-    <div className="sticky inset-0 top-0 z-50 h-12 backdrop-blur md:h-14">
+    <div className="sticky inset-0 top-0 z-50 h-12 backdrop-blur-lg md:h-14">
       <MaxWidthWrapper>
         <div className="flex h-12 flex-1 items-center justify-between gap-2 px-2 md:h-14 md:gap-4">
           <Link
@@ -33,7 +51,7 @@ const NavBar = ({
             </p>
           </Link>
 
-          <div className="hidden items-center gap-4 md:flex">
+          <div className="hidden items-center gap-2 md:flex">
             <Link
               href="/about"
               className={buttonVariants({
@@ -42,8 +60,25 @@ const NavBar = ({
             >
               About
             </Link>
+
+            <DropdownMenu>
+              <DropdownMenuTrigger className="select-none focus-visible:outline-none">
+                <Button
+                  className="h-10 w-10 p-2"
+                  variant="outline"
+                  size="icon"
+                  asChild
+                >
+                  <CodeIcon className="h-10 w-10" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="min-w-[300px] p-1" align="end">
+                <KeyboardShortcuts /> {/*  Content  */}
+              </DropdownMenuContent>
+            </DropdownMenu>
             <FocusMode setFocusMode={setFocusMode} />
             <ModeToggle />
+            <NavMenu />
           </div>
           <span className="flex items-center gap-1 md:hidden">
             <FocusMode setFocusMode={setFocusMode} />
