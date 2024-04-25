@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
@@ -45,6 +45,8 @@ export default function ContestsTable({
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
+  const [isPending, startTransition] = useTransition();
+
   const [filteredData, setFilteredData] = useState(contestData);
   const perPage = 5; // Number of contests per page
   const length = filteredData.length;
@@ -61,20 +63,23 @@ export default function ContestsTable({
   );
 
   useEffect(() => {
-    console.log("platform", platform);
-    const newParams = new URLSearchParams();
-    newParams.set("platform", platform);
+    const params = new URLSearchParams();
+    const prevPlatform = searchParams.get("platform");
 
-    // Only push to router if platform has actually changed
-    if (platform !== searchParams.get("platform")) {
-      router.push(`${pathname}?${newParams.toString()}`);
-    }
+    if (prevPlatform === platform) return;
+
+    params.set("platform", platform);
+    router.replace(`${pathname}?${params.toString()}`, {
+      scroll: false,
+    });
 
     setCurrentPage(0);
 
+    // if previousPlatform !== platform, then filter the data
     if (platform === "All" || platform === undefined) {
       setFilteredData(contestData);
     } else if (PLATFORMS.includes(platform)) {
+      console.log(`Changing platform to ${platform}`);
       setFilteredData(
         contestData.filter(
           (contest) =>
@@ -83,31 +88,40 @@ export default function ContestsTable({
         ),
       );
     }
-  }, [platform, contestData, pathname, router, searchParams]);
+    // NOTE: Do not add `contestData` to the dependencies array
+  }, [platform, pathname, router, searchParams]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    console.log("searchQuery", searchQuery);
-    const newParams = new URLSearchParams(searchParams.toString());
-    newParams.set("search", searchQuery);
-  
-    router.push(`${pathname}?${newParams.toString()}`);
+    const page = Math.min(currentPage, totalPages - 1);
+    const params = new URLSearchParams();
+    params.set("platform", platform);
+    params.set("page", page.toString());
+    router.replace(`${pathname}?${params.toString()}`, {
+      scroll: false,
+    });
+  }, [currentPage, totalPages, pathname, router, platform]);
+
+  useEffect(() => {
     setCurrentPage(0);
 
-    if (searchQuery === "") {
-      setFilteredData(contestData);
-    } else {
-      setFilteredData(
-        contestData.filter(
-          (contest) =>
-            contest.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            contest.platform.toLowerCase().includes(searchQuery.toLowerCase()),
-        ),
-      );
-    }
-  }, [searchQuery, contestData, pathname, router, searchParams]);
-
-
-  // TODO: save the current page in the URL
+    startTransition(() => {
+      console.log(`Searching for ${searchQuery}`)
+      if (searchQuery === "") {
+        setFilteredData(contestData);
+      } else {
+        setFilteredData(
+          contestData.filter(
+            (contest) =>
+              contest.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+              contest.platform
+                .toLowerCase()
+                .includes(searchQuery.toLowerCase()),
+          ),
+        );
+      }
+    });
+    // NOTE: Do not add `contestData` to the dependencies array
+  }, [searchQuery]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // arrow right and left = next and previous page
   useHotkeys("right", () => {
