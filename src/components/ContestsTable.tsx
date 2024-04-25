@@ -105,7 +105,7 @@ export default function ContestsTable({
     setCurrentPage(0);
 
     startTransition(() => {
-      console.log(`Searching for ${searchQuery}`)
+      console.log(`Searching for ${searchQuery}`);
       if (searchQuery === "") {
         setFilteredData(contestData);
       } else {
@@ -130,6 +130,7 @@ export default function ContestsTable({
   useHotkeys("left", () => {
     setCurrentPage((prev) => Math.max(prev - 1, 0));
   });
+
   return (
     <Card>
       <CardHeader className="px-7">

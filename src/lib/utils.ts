@@ -1,7 +1,7 @@
 import { twMerge } from "tailwind-merge";
 import { type ClassValue, clsx } from "clsx";
 
-import type { Contest } from "@/lib/types";
+import type { ContestType } from "@/lib/types";
 
 
 export function secondsToReadableTime(s: number) {
@@ -136,7 +136,7 @@ export function getEncodedDate(isoTime: string) {
   return encodedDate;
 }
 
-export function getGoogleCalenderLink(contest: Contest) {
+export function getGoogleCalenderLink(contest: ContestType) {
   const text = `
 <b>Title      :</b> ${contest.title}
 <b>Platform   :</b> ${contest.platform}
