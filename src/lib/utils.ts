@@ -119,6 +119,18 @@ export function getEndTime(isoStartTime: string, durationSeconds: number) {
   return endDate;
 }
 
+export function getEncodedDate(isoTime: string) {
+  const dt = new Date(isoTime);
+  const year = dt.getFullYear();
+  const month = (dt.getMonth() + 1).toString().padStart(2, "0");
+  const day = dt.getDate().toString().padStart(2, "0");
+  const hours = dt.getHours().toString().padStart(2, "0");
+  const minutes = dt.getMinutes().toString().padStart(2, "0");
+  const seconds = dt.getSeconds().toString().padStart(2, "0");
+  const encodedDate = `${year}${month}${day}T${hours}${minutes}${seconds}Z`;
+  return encodedDate;
+}
+
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
