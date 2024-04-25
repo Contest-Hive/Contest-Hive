@@ -9,26 +9,15 @@ const Temp = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const setQueryParam = useCallback(
-    (name: string, value: any) => {
-      const prevParams = new URLSearchParams(searchParams.toString());
-      prevParams.set(name, String(value));
-      const newParams = prevParams.toString();
-      console.log(newParams);
-
-      router.push(`${pathname}?${newParams}`);
-    },
-    [searchParams, pathname, router],
-  );
-
   const [counter, setCounter] = useState(
     Number(searchParams.get("counter")) || 0,
   );
 
   useEffect(() => {
     // add it to search params
-    setQueryParam("counter", counter);
-  }, [setQueryParam, counter]);
+    console.log(`counter: ${counter}`)
+    router.push(`${pathname}?counter=${counter}`);
+  }, [counter, router, pathname]);
 
   return (
     <div>
