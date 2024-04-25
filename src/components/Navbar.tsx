@@ -60,7 +60,24 @@ const NavBar = ({
             >
               About
             </Link>
+            <Link
+              href="/credits"
+              className={buttonVariants({
+                variant: "link",
+              })}
+            >
+              Credits
+            </Link>
 
+            <Link
+              href="/old"
+              className={buttonVariants({
+                variant: "link",
+              })}
+            >
+              Old Website
+            </Link>
+            <Separator className="w-7 rotate-90 mr-5" />
             <DropdownMenu>
               <DropdownMenuTrigger className="select-none focus-visible:outline-none">
                 <Button

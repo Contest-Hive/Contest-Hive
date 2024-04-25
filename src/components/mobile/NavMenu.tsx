@@ -52,7 +52,7 @@ export function NavMenu() {
       </SheetTrigger>
 
       <SheetContent side="right">
-        <div className="flex flex-col mt-10">
+        <div className="mt-10 flex flex-col">
           <Link
             href="/about"
             className={buttonVariants({

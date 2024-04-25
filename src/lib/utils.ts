@@ -1,6 +1,9 @@
 import { twMerge } from "tailwind-merge";
 import { type ClassValue, clsx } from "clsx";
 
+import type { Contest } from "@/lib/types";
+
+
 export function secondsToReadableTime(s: number) {
   if (!s) {
     return "13 seconds";
@@ -67,7 +70,9 @@ export function getSecondsDifferencesFromNow(isoTime: string) {
 }
 
 export function timeToReadableTime(isoTime: string) {
-  return secondsToShortReadableTime(getSecondsDifferencesFromNow(isoTime));
+  const x = getSecondsDifferencesFromNow(isoTime);
+  if (x < 1) return "Started";
+  return secondsToShortReadableTime(x);
 }
 
 export function timeToLocalTime(isoTime: string) {
@@ -129,6 +134,20 @@ export function getEncodedDate(isoTime: string) {
   const seconds = dt.getSeconds().toString().padStart(2, "0");
   const encodedDate = `${year}${month}${day}T${hours}${minutes}${seconds}Z`;
   return encodedDate;
+}
+
+export function getGoogleCalenderLink(contest: Contest) {
+  const text = `
+<b>Title      :</b> ${contest.title}
+<b>Platform   :</b> ${contest.platform}
+<b>Duration   :</b> ${secondsToReadableTime(contest.duration)}
+<b>Link       :</b> <a href="${contest.url}">here</a>
+
+<b>Created by:</b> <a href="https://contest-hive.vercel.app/">Contest Hive</a>
+  `.trim();
+  return encodeURI(
+    `https://calendar.google.com/calendar/u/0/r/eventedit?text=${contest.title}&dates=${getEncodedDate(contest.startTime)}/${getEncodedDate(contest.endTime)}&details=${text}&location=${contest.url}`,
+  );
 }
 
 export function cn(...inputs: ClassValue[]) {
