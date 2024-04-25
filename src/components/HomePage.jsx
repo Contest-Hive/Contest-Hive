@@ -13,6 +13,7 @@ const HomePage = ({ contestData }) => {
   useEffect(() => {
     if (Object.keys(getCookies()).length === 0) {
       setCookie("focusMode", false);
+      setFirstLoad(false);
       return;
     }
     if (firstLoad) {
