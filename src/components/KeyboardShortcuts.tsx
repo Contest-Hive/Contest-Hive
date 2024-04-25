@@ -36,7 +36,7 @@ export default function KeyboardShortcuts() {
 
   return (
     <Card className="border-none p-0">
-      <CardHeader className="rounded-md bg-muted-foreground p-2 text-center font-mono text-primary-foreground">
+      <CardHeader className="rounded-md bg-muted-foreground p-2 text-center font-semibold text-primary-foreground">
         Keyboard Shortcuts
       </CardHeader>
       <CardTitle className="hidden">Keyboard Shortcuts</CardTitle>

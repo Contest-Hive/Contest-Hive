@@ -105,7 +105,6 @@ export default function ContestsTable({
     setCurrentPage(0);
 
     startTransition(() => {
-      console.log(`Searching for ${searchQuery}`);
       if (searchQuery === "") {
         setFilteredData(contestData);
       } else {
@@ -121,6 +120,7 @@ export default function ContestsTable({
       }
     });
     // NOTE: Do not add `contestData` to the dependencies array
+    // IDK why, but it causes an infinite loop
   }, [searchQuery]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // arrow right and left = next and previous page
