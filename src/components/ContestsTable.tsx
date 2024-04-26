@@ -1,4 +1,4 @@
-import { useEffect, useState, useTransition } from "react";
+import { useEffect, useState, useTransition, Suspense } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
@@ -37,6 +37,26 @@ const PLATFORMS = [
 ];
 
 export default function ContestsTable({
+  contestData,
+  compressed = false,
+  perPage = 5,
+}: {
+  contestData: ContestType[];
+  compressed?: boolean;
+  perPage?: number;
+}) {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <MainFunc
+        contestData={contestData}
+        compressed={compressed}
+        perPage={perPage}
+      />
+    </Suspense>
+  );
+}
+
+function MainFunc({
   contestData,
   compressed = false,
   perPage = 5,

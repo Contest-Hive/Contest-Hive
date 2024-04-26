@@ -49,8 +49,8 @@ const HomePage = ({ contestData, statsData }) => {
         ) : (
           <div className={fontRecursive.className}>
             <Hero />
-            <CompressedContestTable contestData={contestData} />
             <Stats statsData={statsData}/>
+            <CompressedContestTable contestData={contestData} />
           </div>
         )}
       </main>
