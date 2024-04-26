@@ -37,7 +37,6 @@
     "react-dom": "^18",
     "react-fast-marquee": "^1.6.4",
     "react-hotkeys-hook": "^4.5.0",
-    "react-wrap-balancer": "^1.1.0",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7"
   },

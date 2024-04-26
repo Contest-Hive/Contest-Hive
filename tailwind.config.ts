@@ -20,7 +20,7 @@ const config = {
     },
     extend: {
       fontFamily: {
-        heading: ['"Recursive"', ...fontFamily.sans]
+        heading: ['"Recursive"', ...fontFamily.sans],
       },
       colors: {
         pinkish:{

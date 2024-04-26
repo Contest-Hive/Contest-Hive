@@ -65,7 +65,7 @@ const NavBar = ({
                 buttonVariants({
                   variant: "link",
                 }),
-                "lg:px-2 px-1",
+                "px-1 lg:px-2",
               )}
             >
               About
@@ -76,7 +76,7 @@ const NavBar = ({
                 buttonVariants({
                   variant: "link",
                 }),
-                "lg:px-2 px-1",
+                "px-1 lg:px-2",
               )}
             >
               Credits
@@ -88,12 +88,12 @@ const NavBar = ({
                 buttonVariants({
                   variant: "link",
                 }),
-                "lg:px-2 px-0",
+                "px-0 lg:px-2",
               )}
             >
               Old Website
             </Link>
-            <Separator className="mr-2 w-7 ml-1 rotate-90" />
+            <Separator className="ml-1 mr-2 w-7 rotate-90" />
             <DropdownMenu>
               <DropdownMenuTrigger className="select-none focus-visible:outline-none">
                 <Button

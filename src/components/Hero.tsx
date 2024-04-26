@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Recursive } from "next/font/google";
 
-import Balancer from "react-wrap-balancer";
 import { GitHubLogoIcon, ReaderIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 
@@ -21,6 +20,7 @@ const fontRecursive = Recursive({
 });
 
 const GITHUB_Link = "https://github.com/Contest-Hive/Contest-Hive";
+const DOCS_LINK = "https://contest-hive.github.io/docs";
 
 const Hero = () => {
   return (
@@ -36,7 +36,7 @@ const Hero = () => {
         </span>
         is All You Need
       </header>
-      <p className="mx-auto max-w-lg text-center text-sm md:max-w-xl md:text-base lg:max-w-2xl lg:text-lg">
+      <p className="mx-auto max-w-lg text-balance text-center text-sm md:max-w-xl md:text-base lg:max-w-2xl lg:text-lg">
         <span className="font-semibold">
           Keeping track of upcoming contests is a{" "}
           <TooltipProvider>
@@ -48,7 +48,7 @@ const Hero = () => {
                 <a
                   href="https://en.wikipedia.org/wiki/Sulfur"
                   target="_blank"
-                  className="border-b-2 border-dotted border-black text-lg font-bold"
+                  className="underline-dotted text-lg font-bold"
                   title="Open Wikipedia of Sulfur"
                 >
                   <sup className="text-xs">16</sup>S
@@ -61,10 +61,13 @@ const Hero = () => {
             pain.
           </span>
         </span>
+        {/* <br /> */}{" "}
+        <span className="font-extrabold tracking-tighter">Not anymore! 🚀</span>
         <br />
-        <span className="font-semibold tracking-tighter">Not anymore! 🚀</span>
-        <br />
-        Contest Hive will keep you updated with all the upcoming contests.
+        <span className="font-semibold tracking-tighter">
+          Contest Hive
+        </span>{" "}
+        will keep you updated with all the upcoming contests.
       </p>
       <div className="flex items-center justify-center gap-2 py-10">
         <Button asChild>
@@ -79,7 +82,7 @@ const Hero = () => {
         </Button>
         <Button asChild variant="outline">
           <Link
-            href={GITHUB_Link}
+            href={DOCS_LINK}
             className="flex items-center justify-center gap-2"
             target="_blank"
           >

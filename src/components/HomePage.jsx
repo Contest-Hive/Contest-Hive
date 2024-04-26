@@ -1,12 +1,20 @@
 "use client";
+import { Recursive } from "next/font/google";
+
 import { useEffect, useState } from "react";
 import { getCookie, getCookies, setCookie } from "cookies-next";
 
 import NavBar from "@/components/Navbar";
-import ContestsTable from "@/components/ContestsTable";
 import Hero from "@/components/Hero";
-import Slider from "@/components/Slider";
-import MaxWidthWrapper from "./MaxWidthWrapper";
+import ContestsTable from "@/components/ContestsTable";
+import CompressedContestTable from "@/components/CompressedContestTable";
+import Stats from "./Stats";
+
+
+const fontRecursive = Recursive({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
 const HomePage = ({ contestData }) => {
   const [isFocusMode, setFocusMode] = useState(false);
@@ -35,12 +43,14 @@ const HomePage = ({ contestData }) => {
 
       <main>
         {isFocusMode ? (
-          <div className="container mx-auto p-4">
+          <div className="container mx-auto px-1 py-4 md:p-4">
             <ContestsTable contestData={contestData} />
           </div>
         ) : (
-          <div>
+          <div className={fontRecursive.className}>
             <Hero />
+            <Stats/>
+            <CompressedContestTable contestData={contestData} />
           </div>
         )}
       </main>

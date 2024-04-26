@@ -38,8 +38,12 @@ const PLATFORMS = [
 
 export default function ContestsTable({
   contestData,
+  compressed = false,
+  perPage = 5,
 }: {
   contestData: ContestType[];
+  compressed?: boolean;
+  perPage?: number;
 }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -48,7 +52,6 @@ export default function ContestsTable({
   const [isPending, startTransition] = useTransition();
 
   const [filteredData, setFilteredData] = useState(contestData);
-  const perPage = 5; // Number of contests per page
   const length = filteredData.length;
   const totalPages = Math.ceil(length / perPage);
   const [currentPage, setCurrentPage] = useState(
@@ -151,16 +154,31 @@ export default function ContestsTable({
   });
 
   return (
-    <Card>
-      <CardHeader className="px-7">
-        <CardTitle>Contests</CardTitle>
-        <CardDescription>Below are the upcoming contests</CardDescription>
+    <Card className="font-sans">
+      <CardHeader className="px-7 py-5">
+        <CardTitle className="font-bold md:text-3xl">
+          Upcoming Contests
+        </CardTitle>
+        {!compressed ? (
+          <CardDescription className="mx-0.5">
+            Below are the upcoming contests from{" "}
+            <span className="font-mono font-semibold">
+              {platform === "All" ? "all platforms" : platform}.
+            </span>
+          </CardDescription>
+        ) : (
+          <CardDescription className="mx-0.5 font-semibold">
+            Enable Focus Mode
+            <span className="font-mono font-normal">(alt+f)</span> for better
+            experience
+          </CardDescription>
+        )}
       </CardHeader>
       <CardContent>
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead className="flex items-center gap-2 px-0.5 md:px-2">
+              <TableHead className="my-2 flex items-center gap-2 px-0.5 md:px-2">
                 <SelectPlatform platform={platform} setPlatform={setPlatform} />
                 <SearchBar
                   searchQuery={searchQuery}
@@ -189,7 +207,7 @@ export default function ContestsTable({
         </Table>
       </CardContent>
       <CardContent className="flex items-center justify-between">
-        <p className="px-0.5 font-mono text-xs md:px-4 md:text-sm">
+        <p className="px-0.5 font-mono text-xs text-muted-foreground md:px-4 md:text-sm">
           Showing {Math.min(currentPage * perPage + 1, length)}-
           {Math.min((currentPage + 1) * perPage, length)} out of {length}
         </p>
