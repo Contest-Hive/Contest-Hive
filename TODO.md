@@ -1,0 +1,2 @@
+- refresh button in contest table. skeletons are shown in the meantime
+- slider of the platforms after hero section ( 2 slider )

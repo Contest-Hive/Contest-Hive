@@ -30,12 +30,11 @@ export default function Contest(contest: ContestType, index: number) {
       <TableCell className="table-cell">
         <span className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
           <Image
-            // src={`/assets/svgs/${contest.platform.toLocaleLowerCase()}.svg`}
-            src={`/assets/svgs/atcoder.svg`}
+            src={`/assets/svgs/platforms/${contest.platform.includes("Gym") ? "codeforces" : contest.platform.toLocaleLowerCase()}.svg`}
             alt="Platform Logo"
             width={1}
             height={1}
-            className="h-4 w-4"
+            className="h-5 w-5 rounded-sm"
           />
           {contest.platform}
         </span>

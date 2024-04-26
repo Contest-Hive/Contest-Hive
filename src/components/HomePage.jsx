@@ -4,8 +4,8 @@ import { getCookie, getCookies, setCookie } from "cookies-next";
 
 import NavBar from "@/components/Navbar";
 import ContestsTable from "@/components/ContestsTable";
-import KeyboardShortcuts from "@/components/KeyboardShortcuts";
 import Hero from "@/components/Hero";
+import Slider from "@/components/Slider";
 import MaxWidthWrapper from "./MaxWidthWrapper";
 
 const HomePage = ({ contestData }) => {

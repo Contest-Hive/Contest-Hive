@@ -93,7 +93,7 @@ const NavBar = ({
             >
               Old Website
             </Link>
-            <Separator className="mr-3 w-7 rotate-90" />
+            <Separator className="mr-2 w-7 ml-1 rotate-90" />
             <DropdownMenu>
               <DropdownMenuTrigger className="select-none focus-visible:outline-none">
                 <Button
@@ -111,7 +111,6 @@ const NavBar = ({
             </DropdownMenu>
             <FocusMode setFocusMode={setFocusMode} />
             <ModeToggle />
-            <NavMenu />
           </div>
           <span className="flex items-center gap-1 md:hidden">
             <FocusMode setFocusMode={setFocusMode} />

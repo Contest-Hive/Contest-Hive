@@ -1,4 +1,6 @@
 import type { Config } from "tailwindcss";
+const { fontFamily } = require('tailwindcss/defaultTheme')
+
 
 const config = {
   darkMode: ["class"],
@@ -17,6 +19,9 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        heading: ['"Recursive"', ...fontFamily.sans]
+      },
       colors: {
         pinkish:{
           DEFAULT:"#ef4444",
