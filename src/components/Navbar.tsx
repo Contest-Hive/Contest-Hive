@@ -20,6 +20,7 @@ import MaxWidthWrapper from "./MaxWidthWrapper";
 import NavMenu from "./mobile/NavMenu";
 import FocusMode from "./FocusMode";
 import KeyboardShortcuts from "./KeyboardShortcuts";
+import { cn } from "@/lib/utils";
 
 const NavBar = ({
   setFocusMode,
@@ -60,30 +61,39 @@ const NavBar = ({
           <div className="hidden items-center gap-2 md:flex">
             <Link
               href="/about"
-              className={buttonVariants({
-                variant: "link",
-              })}
+              className={cn(
+                buttonVariants({
+                  variant: "link",
+                }),
+                "lg:px-2 px-1",
+              )}
             >
               About
             </Link>
             <Link
               href="/credits"
-              className={buttonVariants({
-                variant: "link",
-              })}
+              className={cn(
+                buttonVariants({
+                  variant: "link",
+                }),
+                "lg:px-2 px-1",
+              )}
             >
               Credits
             </Link>
 
             <Link
               href="/old"
-              className={buttonVariants({
-                variant: "link",
-              })}
+              className={cn(
+                buttonVariants({
+                  variant: "link",
+                }),
+                "lg:px-2 px-0",
+              )}
             >
               Old Website
             </Link>
-            <Separator className="mr-5 w-7 rotate-90" />
+            <Separator className="mr-3 w-7 rotate-90" />
             <DropdownMenu>
               <DropdownMenuTrigger className="select-none focus-visible:outline-none">
                 <Button
@@ -95,7 +105,7 @@ const NavBar = ({
                   <CodeIcon className="h-10 w-10" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="min-w-[300px] p-1" align="end">
+              <DropdownMenuContent className="min-w-[300px] p-1" align="center">
                 <KeyboardShortcuts /> {/*  Content  */}
               </DropdownMenuContent>
             </DropdownMenu>

@@ -5,6 +5,8 @@ import { getCookie, getCookies, setCookie } from "cookies-next";
 import NavBar from "@/components/Navbar";
 import ContestsTable from "@/components/ContestsTable";
 import KeyboardShortcuts from "@/components/KeyboardShortcuts";
+import Hero from "@/components/Hero";
+import MaxWidthWrapper from "./MaxWidthWrapper";
 
 const HomePage = ({ contestData }) => {
   const [isFocusMode, setFocusMode] = useState(false);
@@ -37,11 +39,8 @@ const HomePage = ({ contestData }) => {
             <ContestsTable contestData={contestData} />
           </div>
         ) : (
-          <div className="container mx-auto p-4">
-            <h1 className="my-10 text-center text-6xl font-bold">
-              Normal Mode
-            </h1>
-            <KeyboardShortcuts />
+          <div>
+            <Hero />
           </div>
         )}
       </main>

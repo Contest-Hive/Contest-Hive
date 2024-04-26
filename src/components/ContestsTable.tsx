@@ -51,9 +51,8 @@ export default function ContestsTable({
   const perPage = 5; // Number of contests per page
   const length = filteredData.length;
   const totalPages = Math.ceil(length / perPage);
-
   const [currentPage, setCurrentPage] = useState(
-    Math.min(Number(searchParams.get("page")) || 0, totalPages - 1),
+    Math.min(Number(searchParams.get("page")) || 0, totalPages - 1, 0),
   );
   const [platform, setPlatform] = useState(
     searchParams.get("platform") || "All",
@@ -106,16 +105,36 @@ export default function ContestsTable({
 
     startTransition(() => {
       if (searchQuery === "") {
-        setFilteredData(contestData);
+        if (platform === "All" || platform === undefined) {
+          setFilteredData(contestData);
+        } else if (PLATFORMS.includes(platform)) {
+          setFilteredData(
+            contestData.filter(
+              (contest) =>
+                contest.platform === platform ||
+                (platform === "Codeforces Gym" &&
+                  contest.platform === "CF GYM"),
+            ),
+          );
+        }
       } else {
+        console.log("Meaw?");
         setFilteredData(
-          contestData.filter(
-            (contest) =>
-              contest.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-              contest.platform
-                .toLowerCase()
-                .includes(searchQuery.toLowerCase()),
-          ),
+          contestData.filter((contest) => {
+            const text = `${contest.title.toLowerCase()} ${contest.platform.toLowerCase()}`;
+            const lowerSearchQuery = searchQuery.toLowerCase();
+            const isPlatformMatch =
+              platform === "Codeforces Gym" ? "CF GYM" : platform;
+
+            if (platform === "All" || platform === undefined) {
+              return text.includes(lowerSearchQuery);
+            }
+
+            return (
+              contest.platform === isPlatformMatch &&
+              text.includes(lowerSearchQuery)
+            );
+          }),
         );
       }
     });
@@ -179,7 +198,7 @@ export default function ContestsTable({
             variant="default"
             size="sm"
             onClick={() => setCurrentPage((prev) => prev - 1)}
-            disabled={currentPage === 0}
+            disabled={currentPage === 0 || totalPages === 0}
           >
             Previous
           </Button>
@@ -187,7 +206,7 @@ export default function ContestsTable({
             variant="default"
             size="sm"
             onClick={() => setCurrentPage((prev) => prev + 1)}
-            disabled={currentPage === totalPages - 1}
+            disabled={currentPage === totalPages - 1 || totalPages === 0}
           >
             Next
           </Button>

@@ -35,7 +35,7 @@ export default function KeyboardShortcuts() {
     "pointer-events-none inline-flex h-5 select-none items-center rounded border bg-muted px-1.5 font-mono font-medium text-primary text-sm";
 
   return (
-    <Card className="border-none p-0">
+    <Card className="border-none p-1">
       <CardHeader className="rounded-md bg-muted-foreground p-2 text-center font-semibold text-primary-foreground">
         Keyboard Shortcuts
       </CardHeader>

@@ -18,6 +18,10 @@ const config = {
     },
     extend: {
       colors: {
+        pinkish:{
+          DEFAULT:"#ef4444",
+          foreground:"#ff6b6b"
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
