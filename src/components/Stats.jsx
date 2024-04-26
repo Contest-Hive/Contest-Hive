@@ -6,37 +6,18 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+
 import MaxWidthWrapper from "./MaxWidthWrapper";
 
-async function getData() {
-  const response = await fetch(
-    "https://contest-hive.vercel.app/api/others/stats",
-    {
-      next: 30,
-    },
-  );
-  const data = await response.json();
-  return [
-    {
-      title: "Today",
-      value: data.past24,
-      description: "visited",
-    },
-    {
-      title: "Total served",
-      value: data.api,
-      description: "API requests",
-    },
-    {
-      title: "Total",
-      value: data.page,
-      description: "visits",
-    },
-  ];
-}
+import { formatNumber } from "@/lib/helpers";
 
-const Stats = async () => {
-  const DATA = await getData();
+const Stats = ({ statsData }) => {
   return (
     <MaxWidthWrapper>
       <header className="pb-8 pt-10 text-center font-heading  text-3xl font-bold leading-tight tracking-tighter md:text-4xl lg:text-5xl">
@@ -59,14 +40,25 @@ const Stats = async () => {
         </span>
       </p>
       <div className="mx-auto mb-10 flex max-w-screen-md flex-col items-center justify-between gap-2 md:flex-row">
-        {DATA.map((data, index) => (
+        {statsData.map((data, index) => (
           <Card key={index} className="w-full">
             <CardContent className="pb-4">
               <CardHeader className="py-3">
                 <CardTitle className="font-bold">{data.title}</CardTitle>
               </CardHeader>
               <CardDescription className="flex flex-col items-center justify-center">
-                <span className="text-3xl font-extrabold">{data.value}</span>
+                <span className="text-3xl font-extrabold">
+                  <TooltipProvider>
+                    <Tooltip delayDuration={100}>
+                      <TooltipTrigger className="text-primary dark:text-secondary">
+                        {formatNumber(data.value)}
+                      </TooltipTrigger>
+                      <TooltipContent className="tooltip-content font-bold">
+                        {data.value.toLocaleString()}
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </span>
                 <span className="text-sm text-muted-foreground">
                   {data.description}
                 </span>

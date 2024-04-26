@@ -1,12 +1,12 @@
 import HomePage from "@/components/HomePage";
 import Temp from "@/components/Temp";
 
-import { getSecondsDifferencesFromNow } from "@/lib/utils";
+import { getStatsData, getSecondsDifferencesFromNow} from "@/lib/helpers";
 
 const Home = async () => {
+  const statsData = await getStatsData();
   const res = await fetch("https://contest-hive.vercel.app/api/all", {
-    next: 60 * 3333, // cache for 3 minutes
-    // TODO: change it to 3 minutes
+    next: { revalidate: 60 * 3 }, // cache for 3 minutes
   });
   const _contests = (await res.json()).data;
   // sort contests by start time
@@ -17,14 +17,14 @@ const Home = async () => {
       getSecondsDifferencesFromNow(b.startTime),
   );
   // remove contests that have already started
-  const filteredContests = contestData.filter(
-    (contest) => getSecondsDifferencesFromNow(contest.startTime) > 1,
-  ).slice(0, 27);
+  const filteredContests = contestData
+    .filter((contest) => getSecondsDifferencesFromNow(contest.startTime) > 1)
+    .slice(0, 27);
 
   return (
     <>
       {/* <Temp /> */}
-      <HomePage contestData={filteredContests} />
+      <HomePage contestData={filteredContests} statsData={statsData} />
     </>
   );
 };

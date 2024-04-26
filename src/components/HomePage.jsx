@@ -16,7 +16,7 @@ const fontRecursive = Recursive({
   variable: "--font-sans",
 });
 
-const HomePage = ({ contestData }) => {
+const HomePage = ({ contestData, statsData }) => {
   const [isFocusMode, setFocusMode] = useState(false);
   const [firstLoad, setFirstLoad] = useState(true);
 
@@ -49,8 +49,8 @@ const HomePage = ({ contestData }) => {
         ) : (
           <div className={fontRecursive.className}>
             <Hero />
-            <Stats/>
             <CompressedContestTable contestData={contestData} />
+            <Stats statsData={statsData}/>
           </div>
         )}
       </main>

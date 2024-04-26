@@ -16,8 +16,8 @@ import {
   secondsToShortReadableTime,
   timeToLocalTime,
   getGoogleCalenderLink,
-  cn,
-} from "@/lib/utils";
+} from "@/lib/helpers";
+import { cn } from "@/lib/utils";
 
 import type { ContestType } from "@/lib/types";
 

@@ -40,7 +40,7 @@ const Hero = () => {
         <span className="font-semibold">
           Keeping track of upcoming contests is a{" "}
           <TooltipProvider>
-            <Tooltip>
+            <Tooltip delayDuration={100}>
               <TooltipTrigger className="hidden cursor-help border-b-2 border-dashed border-primary font-bold md:inline-block">
                 Spain.
               </TooltipTrigger>
