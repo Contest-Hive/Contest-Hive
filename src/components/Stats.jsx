@@ -28,7 +28,7 @@ const Stats = ({ statsData }) => {
       </header>
       <p className="mx-auto mb-10 max-w-lg text-balance text-center text-sm md:max-w-xl md:text-base lg:max-w-2xl lg:text-lg">
         <span className="font-semibold tracking-tighter">Contest Hive</span>{" "}
-        started it&apos;s journey on{" "}
+        started its journey on{" "}
         <span className="font-semibold tracking-tighter">
           September 26, 2023.
         </span>

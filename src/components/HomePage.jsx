@@ -10,7 +10,6 @@ import ContestsTable from "@/components/ContestsTable";
 import CompressedContestTable from "@/components/CompressedContestTable";
 import Stats from "./Stats";
 
-
 const fontRecursive = Recursive({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -49,8 +48,8 @@ const HomePage = ({ contestData, statsData }) => {
         ) : (
           <div className={fontRecursive.className}>
             <Hero />
-            <Stats statsData={statsData}/>
             <CompressedContestTable contestData={contestData} />
+            <Stats statsData={statsData} />
           </div>
         )}
       </main>
