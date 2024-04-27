@@ -15,15 +15,29 @@ export const viewport: Viewport = {
   maximumScale: 1, // Disable auto-zoom on mobile Safari, credit to https://github.com/ai-ng
 };
 
+const title = "Contest Hive";
+const description =
+  "Contest Hive provides all the upcoming contests in one place. You will never miss a contest again. With the help of our API, you can integrate it with your website or app.";
+const keywords =
+  "contest, contest hive, contest api, upcoming contest, codeforces api, toph api, kontests api, hackerearth api, hackerrank api, codechef api, atcoder api, leetcode api, nusab taha, nusab19, toph leaderboard";
+const url = "https://contest-hive.vercel.app/";
+
+export const metadata = {
+  title: title,
+  description: description,
+  keywords: keywords,
+  openGraph: {
+    title: title,
+    description: description,
+    url: url,
+    images: ["https://contest-hive.vercel.app/opengraph-image.png"],
+  },
+};
+
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <title>Contest Hive - HomePage</title>
-        <meta
-          name="description"
-          content="All upcoming contests in one place. Contest Hive is a platform to find all the upcoming contests on various competitive programming platforms."
-        />
         <link rel="icon" href="/favicon.svg" />
       </head>
       <body
@@ -39,7 +53,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           disableTransitionOnChange
         >
           {children}
-          {/* <Toaster /> */}
         </ThemeProvider>
       </body>
     </html>
