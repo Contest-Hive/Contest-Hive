@@ -2,7 +2,7 @@ import type { ContestType } from "@/lib/types";
 
 export async function getStatsData() {
   const response = await fetch(`${process.env.ROOT_URL}/api/others/stats`, {
-    next: { revalidate: 30 * 1000 },
+    next: { revalidate: 30 },
   });
   const data = await response.json();
   return [
