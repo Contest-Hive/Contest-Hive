@@ -38,7 +38,7 @@ const HomePage = ({ contestData, statsData }) => {
 
   return (
     <>
-      <NavBar setFocusMode={setFocusMode} />
+      <NavBar isFocusMode={isFocusMode} setFocusMode={setFocusMode} />
 
       <main>
         {isFocusMode ? (

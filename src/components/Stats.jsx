@@ -13,6 +13,12 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+
 import MaxWidthWrapper from "./MaxWidthWrapper";
 
 import { formatNumber } from "@/lib/helpers";
@@ -49,8 +55,10 @@ const Stats = ({ statsData }) => {
               <CardDescription className="flex flex-col items-center justify-center">
                 <span className="text-3xl font-extrabold">
                   <TooltipProvider>
-                    <Tooltip delayDuration={100}>
-                      <TooltipTrigger className="text-primary dark:text-secondary">
+                    <Tooltip
+                      delayDuration={100}
+                    >
+                      <TooltipTrigger className="text-primary hidden md:inline-block">
                         {formatNumber(data.value)}
                       </TooltipTrigger>
                       <TooltipContent className="tooltip-content font-bold">
@@ -58,6 +66,14 @@ const Stats = ({ statsData }) => {
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
+                  <Popover>
+                    <PopoverTrigger className="text-primary md:hidden">
+                      {formatNumber(data.value)}
+                    </PopoverTrigger>
+                    <PopoverContent className="tooltip-content font-bold max-w-fit mx-auto">
+                      {data.value.toLocaleString()}
+                    </PopoverContent>
+                  </Popover>
                 </span>
                 <span className="text-sm text-muted-foreground">
                   {data.description}

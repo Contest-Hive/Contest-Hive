@@ -3,7 +3,7 @@ import type { ContestType } from "@/lib/types";
 export async function getStatsData() {
   const response = await fetch(
     "https://contest-hive.vercel.app/api/others/stats",
-    { next: { revalidate: 30 } },
+    { next: { revalidate: 30 * 1000 } },
   );
   const data = await response.json();
   return [

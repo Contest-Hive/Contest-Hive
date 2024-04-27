@@ -23,8 +23,10 @@ import KeyboardShortcuts from "./KeyboardShortcuts";
 import { cn } from "@/lib/utils";
 
 const NavBar = ({
+  isFocusMode,
   setFocusMode,
 }: {
+  isFocusMode: boolean;
   setFocusMode: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   useHotkeys(
@@ -109,11 +111,11 @@ const NavBar = ({
                 <KeyboardShortcuts /> {/*  Content  */}
               </DropdownMenuContent>
             </DropdownMenu>
-            <FocusMode setFocusMode={setFocusMode} />
+            <FocusMode setFocusMode={setFocusMode} isFocusMode={isFocusMode} />
             <ModeToggle />
           </div>
           <span className="flex items-center gap-1 md:hidden">
-            <FocusMode setFocusMode={setFocusMode} />
+            <FocusMode setFocusMode={setFocusMode} isFocusMode={isFocusMode} />
             <ModeToggle />
             <NavMenu />
           </span>

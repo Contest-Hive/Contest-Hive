@@ -13,7 +13,7 @@ const Slider = () => {
   const marqueeRef = useRef(null);
 
   return (
-    <MaxWidthWrapper>
+    <MaxWidthWrapper className="cursor-pointer">
       <div
         className="flex select-none overflow-hidden py-4 md:py-10"
         ref={marqueeRef}
