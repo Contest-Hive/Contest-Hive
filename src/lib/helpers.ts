@@ -8,7 +8,7 @@ export async function getStatsData() {
   return [
     {
       title: "Today",
-      value: data.past24,
+      value: data.past24page,
       description: "visited",
     },
     {
