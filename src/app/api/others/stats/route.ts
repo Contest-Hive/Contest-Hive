@@ -1,19 +1,11 @@
-import { NextResponse } from "next/server";
-import STATS from "@/components/db/STATS";
-import MongoConnection from "@/components/db/index";
-
+import STATS from "@/db/schemas/STATS";
+import MongoConnection from "@/db/index";
+import { NextRequest, NextResponse } from "next/server";
 
 await MongoConnection(); // Make sure we're connected to the database
 
-/**
- * Updates a document in the MongoDB database.
- * It increments the values of the `past24`, `total`, and a dynamic key specified by the `key` parameter.
- * If the update is successful, it returns the updated document; otherwise, it logs an error message.
- *
- * @param {string} key - The dynamic key used to increment its value in the document.
- */
-const updateData = async (key) => {
-  let updateObj = { total: 1, past24: 1 };
+const updateData = async (key: string) => {
+  let updateObj: { [key: string]: number } = { total: 1, past24: 1 };
   updateObj[key] = 1;
   if (key === "page") {
     updateObj["past24page"] = 1;
@@ -30,7 +22,7 @@ const updateData = async (key) => {
   if (!updated) console.log("Error in Mongo Update: Key Not Found");
 };
 
-export async function POST(req) {
+export async function POST(req: NextRequest) {
   try {
     const jsonData = await req.json();
 
@@ -44,7 +36,7 @@ export async function POST(req) {
   }
 }
 
-export async function GET(req) {
+export async function GET(req: NextRequest) {
   try {
     const stats = await STATS.findOne({ _id: 1 });
     const data = {
