@@ -31,6 +31,7 @@
     "cmdk": "^1.0.0",
     "cookies-next": "^4.1.1",
     "lucide-react": "^0.372.0",
+    "mongoose": "^8.3.2",
     "next": "14.2.2",
     "next-themes": "^0.3.0",
     "react": "^18",

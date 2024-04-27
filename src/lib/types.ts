@@ -6,3 +6,8 @@ export type ContestType = {
   duration: number;
   platform: string;
 };
+
+export type CompressedContestType = [string, string, string, number];
+export type PascalNamesType = {
+  [key: string]: string;
+};
