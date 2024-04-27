@@ -1,3 +1,5 @@
+import MaxWidthWrapper from "./MaxWidthWrapper";
+
 import {
   Card,
   CardContent,
@@ -5,21 +7,19 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-import MaxWidthWrapper from "./MaxWidthWrapper";
+import Testimonials from "@/components/Testimonials"
 
 import { formatNumber } from "@/lib/helpers";
 
@@ -83,6 +83,7 @@ const Stats = ({ statsData }) => {
           </Card>
         ))}
       </div>
+        <Testimonials/>
     </MaxWidthWrapper>
   );
 };
