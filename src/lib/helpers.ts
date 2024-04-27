@@ -175,6 +175,7 @@ export function formatNumber(num: number) {
     notation: "compact",
   });
   let formatted = formatter.format(num);
+  return formatted;
   return `${formatted}${formatted.at(-1)?.match(/[a-z]/i) ? "+" : ""}`;
 }
 
