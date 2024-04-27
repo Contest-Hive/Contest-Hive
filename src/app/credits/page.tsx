@@ -1,10 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 
-const About = () => {
+const Credits = () => {
   return (
     <div className="py-20 text-center text-4xl font-bold">
-      This is the about page.{" "}
+      This is the credits page.{" "}
       <Link href="/" className="underline-dotted">
         Go back
       </Link>
@@ -14,4 +14,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Credits;

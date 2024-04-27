@@ -22,6 +22,9 @@ import FocusMode from "./FocusMode";
 import KeyboardShortcuts from "./KeyboardShortcuts";
 import { cn } from "@/lib/utils";
 
+
+const OLD_WEBSITE = "https://contest-hive-old.vercel.app"
+
 const NavBar = ({
   isFocusMode,
   setFocusMode,
@@ -85,7 +88,8 @@ const NavBar = ({
             </Link>
 
             <Link
-              href="/old"
+              href={OLD_WEBSITE}
+              target="_blank"
               className={cn(
                 buttonVariants({
                   variant: "link",
