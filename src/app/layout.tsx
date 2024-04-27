@@ -11,9 +11,11 @@ const fontSans = FontSans({
   variable: "--font-sans",
 });
 
+/*
 export const viewport: Viewport = {
   maximumScale: 1, // Disable auto-zoom on mobile Safari, credit to https://github.com/ai-ng
 };
+*/
 
 const title = "Contest Hive";
 const description =
