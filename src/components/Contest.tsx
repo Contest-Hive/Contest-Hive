@@ -86,7 +86,9 @@ export default function Contest(contest: ContestType, index: number) {
                       size: "icon",
                     }),
                   )}
+                  title="Add to Calender"
                 >
+                  <p className="sr-only">Add to calender</p>
                   <CalendarPlus className="h-5 w-5 text-primary" />
                 </Link>
               </HoverCardTrigger>
