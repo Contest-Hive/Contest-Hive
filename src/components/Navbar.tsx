@@ -106,7 +106,8 @@ const NavBar = ({
                   className="h-10 w-10 p-2"
                   variant="outline"
                   size="icon"
-                  asChild
+                  asChild 
+                  title="Show Shortcuts"
                 >
                   <CodeIcon className="h-10 w-10" />
                 </Button>
