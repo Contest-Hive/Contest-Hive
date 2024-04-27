@@ -4,7 +4,7 @@ export async function GET() {
   const data = {
     ok: true,
     message:
-      "Contest Hive API gives you contests information from 7 different platforms. Documentation at: https://contests.pages.dev/docs",
+      "Contest Hive API gives you contests information from 7 different platforms. Documentation at: https://contest-hive.github.io/docs/",
   };
 
   return new NextResponse(JSON.stringify(data, null, 2), {

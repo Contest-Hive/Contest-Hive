@@ -1,10 +1,9 @@
 import type { ContestType } from "@/lib/types";
 
 export async function getStatsData() {
-  const response = await fetch(
-    "https://contest-hive-old.vercel.app/api/others/stats",
-    { next: { revalidate: 30 * 1000 } },
-  );
+  const response = await fetch(`${process.env.ROOT_URL}/api/others/stats`, {
+    next: { revalidate: 30 * 1000 },
+  });
   const data = await response.json();
   return [
     {
@@ -178,7 +177,6 @@ export function formatNumber(num: number) {
   let formatted = formatter.format(num);
   return `${formatted}${formatted.at(-1)?.match(/[a-z]/i) ? "+" : ""}`;
 }
-
 
 export const pascalNames = {
   all: "All",
