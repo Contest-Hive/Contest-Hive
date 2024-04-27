@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import { Button } from "./ui/button";
 
@@ -13,14 +13,16 @@ const FocusMode = ({
 }) => {
   const arrowRef = useRef<HTMLImageElement | null>(null);
   const url = "/assets/svgs/arrow.svg";
+  const [isHidden, setIsHidden] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
       arrowRef.current?.classList.add("animate-out");
       setTimeout(() => {
         arrowRef.current?.classList.add("hidden");
+        setIsHidden(true);
       }, 200);
-    }, 2000);
+    }, 1500);
   }, []);
 
   return (
@@ -32,14 +34,14 @@ const FocusMode = ({
       >
         <Crosshair2Icon className="h-6 w-6 cursor-pointer text-primary transition-all duration-100 active:scale-90 group-hover:rotate-45" />
       </Button>
-      {!isFocusMode && (
+      {!isFocusMode && !isHidden && (
         <Image
           ref={arrowRef}
           src={url}
           height={1}
           width={1}
           alt="Focus Mode"
-          className="absolute -inset-14 top-16 h-full w-full scale-[3] select-none duration-200 animate-in md:-inset-24 md:top-20 md:scale-[5]"
+          className="absolute -inset-14 top-16 h-fit w-fit scale-[3] select-none duration-200 animate-in md:-inset-24 md:top-24 md:-mt-2 md:scale-[5]"
         />
       )}
     </span>
