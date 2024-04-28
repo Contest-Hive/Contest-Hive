@@ -2,13 +2,13 @@ import type { ContestType } from "@/lib/types";
 
 export async function getStatsData() {
   const response = await fetch(`${process.env.ROOT_URL}/api/others/stats`, {
-    next: { revalidate: 30 * 1000 },
+    next: { revalidate: 30 },
   });
   const data = await response.json();
   return [
     {
       title: "Today",
-      value: data.past24,
+      value: data.past24page,
       description: "visited",
     },
     {
@@ -175,6 +175,7 @@ export function formatNumber(num: number) {
     notation: "compact",
   });
   let formatted = formatter.format(num);
+  return formatted;
   return `${formatted}${formatted.at(-1)?.match(/[a-z]/i) ? "+" : ""}`;
 }
 

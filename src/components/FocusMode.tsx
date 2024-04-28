@@ -27,7 +27,8 @@ const FocusMode = ({
 
   return (
     <span className="relative">
-      <Button
+      <Button 
+        title="Toggle Focus Mode"
         variant="outline"
         className="group h-10 w-10 select-none px-2"
         onClick={() => setFocusMode((prev) => !prev)}
