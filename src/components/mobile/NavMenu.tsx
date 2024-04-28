@@ -46,7 +46,7 @@ export function NavMenu() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outline" className="h-10 w-10 px-2">
+        <Button variant="outline" className="h-10 w-10 px-2" title="Open Menu">
           <Menu className="h-full w-full" />
         </Button>
       </SheetTrigger>
