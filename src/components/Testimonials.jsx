@@ -30,7 +30,7 @@ const Testimonials = () => {
             <span className="font-semibold tracking-tighter">
               Contest Hive
             </span>{" "}
-            has made my life competitive programming life way much easier. I
+            has made my life competitive programming life much easier. I
             don&apos;t need to worry about missing a contest again!
           </CardContent>
         </Card>
