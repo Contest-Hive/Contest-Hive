@@ -22,7 +22,7 @@ import { cn } from "@/lib/utils";
 import type { ContestType } from "@/lib/types";
 
 export default function Contest(contest: ContestType, index: number) {
-  const flexClass = "flex items-center justify-start my-0.5";
+  const flexClass = "flex items-center justify-start my-1 md:my-0.5";
   const HeaderClass =
     "text-sm font-medium md:text-base min-w-20 flex justify-between mr-2";
   return (
