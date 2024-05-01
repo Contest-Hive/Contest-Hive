@@ -71,7 +71,7 @@ export function NavMenu() {
           </Link>
 
           <Link
-            href="/old"
+            href="https://contest-hive-old.vercel.app"
             className={buttonVariants({
               variant: "link",
             })}
