@@ -37,32 +37,10 @@ const Hero = () => {
         is All You Need
       </header>
       <p className="mx-auto max-w-lg text-balance text-center text-sm md:max-w-xl md:text-base lg:max-w-2xl lg:text-lg">
-        <span className="font-semibold">
-          Keeping track of upcoming contests is a{" "}
-          <TooltipProvider>
-            <Tooltip delayDuration={100}>
-              <TooltipTrigger className="hidden cursor-help border-b-2 border-dashed border-primary font-bold md:inline-block">
-                Spain.
-              </TooltipTrigger>
-              <TooltipContent className="max-w-52 py-2 text-xs lg:text-sm">
-                <a
-                  href="https://en.wikipedia.org/wiki/Sulfur"
-                  target="_blank"
-                  className="underline-dotted text-lg font-bold"
-                  title="Open Wikipedia of Sulfur"
-                >
-                  <sup className="text-xs">16</sup>S
-                </a>{" "}
-                is silent (⌐■_■)
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-          <span className="inline-block border-b-2 border-dashed border-primary font-bold md:hidden">
-            pain.
-          </span>
+        Contest at your{" "}
+        <span className="underline-dotted font-semibold tracking-tight">
+          Fingertips.
         </span>
-        {/* <br /> */}{" "}
-        <span className="font-extrabold tracking-tighter">Not anymore! 🚀</span>
         <br />
         <span className="font-semibold tracking-tighter">
           Contest Hive

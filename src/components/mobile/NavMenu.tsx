@@ -13,31 +13,11 @@ import {
 import { Menu } from "lucide-react";
 
 import Link from "next/link";
-import KeyboardShortcuts from "../KeyboardShortcuts";
 import { Separator } from "../ui/separator";
 
-const SHORTCUTS = [
-  {
-    key: "⌘",
-    followedByKey: "k",
-    description: "Search for a contest",
-  },
-  {
-    key: "alt",
-    followedByKey: "f",
-    description: "Focus Mode",
-  },
-  {
-    key: "right arrow",
-    followedByKey: "",
-    description: "Next Page",
-  },
-  {
-    key: "left arrow",
-    followedByKey: "",
-    description: "Previous Page",
-  },
-];
+
+const OLD_WEBSITE = "https://contest-hive-old.vercel.app"
+
 
 export function NavMenu() {
   const defaultClass =
@@ -71,7 +51,8 @@ export function NavMenu() {
           </Link>
 
           <Link
-            href="https://contest-hive-old.vercel.app"
+            href={OLD_WEBSITE}
+            target="_blank"
             className={buttonVariants({
               variant: "link",
             })}
@@ -80,7 +61,7 @@ export function NavMenu() {
           </Link>
 
           <Separator className="mb-10" />
-          <KeyboardShortcuts />
+          {/* <KeyboardShortcuts /> */}
         </div>
       </SheetContent>
     </Sheet>

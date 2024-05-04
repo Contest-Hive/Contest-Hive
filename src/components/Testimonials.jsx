@@ -8,6 +8,58 @@ import {
 
 import { QuoteIcon } from "lucide-react";
 
+const TESTAMENTS = [
+  {
+    name: "John Wick",
+    title: (
+      <>
+        Designer @{" "}
+        <span className="font-mono font-semibold">!this.website</span>
+      </>
+    ),
+    description: (
+      <>
+        <span className="font-semibold tracking-tighter">Contest Hive</span> has
+        made my life competitive programming life much easier. I don&apos;t need
+        to worry about missing a contest again!
+      </>
+    ),
+  },
+
+  {
+    name: "Christopher Nolan",
+    title: (
+      <>
+        Software Engineer @{" "}
+        <span className="font-mono font-semibold">Google</span>
+      </>
+    ),
+    description: (
+      <>
+        I have been using{" "}
+        <span className="font-semibold tracking-tighter">Contest Hive</span> for
+        couple of months now. I think every competitive programmer should give
+        it a try.
+      </>
+    ),
+  },
+];
+
+function getCard(name, title, description) {
+  return (
+    <Card className="relative text-left">
+      <CardHeader>
+        <CardTitle>{name}</CardTitle>
+        <CardDescription>{title}</CardDescription>
+      </CardHeader>
+      <CardContent className="ml-3 mt-2 text-balance">
+        <QuoteIcon className="absolute inset-0 left-6 top-20 rotate-180" />
+        {description}
+      </CardContent>
+    </Card>
+  );
+}
+
 const Testimonials = () => {
   return (
     <div className="pb-10">
@@ -17,37 +69,9 @@ const Testimonials = () => {
         </span> */}
       </header>
       <div className="grid grid-cols-1 grid-rows-2 gap-4 md:grid-cols-2 md:grid-rows-1">
-        <Card className="relative text-left">
-          <CardHeader>
-            <CardTitle className="">John Wick</CardTitle>
-            <CardDescription>
-              Designer @{" "}
-              <span className="font-mono font-semibold">!this.website</span>
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="ml-3 text-balance">
-            <QuoteIcon className="absolute inset-0 left-2 top-20 rotate-180" />
-            <span className="font-semibold tracking-tighter">
-              Contest Hive
-            </span>{" "}
-            has made my life competitive programming life much easier. I
-            don&apos;t need to worry about missing a contest again!
-          </CardContent>
-        </Card>
-
-        <Card className="relative text-left">
-          <CardHeader>
-            <CardTitle className="">Christopher Nolan</CardTitle>
-            <CardDescription>Competitive Programmer</CardDescription>
-          </CardHeader>
-          <CardContent className="ml-3 text-balance">
-            <QuoteIcon className="absolute inset-0 left-2 top-20 rotate-180" />I
-            have been using{" "}
-            <span className="font-semibold tracking-tighter">Contest Hive</span>{" "}
-            for couple of months now. I think every competitive programmer
-            should give it a try.
-          </CardContent>
-        </Card>
+        {TESTAMENTS.map(({ name, title, description }) =>
+          getCard(name, title, description),
+        )}
       </div>
     </div>
   );
