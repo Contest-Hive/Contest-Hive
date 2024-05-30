@@ -32,7 +32,7 @@ function getContestData(
   };
 }
 
-export async function GET() {
+export async function getResponse() {
   const response = await fetch(API_URL, {
     next: {
       revalidate: 3 * 60, // 3 Minutes
@@ -65,6 +65,11 @@ export async function GET() {
       data.data[key] = contests;
     }
   }
+  return data;
+}
+
+export async function GET() {
+  const data = await getResponse();
 
   return new NextResponse(JSON.stringify(data, null, 2), {
     status: 200,

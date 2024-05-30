@@ -9,7 +9,7 @@ const About = () => {
         Go back
       </Link>
       <br />
-      <p className="text-base my-10">Developing this page with lower priority.</p>
+      <p className="text-base my-10">Developing this page with lower priority cuz I&apos;ve got exams! :/</p>
     </div>
   );
 };

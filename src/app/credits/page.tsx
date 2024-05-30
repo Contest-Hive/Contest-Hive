@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 const Credits = () => {
   return (
@@ -9,7 +8,9 @@ const Credits = () => {
         Go back
       </Link>
       <br />
-      <p className="text-base my-10">Developing this page with lower priority.</p>
+      <p className="my-10 text-base">
+        Developing this page with lower priority cuz I&apos;ve got exams! :/
+      </p>
     </div>
   );
 };

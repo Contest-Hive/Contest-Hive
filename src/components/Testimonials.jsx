@@ -47,7 +47,7 @@ const TESTAMENTS = [
 
 function getCard(name, title, description) {
   return (
-    <Card className="relative text-left">
+    <Card className="relative text-left" key={name}>
       <CardHeader>
         <CardTitle>{name}</CardTitle>
         <CardDescription>{title}</CardDescription>

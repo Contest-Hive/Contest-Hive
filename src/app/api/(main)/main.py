@@ -1,5 +1,17 @@
 import os
+import pathlib
 
+
+# Change the directory to the root of the project
+scriptPath = pathlib.Path(__file__).resolve()
+
+targetDirectory = scriptPath.parents[0]
+while targetDirectory.name != "(main)":
+    targetDirectory = targetDirectory.parent
+
+os.chdir(targetDirectory)
+
+# ----------------------------
 
 with open("template.ts", "r", encoding="utf8") as f:
     template = f.read()

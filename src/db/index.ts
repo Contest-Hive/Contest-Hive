@@ -6,7 +6,7 @@ const MongoConnection = async () => {
     if(process.env.MONGO_URI === undefined) return console.log('Mongo URI is not defined');
     
     const conn = await mongoose.connect(process.env.MONGO_URI, {
-      useUnifiedTopology: true,
+      // useUnifiedTopology: true,
       useNewUrlParser: true,
     } as ConnectOptions);
     console.log(`MongoDB Connected: ${conn.connection.host}`);
