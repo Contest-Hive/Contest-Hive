@@ -3,7 +3,7 @@ import ContestsTable from "@/components/ContestsTable";
 
 const CompressedContestTable = ({ contestData }) => {
   return (
-    <div className="grainy-light">
+    <div className="grainy-light dark:bg-none">
       <div className="container mx-auto max-w-screen-md px-1 pb-10">
         <header className="pb-8 pt-10 text-center font-heading  text-3xl font-bold leading-tight tracking-tighter md:text-4xl lg:text-5xl">
           Take a{" "}

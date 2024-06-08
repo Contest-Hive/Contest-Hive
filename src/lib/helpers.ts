@@ -19,7 +19,7 @@ export async function getStatsData() {
     {
       title: "Total",
       value: data.page,
-      description: "visits",
+      description: "page visits",
     },
   ];
 }
