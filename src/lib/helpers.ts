@@ -1,10 +1,9 @@
 import type { ContestType } from "@/lib/types";
 
-export async function getStatsData() {
-  const response = await fetch(`${process.env.ROOT_URL}/api/others/stats`, {
-    next: { revalidate: 30 },
-  });
-  const data = await response.json();
+import { updateData as updateStatsDataAndGetResponse } from "@/lib/dbConnect";
+
+export async function getStatsData(update: string = "page") { // increment whenever called
+  const data = await updateStatsDataAndGetResponse(update); // can't call updateData directly, make a http request to the api
   return [
     {
       title: "Today",

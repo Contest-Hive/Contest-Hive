@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { updateData as updateStatsDataAndGetResponse } from "@/lib/dbConnect";
 
 import {
   getEndTime,
@@ -69,6 +70,7 @@ export async function getResponse() {
 }
 
 export async function GET() {
+  await updateStatsDataAndGetResponse("api");
   const data = await getResponse();
 
   return new NextResponse(JSON.stringify(data, null, 2), {

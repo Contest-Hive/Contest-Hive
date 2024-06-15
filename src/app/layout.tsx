@@ -4,7 +4,6 @@ import { Inter as FontSans } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
 import { ThemeProvider } from "next-themes";
-import type { Viewport } from "next";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -12,6 +11,7 @@ const fontSans = FontSans({
 });
 
 /*
+import type { Viewport } from "next";
 export const viewport: Viewport = {
   maximumScale: 1, // Disable auto-zoom on mobile Safari, credit to https://github.com/ai-ng
 };

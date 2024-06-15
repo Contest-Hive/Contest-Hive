@@ -65,83 +65,35 @@ function MainFunc({
   compressed?: boolean;
   perPage?: number;
 }) {
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
   const [isPending, startTransition] = useTransition();
 
   const [filteredData, setFilteredData] = useState(contestData);
   const length = filteredData.length;
   const totalPages = Math.ceil(length / perPage);
   const [currentPage, setCurrentPage] = useState(
-    Math.min(Number(searchParams.get("page")) || 0, totalPages - 1, 0),
+    Math.min(0, Math.abs(totalPages - 1)), // Prevent negative values using abs
   );
-  const [platform, setPlatform] = useState(
-    searchParams.get("platform") || "All",
-  );
-  const [searchQuery, setSearchQuery] = useState(
-    searchParams.get("search") || "",
-  );
-
-  useEffect(() => {
-    const params = new URLSearchParams();
-    const prevPlatform = searchParams.get("platform");
-
-    if (prevPlatform === platform) return;
-
-    params.set("platform", platform);
-    router.replace(`${pathname}?${params.toString()}`, {
-      scroll: false,
-    });
-
-    setCurrentPage(0);
-
-    // if previousPlatform !== platform, then filter the data
-    if (platform === "All" || platform === undefined) {
-      setFilteredData(contestData);
-    } else if (PLATFORMS.includes(platform)) {
-      console.log(`Changing platform to ${platform}`);
-      setFilteredData(
-        contestData.filter(
-          (contest) =>
-            contest.platform === platform ||
-            (platform === "Codeforces Gym" && contest.platform === "CF GYM"),
-        ),
-      );
-    }
-    // NOTE: Do not add `contestData` to the dependencies array
-  }, [platform, pathname, router, searchParams]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  useEffect(() => {
-    const page = Math.min(currentPage, totalPages - 1);
-    const params = new URLSearchParams();
-    params.set("platform", platform);
-    params.set("page", page.toString());
-    router.replace(`${pathname}?${params.toString()}`, {
-      scroll: false,
-    });
-  }, [currentPage, totalPages, pathname, router, platform]);
+  const [platform, setPlatform] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     setCurrentPage(0);
 
     startTransition(() => {
       if (searchQuery === "") {
-        if (platform === "All" || platform === undefined) {
+        if (platform === "All") {
           setFilteredData(contestData);
         } else if (PLATFORMS.includes(platform)) {
           setFilteredData(
-            contestData.filter(
-              (contest) =>
-                contest.platform === platform ||
-                (platform === "Codeforces Gym" &&
-                  contest.platform === "CF GYM"),
-            ),
+            contestData.filter((contest) => {
+              const isPlatformMatch =
+                platform === "Codeforces Gym" ? "CF GYM" : platform;
+              return contest.platform === isPlatformMatch;
+            }),
           );
         }
       } else {
-        console.log("Meaw?");
+        // Search query is not empty
         setFilteredData(
           contestData.filter((contest) => {
             const text = `${contest.title.toLowerCase()} ${contest.platform.toLowerCase()}`;
@@ -165,7 +117,23 @@ function MainFunc({
     // IDK why, but it causes an infinite loop
   }, [searchQuery]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // arrow right and left = next and previous page
+  // use effect for platform change
+  useEffect(() => {
+    setCurrentPage(0);
+    if (platform === "All") {
+      setFilteredData(contestData);
+    } else {
+      setFilteredData(
+        contestData.filter((contest) => {
+          const isPlatformMatch =
+            platform === "Codeforces Gym" ? "CF GYM" : platform;
+          return contest.platform === isPlatformMatch;
+        }),
+      );
+    }
+  }, [platform, contestData]);
+
+  // arrow right and left => next and previous page
   useHotkeys("right", () => {
     setCurrentPage((prev) => Math.min(prev + 1, totalPages - 1));
   });
@@ -179,31 +147,36 @@ function MainFunc({
         <CardTitle className="font-bold md:text-3xl">
           Upcoming Contests
         </CardTitle>
-        {!compressed ? (
-          <CardDescription className="mx-0.5">
-            Below are the upcoming contests from{" "}
-            <span className="font-mono font-semibold">
-              {platform === "All" ? "all platforms" : platform}.
-            </span>
-          </CardDescription>
-        ) : (
-          <CardDescription className="mx-0.5 font-semibold">
-            Enable Focus Mode
-            <span className="font-mono font-normal">(alt+f)</span> for better
-            experience
-          </CardDescription>
-        )}
+        <CardDescription className="mx-0.5">
+          <div className="mt-8 flex items-center justify-start gap-2">
+            <SelectPlatform platform={platform} setPlatform={setPlatform} />
+            <SearchBar
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+            />
+          </div>
+          {compressed && (
+            <CardDescription className="mx-0.5 font-semibold">
+              Enable Focus Mode
+              <span className="font-mono font-normal">(alt+f)</span> for better
+              experience
+            </CardDescription>
+          )}
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead className="my-2 flex items-center gap-2 px-0.5 md:px-2">
-                <SelectPlatform platform={platform} setPlatform={setPlatform} />
-                <SearchBar
-                  searchQuery={searchQuery}
-                  setSearchQuery={setSearchQuery}
-                />
+              <TableHead className="border-b border-t">
+                <p>
+                  Showing{" "}
+                  <code>
+                    {Math.min(currentPage * perPage + 1, length)}-
+                    {Math.min((currentPage + 1) * perPage, length)}
+                  </code>{" "}
+                  out of <code>{length}</code> contests
+                </p>
               </TableHead>
             </TableRow>
           </TableHeader>

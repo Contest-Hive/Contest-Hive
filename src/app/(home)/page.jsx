@@ -2,12 +2,14 @@ import HomePage from "@/components/HomePage";
 import Temp from "@/components/Temp";
 
 import { getResponse as getAllContestResponse } from "../api/(main)/all/route";
-import { getStatsData, getSecondsDifferencesFromNow } from "@/lib/helpers";
+import { getSecondsDifferencesFromNow, getStatsData } from "@/lib/helpers";
 
-const Home = async () => {
-  const statsData = await getStatsData();
+async function Home() {
+  // increment page visits and get stats data
+  let statsData = await getStatsData();
+
   const _contests = (await getAllContestResponse()).data;
-  console.log(_contests.toph)
+
   // sort contests by start time
   const contestData = Object.values(_contests).flatMap((contests) => contests);
   contestData.sort(

@@ -36,7 +36,6 @@ const HomePage = ({ contestData, statsData }) => {
 
     setCookie("focusMode", isFocusMode);
   }, [isFocusMode, firstLoad]);
-
   return (
     <>
       <NavBar isFocusMode={isFocusMode} setFocusMode={setFocusMode} />
@@ -51,7 +50,7 @@ const HomePage = ({ contestData, statsData }) => {
             <Hero />
             <CompressedContestTable contestData={contestData} />
             <Stats statsData={statsData} />
-            <Footer/>
+            <Footer />
           </div>
         )}
       </main>
