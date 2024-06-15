@@ -49,7 +49,7 @@ const NavBar = ({
         <div className="flex h-12 flex-1 items-center justify-between gap-2 px-2 md:h-14 md:gap-4">
           <Link
             href="/"
-            className="flex h-full items-center gap-1 self-center px-1 md:gap-2"
+            className="flex h-full items-center gap-0.5 self-center px-1 md:gap-2"
           >
             <Image
               src="/favicon.svg"

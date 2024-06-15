@@ -1,11 +1,10 @@
 import { useEffect, useState, useTransition, Suspense } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
 import {
   Card,
   CardContent,
-  CardDescription,
+  CardDescriptionDiv,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -147,7 +146,14 @@ function MainFunc({
         <CardTitle className="font-bold md:text-3xl">
           Upcoming Contests
         </CardTitle>
-        <CardDescription className="mx-0.5">
+        <CardDescriptionDiv className="mx-0.5">
+          {compressed && (
+            <span className="mx-0.5 font-semibold">
+              Enable Focus Mode
+              <span className="font-mono">(alt+f)</span> for better experience
+            </span>
+          )}
+
           <div className="mt-8 flex items-center justify-start gap-2">
             <SelectPlatform platform={platform} setPlatform={setPlatform} />
             <SearchBar
@@ -155,14 +161,7 @@ function MainFunc({
               setSearchQuery={setSearchQuery}
             />
           </div>
-          {compressed && (
-            <CardDescription className="mx-0.5 font-semibold">
-              Enable Focus Mode
-              <span className="font-mono font-normal">(alt+f)</span> for better
-              experience
-            </CardDescription>
-          )}
-        </CardDescription>
+        </CardDescriptionDiv>
       </CardHeader>
       <CardContent>
         <Table>
@@ -199,12 +198,7 @@ function MainFunc({
           </TableBody>
         </Table>
       </CardContent>
-      <CardContent className="flex items-center justify-between">
-        <p className="px-0.5 font-mono text-xs text-muted-foreground md:px-4 md:text-sm">
-          Showing {Math.min(currentPage * perPage + 1, length)}-
-          {Math.min((currentPage + 1) * perPage, length)} out of {length}
-        </p>
-        <span className="flex select-none justify-end gap-2">
+      <CardContent className="flex select-none justify-end gap-2">
           <Button
             variant="default"
             size="sm"
@@ -221,7 +215,6 @@ function MainFunc({
           >
             Next
           </Button>
-        </span>
       </CardContent>
     </Card>
   );

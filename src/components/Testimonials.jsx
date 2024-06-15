@@ -10,11 +10,11 @@ import { QuoteIcon } from "lucide-react";
 
 const TESTAMENTS = [
   {
-    name: "John Wick",
+    name: "Nusab Taha",
     title: (
       <>
-        Designer @{" "}
-        <span className="font-mono font-semibold">!this.website</span>
+        Developer of{" "}
+        <span className="font-mono font-semibold">this.website</span>
       </>
     ),
     description: (
@@ -27,10 +27,10 @@ const TESTAMENTS = [
   },
 
   {
-    name: "Christopher Nolan",
+    name: "Random User",
     title: (
       <>
-        Software Engineer @{" "}
+        Potential Engineer @{" "}
         <span className="font-mono font-semibold">Google</span>
       </>
     ),

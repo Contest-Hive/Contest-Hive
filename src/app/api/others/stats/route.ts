@@ -1,26 +1,6 @@
 import STATS from "@/db/schemas/STATS";
-import MongoConnection from "@/db/index";
+import { updateData } from "@/lib/dbConnect";
 import { NextRequest, NextResponse } from "next/server";
-
-await MongoConnection(); // Make sure we're connected to the database
-
-const updateData = async (key: string) => {
-  let updateObj: { [key: string]: number } = { total: 1, past24: 1 };
-  updateObj[key] = 1;
-  if (key === "page") {
-    updateObj["past24page"] = 1;
-    updateObj["page"] = 1;
-  } else if (key === "api") {
-    updateObj["past24api"] = 1;
-    updateObj["api"] = 1;
-  } else {
-    updateObj = {};
-    console.log("Error: Invalid Key");
-    return;
-  }
-  const updated = await STATS.findOneAndUpdate({ _id: 1 }, { $inc: updateObj });
-  if (!updated) console.log("Error in Mongo Update: Key Not Found");
-};
 
 export async function POST(req: NextRequest) {
   try {

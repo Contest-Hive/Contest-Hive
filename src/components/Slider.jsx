@@ -39,6 +39,7 @@ const Slider = () => {
       </div>
       <Marquee
         autoFill
+        // delay={100}
         className="select-none overflow-hidden py-4 md:py-10"
         onMount={() => {
           // remove `marqueeRef.current` from the DOM

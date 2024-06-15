@@ -7,6 +7,7 @@ import { getSecondsDifferencesFromNow, getStatsData } from "@/lib/helpers";
 async function Home() {
   // increment page visits and get stats data
   let statsData = await getStatsData();
+  console.log(statsData)
 
   const _contests = (await getAllContestResponse()).data;
 
@@ -28,6 +29,6 @@ async function Home() {
       <HomePage contestData={filteredContests} statsData={statsData} />
     </>
   );
-};
+}
 
 export default Home;

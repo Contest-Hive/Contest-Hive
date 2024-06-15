@@ -1,2 +1,7 @@
 - refresh button in contest table. skeletons are shown in the meantime
 - "per page" dropdown in contest table
+- Avatar in testimonials
+- gradient background in hero section
+- Send Message button in contact form
+- Add a "View All" button in the testimonials section
+- Mention Telegram Channel in hero section
