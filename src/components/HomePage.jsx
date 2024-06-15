@@ -22,7 +22,7 @@ const HomePage = ({ contestData, statsData }) => {
 
   useEffect(() => {
     if (Object.keys(getCookies()).length === 0) {
-      setCookie("focusMode", false);
+      setCookie("focusMode", false, {maxAge: 34560000 });
       setFirstLoad(false);
       return;
     }
@@ -34,7 +34,7 @@ const HomePage = ({ contestData, statsData }) => {
       return;
     }
 
-    setCookie("focusMode", isFocusMode);
+    setCookie("focusMode", isFocusMode, {maxAge: 34560000 });
   }, [isFocusMode, firstLoad]);
   return (
     <>
