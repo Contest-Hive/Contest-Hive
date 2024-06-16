@@ -20,8 +20,7 @@ async function Home() {
   );
   // remove contests that have already started
   const filteredContests = contestData
-    .filter((contest) => getSecondsDifferencesFromNow(contest.startTime) > 1)
-    .slice(0, 27);
+    .filter((contest) => getSecondsDifferencesFromNow(contest.startTime) > 10)
 
   return (
     <>

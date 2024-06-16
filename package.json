@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "run": "next build && next start",
-    "shadcn": "npx shadcn-ui@latest add"
+    "shadcn": "npx shadcn-ui@latest add",
+    "makeapi": "cd 'src/app/api/(main)' && python main.py"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.0.4",
