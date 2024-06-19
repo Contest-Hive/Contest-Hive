@@ -27,6 +27,35 @@ const config = {
           DEFAULT:"#ef4444",
           foreground:"#ff6b6b"
         },
+        blueish:{
+          DEFAULT:"#002244",
+          foreground:"#60a5fa"
+        },
+        greenish:{
+          DEFAULT:"#10b981",
+          foreground:"#34d399"
+        },
+        yellowish:{
+          DEFAULT:"#f59e0b",
+          foreground:"#fcd34d"
+        },
+        redish:{
+          DEFAULT:"#dc2626",
+          foreground:"#ef4444"
+        },
+        grayish:{
+          DEFAULT:"#6b7280",
+          foreground:"#9ca3af"
+        },
+        blackish:{
+          DEFAULT:"#111827",
+          foreground:"#1f2937"
+        },
+        whitish:{
+          DEFAULT:"#f9fafb",
+          foreground:"#f3f4f6"
+        },
+
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

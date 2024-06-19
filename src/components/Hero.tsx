@@ -4,13 +4,6 @@ import { Recursive } from "next/font/google";
 import { GitHubLogoIcon, ReaderIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-
 import { cn } from "@/lib/utils";
 import Slider from "./Slider";
 
@@ -31,7 +24,7 @@ const Hero = () => {
       )}
     >
       <header className="pb-8 pt-20 text-center font-heading text-4xl font-bold leading-tight tracking-tighter md:text-5xl lg:text-6xl">
-        <span className="mr-1.5 rounded-lg bg-pinkish px-2 pb-1 text-secondary dark:text-primary">
+        <span className="mr-1.5 rounded-lg bg-pinkish dark:bg-blueish dark:bg-blueish md:px-3 px-2 md:pt-0 pt-1 pb-1 text-secondary dark:text-primary">
           Contest Hive
         </span>
         is All You Need

@@ -28,7 +28,7 @@ const Stats = ({ statsData }) => {
     <MaxWidthWrapper>
       <header className="pb-8 pt-10 text-center font-heading  text-3xl font-bold leading-tight tracking-tighter md:text-4xl lg:text-5xl">
         Why{" "}
-        <span className="mr-1.5 rounded-lg bg-pinkish px-2 pb-1 text-secondary dark:text-primary">
+        <span className="mr-1.5 rounded-lg bg-pinkish dark:bg-blueish px-2 pb-1 text-secondary dark:text-primary">
           Contest Hive?
         </span>
       </header>

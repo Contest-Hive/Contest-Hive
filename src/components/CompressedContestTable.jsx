@@ -7,7 +7,7 @@ const CompressedContestTable = ({ contestData }) => {
       <div className="container mx-auto max-w-screen-md px-1 pb-10">
         <header className="pb-8 pt-10 text-center font-heading  text-3xl font-bold leading-tight tracking-tighter md:text-4xl lg:text-5xl">
           Take a{" "}
-          <span className="mr-1.5 rounded-lg bg-pinkish px-2 pb-1 text-secondary dark:text-primary">
+          <span className="mr-1.5 rounded-lg bg-pinkish dark:bg-blueish px-2 pb-1 text-secondary dark:text-primary">
             Glance
           </span>
         </header>

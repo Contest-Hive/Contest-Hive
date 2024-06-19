@@ -9,7 +9,7 @@ const images =
 
 const Slider = () => {
   return (
-    <MaxWidthWrapper className="wrapper cursor-pointer">
+    <MaxWidthWrapper className="wrapper cursor-pointer overflow-hidden">
       <div className="carousel relative flex h-36 select-none items-center py-3">
         {images.map((image) => (
           <div
