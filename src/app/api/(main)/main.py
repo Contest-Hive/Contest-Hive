@@ -3,17 +3,17 @@ import pathlib
 
 
 # Change the directory to the root of the project
-scriptPath = pathlib.Path(__file__).resolve()
+# scriptPath = pathlib.Path(__file__).resolve()
 
-targetDirectory = scriptPath.parents[0]
-while targetDirectory.name != "(main)":
-    targetDirectory = targetDirectory.parent
+# targetDirectory = scriptPath.parents[0]
+# while targetDirectory.name != "(main)":
+#     targetDirectory = targetDirectory.parent
 
-os.chdir(targetDirectory)
+# os.chdir(targetDirectory)
 
 # ----------------------------
 
-with open("template.ts", "r", encoding="utf8") as f:
+with open("template.txt", "r", encoding="utf8") as f:
     template = f.read()
 
 
@@ -31,7 +31,7 @@ data = {
         "5": "hackerrank",
         "6": "leetcode",
         "7": "toph",
-        "8": "codeforces_gym",
+        "8": "codeforces-gym",
     },
 }
 
