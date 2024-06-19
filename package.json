@@ -9,7 +9,7 @@
     "lint": "next lint",
     "run": "next build && next start",
     "shadcn": "npx shadcn-ui@latest add",
-    "makeapi": "cd 'src/app/api/(main)' && python main.py"
+    "api": "cd \"src/app/api/(main)\" && python main.py"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.0.4",
@@ -33,7 +33,7 @@
     "cookies-next": "^4.1.1",
     "lucide-react": "^0.372.0",
     "mongoose": "^8.3.2",
-    "next": "14.2.2",
+    "next": "14.2.4",
     "next-themes": "^0.3.0",
     "react": "^18",
     "react-dom": "^18",

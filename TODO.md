@@ -1,3 +1,5 @@
+- Floating platform icons instead of slider in hero section
+
 - gradient background in hero section
 - Avatar in testimonials
 - refresh button in contest table. skeletons are shown in the meantime

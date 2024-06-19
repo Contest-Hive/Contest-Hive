@@ -4,7 +4,9 @@ import MongoConnection from "@/db/index";
 
 await MongoConnection(); // Make sure we're connected to the database
 
-export async function updateData(key: string) {
+type key = "api" | "page";
+
+export async function updateData(key: key) {
   let updateObj: { [key: string]: number } = { total: 1, past24: 1 };
   updateObj[key] = 1;
   if (key === "page") {

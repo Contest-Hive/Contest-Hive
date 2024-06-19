@@ -3,15 +3,14 @@ import { useRef, useEffect } from "react";
 import Image from "next/image";
 import MaxWidthWrapper from "./MaxWidthWrapper";
 
-import "@/styles/slider.css";
 
 const images =
   "atcoder codeforces leetcode codechef toph hackerrank hackerearth".split(" ");
 
 const Slider = () => {
   return (
-    <MaxWidthWrapper className="cursor-pointer">
-      <div className="wrapper h-36 select-none py-3">
+    <MaxWidthWrapper className="wrapper cursor-pointer">
+      <div className="carousel relative flex h-36 select-none items-center py-3">
         {images.map((image) => (
           <div
             key={image}

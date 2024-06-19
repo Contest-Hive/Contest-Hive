@@ -1,9 +1,12 @@
 import type { ContestType } from "@/lib/types";
 
-import { updateData as updateStatsDataAndGetResponse } from "@/lib/dbConnect";
+import { updateData as updateStatsData } from "@/lib/dbConnect";
 
-export async function getStatsData(update: string = "page") { // increment whenever called
-  const data = await updateStatsDataAndGetResponse(update); // can't call updateData directly, make a http request to the api
+type update = "api" | "page";
+
+export async function getStatsData(update: update) {
+  // increment whenever called
+  const data = await updateStatsData(update);
   return [
     {
       title: "Today",
@@ -195,7 +198,7 @@ export const contestUrlData = {
   atcoder: "https://atcoder.jp/contests/",
   codechef: "https://www.codechef.com/",
   codeforces: "https://codeforces.com/contests/",
-  codeforces_gym: "https://codeforces.com/gymRegistration/",
+  "codeforces-gym": "https://codeforces.com/gymRegistration/",
   hackerearth: "https://",
   hackerrank: "https://www.hackerrank.com/contests/",
   leetcode: "https://leetcode.com/contest/",
