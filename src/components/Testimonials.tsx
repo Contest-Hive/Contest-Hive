@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   Card,
   CardContent,
@@ -21,8 +22,7 @@ const TESTAMENTS = [
     description: (
       <>
         <span className="font-semibold tracking-tighter">Contest Hive</span> has
-        made my life competitive programming life much easier. I don&apos;t need
-        to worry about missing a contest again!
+        saved me a ton of time. What would have taken me hours, now just takes a minute!
       </>
     ),
   },
@@ -51,16 +51,31 @@ function getCard({
   name,
   title,
   description,
+  image,
 }: {
   name: string;
   title: JSX.Element | string;
   description: JSX.Element | string;
+  image: string;
 }) {
   return (
     <Card className="relative text-left" key={name}>
       <CardHeader>
-        <CardTitle>{name}</CardTitle>
-        <CardDescription>{title}</CardDescription>
+        <div className="flex items-center justify-start gap-2">
+          <Image
+            src={image}
+            alt={name}
+            width={50}
+            height={50}
+            className="rounded-full"
+          />
+          <div>
+            <CardTitle>{name}</CardTitle>
+            <CardDescription className="text-xs md:text-sm">
+              {title}
+            </CardDescription>
+          </div>
+        </div>
       </CardHeader>
       <CardContent className="ml-3 mt-2 text-balance">
         <QuoteIcon className="absolute inset-0 left-6 top-20 rotate-180" />

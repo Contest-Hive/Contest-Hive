@@ -10,6 +10,7 @@ import ContestsTable from "@/components/ContestsTable";
 import CompressedContestTable from "@/components/CompressedContestTable";
 import Stats from "./Stats";
 import Footer from "./Footer";
+import Contact from "./Contact";
 
 const fontRecursive = Recursive({
   subsets: ["latin"],
@@ -22,7 +23,7 @@ const HomePage = ({ contestData, statsData }) => {
 
   useEffect(() => {
     if (Object.keys(getCookies()).length === 0) {
-      setCookie("focusMode", false, {maxAge: 34560000 });
+      setCookie("focusMode", false, { maxAge: 34560000 });
       setFirstLoad(false);
       return;
     }
@@ -34,7 +35,7 @@ const HomePage = ({ contestData, statsData }) => {
       return;
     }
 
-    setCookie("focusMode", isFocusMode, {maxAge: 34560000 });
+    setCookie("focusMode", isFocusMode, { maxAge: 34560000 });
   }, [isFocusMode, firstLoad]);
   return (
     <>
@@ -50,6 +51,7 @@ const HomePage = ({ contestData, statsData }) => {
             <Hero />
             <CompressedContestTable contestData={contestData} />
             <Stats statsData={statsData} />
+            <Contact />
             <Footer />
           </div>
         )}
