@@ -1,6 +1,5 @@
 import type { Config } from "tailwindcss";
-const { fontFamily } = require('tailwindcss/defaultTheme')
-
+const { fontFamily } = require("tailwindcss/defaultTheme");
 
 const config = {
   darkMode: ["class"],
@@ -23,37 +22,37 @@ const config = {
         heading: ['"Recursive"', ...fontFamily.sans],
       },
       colors: {
-        pinkish:{
-          DEFAULT:"#ef4444",
-          foreground:"#ff6b6b"
+        pinkish: {
+          DEFAULT: "#ef4444",
+          foreground: "#ff6b6b",
         },
-        blueish:{
-          DEFAULT:"#002244",
-          foreground:"#60a5fa"
+        blueish: {
+          DEFAULT: "#002244",
+          foreground: "#60a5fa",
         },
-        greenish:{
-          DEFAULT:"#10b981",
-          foreground:"#34d399"
+        greenish: {
+          DEFAULT: "#10b981",
+          foreground: "#34d399",
         },
-        yellowish:{
-          DEFAULT:"#f59e0b",
-          foreground:"#fcd34d"
+        yellowish: {
+          DEFAULT: "#f59e0b",
+          foreground: "#fcd34d",
         },
-        redish:{
-          DEFAULT:"#dc2626",
-          foreground:"#ef4444"
+        redish: {
+          DEFAULT: "#dc2626",
+          foreground: "#ef4444",
         },
-        grayish:{
-          DEFAULT:"#6b7280",
-          foreground:"#9ca3af"
+        grayish: {
+          DEFAULT: "#6b7280",
+          foreground: "#9ca3af",
         },
-        blackish:{
-          DEFAULT:"#111827",
-          foreground:"#1f2937"
+        blackish: {
+          DEFAULT: "#111827",
+          foreground: "#1f2937",
         },
-        whitish:{
-          DEFAULT:"#f9fafb",
-          foreground:"#f3f4f6"
+        whitish: {
+          DEFAULT: "#f9fafb",
+          foreground: "#f3f4f6",
         },
 
         border: "hsl(var(--border))",
@@ -96,6 +95,20 @@ const config = {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
+        blob: {
+          "0%": {
+            transform: "translate(0px, 19px) scale(1)",
+          },
+          "33%": {
+            transform: "translate(100px, -50px) scale(0.95)",
+          },
+          "66%": {
+            transform: "translate(-70px, -50px) scale(1.1)",
+          },
+          "100%": {
+            transform: "translate(0px, 19px) scale(1)",
+          },
+        },
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -108,6 +121,7 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        blob: "blob 7s ease-in-out infinite",
       },
     },
   },
