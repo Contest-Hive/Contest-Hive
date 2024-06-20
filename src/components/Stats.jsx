@@ -39,10 +39,10 @@ const Stats = ({ statsData }) => {
           September 26, 2023.
         </span>
         <br />
-        Since then, it has been gaining popularity rapidly.
+        Since then, it has been gaining popularity.
         <br />
         <span className="text-sm text-muted-foreground md:text-base">
-          The statistics below are a testament to that
+          Here are some stats
         </span>
       </p>
       <div className="mx-auto mb-10 flex max-w-screen-md flex-col items-center justify-between gap-2 md:flex-row">
