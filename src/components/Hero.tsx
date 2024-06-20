@@ -24,7 +24,7 @@ const Hero = () => {
       )}
     >
       <header className="pb-8 pt-20 text-center font-heading text-4xl font-bold leading-tight tracking-tighter md:text-5xl lg:text-6xl">
-        <span className="mr-1.5 rounded-lg bg-pinkish dark:bg-blueish dark:bg-blueish md:px-3 px-2 md:pt-0 pt-1 pb-1 text-secondary dark:text-primary">
+        <span className="mr-1.5 rounded-lg bg-pinkish px-2 pb-1 pt-1 text-secondary dark:bg-blueish dark:text-primary md:px-3 md:pt-0">
           Contest Hive
         </span>
         is All You Need
