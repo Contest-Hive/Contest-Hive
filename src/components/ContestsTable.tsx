@@ -18,6 +18,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 import SelectPlatform from "./sub/SelectPlatform";
+import SelectPerPage from "./sub/SelectPerPage";
 import SearchBar from "./sub/SearchBar";
 import Contest from "./sub/Contest";
 // import ContestSkeleton from "./ContestSkeleton";
@@ -36,26 +37,6 @@ const PLATFORMS = [
 ];
 
 export default function ContestsTable({
-  contestData,
-  compressed = false,
-  perPage = 5,
-}: {
-  contestData: ContestType[];
-  compressed?: boolean;
-  perPage?: number;
-}) {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <MainFunc
-        contestData={contestData}
-        compressed={compressed}
-        expectedPerPage={perPage}
-      />
-    </Suspense>
-  );
-}
-
-function MainFunc({
   contestData,
   compressed = false,
   expectedPerPage = 5,
@@ -201,24 +182,30 @@ function MainFunc({
           </TableBody>
         </Table>
       </CardContent>
-      <CardContent className="flex select-none justify-end gap-2">
-
-        <Button
-          variant="default"
-          size="sm"
-          onClick={() => setCurrentPage((prev) => prev - 1)}
-          disabled={currentPage === 0 || totalPages === 0}
-        >
-          Previous
-        </Button>
-        <Button
-          variant="default"
-          size="sm"
-          onClick={() => setCurrentPage((prev) => prev + 1)}
-          disabled={currentPage === totalPages - 1 || totalPages === 0}
-        >
-          Next
-        </Button>
+      <CardContent className="flex justify-between">
+        <div className="flex items-center justify-center gap-2 text-xs font-semibold md:text-sm">
+          <p className="hidden md:block">Show Per Page:</p>
+          <p className="block md:hidden">Show:</p>
+          <SelectPerPage perPage={perPage} setPerPage={setPerPage} />
+        </div>
+        <span className="flex select-none items-center justify-center gap-2">
+          <Button
+            variant="default"
+            size="sm"
+            onClick={() => setCurrentPage((prev) => prev - 1)}
+            disabled={currentPage === 0 || totalPages === 0}
+          >
+            Previous
+          </Button>
+          <Button
+            variant="default"
+            size="sm"
+            onClick={() => setCurrentPage((prev) => prev + 1)}
+            disabled={currentPage === totalPages - 1 || totalPages === 0}
+          >
+            Next
+          </Button>
+        </span>
       </CardContent>
     </Card>
   );

@@ -27,7 +27,7 @@ const HomePage = ({ contestData, statsData }) => {
       return;
     }
     if (firstLoad) {
-      console.log("First Load");
+      // console.log("First Load");
       setFirstLoad(false);
       const prevFocusMode = getCookie("focusMode") === "true";
       setFocusMode(prevFocusMode);

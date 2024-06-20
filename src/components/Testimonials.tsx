@@ -11,6 +11,7 @@ import { QuoteIcon } from "lucide-react";
 const TESTAMENTS = [
   {
     name: "Nusab Taha",
+    image: "/assets/images/min/me.jpg",
     title: (
       <>
         Developer of{" "}
@@ -28,6 +29,7 @@ const TESTAMENTS = [
 
   {
     name: "Random User",
+    image: "/assets/images/min/beluga.jpg",
     title: (
       <>
         Potential Engineer @{" "}
@@ -45,7 +47,15 @@ const TESTAMENTS = [
   },
 ];
 
-function getCard(name, title, description) {
+function getCard({
+  name,
+  title,
+  description,
+}: {
+  name: string;
+  title: JSX.Element | string;
+  description: JSX.Element | string;
+}) {
   return (
     <Card className="relative text-left" key={name}>
       <CardHeader>
@@ -69,9 +79,7 @@ const Testimonials = () => {
         </span> */}
       </header>
       <div className="grid grid-cols-1 grid-rows-2 gap-4 md:grid-cols-2 md:grid-rows-1">
-        {TESTAMENTS.map(({ name, title, description }) =>
-          getCard(name, title, description),
-        )}
+        {TESTAMENTS.map((i) => getCard(i))}
       </div>
     </div>
   );

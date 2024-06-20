@@ -1,5 +1,3 @@
-import { useRef, useEffect } from "react";
-
 import Image from "next/image";
 import MaxWidthWrapper from "./ui/MaxWidthWrapper";
 

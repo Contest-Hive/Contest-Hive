@@ -11,7 +11,11 @@ export interface ContestDataType {
   [key: string]: ContestType[];
 }
 
-export type StatsDataType = Array<{ key: string; value: number }>;
+export type StatsDataType = {
+  title: string;
+  value: any;
+  description: string;
+}[];
 
 export type CompressedContestType = [string, string, string, number];
 export type PascalNamesType = {

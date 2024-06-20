@@ -9,6 +9,7 @@ import {
   DropdownMenuCheckboxItem,
 } from "../ui/dropdown-menu";
 import { Button } from "../ui/button";
+import { ChevronDown } from "lucide-react";
 
 const PLATFORMS = [
   "All",
@@ -33,7 +34,6 @@ export default function SelectPlatform({
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="sm" className="h-10 select-none gap-1">
-          {/* <ListFilter className="h-3.5 w-3.5" /> */}
           <Image
             src={`/assets/svgs/platforms/${platform.includes("Gym") ? "codeforces" : platform.toLocaleLowerCase()}.svg`}
             alt="Platform Logo"
@@ -44,6 +44,7 @@ export default function SelectPlatform({
           <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
             Platform
           </span>
+          <ChevronDown className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start">

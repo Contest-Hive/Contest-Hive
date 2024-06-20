@@ -1,5 +1,4 @@
 import MaxWidthWrapper from "./ui/MaxWidthWrapper";
-
 import {
   Card,
   CardContent,
@@ -19,16 +18,17 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-import Testimonials from "@/components/Testimonials"
+import Testimonials from "@/components/Testimonials";
 
 import { formatNumber } from "@/lib/helpers";
+import type { StatsDataType } from "@/lib/types";
 
-const Stats = ({ statsData }) => {
+const Stats = ({ statsData }: { statsData: StatsDataType }) => {
   return (
     <MaxWidthWrapper>
       <header className="pb-8 pt-10 text-center font-heading  text-3xl font-bold leading-tight tracking-tighter md:text-4xl lg:text-5xl">
         Why{" "}
-        <span className="mr-1.5 rounded-lg bg-pinkish dark:bg-blueish px-2 pb-1 text-secondary dark:text-primary">
+        <span className="mr-1.5 rounded-lg bg-pinkish px-2 pb-1 text-secondary dark:bg-blueish dark:text-primary">
           Contest Hive?
         </span>
       </header>
@@ -55,10 +55,8 @@ const Stats = ({ statsData }) => {
               <CardDescription className="flex flex-col items-center justify-center">
                 <span className="text-3xl font-extrabold">
                   <TooltipProvider>
-                    <Tooltip
-                      delayDuration={100}
-                    >
-                      <TooltipTrigger className="text-primary hidden md:inline-block">
+                    <Tooltip delayDuration={100}>
+                      <TooltipTrigger className="hidden text-primary md:inline-block">
                         {formatNumber(data.value)}
                       </TooltipTrigger>
                       <TooltipContent className="tooltip-content font-bold">
@@ -70,7 +68,7 @@ const Stats = ({ statsData }) => {
                     <PopoverTrigger className="text-primary md:hidden">
                       {formatNumber(data.value)}
                     </PopoverTrigger>
-                    <PopoverContent className="tooltip-content font-bold max-w-fit mx-auto">
+                    <PopoverContent className="tooltip-content mx-auto max-w-fit font-bold">
                       {data.value.toLocaleString()}
                     </PopoverContent>
                   </Popover>
@@ -83,7 +81,7 @@ const Stats = ({ statsData }) => {
           </Card>
         ))}
       </div>
-        <Testimonials/>
+      <Testimonials />
     </MaxWidthWrapper>
   );
 };

@@ -102,7 +102,7 @@ const config = {
           "33%": {
             transform: "translate(100px, -50px) scale(0.95)",
           },
-          "66%": {
+          "55%": {
             transform: "translate(-70px, -50px) scale(1.1)",
           },
           "100%": {

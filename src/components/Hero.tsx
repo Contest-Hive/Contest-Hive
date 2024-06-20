@@ -20,7 +20,7 @@ const Hero = () => {
     <div
       className={cn(
         fontRecursive.className,
-        "grainy-dark mx-auto w-full px-2.5 py-10 dark:bg-none md:px-20",
+        "grainy-dark mx-auto w-full px-2.5 py-10 dark:bg-none md:px-20 ",
       )}
     >
       <div className="flex items-center justify-center">
