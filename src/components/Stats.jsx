@@ -1,4 +1,4 @@
-import MaxWidthWrapper from "./MaxWidthWrapper";
+import MaxWidthWrapper from "./ui/MaxWidthWrapper";
 
 import {
   Card,

@@ -17,9 +17,9 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 
-import SelectPlatform from "./SelectPlatform";
-import SearchBar from "./SearchBar";
-import Contest from "./Contest";
+import SelectPlatform from "./sub/SelectPlatform";
+import SearchBar from "./sub/SearchBar";
+import Contest from "./sub/Contest";
 // import ContestSkeleton from "./ContestSkeleton";
 
 import type { ContestType } from "@/lib/types";
@@ -49,7 +49,7 @@ export default function ContestsTable({
       <MainFunc
         contestData={contestData}
         compressed={compressed}
-        perPage={perPage}
+        expectedPerPage={perPage}
       />
     </Suspense>
   );
@@ -58,20 +58,23 @@ export default function ContestsTable({
 function MainFunc({
   contestData,
   compressed = false,
-  perPage = 5,
+  expectedPerPage = 5,
 }: {
   contestData: ContestType[];
   compressed?: boolean;
-  perPage?: number;
+  expectedPerPage?: number;
 }) {
   const [isPending, startTransition] = useTransition();
 
   const [filteredData, setFilteredData] = useState(contestData);
   const length = filteredData.length;
+
+  const [perPage, setPerPage] = useState(expectedPerPage);
   const totalPages = Math.ceil(length / perPage);
   const [currentPage, setCurrentPage] = useState(
     Math.min(0, Math.abs(totalPages - 1)), // Prevent negative values using abs
   );
+
   const [platform, setPlatform] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -199,22 +202,23 @@ function MainFunc({
         </Table>
       </CardContent>
       <CardContent className="flex select-none justify-end gap-2">
-          <Button
-            variant="default"
-            size="sm"
-            onClick={() => setCurrentPage((prev) => prev - 1)}
-            disabled={currentPage === 0 || totalPages === 0}
-          >
-            Previous
-          </Button>
-          <Button
-            variant="default"
-            size="sm"
-            onClick={() => setCurrentPage((prev) => prev + 1)}
-            disabled={currentPage === totalPages - 1 || totalPages === 0}
-          >
-            Next
-          </Button>
+
+        <Button
+          variant="default"
+          size="sm"
+          onClick={() => setCurrentPage((prev) => prev - 1)}
+          disabled={currentPage === 0 || totalPages === 0}
+        >
+          Previous
+        </Button>
+        <Button
+          variant="default"
+          size="sm"
+          onClick={() => setCurrentPage((prev) => prev + 1)}
+          disabled={currentPage === totalPages - 1 || totalPages === 0}
+        >
+          Next
+        </Button>
       </CardContent>
     </Card>
   );

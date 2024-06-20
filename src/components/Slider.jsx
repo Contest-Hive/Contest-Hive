@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 
 import Image from "next/image";
-import MaxWidthWrapper from "./MaxWidthWrapper";
+import MaxWidthWrapper from "./ui/MaxWidthWrapper";
 
 
 const images =

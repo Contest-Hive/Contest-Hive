@@ -5,7 +5,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 import Slider from "./Slider";
-import AnimatedBlob from "./AnimatedBlob";
+import AnimatedBlob from "./sub/AnimatedBlob";
 
 const fontRecursive = Recursive({
   subsets: ["latin"],

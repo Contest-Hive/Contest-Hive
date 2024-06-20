@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 
 import { Crosshair2Icon } from "@radix-ui/react-icons";
 

@@ -7,9 +7,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuCheckboxItem,
-} from "./ui/dropdown-menu";
-import { Button } from "./ui/button";
-import { ListFilter } from "lucide-react";
+} from "../ui/dropdown-menu";
+import { Button } from "../ui/button";
 
 const PLATFORMS = [
   "All",

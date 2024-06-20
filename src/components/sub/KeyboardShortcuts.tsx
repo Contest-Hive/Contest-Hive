@@ -5,7 +5,7 @@ import {
   CardHeader,
   CardFooter,
   CardTitle,
-} from "./ui/card";
+} from "../ui/card";
 
 const SHORTCUTS = [
   {

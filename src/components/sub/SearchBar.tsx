@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { Search } from "lucide-react";
-import { Input } from "./ui/input";
+import { Input } from "../ui/input";
 
 import { useHotkeys } from "react-hotkeys-hook";
 

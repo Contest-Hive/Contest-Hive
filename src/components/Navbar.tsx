@@ -16,10 +16,10 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 
-import MaxWidthWrapper from "./MaxWidthWrapper";
+import MaxWidthWrapper from "./ui/MaxWidthWrapper";
 import NavMenu from "./mobile/NavMenu";
-import FocusMode from "./FocusMode";
-import KeyboardShortcuts from "./KeyboardShortcuts";
+import FocusMode from "./sub/FocusMode";
+import KeyboardShortcuts from "./sub/KeyboardShortcuts";
 import { cn } from "@/lib/utils";
 
 
