@@ -99,14 +99,40 @@ const config = {
           "0%": {
             transform: "translate(0px, 19px) scale(1)",
           },
-          "33%": {
-            transform: "translate(100px, -50px) scale(0.95)",
+          "13%": {
+            transform: "translate(100px, -70px) scale(0.95)",
           },
-          "55%": {
-            transform: "translate(-70px, -50px) scale(1.1)",
+          "33%": {
+            transform: "translate(-100px, -100px) scale(1.1)",
+          },
+          "66%": {
+            transform: "translate(0, -150px) scale(0.95)",
+          },
+          "88%": {
+            transform: "translate(0, 50px) scale(0.95)",
           },
           "100%": {
             transform: "translate(0px, 19px) scale(1)",
+          },
+        },
+        blobPhone: {
+          "0%": {
+            transform: "translate(-13px, 5px) scale(1)",
+          },
+          "13%": {
+            transform: "translate(50px, -70px) scale(0.95)",
+          },
+          "33%": {
+            transform: "translate(-100px, -50) scale(1.1)",
+          },
+          "66%": {
+            transform: "translate(-20, -60) scale(0.95)",
+          },
+          "88%": {
+            transform: "translate(0px, 0px) scale(0.95)",
+          },
+          "100%": {
+            transform: "translate(-13px, 5px) scale(1)",
           },
         },
         "accordion-down": {
@@ -121,6 +147,7 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "blob-phone": "blobPhone 7s ease-in-out infinite",
         blob: "blob 7s ease-in-out infinite",
       },
     },

@@ -2,7 +2,7 @@ import MaxWidthWrapper from "./ui/MaxWidthWrapper";
 
 const Contact = () => {
   return (
-    <MaxWidthWrapper>
+    <MaxWidthWrapper id="contact">
       <header className="pb-8 pt-10 text-center font-heading  text-3xl font-bold leading-tight tracking-tighter md:text-4xl lg:text-5xl">
         Contact Us
       </header>

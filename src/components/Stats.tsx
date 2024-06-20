@@ -20,12 +20,12 @@ import {
 
 import Testimonials from "@/components/Testimonials";
 
-import { formatNumber } from "@/lib/helpers";
-import type { StatsDataType } from "@/lib/types";
+import { formatNumber, getStatsData } from "@/lib/helpers";
 
-const Stats = ({ statsData }: { statsData: StatsDataType }) => {
+const Stats = async () => {
+  const statsData = await getStatsData("page");
   return (
-    <MaxWidthWrapper>
+    <MaxWidthWrapper id="stats">
       <header className="pb-8 pt-10 text-center font-heading  text-3xl font-bold leading-tight tracking-tighter md:text-4xl lg:text-5xl">
         Why{" "}
         <span className="mr-1.5 rounded-lg bg-pinkish px-2 pb-1 text-secondary dark:bg-blueish dark:text-primary">

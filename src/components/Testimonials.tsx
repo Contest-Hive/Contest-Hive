@@ -22,7 +22,8 @@ const TESTAMENTS = [
     description: (
       <>
         <span className="font-semibold tracking-tighter">Contest Hive</span> has
-        saved me a ton of time. What would have taken me hours, now just takes a minute!
+        saved me a ton of time. What would have taken me hours, now just takes a
+        minute!
       </>
     ),
   },
@@ -85,7 +86,7 @@ function getCard({
   );
 }
 
-const Testimonials = () => {
+const Testimonials = async () => {
   return (
     <div className="pb-10">
       <header className="pb-8 pt-10 text-center font-heading text-3xl font-bold leading-tight tracking-tighter md:text-4xl lg:text-5xl">

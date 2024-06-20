@@ -1,4 +1,3 @@
-import { Recursive } from "next/font/google";
 import { GitHubLogoIcon, ReaderIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -7,22 +6,12 @@ import { cn } from "@/lib/utils";
 import Slider from "./Slider";
 import AnimatedBlob from "./sub/AnimatedBlob";
 
-const fontRecursive = Recursive({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
-
 const GITHUB_Link = "https://github.com/Contest-Hive/Contest-Hive";
 const DOCS_LINK = "https://contest-hive.github.io/docs";
 
 const Hero = () => {
   return (
-    <div
-      className={cn(
-        fontRecursive.className,
-        "grainy-dark mx-auto w-full px-2.5 py-10 dark:bg-none md:px-20 ",
-      )}
-    >
+    <div className="grainy-dark mx-auto w-full px-2.5 py-10 dark:bg-none md:px-20 ">
       <div className="flex items-center justify-center">
         <AnimatedBlob />
       </div>

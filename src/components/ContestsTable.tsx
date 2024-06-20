@@ -1,4 +1,4 @@
-import { useEffect, useState, useTransition, Suspense } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 
 import {

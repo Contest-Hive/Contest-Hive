@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 import { Inter as FontSans } from "next/font/google";
+import { Recursive } from "next/font/google";
 
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
@@ -10,6 +11,10 @@ const fontSans = FontSans({
   variable: "--font-sans",
 });
 
+const fontRecursive = Recursive({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 /*
 import type { Viewport } from "next";
 export const viewport: Viewport = {
@@ -44,8 +49,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable,
+          fontRecursive.className,
+          "min-h-screen bg-background antialiased",
         )}
       >
         <ThemeProvider

@@ -1,6 +1,4 @@
 "use client";
-import { Recursive } from "next/font/google";
-
 import { useEffect, useState } from "react";
 import { getCookie, getCookies, setCookie } from "cookies-next";
 
@@ -8,20 +6,21 @@ import NavBar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ContestsTable from "@/components/ContestsTable";
 import CompressedContestTable from "@/components/CompressedContestTable";
-import Stats from "./Stats";
-import Footer from "./Footer";
-import Contact from "./Contact";
 
-const fontRecursive = Recursive({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
-
-const HomePage = ({ contestData, statsData }) => {
+const FocusedPage = ({ contestData }) => {
+  const components = "stats contact footer";
   const [isFocusMode, setFocusMode] = useState(false);
   const [firstLoad, setFirstLoad] = useState(true);
 
   useEffect(() => {
+    if (isFocusMode) {
+      for (let component of components.split(" "))
+        document.getElementById(component).classList.add("hidden");
+    } else {
+      for (let component of components.split(" "))
+        document.getElementById(component).classList.remove("hidden");
+    }
+
     if (Object.keys(getCookies()).length === 0) {
       setCookie("focusMode", false, { maxAge: 34560000 });
       setFirstLoad(false);
@@ -37,27 +36,22 @@ const HomePage = ({ contestData, statsData }) => {
 
     setCookie("focusMode", isFocusMode, { maxAge: 34560000 });
   }, [isFocusMode, firstLoad]);
+
   return (
     <>
       <NavBar isFocusMode={isFocusMode} setFocusMode={setFocusMode} />
-
-      <main>
-        {isFocusMode ? (
-          <div className="container mx-auto px-1 py-4 md:p-4">
-            <ContestsTable contestData={contestData} />
-          </div>
-        ) : (
-          <div className={fontRecursive.className}>
-            <Hero />
-            <CompressedContestTable contestData={contestData} />
-            <Stats statsData={statsData} />
-            <Contact />
-            <Footer />
-          </div>
-        )}
-      </main>
+      {isFocusMode ? (
+        <div className="container mx-auto px-1 py-4 md:p-4">
+          <ContestsTable contestData={contestData} />
+        </div>
+      ) : (
+        <div>
+          <Hero />
+          <CompressedContestTable contestData={contestData} />
+        </div>
+      )}
     </>
   );
 };
 
-export default HomePage;
+export default FocusedPage;

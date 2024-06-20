@@ -6,7 +6,7 @@ const PORTFOLIO_URL = "https://nusab19.pages.dev";
 
 const Footer = () => {
   return (
-    <footer>
+    <footer id="footer">
       <div className="container mx-auto px-4 pb-14 pt-6">
         <p className="text-center text-sm text-gray-500">
           Made with ❤️ by{" "}
