@@ -6,17 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+import ResponsiveTooltip from "@/components/ui/responsiveTooltip";
 
 import Testimonials from "@/components/Testimonials";
 
@@ -53,25 +43,14 @@ const Stats = async () => {
                 <CardTitle className="font-bold">{data.title}</CardTitle>
               </CardHeader>
               <CardDescription className="flex flex-col items-center justify-center">
-                <span className="text-3xl font-extrabold">
-                  <TooltipProvider>
-                    <Tooltip delayDuration={100}>
-                      <TooltipTrigger className="hidden text-primary md:inline-block">
-                        {formatNumber(data.value)}
-                      </TooltipTrigger>
-                      <TooltipContent className="tooltip-content font-bold">
-                        {data.value.toLocaleString()}
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                  <Popover>
-                    <PopoverTrigger className="text-primary md:hidden">
-                      {formatNumber(data.value)}
-                    </PopoverTrigger>
-                    <PopoverContent className="tooltip-content mx-auto max-w-fit font-bold">
-                      {data.value.toLocaleString()}
-                    </PopoverContent>
-                  </Popover>
+                <span className="text-3xl font-extrabold text-primary">
+                  <ResponsiveTooltip
+                    content={data.value.toLocaleString()}
+                    className="font-bold"
+                    delayDuration={100}
+                  >
+                    {formatNumber(data.value)}
+                  </ResponsiveTooltip>
                 </span>
                 <span className="text-sm text-muted-foreground">
                   {data.description}
