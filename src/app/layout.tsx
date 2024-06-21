@@ -38,7 +38,7 @@ export const metadata = {
     title: title,
     description: description,
     url: url,
-    images: ["https://contest-hive.vercel.app/opengraph-image.png"],
+    images: ["/opengraph-image.png"],
   },
 };
 
