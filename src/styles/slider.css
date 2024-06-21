@@ -1,7 +1,7 @@
 :root {
   --total-items: 7;
-  --item-width: 200px;
-  --duration: 23s;
+  --item-width: 155px;
+  --duration: 17s;
 }
 
 .wrapper {
@@ -74,4 +74,11 @@
   animation-delay: calc(
     -1 * var(--duration) / var(--total-items) * (var(--total-items) - 7)
   );
+}
+
+@media screen and (max-width: 768px){
+  :root {
+    --item-width: 100px;
+    --duration: 17s;
+  }
 }

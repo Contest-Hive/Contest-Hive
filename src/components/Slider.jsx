@@ -8,8 +8,8 @@ const images =
 
 const Slider = () => {
   return (
-    <MaxWidthWrapper className="cursor-pointer select-none">
-      <div className="wrapper flex h-36 items-center justify-center py-3">
+    <MaxWidthWrapper className="mt-5 cursor-pointer select-none md:my-12">
+      <div className="wrapper flex h-32 items-center justify-center py-3">
         {images.map((image, index) => (
           <div
             key={index}
