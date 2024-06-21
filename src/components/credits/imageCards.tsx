@@ -69,7 +69,7 @@ function getPersonCard({
           <CardDescription className="text-xs md:text-sm">
             {person.role}
           </CardDescription>
-          <span className="ml-1 mt-1 flex items-center md:gap-3 gap-1">
+          <span className="ml-1 mt-1 flex items-center gap-1 md:gap-3">
             {person.links.map((link, index) => (
               <a href={link.url} key={index}>
                 <Image
@@ -89,6 +89,7 @@ function getPersonCard({
           width={70}
           height={70}
           className="rounded-full md:scale-110"
+          priority
         />
       </CardHeader>
       <CardContent className="text-sm md:text-base">
