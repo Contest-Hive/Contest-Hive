@@ -76,7 +76,7 @@
   );
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 768px) {
   :root {
     --item-width: 100px;
     --duration: 17s;

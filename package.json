@@ -1,6 +1,6 @@
 {
   "name": "contest-hive-new",
-  "version": "0.1.3",
+  "version": "1.0.1",
   "private": true,
   "scripts": {
     "dev": "next dev --turbo",
