@@ -5,6 +5,7 @@ import { Recursive } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
 import { ThemeProvider } from "next-themes";
+import { Toaster } from "@/components/ui/toaster";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -61,6 +62,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         >
           {children}
         </ThemeProvider>
+        <Toaster />
       </body>
     </html>
   );

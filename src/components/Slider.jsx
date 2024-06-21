@@ -1,6 +1,6 @@
 import Image from "next/image";
 import MaxWidthWrapper from "./ui/MaxWidthWrapper";
-
+import { getPlatformLogo } from "@/lib/helpers";
 
 const images =
   "atcoder codeforces leetcode codechef toph hackerrank hackerearth".split(" ");
@@ -15,7 +15,7 @@ const Slider = () => {
             className="item flex flex-col items-center justify-center font-semibold grayscale transition-all duration-300 ease-in-out hover:rotate-6 hover:scale-105 hover:grayscale-0 odd:hover:-rotate-6"
           >
             <Image
-              src={`/assets/svgs/platforms/transparent/${image}.svg`}
+              src={getPlatformLogo(image, true)}
               alt={image}
               width={1}
               height={1}

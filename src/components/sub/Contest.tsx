@@ -1,8 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { Link2, CalendarPlus } from "lucide-react";
-
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import {
@@ -17,7 +15,9 @@ import {
   timeToLocalTime,
   getGoogleCalenderLink,
 } from "@/lib/helpers";
+import { getPlatformLogo } from "@/lib/helpers";
 import { cn } from "@/lib/utils";
+import { Link2, CalendarPlus } from "lucide-react";
 
 import type { ContestType } from "@/lib/types";
 
@@ -30,7 +30,7 @@ export default function Contest(contest: ContestType, index: number) {
       <TableCell className="table-cell">
         <span className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
           <Image
-            src={`/assets/svgs/platforms/${contest.platform.includes("Gym") ? "codeforces" : contest.platform.toLocaleLowerCase()}.svg`}
+            src={getPlatformLogo(contest.platform)}
             alt="Platform Logo"
             width={1}
             height={1}

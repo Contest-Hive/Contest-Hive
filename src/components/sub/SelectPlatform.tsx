@@ -8,8 +8,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuCheckboxItem,
 } from "../ui/dropdown-menu";
+import { getPlatformLogo } from "@/lib/helpers";
 import { Button } from "../ui/button";
 import { ChevronDown } from "lucide-react";
+import { get } from "http";
 
 const PLATFORMS = [
   "All",
@@ -35,7 +37,7 @@ export default function SelectPlatform({
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="sm" className="h-10 select-none gap-1">
           <Image
-            src={`/assets/svgs/platforms/${platform.includes("Gym") ? "codeforces" : platform.toLocaleLowerCase()}.svg`}
+            src={getPlatformLogo(platform)}
             alt="Platform Logo"
             width={1}
             height={1}
@@ -58,7 +60,7 @@ export default function SelectPlatform({
             className="flex items-center justify-start gap-2 text-xs md:text-sm"
           >
             <Image
-              src={`/assets/svgs/platforms/${plt.includes("Gym") ? "codeforces" : plt.toLocaleLowerCase()}.svg`}
+              src={getPlatformLogo(platform)}
               alt="Platform Logo"
               width={1}
               height={1}

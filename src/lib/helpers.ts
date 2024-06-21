@@ -178,7 +178,32 @@ export function formatNumber(num: number) {
   });
   let formatted = formatter.format(num);
   return formatted;
-  return `${formatted}${formatted.at(-1)?.match(/[a-z]/i) ? "+" : ""}`;
+}
+
+export function getPlatformLogo(
+  platform: string,
+  transparent: boolean = false,
+) {
+  let plt = platform.toLowerCase();
+  if (platform.toLowerCase().includes("codeforces")) {
+    plt = "codeforces";
+  }
+
+  if (transparent) return `/assets/svgs/platforms/transparent/${plt}.svg`;
+
+  return `/assets/svgs/platforms/${plt}.svg`;
+}
+
+export async function sendMessage(message: string) {
+  const response = await fetch("/api/others/send", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ message }),
+  });
+
+  return response.json();
 }
 
 export const pascalNames = {
