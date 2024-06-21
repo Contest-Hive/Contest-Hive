@@ -60,7 +60,7 @@ export default function SelectPlatform({
             className="flex items-center justify-start gap-2 text-xs md:text-sm"
           >
             <Image
-              src={getPlatformLogo(platform)}
+              src={getPlatformLogo(plt)}
               alt="Platform Logo"
               width={1}
               height={1}
