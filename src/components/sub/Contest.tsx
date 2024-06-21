@@ -1,13 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import ResponsiveTooltip from "@/components/ui/responsiveTooltip";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card";
 import { TableCell, TableRow } from "@/components/ui/table";
 import {
   timeToReadableTime,
@@ -57,44 +53,36 @@ export default function Contest(contest: ContestType, index: number) {
             <p>Starts In</p>:
           </span>
           <span className="flex items-center justify-start gap-2">
-            <HoverCard>
-              <HoverCardTrigger>
-                <Badge className="flex min-w-20 items-center justify-center">
-                  {timeToReadableTime(contest.startTime)}
-                </Badge>
-              </HoverCardTrigger>
-              <HoverCardContent className="w-54 text-xs">
-                <p className="font-semibold ">
-                  {timeToLocalTime(contest.startTime)}
-                </p>
-              </HoverCardContent>
-            </HoverCard>
+            <ResponsiveTooltip
+              content={timeToLocalTime(contest.startTime)}
+              className="w-54 text-xs font-semibold"
+            >
+              <Badge>
+                {timeToReadableTime(contest.startTime)}
+              </Badge>
+            </ResponsiveTooltip>
 
-            <HoverCard>
-              <HoverCardTrigger
-                className="absolute z-10 ml-[95px] mt-9 md:ml-[133px]"
-                asChild
+            <ResponsiveTooltip
+              content="Add to Google Calendar"
+              className="w-54 text-xs font-semibold"
+              innerClassName="absolute z-10 ml-[95px] mt-9 md:ml-[133px]"
+            >
+              <Link
+                href={getGoogleCalenderLink(contest)}
+                // I know it's a mess! :3
+                target="_blank"
+                className={cn(
+                  "h-8 w-8",
+                  buttonVariants({
+                    variant: "outline",
+                    size: "icon",
+                  }),
+                )}
               >
-                <Link
-                  href={getGoogleCalenderLink(contest)}
-                  // I know it's a mess! :3
-                  target="_blank"
-                  className={cn(
-                    "h-8 w-8",
-                    buttonVariants({
-                      variant: "outline",
-                      size: "icon",
-                    }),
-                  )}
-                >
-                  <p className="sr-only">Add to calender</p>
-                  <CalendarPlus className="h-5 w-5 text-primary" />
-                </Link>
-              </HoverCardTrigger>
-              <HoverCardContent className="w-54 text-xs font-semibold">
-                Add to Google Calendar
-              </HoverCardContent>
-            </HoverCard>
+                <p className="sr-only">Add to calender</p>
+                <CalendarPlus className="h-5 w-5 text-primary" />
+              </Link>
+            </ResponsiveTooltip>
           </span>
         </div>
         <div className={flexClass}>

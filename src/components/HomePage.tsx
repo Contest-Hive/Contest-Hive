@@ -25,7 +25,7 @@ const HomePage = async () => {
   );
   return (
     <>
-      <FocusedPage contestData={contestData} />
+      <FocusedPage contestData={filteredContests} />
       <Stats />
       <Contact />
       <Footer />

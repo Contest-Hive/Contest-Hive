@@ -1,3 +1,4 @@
+"use client";
 import {
   Tooltip,
   TooltipContent,
@@ -34,15 +35,15 @@ export default function ResponsiveTooltip({
           <TooltipContent className={className}>{content}</TooltipContent>
         </Tooltip>
       </TooltipProvider>
+      
+      {/* Popover for Mobile Phones */}
       <Popover>
         <PopoverTrigger
           className={cn("text-primary md:hidden", innerClassName)}
         >
           {children}
         </PopoverTrigger>
-        <PopoverContent
-          className={cn("mx-auto max-w-fit font-bold", className)}
-        >
+        <PopoverContent className={cn("mx-auto font-bold", className)}>
           {content}
         </PopoverContent>
       </Popover>

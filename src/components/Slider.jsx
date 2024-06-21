@@ -13,7 +13,7 @@ const Slider = () => {
         {images.map((image, index) => (
           <div
             key={index}
-            className={`item item${index + 1} flex flex-col items-center justify-center font-semibold grayscale transition-all duration-300 ease-in-out hover:rotate-6 hover:scale-105 hover:grayscale-0 odd:hover:-rotate-6`}
+            className={`item item${index + 1} flex flex-col items-center justify-center font-semibold`}
           >
             <Image
               src={getPlatformLogo(image, true)}
