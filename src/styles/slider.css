@@ -1,0 +1,77 @@
+:root {
+  --total-items: 7;
+  --item-width: 200px;
+  --duration: 23s;
+}
+
+.wrapper {
+  width: 90%;
+  position: relative;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1) 20%,
+    rgba(0, 0, 0, 1) 80%,
+    rgba(0, 0, 0, 0)
+  );
+}
+
+@keyframes scrollLeft {
+  to {
+    left: calc(var(--item-width) * -1);
+  }
+}
+
+.item {
+  width: var(--item-width);
+  height: 100%;
+  position: absolute;
+  left: max(calc(var(--item-width) * var(--total-items)), 100%);
+  animation-name: scrollLeft;
+  animation-duration: var(--duration);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.item1 {
+  animation-delay: calc(
+    -1 * var(--duration) / var(--total-items) * (var(--total-items) - 1)
+  );
+}
+
+.item2 {
+  animation-delay: calc(
+    -1 * var(--duration) / var(--total-items) * (var(--total-items) - 2)
+  );
+}
+
+.item3 {
+  animation-delay: calc(
+    -1 * var(--duration) / var(--total-items) * (var(--total-items) - 3)
+  );
+}
+
+.item4 {
+  animation-delay: calc(
+    -1 * var(--duration) / var(--total-items) * (var(--total-items) - 4)
+  );
+}
+
+.item5 {
+  animation-delay: calc(
+    -1 * var(--duration) / var(--total-items) * (var(--total-items) - 5)
+  );
+}
+
+.item6 {
+  animation-delay: calc(
+    -1 * var(--duration) / var(--total-items) * (var(--total-items) - 6)
+  );
+}
+
+.item7 {
+  animation-delay: calc(
+    -1 * var(--duration) / var(--total-items) * (var(--total-items) - 7)
+  );
+}

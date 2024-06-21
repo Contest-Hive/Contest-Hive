@@ -8,12 +8,12 @@ const images =
 
 const Slider = () => {
   return (
-    <MaxWidthWrapper className="cursor-pointer">
-      <div className="marquee flex h-36 select-none items-center py-3">
+    <MaxWidthWrapper className="cursor-pointer select-none">
+      <div className="wrapper flex h-36 items-center justify-center py-3">
         {images.map((image, index) => (
           <div
             key={index}
-            className="item flex flex-col items-center justify-center font-semibold grayscale transition-all duration-300 ease-in-out hover:rotate-6 hover:scale-105 hover:grayscale-0 odd:hover:-rotate-6"
+            className={`item item${index + 1} flex flex-col items-center justify-center font-semibold grayscale transition-all duration-300 ease-in-out hover:rotate-6 hover:scale-105 hover:grayscale-0 odd:hover:-rotate-6`}
           >
             <Image
               src={getPlatformLogo(image, true)}
