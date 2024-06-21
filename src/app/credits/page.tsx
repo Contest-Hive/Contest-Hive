@@ -1,17 +1,24 @@
-import Link from "next/link";
+import MaxWidthWrapper from "@/components/ui/MaxWidthWrapper";
+import NavBar from "@/components/Navbar";
+import ImageCards from "@/components/credits/imageCards";
+import Footer from "@/components/Footer";
 
 const Credits = () => {
   return (
-    <div className="py-20 text-center text-4xl font-bold">
-      This is the credits page.{" "}
-      <Link href="/" className="underline-dotted">
-        Go back
-      </Link>
-      <br />
-      <p className="my-10 text-base">
-        Developing this page with lower priority cuz I&apos;ve got exams! :/
-      </p>
-    </div>
+    <>
+      <NavBar />
+      <MaxWidthWrapper className="py-10 text-start">
+        <header className="mb-5 text-3xl font-bold tracking-tighter md:text-4xl lg:text-6xl">
+          Credits & Thanks
+        </header>
+        <p className="text-balance text-sm md:text-lg">
+          Wherever <b>Contest Hive</b> has reached today, it&apos;s all because
+          of these people. So, here&apos;s to the ones who made it possible.
+        </p>
+        <ImageCards />
+      </MaxWidthWrapper>
+      <Footer />
+    </>
   );
 };
 
