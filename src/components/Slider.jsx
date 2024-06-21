@@ -19,9 +19,9 @@ const Slider = () => {
               alt={image}
               width={1}
               height={1}
-              className="mx-10 h-16 w-16 rounded-md p-4 dark:bg-primary md:mx-14 md:h-24 md:w-24"
+              className="mx-10 h-12 w-12 rounded-md p-2 dark:bg-primary md:mx-14 md:h-16 md:w-16"
             />
-            <p>{image[0].toUpperCase() + image.slice(1)}</p>
+            <p className="md:text-sm text-xs mt-1.5">{image[0].toUpperCase() + image.slice(1)}</p>
           </div>
         ))}
       </div>

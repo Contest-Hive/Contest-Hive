@@ -1,12 +1,13 @@
 "use client";
 
 import ReactMarkdown from "react-markdown";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
+import { Loader2 } from "lucide-react";
 import { sendMessage } from "@/lib/helpers";
 
 function MessageArea({
@@ -58,6 +59,7 @@ function PreviewArea({ text }: { text: string }) {
 const MdEditor = () => {
   const { toast } = useToast();
   const [text, setText] = useState("");
+  const [disabled, setDisabled] = useState(false);
 
   return (
     <>
@@ -73,17 +75,20 @@ const MdEditor = () => {
           <PreviewArea text={text} />
         </TabsContent>
       </Tabs>
-      <span className="mt-1 flex  items-center justify-between">
+      <span className="mt-2 flex  items-center justify-between">
         <Button
+          disabled={disabled}
           className="w-fit"
           onClick={async () => {
-            toast({
-              duration: 1000,
-              title: "Sending Message...",
-              description: "Please wait.",
+            if(text.trim().length === 0) return toast({
+              duration: 1500,
+              title: "Empty Message",
+              description: "Please type a message before sending."
             });
 
+            setDisabled(true);
             const x = await sendMessage(text);
+            setDisabled(false);
 
             if (x.ok) {
               setText("");
@@ -101,7 +106,7 @@ const MdEditor = () => {
             }
           }}
         >
-          Send message
+          Send message {disabled && <Loader2 className="ml-2 h-4 w-4 animate-spin" />}
         </Button>
         <p className="text-end text-xs">{text.length}/4000</p>
       </span>
