@@ -97,41 +97,36 @@ const NavBar = ({
               Old Website
             </Link>
             <Separator className="ml-1 mr-2 w-7 rotate-90" />
+            <DropdownMenu>
+              <DropdownMenuTrigger className="hidden select-none focus-visible:outline-none md:block">
+                <Button
+                  className="h-10 w-10 p-2"
+                  variant="outline"
+                  size="icon"
+                  asChild
+                  title="Show Shortcuts"
+                >
+                  <CodeIcon className="h-10 w-10" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="min-w-[300px] p-1" align="center">
+                <KeyboardShortcuts />
+              </DropdownMenuContent>
+            </DropdownMenu>
             {isFocusMode !== undefined && setFocusMode !== undefined && (
               <FocusMode
-                setFocusMode={setFocusMode}
                 isFocusMode={isFocusMode}
+                setFocusMode={setFocusMode}
               />
             )}
             <ModeToggle />
           </div>
           <span className="flex items-center gap-1 md:hidden">
             {isFocusMode !== undefined && setFocusMode !== undefined && (
-              <>
-                <DropdownMenu>
-                  <DropdownMenuTrigger className="select-none focus-visible:outline-none hidden md:block">
-                    <Button
-                      className="h-10 w-10 p-2"
-                      variant="outline"
-                      size="icon"
-                      asChild
-                      title="Show Shortcuts"
-                    >
-                      <CodeIcon className="h-10 w-10" />
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent
-                    className="min-w-[300px] p-1"
-                    align="center"
-                  >
-                    <KeyboardShortcuts /> {/*  Content  */}
-                  </DropdownMenuContent>
-                </DropdownMenu>
-                <FocusMode
-                  setFocusMode={setFocusMode}
-                  isFocusMode={isFocusMode}
-                />
-              </>
+              <FocusMode
+                setFocusMode={setFocusMode}
+                isFocusMode={isFocusMode}
+              />
             )}
             <ModeToggle />
             <NavMenu />
