@@ -58,12 +58,12 @@ const listItems = [
     stopStalk: <Cross />,
     kontests: <Check />,
   },
-  {
-    feature: "Best Performance",
-    contestHive: <Check />,
-    stopStalk: <Cross />,
-    kontests: <Cross />,
-  },
+  // {
+  //   feature: "Best Performance",
+  //   contestHive: <Check />,
+  //   stopStalk: <Cross />,
+  //   kontests: <Cross />,
+  // },
   {
     feature: "Shows Local Time",
     contestHive: <Check />,

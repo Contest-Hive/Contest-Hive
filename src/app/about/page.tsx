@@ -3,6 +3,7 @@ import NavBar from "@/components/Navbar";
 import FAQ from "@/components/about/FAQ";
 import WhyUs from "@/components/about/WhyUs";
 import PerformanceScore from "@/components/about/PerformanceScore";
+import Footer from "@/components/Footer";
 
 const About = () => {
   return (
@@ -31,8 +32,9 @@ const About = () => {
         </p>
         <FAQ />
         <WhyUs />
-        <PerformanceScore />
+        {/* <PerformanceScore /> */}
       </MaxWidthWrapper>
+      <Footer />
     </>
   );
 };
