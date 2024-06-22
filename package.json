@@ -1,10 +1,10 @@
 {
   "name": "contest-hive-new",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbo",
-    "build": "next build",
+    "build": "python public/generateSitemap.py && next build",
     "start": "next start",
     "lint": "next lint",
     "run": "next build && next start",
