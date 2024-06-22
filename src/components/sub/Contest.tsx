@@ -40,7 +40,7 @@ export default function Contest(contest: ContestType, index: number) {
         </div>
         <div className="mb-1 flex items-center justify-start md:pl-8">
           <div className="flex items-center justify-start gap-2">
-            <span className="flex w-36 items-center justify-start gap-1">
+            <span className="flex md:w-36 w-32 items-center justify-start gap-1 ">
               <CalendarDays className="h-5 w-5 text-primary/70" />
               <ResponsiveTooltip
                 content={timeToLocalTime(contest.startTime)}

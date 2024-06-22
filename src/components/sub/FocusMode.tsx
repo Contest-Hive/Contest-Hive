@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 
 import { Crosshair2Icon } from "@radix-ui/react-icons";
@@ -10,14 +9,6 @@ const FocusMode = ({
   isFocusMode: boolean;
   setFocusMode: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  const [isOpen, setIsOpen] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsOpen(false);
-    }, 5000);
-  }, []);
-
   return (
     <span className="relative">
       <Button

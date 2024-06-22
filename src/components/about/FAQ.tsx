@@ -32,7 +32,7 @@ export default function FAQ() {
             We collect no personal data whatsoever.
             <br />
             Cookies is used only to save{" "}
-            <code className="font-bold">`FocusMode`</code> status.
+            <code className="font-bold">`FocusMode` &  `PerPage`</code> status.
           </AccordionContent>
         </AccordionItem>
       </Accordion>

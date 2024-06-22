@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbo",
-    "build": "python public/generateSitemap.py && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "run": "next build && next start",
