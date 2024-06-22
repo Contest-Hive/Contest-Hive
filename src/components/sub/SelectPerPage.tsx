@@ -7,18 +7,19 @@ import {
   SelectLabel,
   SelectValue,
 } from "@/components/ui/select";
+import { Dispatch, SetStateAction } from "react";
 
 export default function SelectPerPage({
   perPage,
   setPerPage,
 }: {
   perPage: number;
-  setPerPage: (perPage: number) => void;
+  setPerPage: Dispatch<SetStateAction<string>>
 }) {
   return (
     <Select
       defaultValue={perPage.toString()}
-      onValueChange={(value) => setPerPage(parseInt(value))}
+      onValueChange={(value) => setPerPage(value)}
     >
       <SelectTrigger className="w-[66px]" title="Show Per Page">
         <SelectValue placeholder="5" />

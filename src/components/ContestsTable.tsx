@@ -1,4 +1,5 @@
-import { useEffect, useState, useTransition } from "react";
+"use client";
+import { Dispatch, SetStateAction, useEffect, useState, useTransition } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 
 import {
@@ -39,18 +40,19 @@ const PLATFORMS = [
 export default function ContestsTable({
   contestData,
   compressed = false,
-  expectedPerPage = 7,
+  perPage,
+  setPerPage,
 }: {
   contestData: ContestType[];
   compressed?: boolean;
-  expectedPerPage?: number;
+  perPage: number;
+  setPerPage: Dispatch<SetStateAction<string>>;
 }) {
   const [isPending, startTransition] = useTransition();
 
   const [filteredData, setFilteredData] = useState(contestData);
   const length = filteredData.length;
 
-  const [perPage, setPerPage] = useState(expectedPerPage);
   const totalPages = Math.ceil(length / perPage);
   const [currentPage, setCurrentPage] = useState(
     Math.min(0, Math.abs(totalPages - 1)), // Prevent negative values using abs
@@ -154,11 +156,11 @@ export default function ContestsTable({
               <TableHead className="border-b border-t bg-muted/50">
                 <p className="font-normal tracking-wide">
                   Showing{" "}
-                  <code className="font-bold">
+                  <span className="font-bold">
                     {Math.min(currentPage * perPage + 1, length)}-
                     {Math.min((currentPage + 1) * perPage, length)}
-                  </code>{" "}
-                  out of <code className="font-bold">{length}</code> contests
+                  </span>{" "}
+                  out of <span className="font-bold">{length}</span> contests
                 </p>
               </TableHead>
             </TableRow>

@@ -1,11 +1,16 @@
 import ContestsTable from "@/components/ContestsTable";
 
 import { ContestType } from "@/lib/types";
+import { Dispatch, SetStateAction } from "react";
 
 const CompressedContestTable = ({
   contestData,
+  perPage,
+  setPerPage,
 }: {
   contestData: ContestType[];
+  perPage: number;
+  setPerPage: Dispatch<SetStateAction<string>>
 }) => {
   return (
     <div className="grainy-light dark:bg-none">
@@ -26,7 +31,8 @@ const CompressedContestTable = ({
         <ContestsTable
           contestData={contestData}
           compressed={true}
-          expectedPerPage={3}
+          perPage={perPage}
+          setPerPage={setPerPage}
         />
       </div>
     </div>
