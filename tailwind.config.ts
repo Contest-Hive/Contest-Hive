@@ -1,6 +1,5 @@
 import type { Config } from "tailwindcss";
-const { fontFamily } = require('tailwindcss/defaultTheme')
-
+const { fontFamily } = require("tailwindcss/defaultTheme");
 
 const config = {
   darkMode: ["class"],
@@ -23,10 +22,39 @@ const config = {
         heading: ['"Recursive"', ...fontFamily.sans],
       },
       colors: {
-        pinkish:{
-          DEFAULT:"#ef4444",
-          foreground:"#ff6b6b"
+        pinkish: {
+          DEFAULT: "#ef4444",
+          foreground: "#ff6b6b",
         },
+        blueish: {
+          DEFAULT: "#002244",
+          foreground: "#60a5fa",
+        },
+        greenish: {
+          DEFAULT: "#10b981",
+          foreground: "#34d399",
+        },
+        yellowish: {
+          DEFAULT: "#f59e0b",
+          foreground: "#fcd34d",
+        },
+        redish: {
+          DEFAULT: "#dc2626",
+          foreground: "#ef4444",
+        },
+        grayish: {
+          DEFAULT: "#6b7280",
+          foreground: "#9ca3af",
+        },
+        blackish: {
+          DEFAULT: "#111827",
+          foreground: "#1f2937",
+        },
+        whitish: {
+          DEFAULT: "#f9fafb",
+          foreground: "#f3f4f6",
+        },
+
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -67,6 +95,46 @@ const config = {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
+        blob: {
+          "0%": {
+            transform: "translate(0px, 19px) scale(1)",
+          },
+          "13%": {
+            transform: "translate(100px, -70px) scale(0.95)",
+          },
+          "33%": {
+            transform: "translate(-100px, -100px) scale(1.1)",
+          },
+          "66%": {
+            transform: "translate(0, -150px) scale(0.95)",
+          },
+          "88%": {
+            transform: "translate(0, 50px) scale(0.95)",
+          },
+          "100%": {
+            transform: "translate(0px, 19px) scale(1)",
+          },
+        },
+        blobPhone: {
+          "0%": {
+            transform: "translate(-13px, 5px) scale(1)",
+          },
+          "13%": {
+            transform: "translate(50px, -70px) scale(0.95)",
+          },
+          "33%": {
+            transform: "translate(-100px, -50) scale(1.1)",
+          },
+          "66%": {
+            transform: "translate(-20, -60) scale(0.95)",
+          },
+          "88%": {
+            transform: "translate(0px, 0px) scale(0.95)",
+          },
+          "100%": {
+            transform: "translate(-13px, 5px) scale(1)",
+          },
+        },
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -79,6 +147,8 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "blob-phone": "blobPhone 7s ease-in-out infinite",
+        blob: "blob 7s ease-in-out infinite",
       },
     },
   },

@@ -1,23 +1,22 @@
+"use server";
+
 import { NextResponse } from "next/server";
 
 import {
   getEndTime,
   pascalNames,
+  getStatsData,
   contestUrlData,
   getSecondsDifferencesFromNow,
 } from "@/lib/helpers";
+import { updateData } from "@/lib/dbConnect";
 
 import type { CompressedContestType } from "@/lib/types";
-
-const PLATFORM_NAME = "$platformName";
-
-const API_URL = `https://raw.githubusercontent.com/Contest-Hive/__contest-hive-backend/cache/cache/Data/${PLATFORM_NAME}.json`;
 
 function getContestData(
   contest: CompressedContestType,
   platformName: string | undefined,
 ) {
-  if (!platformName) platformName = PLATFORM_NAME;
   const [contestName, contestUrl, startTime, durationSeconds] = contest;
   const duration = durationSeconds;
   const endTime = getEndTime(startTime, durationSeconds);
@@ -32,18 +31,29 @@ function getContestData(
   };
 }
 
-export async function GET() {
+type platformName =
+  | "all"
+  | "atcoder"
+  | "codechef"
+  | "codeforces"
+  | "codeforces-gym"
+  | "hackerearth"
+  | "hackerrank"
+  | "leetcode"
+  | "toph";
+
+export async function getResponse(platformName: platformName) {
+  const API_URL = `https://raw.githubusercontent.com/Contest-Hive/__contest-hive-backend/cache/cache/Data/${platformName}.json`;
+
   const response = await fetch(API_URL, {
-    next: {
-      revalidate: 3 * 60, // 3 Minutes
-    },
+    cache: "no-store",
   });
 
   const data = await response.json();
   const allContests = data.data;
   const contests = [];
-  // @ts-ignore
-  if (PLATFORM_NAME !== "all") {
+
+  if (platformName !== "all") {
     for (const contest of allContests) {
       // Skip if contest has already ended
       if (getSecondsDifferencesFromNow(contest.start) < 0) continue;
@@ -65,9 +75,14 @@ export async function GET() {
       data.data[key] = contests;
     }
   }
+  return data;
+}
+
+export async function JsonResponse(data: any, status = 200) {
+  await updateData("api"); // Update the stats
 
   return new NextResponse(JSON.stringify(data, null, 2), {
-    status: 200,
+    status,
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Headers": "*",

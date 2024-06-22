@@ -1,10 +1,12 @@
 import type { ContestType } from "@/lib/types";
 
-export async function getStatsData() {
-  const response = await fetch(`${process.env.ROOT_URL}/api/others/stats`, {
-    next: { revalidate: 30 },
-  });
-  const data = await response.json();
+import { updateData as updateStatsData } from "@/lib/dbConnect";
+
+type update = "api" | "page";
+
+export async function getStatsData(update: update) {
+  // increment whenever called
+  const data = await updateStatsData(update);
   return [
     {
       title: "Today",
@@ -176,7 +178,32 @@ export function formatNumber(num: number) {
   });
   let formatted = formatter.format(num);
   return formatted;
-  return `${formatted}${formatted.at(-1)?.match(/[a-z]/i) ? "+" : ""}`;
+}
+
+export function getPlatformLogo(
+  platform: string,
+  transparent: boolean = false,
+) {
+  let plt = platform.toLowerCase();
+  if (platform.toLowerCase().includes("codeforces")) {
+    plt = "codeforces";
+  }
+
+  if (transparent) return `/assets/svgs/platforms/transparent/${plt}.svg`;
+
+  return `/assets/svgs/platforms/${plt}.svg`;
+}
+
+export async function sendMessage(message: string) {
+  const response = await fetch("/api/others/send", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ message }),
+  });
+
+  return response.json();
 }
 
 export const pascalNames = {
@@ -196,7 +223,7 @@ export const contestUrlData = {
   atcoder: "https://atcoder.jp/contests/",
   codechef: "https://www.codechef.com/",
   codeforces: "https://codeforces.com/contests/",
-  codeforces_gym: "https://codeforces.com/gymRegistration/",
+  "codeforces-gym": "https://codeforces.com/gymRegistration/",
   hackerearth: "https://",
   hackerrank: "https://www.hackerrank.com/contests/",
   leetcode: "https://leetcode.com/contest/",

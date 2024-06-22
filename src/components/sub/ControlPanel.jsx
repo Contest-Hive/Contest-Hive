@@ -1,5 +1,3 @@
-"use client";
-
 const ControlPanel = ({ setFocusMode }) => {
   return (
     <div className="fixed bottom-8 left-[50%] mx-auto -translate-x-[50%] select-none rounded-md bg-foreground px-4 py-2 text-secondary opacity-75 transition-all duration-200 hover:scale-110 hover:opacity-90">

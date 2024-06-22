@@ -1,40 +1,18 @@
-"use client";
-import { useSearchParams, usePathname, useRouter } from "next/navigation";
-import { useState, useEffect, useCallback } from "react";
+import "@/styles/slider.css";
 
-import { Button } from "./ui/button";
-
-const Temp = () => {
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
-  const [counter, setCounter] = useState(
-    Number(searchParams.get("counter")) || 0,
-  );
-
-  useEffect(() => {
-    // add it to search params
-    console.log(`counter: ${counter}`)
-    router.push(`${pathname}?counter=${counter}`);
-  }, [counter, router, pathname]);
-
+const InfiniteSlider = () => {
   return (
-    <div>
-      <header className="my-10 text-center text-5xl font-semibold">
-        Temp Check
-      </header>
-
-      <div className="flex items-center justify-center">
-        <Button
-          onClick={() => setCounter((prev) => prev + 1)}
-          className="min-w-16"
-        >
-          {counter}
-        </Button>
-      </div>
+    <div className="wrapper">
+      <div className="item item1"></div>
+      <div className="item item2"></div>
+      <div className="item item3"></div>
+      <div className="item item4"></div>
+      <div className="item item5"></div>
+      <div className="item item6"></div>
+      <div className="item item7"></div>
+      <div className="item item8"></div>
     </div>
   );
 };
 
-export default Temp;
+export default InfiniteSlider;

@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 import { useHotkeys } from "react-hotkeys-hook";
@@ -11,32 +12,28 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 
-import MaxWidthWrapper from "./MaxWidthWrapper";
+import MaxWidthWrapper from "./ui/MaxWidthWrapper";
 import NavMenu from "./mobile/NavMenu";
-import FocusMode from "./FocusMode";
-import KeyboardShortcuts from "./KeyboardShortcuts";
+import FocusMode from "./sub/FocusMode";
+import KeyboardShortcuts from "./sub/KeyboardShortcuts";
 import { cn } from "@/lib/utils";
 
-
-const OLD_WEBSITE = "https://contest-hive-old.vercel.app"
+const OLD_WEBSITE = "https://contest-hive-old.vercel.app";
 
 const NavBar = ({
   isFocusMode,
   setFocusMode,
 }: {
-  isFocusMode: boolean;
-  setFocusMode: React.Dispatch<React.SetStateAction<boolean>>;
+  isFocusMode?: boolean;
+  setFocusMode?: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   useHotkeys(
     "alt+f",
     (e) => {
       e.preventDefault();
-      setFocusMode((prev) => !prev);
+      if (setFocusMode) setFocusMode((prev) => !prev);
     },
     {
       enableOnFormTags: true,
@@ -49,7 +46,7 @@ const NavBar = ({
         <div className="flex h-12 flex-1 items-center justify-between gap-2 px-2 md:h-14 md:gap-4">
           <Link
             href="/"
-            className="flex h-full items-center gap-1 self-center px-1 md:gap-2"
+            className="flex h-full items-center gap-0.5 self-center px-1 md:gap-2"
           >
             <Image
               src="/favicon.svg"
@@ -101,26 +98,36 @@ const NavBar = ({
             </Link>
             <Separator className="ml-1 mr-2 w-7 rotate-90" />
             <DropdownMenu>
-              <DropdownMenuTrigger className="select-none focus-visible:outline-none">
+              <DropdownMenuTrigger className="hidden select-none focus-visible:outline-none md:block">
                 <Button
                   className="h-10 w-10 p-2"
                   variant="outline"
                   size="icon"
-                  asChild 
+                  asChild
                   title="Show Shortcuts"
                 >
                   <CodeIcon className="h-10 w-10" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="min-w-[300px] p-1" align="center">
-                <KeyboardShortcuts /> {/*  Content  */}
+                <KeyboardShortcuts />
               </DropdownMenuContent>
             </DropdownMenu>
-            <FocusMode setFocusMode={setFocusMode} isFocusMode={isFocusMode} />
+            {isFocusMode !== undefined && setFocusMode !== undefined && (
+              <FocusMode
+                isFocusMode={isFocusMode}
+                setFocusMode={setFocusMode}
+              />
+            )}
             <ModeToggle />
           </div>
           <span className="flex items-center gap-1 md:hidden">
-            <FocusMode setFocusMode={setFocusMode} isFocusMode={isFocusMode} />
+            {isFocusMode !== undefined && setFocusMode !== undefined && (
+              <FocusMode
+                setFocusMode={setFocusMode}
+                isFocusMode={isFocusMode}
+              />
+            )}
             <ModeToggle />
             <NavMenu />
           </span>

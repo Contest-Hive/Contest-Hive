@@ -1,3 +1,4 @@
+import { Separator } from "./ui/separator";
 import { buttonVariants } from "./ui/button";
 
 import { cn } from "@/lib/utils";
@@ -6,7 +7,8 @@ const PORTFOLIO_URL = "https://nusab19.pages.dev";
 
 const Footer = () => {
   return (
-    <footer>
+    <footer id="footer" className="pt-20">
+      <Separator />
       <div className="container mx-auto px-4 pb-14 pt-6">
         <p className="text-center text-sm text-gray-500">
           Made with ❤️ by{" "}

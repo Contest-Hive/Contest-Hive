@@ -1,69 +1,33 @@
-import { useRef } from "react";
-
 import Image from "next/image";
-import Marquee from "react-fast-marquee";
-
-import MaxWidthWrapper from "./MaxWidthWrapper";
-import { cn } from "@/lib/utils";
+import MaxWidthWrapper from "./ui/MaxWidthWrapper";
+import { getPlatformLogo } from "@/lib/helpers";
+import "@/styles/slider.css";
 
 const images =
   "atcoder codeforces leetcode codechef toph hackerrank hackerearth".split(" ");
 
 const Slider = () => {
-  const marqueeRef = useRef(null);
-
   return (
-    <MaxWidthWrapper className="cursor-pointer">
-      <div
-        className="flex select-none overflow-hidden py-4 md:py-10"
-        ref={marqueeRef}
-      >
-        {images.map((image) => (
+    <MaxWidthWrapper className="mt-5 cursor-pointer select-none md:my-12">
+      <div className="wrapper flex h-32 items-center justify-center py-3">
+        {images.map((image, index) => (
           <div
-            key={image}
-            className={cn(
-              "flex flex-col items-center justify-center font-semibold grayscale transition-all duration-300 ease-in-out hover:grayscale-0",
-              images.indexOf(image) % 2 ? "hover:-rotate-6" : "hover:rotate-6",
-            )}
+            key={index}
+            className={`item item${index + 1} flex flex-col items-center justify-center font-semibold`}
           >
             <Image
-              src={`/assets/svgs/platforms/transparent/${image}.svg`}
+              src={getPlatformLogo(image, true)}
               alt={image}
               width={1}
               height={1}
-              className="mx-10 h-16 w-16 rounded-md p-4 dark:bg-primary md:h-24 md:w-24"
+              className="mx-10 h-12 w-12 rounded-md p-2 dark:bg-primary md:mx-14 md:h-16 md:w-16"
             />
-            <p>{image[0].toUpperCase() + image.slice(1)}</p>
+            <p className="mt-1.5 text-xs md:text-sm">
+              {image[0].toUpperCase() + image.slice(1)}
+            </p>
           </div>
         ))}
       </div>
-      <Marquee
-        autoFill
-        className="select-none overflow-hidden py-4 md:py-10"
-        onMount={() => {
-          // remove `marqueeRef.current` from the DOM
-          marqueeRef.current.remove();
-        }}
-      >
-        {images.map((image) => (
-          <div
-            key={image}
-            className={cn(
-              "flex flex-col items-center justify-center font-semibold grayscale transition-all duration-300 ease-in-out hover:grayscale-0",
-              images.indexOf(image) % 2 ? "hover:-rotate-6" : "hover:rotate-6",
-            )}
-          >
-            <Image
-              src={`/assets/svgs/platforms/transparent/${image}.svg`}
-              alt={image}
-              width={1}
-              height={1}
-              className="mx-10 h-16 w-16 rounded-md p-4 dark:bg-primary md:h-24 md:w-24"
-            />
-            <p>{image[0].toUpperCase() + image.slice(1)}</p>
-          </div>
-        ))}
-      </Marquee>
     </MaxWidthWrapper>
   );
 };
