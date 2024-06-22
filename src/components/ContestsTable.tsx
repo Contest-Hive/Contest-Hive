@@ -39,7 +39,7 @@ const PLATFORMS = [
 export default function ContestsTable({
   contestData,
   compressed = false,
-  expectedPerPage = 5,
+  expectedPerPage = 7,
 }: {
   contestData: ContestType[];
   compressed?: boolean;
@@ -151,14 +151,14 @@ export default function ContestsTable({
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead className="border-b border-t">
-                <p>
+              <TableHead className="border-b border-t bg-muted/50">
+                <p className="font-normal tracking-wide">
                   Showing{" "}
-                  <code>
+                  <code className="font-bold">
                     {Math.min(currentPage * perPage + 1, length)}-
                     {Math.min((currentPage + 1) * perPage, length)}
                   </code>{" "}
-                  out of <code>{length}</code> contests
+                  out of <code className="font-bold">{length}</code> contests
                 </p>
               </TableHead>
             </TableRow>

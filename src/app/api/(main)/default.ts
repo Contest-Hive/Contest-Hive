@@ -5,9 +5,9 @@ import { NextResponse } from "next/server";
 import {
   getEndTime,
   pascalNames,
+  getStatsData,
   contestUrlData,
   getSecondsDifferencesFromNow,
-  getStatsData,
 } from "@/lib/helpers";
 import { updateData } from "@/lib/dbConnect";
 
@@ -46,7 +46,7 @@ export async function getResponse(platformName: platformName) {
   const API_URL = `https://raw.githubusercontent.com/Contest-Hive/__contest-hive-backend/cache/cache/Data/${platformName}.json`;
 
   const response = await fetch(API_URL, {
-    cache: "no-cache",
+    cache: "no-store",
   });
 
   const data = await response.json();
@@ -80,7 +80,7 @@ export async function getResponse(platformName: platformName) {
 
 export async function JsonResponse(data: any, status = 200) {
   await updateData("api"); // Update the stats
-  
+
   return new NextResponse(JSON.stringify(data, null, 2), {
     status,
     headers: {

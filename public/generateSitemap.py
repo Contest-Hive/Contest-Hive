@@ -10,15 +10,10 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 if os.getcwd().split("\\")[-1] != "public":
     if "public" in os.listdir():
-        print("Running from the root folder...")
-        print()
         os.chdir("public/")
 
     else:
         pprint("Please run this script from the /public folder or from the root folder")
-else:
-    print("Running from the /public folder...")
-    print()
 
 os.chdir("../src/app/")
 
@@ -116,9 +111,8 @@ def main():
     with open("../../public/sitemap.xml", "w", encoding="utf8") as f:
         f.write(sitemap)
 
-    print("sitemap.xml generated")
+    print("Generated sitemap.xml")
 
 
 if __name__ == "__main__":
-    print("Generating sitemap.xml")
     main()
