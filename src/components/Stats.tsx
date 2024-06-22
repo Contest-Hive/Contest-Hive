@@ -46,7 +46,7 @@ const Stats = async () => {
                 <span className="text-3xl font-extrabold text-primary">
                   <ResponsiveTooltip
                     content={data.value.toLocaleString()}
-                    className="font-bold"
+                    className="w-fit text-center font-bold"
                     delayDuration={100}
                   >
                     {formatNumber(data.value)}
