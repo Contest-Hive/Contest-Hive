@@ -17,10 +17,10 @@ export async function POST(req: NextRequest) {
     return await JsonResponse(data, 400);
   }
   const content = `
-📧 New message from <code>${ip}</code>
+📧 New message from *${ip}
 Message:
 
-${escapeHTML(message)}
+${message}
 `.replace(/(?:\r\n|\r|\n)/g, "%0A");
 
   const url = URL + content;

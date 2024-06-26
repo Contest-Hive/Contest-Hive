@@ -105,7 +105,7 @@ function FeatureTable() {
 
       <TableHeader>
         <TableRow className="rounded-md bg-muted/50">
-          <TableHead className="w-56"></TableHead>
+          <TableHead className="w-56">Features</TableHead>
           <TableHead>Contest Hive</TableHead>
           <TableHead>StopStalk</TableHead>
           <TableHead>Kontests</TableHead>

@@ -31,7 +31,7 @@ export default function FAQ() {
           <AccordionContent>
             We collect no personal data whatsoever.
             <br />
-            Cookies is used only to save{" "}
+            Local Storage is used only to save{" "}
             <code className="font-bold">`FocusMode` &  `PerPage`</code> status.
           </AccordionContent>
         </AccordionItem>
