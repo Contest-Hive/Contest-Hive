@@ -24,7 +24,7 @@ const CompressedContestTable = ({
 
         <p className="mx-auto mb-10 max-w-lg text-balance text-center text-sm md:max-w-xl md:text-base lg:max-w-2xl lg:text-lg">
           We gathered everything in one place,{" "}
-          <span className="underline-dotted font-semibold">
+          <span className="font-semibold">
             so you don&apos;t have to!
           </span>
         </p>
