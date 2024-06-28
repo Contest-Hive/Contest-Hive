@@ -24,7 +24,7 @@ const Info = ({
   className?: string;
 }) => {
   return (
-    <ResponsiveTooltip content={children ?? ""} className="text-xs md:text-sm">
+    <ResponsiveTooltip content={children ?? ""} className="text-xs md:text-sm" title="Further Information">
       <InfoIcon className="-mt-3 ml-1 h-4 w-4 md:h-5 md:w-5" />
     </ResponsiveTooltip>
   );
