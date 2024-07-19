@@ -1,8 +1,8 @@
 import MaxWidthWrapper from "@/components/ui/MaxWidthWrapper";
 import NavBar from "@/components/Navbar";
-import FAQ from "@/components/about/FAQ";
-import WhyUs from "@/components/about/WhyUs";
-import PerformanceScore from "@/components/about/PerformanceScore";
+import FAQ from "@/app/about/components/FAQ";
+import WhyUs from "@/app/about/components/WhyUs";
+import PerformanceScore from "@/app/about/components/PerformanceScore";
 import Footer from "@/components/Footer";
 
 const About = () => {

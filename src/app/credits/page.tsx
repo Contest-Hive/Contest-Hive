@@ -1,6 +1,6 @@
 import MaxWidthWrapper from "@/components/ui/MaxWidthWrapper";
 import NavBar from "@/components/Navbar";
-import ImageCards from "@/components/credits/imageCards";
+import ImageCards from "./components/imageCards";
 import Footer from "@/components/Footer";
 
 const Credits = () => {

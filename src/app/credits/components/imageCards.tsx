@@ -6,7 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Separator } from "../ui/separator";
+import { Separator } from "../../../components/ui/separator";
 
 const PEOPLE = [
   {
