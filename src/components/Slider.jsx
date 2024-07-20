@@ -1,6 +1,6 @@
 import Image from "next/image";
 import MaxWidthWrapper from "./ui/MaxWidthWrapper";
-import { getPlatformLogo } from "@/lib/helpers";
+import { getPlatformLogo } from "@/lib/helpers/others";
 import "@/styles/slider.css";
 
 const images =

@@ -4,12 +4,11 @@ import { NextResponse } from "next/server";
 
 import {
   getEndTime,
-  pascalNames,
-  getStatsData,
-  contestUrlData,
-  getSecondsDifferencesFromNow,
-} from "@/lib/helpers";
+  getSecondsDifferencesFromCurrentTime,
+} from "@/lib/helpers/datetime";
 import { updateData } from "@/lib/dbConnect";
+import { pascalNames, contestUrlData } from "@/lib/constants";
+
 
 import type { CompressedContestType } from "@/lib/types";
 
@@ -56,7 +55,7 @@ export async function getResponse(platformName: platformName) {
   if (platformName !== "all") {
     for (const contest of allContests) {
       // Skip if contest has already ended
-      if (getSecondsDifferencesFromNow(contest.start) < 0) continue;
+      if (getSecondsDifferencesFromCurrentTime(contest.start) < 0) continue;
       const contestData = getContestData(contest, undefined);
       contests.push({ ...contestData });
     }
@@ -65,7 +64,8 @@ export async function getResponse(platformName: platformName) {
     for (const [key, value] of Object.entries(allContests)) {
       const contests = [];
       for (const contest of value as any[]) {
-        if (getSecondsDifferencesFromNow(contest.startTime) < 0) continue;
+        if (getSecondsDifferencesFromCurrentTime(contest.startTime) < 0)
+          continue;
         const contestData = getContestData(contest, key);
         contests.push({
           ...contestData,

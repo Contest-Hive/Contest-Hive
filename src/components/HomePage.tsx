@@ -4,7 +4,7 @@ import Contact from "./Contact";
 import Footer from "./Footer";
 
 import { getResponse as getAllContestResponse } from "../app/api/(main)/default";
-import { getSecondsDifferencesFromNow } from "@/lib/helpers";
+import { getSecondsDifferencesFromCurrentTime } from "@/lib/helpers/datetime";
 import { ContestDataType } from "@/lib/types";
 
 const HomePage = async () => {
@@ -15,13 +15,13 @@ const HomePage = async () => {
   const contestData = Object.values(_contests).flatMap((contests) => contests);
   contestData.sort(
     (a, b) =>
-      getSecondsDifferencesFromNow(a.startTime) -
-      getSecondsDifferencesFromNow(b.startTime),
+      getSecondsDifferencesFromCurrentTime(a.startTime) -
+      getSecondsDifferencesFromCurrentTime(b.startTime),
   );
 
   // Filter contests that have already started
   const filteredContests = contestData.filter(
-    (contest) => getSecondsDifferencesFromNow(contest.startTime) > 10,
+    (contest) => getSecondsDifferencesFromCurrentTime(contest.startTime) > 10,
   );
   return (
     <>

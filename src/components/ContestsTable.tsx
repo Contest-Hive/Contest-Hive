@@ -1,5 +1,11 @@
 "use client";
-import { Dispatch, SetStateAction, useEffect, useState, useTransition } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useState,
+  useTransition,
+} from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 
 import {
@@ -23,6 +29,9 @@ import SelectPerPage from "./sub/SelectPerPage";
 import SearchBar from "./sub/SearchBar";
 import Contest from "./sub/Contest";
 // import ContestSkeleton from "./ContestSkeleton";
+
+// --- Helper Functions ---
+import SearchText from "@/lib/helpers/search";
 
 import type { ContestType } from "@/lib/types";
 
@@ -78,21 +87,19 @@ export default function ContestsTable({
           );
         }
       } else {
-        // Search query is not empty
+        // Search the Contests
         setFilteredData(
           contestData.filter((contest) => {
             const text = `${contest.title.toLowerCase()} ${contest.platform.toLowerCase()}`;
-            const lowerSearchQuery = searchQuery.toLowerCase();
-            const isPlatformMatch =
+            const expectedPlatform =
               platform === "Codeforces Gym" ? "CF GYM" : platform;
 
             if (platform === "All" || platform === undefined) {
-              return text.includes(lowerSearchQuery);
+              return SearchText(text, searchQuery);
             }
 
             return (
-              contest.platform === isPlatformMatch &&
-              text.includes(lowerSearchQuery)
+              expectedPlatform === platform && SearchText(text, searchQuery)
             );
           }),
         );
@@ -100,6 +107,7 @@ export default function ContestsTable({
     });
     // NOTE: Do not add `contestData` to the dependencies array
     // IDK why, but it causes an infinite loop
+    // TODO: Add `contentsData` and see what is the actual problem.
   }, [searchQuery]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // use effect for platform change

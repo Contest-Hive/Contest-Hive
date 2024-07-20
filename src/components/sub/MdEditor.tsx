@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 import { Loader2 } from "lucide-react";
-import { sendMessage } from "@/lib/helpers";
+import { sendMessage } from "@/lib/helpers/server";
 
 function MessageArea({
   text,

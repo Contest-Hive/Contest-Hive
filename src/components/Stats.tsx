@@ -10,7 +10,8 @@ import ResponsiveTooltip from "@/components/ui/responsiveTooltip";
 
 import Testimonials from "@/components/Testimonials";
 
-import { formatNumber, getStatsData } from "@/lib/helpers";
+import { getStatsData } from "@/lib/helpers/server";
+import { formatNumber } from "@/lib/utils";
 
 const Stats = async () => {
   const statsData = await getStatsData("page");
