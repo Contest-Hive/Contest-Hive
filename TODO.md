@@ -1,3 +1,7 @@
+- Remove `parseMode` from `.env` in vercel
+- Rename `dbConnect.ts`
+
+
 - Floating platform icons instead of slider in hero section
 
 - refresh button in contest table. skeletons are shown in the meantime

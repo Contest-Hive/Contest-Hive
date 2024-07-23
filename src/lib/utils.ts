@@ -19,3 +19,7 @@ export function formatNumber(num: number) {
   let formatted = formatter.format(num);
   return formatted;
 }
+
+export function randomInt(num: number = 100) {
+  return parseInt(String((Math.random() + 1) * num));
+}

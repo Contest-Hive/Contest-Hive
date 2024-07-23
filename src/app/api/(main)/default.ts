@@ -1,14 +1,11 @@
 "use server";
-
 import { NextResponse } from "next/server";
 
 import {
   getEndTime,
   getSecondsDifferencesFromCurrentTime,
 } from "@/lib/helpers/datetime";
-import { updateData } from "@/lib/dbConnect";
 import { pascalNames, contestUrlData } from "@/lib/constants";
-
 
 import type { CompressedContestType } from "@/lib/types";
 
@@ -42,7 +39,8 @@ type platformName =
   | "toph";
 
 export async function getResponse(platformName: platformName) {
-  const API_URL = `https://raw.githubusercontent.com/Contest-Hive/__contest-hive-backend/cache/cache/Data/${platformName}.json`;
+  // const API_URL = `https://raw.githubusercontent.com/Contest-Hive/__contest-hive-backend/cache/cache/Data/${platformName}.json`;
+  const API_URL = "http://127.0.0.1:3000/all.json";
 
   const response = await fetch(API_URL, {
     cache: "no-store",
@@ -64,8 +62,9 @@ export async function getResponse(platformName: platformName) {
     for (const [key, value] of Object.entries(allContests)) {
       const contests = [];
       for (const contest of value as any[]) {
-        if (getSecondsDifferencesFromCurrentTime(contest.startTime) < 0)
+        if (getSecondsDifferencesFromCurrentTime(contest.startTime) < 0) {
           continue;
+        }
         const contestData = getContestData(contest, key);
         contests.push({
           ...contestData,
@@ -79,8 +78,6 @@ export async function getResponse(platformName: platformName) {
 }
 
 export async function JsonResponse(data: any, status = 200) {
-  await updateData("api"); // Update the stats
-
   return new NextResponse(JSON.stringify(data, null, 2), {
     status,
     headers: {

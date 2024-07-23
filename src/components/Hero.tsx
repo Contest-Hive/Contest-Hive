@@ -2,7 +2,6 @@ import Link from "next/link";
 
 import { GitHubLogoIcon, ReaderIcon } from "@radix-ui/react-icons";
 import { Button, buttonVariants } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 
 import Slider from "./Slider";
 import AnimatedBlob from "./sub/AnimatedBlob";

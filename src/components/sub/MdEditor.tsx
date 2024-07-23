@@ -94,14 +94,14 @@ const MdEditor = () => {
               setText("");
               toast({
                 duration: 3000,
-                title: "Message Sent Successfully",
-                description: "Thanks for your feedback.",
+                title: x.message,
+                description: x.description,
               });
             } else {
               toast({
                 duration: 3000,
-                title: "Something went wrong!",
-                description: "Failed to send message. Please try again.",
+                title: x.message,
+                description: x.description,
               });
             }
           }}

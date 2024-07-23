@@ -96,7 +96,8 @@ const NavBar = ({
             >
               Old Website
             </Link>
-            <Separator className="ml-1 mr-2 w-7 rotate-90" />
+            <Separator className="ml-1 mr-2 w-7 rotate-90"  />
+            {/* use orientation="vertical" in separator */}
             <DropdownMenu>
               <DropdownMenuTrigger className="hidden select-none focus-visible:outline-none md:block">
                 <Button

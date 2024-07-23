@@ -17,10 +17,10 @@ export async function POST(req: NextRequest) {
     return await JsonResponse(data, 400);
   }
   const content = `
-📧 New message from <code>${ip}</code>
+📧 New message from ${ip}
 Message:
 
-${escapeHTML(message)}
+${message}
 `.replace(/(?:\r\n|\r|\n)/g, "%0A");
 
   const url = URL + content;
@@ -33,21 +33,24 @@ ${escapeHTML(message)}
       return await JsonResponse({
         ok: true,
         message: "Message sent successfully!",
+        description: "Thanks for your feedback."
       });
     }
 
     return await JsonResponse(
       {
         ok: false,
-        message: "Try again!",
+        message: "Message wasn't sent!",
+        description: "Maybe poor connection? Please try again!"
       },
-      500,
+      400,
     );
   } catch (error) {
     return await JsonResponse(
       {
         ok: false,
-        message: "Something went wrong. Try again!",
+        message: "Something went wrong.",
+        description: "Server failed to respond. Please try again!"
       },
       500,
     );
