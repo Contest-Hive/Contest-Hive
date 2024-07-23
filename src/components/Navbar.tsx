@@ -41,7 +41,7 @@ const NavBar = ({
   );
 
   return (
-    <div className="sticky inset-0 top-0 z-50 h-12 backdrop-blur-lg md:h-14">
+    <div className="sticky inset-0 top-0 z-50 h-12 bg-white bg-opacity-70 backdrop-blur-lg dark:bg-transparent md:h-14 md:bg-opacity-30">
       <MaxWidthWrapper>
         <div className="flex h-12 flex-1 items-center justify-between gap-2 px-2 md:h-14 md:gap-4">
           <Link
@@ -96,7 +96,7 @@ const NavBar = ({
             >
               Old Website
             </Link>
-            <Separator className="ml-1 mr-2 w-7 rotate-90"  />
+            <Separator className="ml-1 mr-2 w-7 rotate-90" />
             {/* use orientation="vertical" in separator */}
             <DropdownMenu>
               <DropdownMenuTrigger className="hidden select-none focus-visible:outline-none md:block">
