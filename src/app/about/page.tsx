@@ -14,16 +14,16 @@ const About = () => {
           About Contest Hive
         </header>
         <p className="text-balance text-sm md:text-lg">
-          <b>Contest Hive</b> started as a solo self project to have all the
+          <b>Contest Hive</b> started as a hobby project to gather all the
           contests happening around the internet in one place.
           <br className="md:hidden" />
           <br />
-          But as time passed, I realized that it can be a great platform for
-          people who are looking for contests to participate in.
+          But as time passed, I realized that it can be a great tool for people
+          who are looking for contests to participate in.
           <br />
           <br />
           So, I started working on it more seriously and after{" "}
-          <span className="text-xs tracking-tight text-primary/90 md:text-sm">
+          <span className="font-mono text-xs tracking-tight text-primary/90 md:text-sm">
             (GOD knows how many)
           </span>{" "}
           sleepless nights, here we are.
