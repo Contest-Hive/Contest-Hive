@@ -24,7 +24,7 @@ const Info = ({
   className?: string;
 }) => {
   return (
-    <ResponsiveTooltip content={children ?? ""} className="text-xs md:text-sm">
+    <ResponsiveTooltip content={children ?? ""} className="text-xs md:text-sm" title="Further Information">
       <InfoIcon className="-mt-3 ml-1 h-4 w-4 md:h-5 md:w-5" />
     </ResponsiveTooltip>
   );
@@ -104,7 +104,7 @@ function FeatureTable() {
 
       <TableHeader>
         <TableRow className="rounded-md bg-muted/50">
-          <TableHead className="w-56"></TableHead>
+          <TableHead className="w-56">Features</TableHead>
           <TableHead>Contest Hive</TableHead>
           <TableHead>StopStalk</TableHead>
           <TableHead>Kontests</TableHead>

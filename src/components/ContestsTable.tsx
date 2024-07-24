@@ -162,7 +162,7 @@ export default function ContestsTable({
           <TableHeader>
             <TableRow>
               <TableHead className="border-b border-t bg-muted/50">
-                <p className="font-normal tracking-wide">
+                <p className="font-normal tracking-wide text-sm md:text-base">
                   Showing{" "}
                   <span className="font-bold">
                     {Math.min(currentPage * perPage + 1, length)}-
