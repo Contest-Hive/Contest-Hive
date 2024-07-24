@@ -1,3 +1,4 @@
+- Fix 500 status error on the server
 - Floating platform icons instead of slider in hero section
 
 - refresh button in contest table. skeletons are shown in the meantime
