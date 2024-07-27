@@ -1,34 +1,8 @@
-import type { ContestType } from "@/lib/types";
-
-import { updateData as updateStatsData } from "@/lib/dbConnect";
-
-type update = "api" | "page";
-
-export async function getStatsData(update: update) {
-  // increment whenever called
-  const data = await updateStatsData(update);
-  return [
-    {
-      title: "Today",
-      value: data.past24page,
-      description: "visited",
-    },
-    {
-      title: "Total served",
-      value: data.api,
-      description: "API requests",
-    },
-    {
-      title: "Total",
-      value: data.page,
-      description: "page visits",
-    },
-  ];
-}
+import { randomInt } from "../utils";
 
 export function secondsToReadableTime(s: number) {
   if (!s) {
-    return "13 seconds";
+    return "-1 second";
   }
 
   const seconds = s % 60;
@@ -82,7 +56,7 @@ export function secondsToShortReadableTime(s: number) {
   return result;
 }
 
-export function getSecondsDifferencesFromNow(isoTime: string) {
+export function getSecondsDifferencesFromCurrentTime(isoTime: string) {
   const startDate = new Date();
   const endDate = new Date(isoTime);
 
@@ -92,12 +66,12 @@ export function getSecondsDifferencesFromNow(isoTime: string) {
 }
 
 export function timeToReadableTime(isoTime: string) {
-  const x = getSecondsDifferencesFromNow(isoTime);
+  const x = getSecondsDifferencesFromCurrentTime(isoTime);
   if (x < 1) return "Started";
   return secondsToShortReadableTime(x);
 }
 
-export function timeToLocalTime(isoTime: string) {
+export function IsoTimeToLocalTime(isoTime: string) {
   const dt = new Date(isoTime);
   const months = [
     "January",
@@ -135,11 +109,21 @@ export function timeToLocalTime(isoTime: string) {
   return timeString;
 }
 
-// function that will take a utc 8601 format date and a duration seconds and return the end time in utc 8601 format.
 export function getEndTime(isoStartTime: string, durationSeconds: number) {
   const startDate = new Date(isoStartTime);
   const endDate =
     new Date(startDate.getTime() + durationSeconds * 1000)
+      .toISOString()
+      .slice(0, -5) + "Z";
+
+  return endDate;
+}
+
+export function getRandomISOTime() {
+  const randomDuration = randomInt(134902);
+  const startDate = new Date();
+  const endDate =
+    new Date(startDate.getTime() + randomDuration * 1000)
       .toISOString()
       .slice(0, -5) + "Z";
 
@@ -157,75 +141,3 @@ export function getEncodedDate(isoTime: string) {
   const encodedDate = `${year}${month}${day}T${hours}${minutes}${seconds}Z`;
   return encodedDate;
 }
-
-export function getGoogleCalenderLink(contest: ContestType) {
-  const text = `
-<b>Title      :</b> ${contest.title}
-<b>Platform   :</b> ${contest.platform}
-<b>Duration   :</b> ${secondsToReadableTime(contest.duration)}
-<b>Link       :</b> <a href="${contest.url}">here</a>
-
-<b>Created by:</b> <a href="https://contest-hive.vercel.app/">Contest Hive</a>
-  `.trim();
-  return encodeURI(
-    `https://calendar.google.com/calendar/u/0/r/eventedit?text=${contest.title}&dates=${getEncodedDate(contest.startTime)}/${getEncodedDate(contest.endTime)}&details=${text}&location=${contest.url}`,
-  );
-}
-
-export function formatNumber(num: number) {
-  const formatter = Intl.NumberFormat("en", {
-    notation: "compact",
-  });
-  let formatted = formatter.format(num);
-  return formatted;
-}
-
-export function getPlatformLogo(
-  platform: string,
-  transparent: boolean = false,
-) {
-  let plt = platform.toLowerCase();
-  if (platform.toLowerCase().includes("codeforces")) {
-    plt = "codeforces";
-  }
-
-  if (transparent) return `/assets/svgs/platforms/transparent/${plt}.svg`;
-
-  return `/assets/svgs/platforms/${plt}.svg`;
-}
-
-export async function sendMessage(message: string) {
-  const response = await fetch("/api/others/send", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ message }),
-  });
-
-  return response.json();
-}
-
-export const pascalNames = {
-  all: "All",
-  atcoder: "Atcoder",
-  codechef: "CodeChef",
-  codeforces: "Codeforces",
-  "codeforces-gym": "CF GYM",
-  codeforces_gym: "CF GYM",
-  hackerearth: "HackerEarth",
-  hackerrank: "HackerRank",
-  leetcode: "LeetCode",
-  toph: "Toph",
-};
-
-export const contestUrlData = {
-  atcoder: "https://atcoder.jp/contests/",
-  codechef: "https://www.codechef.com/",
-  codeforces: "https://codeforces.com/contests/",
-  "codeforces-gym": "https://codeforces.com/gymRegistration/",
-  hackerearth: "https://",
-  hackerrank: "https://www.hackerrank.com/contests/",
-  leetcode: "https://leetcode.com/contest/",
-  toph: "https://toph.co/c/",
-};

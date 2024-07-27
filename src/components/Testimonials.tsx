@@ -89,7 +89,7 @@ function getCard({
 const Testimonials = async () => {
   return (
     <div className="pb-10">
-      <header className="pb-8 pt-10 text-center font-heading text-3xl font-bold leading-tight tracking-tighter md:text-4xl lg:text-5xl">
+      <header className="mb-6 inline-block border-b-2 pb-2 text-center font-heading text-3xl font-bold leading-tight tracking-tighter md:text-4xl lg:text-5xl">
         Testimonials
         {/* <span className="mr-1.5 rounded-lg bg-pinkish dark:bg-blueish px-2 pb-1 text-secondary dark:text-primary">
         </span> */}

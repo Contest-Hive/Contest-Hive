@@ -5,17 +5,20 @@ import ResponsiveTooltip from "@/components/ui/responsiveTooltip";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { TableCell, TableRow } from "@/components/ui/table";
+
 import {
   timeToReadableTime,
   secondsToShortReadableTime,
-  timeToLocalTime,
-  getGoogleCalenderLink,
-} from "@/lib/helpers";
-import { getPlatformLogo } from "@/lib/helpers";
+  IsoTimeToLocalTime,
+} from "@/lib/helpers/datetime";
+import { getGoogleCalenderLink } from "@/lib/helpers/others";
+
+import { getPlatformLogo } from "@/lib/helpers/others";
 import { cn } from "@/lib/utils";
 import { Link2, CalendarPlus, CalendarDays, Clock } from "lucide-react";
 
 import type { ContestType } from "@/lib/types";
+import { Separator } from "../ui/separator";
 
 export default function Contest(contest: ContestType, index: number) {
   return (
@@ -27,11 +30,11 @@ export default function Contest(contest: ContestType, index: number) {
             alt="Platform Logo"
             width={1}
             height={1}
-            className="md:mr-2 mr-0.5 h-5 w-5 rounded-sm md:h-6 md:w-6"
+            className="mr-0.5 h-5 w-5 rounded-sm md:mr-2 md:h-6 md:w-6"
           />
           <Link
             href={contest.url}
-            className="group flex min-w-64 items-center justify-start gap-1 text-xs font-semibold text-primary underline-offset-2 hover:underline md:text-sm"
+            className="group flex min-w-64 text-balance items-center justify-start gap-1 text-xs font-semibold text-primary underline-offset-2 hover:underline md:text-sm"
             target="_blank"
           >
             {contest.title}
@@ -39,25 +42,26 @@ export default function Contest(contest: ContestType, index: number) {
           </Link>
         </div>
         <div className="mb-1 flex items-center justify-start md:pl-8">
-          <div className="flex items-center justify-start gap-2">
-            <span className="flex md:w-36 w-32 items-center justify-start gap-1 ">
+          <div className="flex w-full items-center justify-start gap-2">
+            <span className="flex w-32 items-center justify-start gap-1 md:w-36 ">
               <CalendarDays className="h-5 w-5 text-primary/70" />
               <ResponsiveTooltip
-                content={timeToLocalTime(contest.startTime)}
+                content={IsoTimeToLocalTime(contest.startTime)}
                 className="w-54 text-xs font-semibold"
               >
                 <Badge>{timeToReadableTime(contest.startTime)}</Badge>
               </ResponsiveTooltip>
             </span>
 
-            <hr className="h-1.5 w-5 rotate-90 border-primary/50" />
+            <Separator orientation="vertical" className="h-6" />
+
             <span className="flex w-32 items-center justify-start gap-1">
               <Clock className="h-5 w-5 text-primary/70" />
               <Badge variant="secondary">
                 {secondsToShortReadableTime(contest.duration)}
               </Badge>
             </span>
-            {/* <hr className="h-1.5 w-5 rotate-90 border-primary/50" /> */}
+            <Separator orientation="vertical" className="h-6" />
             <ResponsiveTooltip
               content="Add to Google Calendar"
               className="w-54 text-xs font-semibold"

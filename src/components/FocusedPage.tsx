@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useLocalStorage } from "@uidotdev/usehooks";
 
 import NavBar from "@/components/Navbar";
@@ -11,10 +11,25 @@ import type { ContestType } from "@/lib/types";
 
 const FocusedPage = ({ contestData }: { contestData: ContestType[] }) => {
   const components = "stats contact footer";
-  const [isFocusMode, setFocusMode] = useLocalStorage("focusMode", false);
-  const [perPage, setPerPage] = useLocalStorage("perPage", "7");
+  const [firstLoad, setFirstLoad] = useState(true);
+  const [isFocusMode, setFocusMode] = useState(false);
+  const [perPage, setPerPage] = useState("7");
+  // const [isFocusMode, setFocusMode] = useLocalStorage("focusMode", false);
+  // const [perPage, setPerPage] = useLocalStorage("perPage", "7");
 
   useEffect(() => {
+    if (firstLoad) {
+      const localFocusMode = localStorage.getItem("focusMode") === "true";
+      const localPerPage = localStorage.getItem("perPage")?.replaceAll('"', "") || "7";
+      if (localFocusMode) setFocusMode(localFocusMode);
+      if (localPerPage) setPerPage(localPerPage);
+      setFirstLoad(false);
+      return;
+    }
+
+    localStorage.setItem("focusMode", isFocusMode.toString());
+    localStorage.setItem("perPage", perPage);
+
     if (isFocusMode) {
       for (let component of components.split(" "))
         document.getElementById(component)?.classList.add("hidden");
@@ -23,7 +38,7 @@ const FocusedPage = ({ contestData }: { contestData: ContestType[] }) => {
         document.getElementById(component)?.classList.remove("hidden");
     }
     setFocusMode(isFocusMode);
-  }, [isFocusMode, perPage, setFocusMode]);
+  }, [isFocusMode, perPage, setFocusMode, firstLoad]);
 
   return (
     <>

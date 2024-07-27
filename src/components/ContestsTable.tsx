@@ -1,5 +1,11 @@
 "use client";
-import { Dispatch, SetStateAction, useEffect, useState, useTransition } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useState,
+  useTransition,
+} from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 
 import {
@@ -23,6 +29,9 @@ import SelectPerPage from "./sub/SelectPerPage";
 import SearchBar from "./sub/SearchBar";
 import Contest from "./sub/Contest";
 // import ContestSkeleton from "./ContestSkeleton";
+
+// --- Helper Functions ---
+import SearchText from "@/lib/helpers/search";
 
 import type { ContestType } from "@/lib/types";
 
@@ -78,21 +87,19 @@ export default function ContestsTable({
           );
         }
       } else {
-        // Search query is not empty
+        // Search the Contests
         setFilteredData(
           contestData.filter((contest) => {
             const text = `${contest.title.toLowerCase()} ${contest.platform.toLowerCase()}`;
-            const lowerSearchQuery = searchQuery.toLowerCase();
-            const isPlatformMatch =
+            const expectedPlatform =
               platform === "Codeforces Gym" ? "CF GYM" : platform;
 
             if (platform === "All" || platform === undefined) {
-              return text.includes(lowerSearchQuery);
+              return SearchText(text, searchQuery);
             }
 
             return (
-              contest.platform === isPlatformMatch &&
-              text.includes(lowerSearchQuery)
+              expectedPlatform === platform && SearchText(text, searchQuery)
             );
           }),
         );
@@ -100,6 +107,7 @@ export default function ContestsTable({
     });
     // NOTE: Do not add `contestData` to the dependencies array
     // IDK why, but it causes an infinite loop
+    // TODO: Add `contentsData` and see what is the actual problem.
   }, [searchQuery]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // use effect for platform change
@@ -127,16 +135,25 @@ export default function ContestsTable({
   });
 
   return (
-    <Card className="font-sans">
+    <Card className="font-sans" id="contest-table">
       <CardHeader className="px-7 py-5">
-        <CardTitle className="font-bold md:text-3xl">
+        <CardTitle className="mb-2 border-b pb-2 text-2xl font-bold md:text-4xl">
           Upcoming Contests
         </CardTitle>
         <CardDescriptionDiv className="mx-0.5">
-          {compressed && (
-            <span className="mx-0.5 font-semibold">
-              Enable Focus Mode
-              <span className="font-mono">(alt+f)</span> for better experience
+          {compressed ? (
+            <>
+              <span className="hidden font-semibold md:block">
+                Enable Focus Mode
+                <span className="font-mono">(alt+f)</span> for better experience
+              </span>
+              <span className="block font-semibold md:hidden">
+                These are the upcoming contests you can participate in.
+              </span>
+            </>
+          ) : (
+            <span className="text-base">
+              These are the upcoming contests you can participate in.
             </span>
           )}
 
@@ -154,7 +171,7 @@ export default function ContestsTable({
           <TableHeader>
             <TableRow>
               <TableHead className="border-b border-t bg-muted/50">
-                <p className="font-normal tracking-wide text-sm md:text-base">
+                <p className="text-xs font-normal tracking-wide md:text-sm">
                   Showing{" "}
                   <span className="font-bold">
                     {Math.min(currentPage * perPage + 1, length)}-

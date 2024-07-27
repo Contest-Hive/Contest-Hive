@@ -97,22 +97,22 @@ const config = {
       keyframes: {
         blob: {
           "0%": {
-            transform: "translate(0px, 19px) scale(1)",
+            transform: "translate(0px, -45px) scale(.9)",
           },
           "13%": {
-            transform: "translate(100px, -70px) scale(0.95)",
+            transform: "translate(100px, -70px) scale(0.75)",
           },
           "33%": {
-            transform: "translate(-100px, -100px) scale(1.1)",
+            transform: "translate(-100px, -100px) scale(1)",
           },
           "66%": {
-            transform: "translate(0, -150px) scale(0.95)",
+            transform: "translate(0, -50px) scale(0.75)",
           },
           "88%": {
-            transform: "translate(0, 50px) scale(0.95)",
+            transform: "translate(0, 0px) scale(0.8)",
           },
           "100%": {
-            transform: "translate(0px, 19px) scale(1)",
+            transform: "translate(0px, -45px) scale(.9)",
           },
         },
         blobPhone: {

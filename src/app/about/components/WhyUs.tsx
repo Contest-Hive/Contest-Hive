@@ -43,7 +43,7 @@ const listItems = [
     stopStalk: <b>~3 hour</b>,
     kontests: <b>~24 hour</b>,
     info: (
-      <Info>The interval of time after which the data fetched and updated</Info>
+      <Info>The interval of time after which the data is fetched and updated</Info>
     ),
   },
   {
@@ -71,8 +71,7 @@ const listItems = [
     kontests: <Check />,
     info: (
       <Info>
-        Whether the website shows the local time of the contest start time or
-        not
+        Whether the website shows the local time of the user or not
       </Info>
     ),
   },
@@ -99,8 +98,8 @@ const listItems = [
 function FeatureTable() {
   return (
     <Table className="mb-5 mt-5 text-xs md:text-sm">
-      <TableCaption className="md:text-sm text-xs">
-        As of 22th June, 2024 - <b>Kontests</b> is discontinued
+      <TableCaption className="text-xs md:text-sm">
+        *As of 22th June, 2024 - <b>Kontests</b> is discontinued
       </TableCaption>
 
       <TableHeader>
@@ -147,10 +146,12 @@ const WhyUs = () => {
         <br />
         Then how is <b>Contest Hive</b> different?
       </blockquote>
+      <blockquote className="mt-2 border-l-2 pl-4 text-xs italic md:pl-6 md:text-base">
+        Why does <b>Contest Hive</b> even exist in the first place?
+      </blockquote>
       <p className="text-balance text-sm md:text-lg">
         <br />
-        Why does <b>Contest Hive</b> even exist? See the table below,
-        you&apos;ll know <i>exactly</i> why.
+        See the table below. You&apos;ll get your answers.
       </p>
       <FeatureTable />
     </section>

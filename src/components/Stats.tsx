@@ -10,13 +10,14 @@ import ResponsiveTooltip from "@/components/ui/responsiveTooltip";
 
 import Testimonials from "@/components/Testimonials";
 
-import { formatNumber, getStatsData } from "@/lib/helpers";
+import { getStatsData } from "@/lib/helpers/server";
+import { formatNumber } from "@/lib/utils";
 
 const Stats = async () => {
   const statsData = await getStatsData("page");
   return (
     <MaxWidthWrapper id="stats">
-      <header className="pb-8 pt-10 text-center font-heading  text-3xl font-bold leading-tight tracking-tighter md:text-4xl lg:text-5xl">
+      <header className="mb-6 pb-2 pt-10 text-center font-heading text-4xl font-bold leading-tight tracking-tighter md:text-5xl lg:text-6xl">
         Why{" "}
         <span className="mr-1.5 rounded-lg bg-pinkish px-2 pb-1 text-secondary dark:bg-blueish dark:text-primary">
           Contest Hive?
@@ -47,7 +48,6 @@ const Stats = async () => {
                   <ResponsiveTooltip
                     content={data.value.toLocaleString()}
                     className="w-fit text-center font-bold"
-                    delayDuration={100}
                   >
                     {formatNumber(data.value)}
                   </ResponsiveTooltip>
