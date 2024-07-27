@@ -70,7 +70,6 @@ export default function ContestsTable({
   const [platform, setPlatform] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
 
-
   useEffect(() => {
     setCurrentPage(0);
 
@@ -136,16 +135,25 @@ export default function ContestsTable({
   });
 
   return (
-    <Card className="font-sans">
+    <Card className="font-sans" id="contest-table">
       <CardHeader className="px-7 py-5">
-        <CardTitle className="font-bold md:text-3xl">
+        <CardTitle className="mb-2 border-b pb-2 text-2xl font-bold md:text-4xl">
           Upcoming Contests
         </CardTitle>
         <CardDescriptionDiv className="mx-0.5">
-          {compressed && (
-            <span className="mx-0.5 font-semibold">
-              Enable Focus Mode
-              <span className="font-mono">(alt+f)</span> for better experience
+          {compressed ? (
+            <>
+              <span className="hidden font-semibold md:block">
+                Enable Focus Mode
+                <span className="font-mono">(alt+f)</span> for better experience
+              </span>
+              <span className="block font-semibold md:hidden">
+                These are the upcoming contests you can participate in.
+              </span>
+            </>
+          ) : (
+            <span className="text-base">
+              These are the upcoming contests you can participate in.
             </span>
           )}
 
@@ -163,7 +171,7 @@ export default function ContestsTable({
           <TableHeader>
             <TableRow>
               <TableHead className="border-b border-t bg-muted/50">
-                <p className="font-normal tracking-wide text-sm md:text-base">
+                <p className="text-xs font-normal tracking-wide md:text-sm">
                   Showing{" "}
                   <span className="font-bold">
                     {Math.min(currentPage * perPage + 1, length)}-

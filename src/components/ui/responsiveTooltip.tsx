@@ -17,8 +17,8 @@ export default function ResponsiveTooltip({
   content,
   className,
   innerClassName,
-  delayDuration,
-  title
+  delayDuration = 100,
+  title,
 }: {
   children: React.ReactNode;
   content: React.ReactNode | string;
@@ -26,19 +26,21 @@ export default function ResponsiveTooltip({
   innerClassName?: string;
   delayDuration?: number;
   title?: string;
-
 }) {
   return (
     <>
       <TooltipProvider>
         <Tooltip delayDuration={delayDuration}>
-          <TooltipTrigger className={cn("hidden md:block", innerClassName)} title={title}>
+          <TooltipTrigger
+            className={cn("hidden md:block", innerClassName)}
+            title={title}
+          >
             {children}
           </TooltipTrigger>
           <TooltipContent className={className}>{content}</TooltipContent>
         </Tooltip>
       </TooltipProvider>
-      
+
       {/* Popover for Mobile Phones */}
       <Popover>
         <PopoverTrigger

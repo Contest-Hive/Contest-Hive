@@ -19,7 +19,7 @@ function MessageArea({
 }) {
   return (
     <div className="grid min-h-48 w-full gap-2">
-      <Label htmlFor="message" className="ml-2 text-start text-xs md:text-sm">
+      <Label htmlFor="message" className="ml-2 text-start text-xs md:text-sm text-primary/80">
         Markdown Supported
       </Label>
       <Textarea

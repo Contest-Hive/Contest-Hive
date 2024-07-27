@@ -1,6 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 
 import { GitHubLogoIcon, ReaderIcon } from "@radix-ui/react-icons";
+import { ChevronDown } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 
 import Slider from "./Slider";
@@ -18,13 +20,11 @@ const Hero = () => {
       <div className="flex items-center justify-center">
         <AnimatedBlob />
       </div>
-
-      <header className="relative pb-8 pt-20 text-center font-heading text-4xl font-bold leading-tight tracking-tighter md:text-5xl lg:text-6xl">
+      <header className="text-5xl relative pb-8 pt-20 text-center font-heading font-bold leading-tight tracking-tighter md:text-6xl lg:text-7xl">
         <span className="mr-1.5 rounded-lg bg-pinkish px-2 pb-1 pt-1 text-secondary dark:bg-blueish dark:text-primary md:px-3 md:pt-0">
           Contest
         </span>
-        at your{" "}
-        <span className="tracking-tighter">Fingertips</span>
+        at your <span className="tracking-tighter">Fingertips</span>
       </header>
       <p className="relative mx-auto max-w-lg text-balance text-center text-base md:max-w-xl md:text-base lg:max-w-2xl lg:text-lg">
         <span className="font-semibold tracking-tighter">Contest Hive</span>{" "}
@@ -67,20 +67,25 @@ const Hero = () => {
             </Link>
           </Button>
         </div>
-        <Button asChild variant="outline">
-          <Link
-            href={TELEGRAM_CHANNEL}
-            className="flex items-center justify-center gap-2"
-            target="_blank"
-          >
-            <img
-              src="/assets/svgs/telegram.svg"
-              alt="Telegram Logo"
-              className="h-6 w-6"
-            />
-            Telegram
-          </Link>
-        </Button>
+        <div className="flex items-center justify-center gap-2">
+          <Button asChild variant="outline">
+            <Link href={TELEGRAM_CHANNEL} target="_blank">
+              <img
+                src="/assets/svgs/telegram.svg"
+                alt="Telegram Logo"
+                className="h-7 w-7"
+              />
+            </Link>
+          </Button>
+          <Button asChild variant="outline">
+            <Link
+              href="#contest-table"
+              className="flex items-center justify-center gap-1"
+            >
+              View Contests <ChevronDown size={20} />
+            </Link>
+          </Button>
+        </div>
       </div>
       <Slider />
     </div>
