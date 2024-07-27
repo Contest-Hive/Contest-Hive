@@ -70,6 +70,7 @@ export default function ContestsTable({
   const [platform, setPlatform] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
 
+
   useEffect(() => {
     setCurrentPage(0);
 

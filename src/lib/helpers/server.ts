@@ -76,11 +76,8 @@ export async function sendMessage(message: string) {
 
 export async function getAllContestData() {
   // Fetch contests data
-  if (OFFLINE) {
-    var _contests: ContestDataType = getFakeContestData();
-  } else {
-    var _contests: ContestDataType = (await getContestResponse("all")).data;
-  }
+
+  var _contests: ContestDataType = (await getContestResponse("all")).data;
 
   // Process contests data
   const contestData = Object.values(_contests).flatMap((contests) => contests);

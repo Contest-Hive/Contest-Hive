@@ -39,8 +39,8 @@ type platformName =
   | "toph";
 
 export async function getResponse(platformName: platformName) {
-  // const API_URL = `https://raw.githubusercontent.com/Contest-Hive/__contest-hive-backend/cache/cache/Data/${platformName}.json`;
-  const API_URL = "http://127.0.0.1:3000/all.json";
+  const API_URL = `https://raw.githubusercontent.com/Contest-Hive/__contest-hive-backend/cache/cache/Data/${platformName}.json`;
+  // const API_URL = "http://127.0.0.1:3000/all.json";
 
   const response = await fetch(API_URL, {
     cache: "no-store",

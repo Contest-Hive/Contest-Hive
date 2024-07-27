@@ -41,6 +41,7 @@ export const metadata = {
     images: ["/opengraph-image.png"],
   },
 };
+export const fetchCache = "default-no-store";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
