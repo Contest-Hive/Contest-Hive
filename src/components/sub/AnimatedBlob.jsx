@@ -1,9 +1,8 @@
 const AnimatedBlob = () => {
   return (
     <div className="relative">
-      <div className="absolute left-1/2 top-1 mx-auto h-52 w-[80vw] max-w-screen-lg -translate-x-1/2 rounded-full bg-blueish opacity-5 blur-3xl dark:bg-purple-700 dark:opacity-20 md:w-[50vw]"></div>
-      <div className="absolute -left-56 top-16 h-44 w-44 -translate-x-1/2 animate-blob-phone rounded-full bg-yellow-100 opacity-90 mix-blend-overlay blur-xl dark:opacity-70 md:h-80 md:w-96 md:animate-blob"></div>
-      {/* <div className="animate-blob absolute -right-96 top-5 h-72 w-72 rounded-full bg-purple-200 opacity-60 mix-blend-lighten blur-xl"></div> */}
+      <div className="absolute left-1/2 top-5 mx-auto h-52 w-[90vw] max-w-screen-lg -translate-x-1/2 rounded-full bg-blueish opacity-5 blur-2xl dark:bg-purple-700 dark:opacity-20  md:top-1 md:w-[50vw] md:blur-3xl"></div>
+      <div className="absolute -left-32 top-20 h-48 w-56 -translate-x-1/2 animate-blob-phone rounded-full bg-yellow-100 opacity-90 mix-blend-overlay blur-lg dark:opacity-70 md:-left-56  md:top-16 md:h-64 md:w-96 md:animate-blob md:blur-xl"></div>
     </div>
   );
 };
