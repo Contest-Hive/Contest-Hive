@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 import { Loader2 } from "lucide-react";
-import { sendMessage } from "@/lib/helpers";
+import { sendMessage } from "@/lib/helpers/server";
 
 function MessageArea({
   text,
@@ -19,7 +19,7 @@ function MessageArea({
 }) {
   return (
     <div className="grid min-h-48 w-full gap-2">
-      <Label htmlFor="message" className="ml-2 text-start text-xs md:text-sm">
+      <Label htmlFor="message" className="ml-2 text-start text-xs md:text-sm text-primary/80">
         Markdown Supported
       </Label>
       <Textarea
@@ -94,14 +94,14 @@ const MdEditor = () => {
               setText("");
               toast({
                 duration: 3000,
-                title: "Message Sent Successfully",
-                description: "Thanks for your feedback.",
+                title: x.message,
+                description: x.description,
               });
             } else {
               toast({
                 duration: 3000,
-                title: "Something went wrong!",
-                description: "Failed to send message. Please try again.",
+                title: x.message,
+                description: x.description,
               });
             }
           }}

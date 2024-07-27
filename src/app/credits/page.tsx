@@ -1,9 +1,11 @@
 import MaxWidthWrapper from "@/components/ui/MaxWidthWrapper";
 import NavBar from "@/components/Navbar";
-import ImageCards from "@/components/credits/imageCards";
+import ImageCards from "./components/imageCards";
 import Footer from "@/components/Footer";
+import { getStatsData } from "@/lib/helpers/server";
 
-const Credits = () => {
+const Credits = async () => {
+  const statsData = await getStatsData("page");
   return (
     <>
       <NavBar />

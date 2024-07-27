@@ -15,24 +15,23 @@ export default function FAQ() {
         <AccordionItem value="item-1">
           <AccordionTrigger>Is it free to use?</AccordionTrigger>
           <AccordionContent>
-            Contest Hive will be forever free to use. 😄
+            Contest Hive will be free forever. 😄
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-2">
           <AccordionTrigger>Does the API have rate limit?</AccordionTrigger>
           <AccordionContent>
             I do not intend to apply any kind of rate limits. But if abuse of
-            the resource is seen, steps might be taken to ensure usability for
+            the tool is noticed, steps might be taken to ensure availability for
             all the users.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-3">
           <AccordionTrigger>Do we collect user information?</AccordionTrigger>
           <AccordionContent>
-            We collect no personal data whatsoever.
+            We do not collect any personal data whatsoever.
             <br />
-            Local Storage is used only to save{" "}
-            <code className="font-bold">`FocusMode` &  `PerPage`</code> status.
+            All the data is locally stored in your browser.
           </AccordionContent>
         </AccordionItem>
       </Accordion>

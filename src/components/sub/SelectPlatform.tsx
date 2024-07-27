@@ -8,7 +8,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuCheckboxItem,
 } from "../ui/dropdown-menu";
-import { getPlatformLogo } from "@/lib/helpers";
+import { getPlatformLogo } from "@/lib/helpers/others";
 import { Button } from "../ui/button";
 import { ChevronDown } from "lucide-react";
 import { get } from "http";
