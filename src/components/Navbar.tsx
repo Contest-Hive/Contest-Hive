@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useHotkeys } from "react-hotkeys-hook";
 
-import { CodeIcon } from "@radix-ui/react-icons";
+import { CircleHelp } from "lucide-react";
 
 import { ModeToggle } from "./ui/theme-toggle";
 import { Separator } from "./ui/separator";
@@ -107,7 +107,7 @@ const NavBar = ({
                   asChild
                   title="Show Shortcuts"
                 >
-                  <CodeIcon className="h-10 w-10" />
+                  <CircleHelp className="h-10 w-10" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="min-w-[300px] p-1" align="center">
