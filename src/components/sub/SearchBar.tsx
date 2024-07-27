@@ -28,6 +28,19 @@ const SearchBar = ({
       enableOnFormTags: true,
     },
   );
+
+  // esc to blur the input
+  useHotkeys(
+    "esc",
+    (event) => {
+      event.preventDefault();
+      inputRef.current?.blur();
+    },
+    {
+      enableOnFormTags: true,
+    },
+  );
+
   return (
     <div className="relative flex-1 items-center md:grow-0">
       <Search className="absolute left-2.5 top-3 h-4 w-4 text-muted-foreground" />
