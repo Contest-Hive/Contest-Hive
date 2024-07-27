@@ -99,7 +99,7 @@ function FeatureTable() {
   return (
     <Table className="mb-5 mt-5 text-xs md:text-sm">
       <TableCaption className="text-xs md:text-sm">
-        As of 22th June, 2024 - <b>Kontests</b> is discontinued
+        *As of 22th June, 2024 - <b>Kontests</b> is discontinued
       </TableCaption>
 
       <TableHeader>

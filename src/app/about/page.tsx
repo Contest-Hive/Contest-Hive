@@ -2,10 +2,11 @@ import MaxWidthWrapper from "@/components/ui/MaxWidthWrapper";
 import NavBar from "@/components/Navbar";
 import FAQ from "@/app/about/components/FAQ";
 import WhyUs from "@/app/about/components/WhyUs";
-import PerformanceScore from "@/app/about/components/PerformanceScore";
 import Footer from "@/components/Footer";
+import { getStatsData } from "@/lib/helpers/server";
 
-const About = () => {
+const About = async () => {
+  const statsData = await getStatsData("page");
   return (
     <>
       <NavBar />
@@ -22,10 +23,10 @@ const About = () => {
           who are looking for contests to participate in.
           <br />
           <br />
-          So, I started working on it more seriously and after{" "}
-          <span className="font-mono text-xs tracking-tight text-primary/90 md:text-sm">
+          So, I started working on it more seriously and after
+          <span className="font-mono text-xs tracking-tight text-primary/70 md:text-sm font-semibold">
             (GOD knows how many)
-          </span>{" "}
+          </span>
           sleepless nights, here we are.
           <br />
           Now I&apos;ll answer some of the questions you might have.
