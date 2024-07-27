@@ -41,7 +41,7 @@ const NavBar = ({
   );
 
   return (
-    <div className="sticky inset-0 top-0 z-50 h-12 bg-white bg-opacity-70 backdrop-blur-lg dark:bg-transparent md:h-14 md:bg-opacity-30">
+    <div className="sticky inset-0 top-0 z-[99999] h-12 bg-white bg-opacity-70 backdrop-blur-lg dark:bg-transparent md:h-14 md:bg-opacity-30">
       <MaxWidthWrapper>
         <div className="flex h-12 flex-1 items-center justify-between gap-2 px-2 md:h-14 md:gap-4">
           <Link
