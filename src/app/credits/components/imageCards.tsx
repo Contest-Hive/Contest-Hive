@@ -102,12 +102,12 @@ function getPersonCard({
 
 const ImageCards = () => {
   return (
-    <section className="my-5">
-      <div className="grid grid-cols-1 content-center gap-2 md:grid-cols-2">
+    <section className="mt-10 md:mt-20">
+      <div className="grid grid-cols-1 content-center gap-2 lg:grid-cols-2">
         {PEOPLE.map((person, index) => getPersonCard({ person, index }))}
-        <span className="md:col-span-2 md:mx-auto">
+        {/* <span className="md:col-span-2 md:mx-auto">
           {getPersonCard({ person: ME })}
-        </span>
+        </span> */}
       </div>
     </section>
   );
