@@ -1,4 +1,7 @@
 "use client";
+import Anchor from "./typography/Anchor";
+
+import { useHotkeys } from "react-hotkeys-hook";
 import {
   Dispatch,
   SetStateAction,
@@ -6,8 +9,6 @@ import {
   useState,
   useTransition,
 } from "react";
-import { useHotkeys } from "react-hotkeys-hook";
-
 import {
   Card,
   CardContent,
@@ -18,7 +19,7 @@ import {
 import {
   Table,
   TableBody,
-  TableRow,
+  TableRow, 
   TableHeader,
   TableHead,
 } from "@/components/ui/table";
@@ -30,11 +31,9 @@ import SearchBar from "./sub/SearchBar";
 import Contest from "./sub/Contest";
 // import ContestSkeleton from "./ContestSkeleton";
 
-// --- Helper Functions ---
 import SearchText from "@/lib/helpers/search";
 
 import type { ContestType } from "@/lib/types";
-import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 const PLATFORMS = [
@@ -141,23 +140,20 @@ export default function ContestsTable({
       <CardHeader className="px-1 py-1 md:px-7">
         <CardTitle
           className={cn(
-            "mt-3 border-b px-2 pb-2 text-2xl font-bold md:text-4xl",
-            compressed && "my-2 py-3",
+            "mt-1.5 border-b px-2 py-2 text-3xl font-bold md:text-4xl",
+            compressed && "md:my-2 md:py-3",
           )}
         >
           Upcoming Contests
         </CardTitle>
 
-        <CardDescriptionDiv className="mx-0.5">
+        <CardDescriptionDiv className="px-0.5">
           {compressed && (
-            <span className="font-semibold">
-              Go to the{" "}
-              <Link
-                href="/focused"
-                className="font-mono tracking-wider text-primary/90 underline underline-offset-2"
-              >
+            <span className="px-1.5 font-semibold">
+              Go to the
+              <Anchor href="/focused" className="p-0 underline" normal>
                 focused
-              </Link>{" "}
+              </Anchor>
               page for a better experience.
             </span>
           )}
