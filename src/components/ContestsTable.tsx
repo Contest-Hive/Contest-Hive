@@ -19,7 +19,7 @@ import {
 import {
   Table,
   TableBody,
-  TableRow, 
+  TableRow,
   TableHeader,
   TableHead,
 } from "@/components/ui/table";
@@ -75,7 +75,7 @@ export default function ContestsTable({
     setCurrentPage(0);
 
     startTransition(() => {
-      if (searchQuery === "") {
+      if (searchQuery.trim() === "") {
         if (platform === "All") {
           setFilteredData(contestData);
         } else if (PLATFORMS.includes(platform)) {
@@ -95,21 +95,19 @@ export default function ContestsTable({
             const expectedPlatform =
               platform === "Codeforces Gym" ? "CF GYM" : platform;
 
-            if (platform === "All" || platform === undefined) {
+            if (platform === "All") {
               return SearchText(text, searchQuery);
             }
 
             return (
-              expectedPlatform === platform && SearchText(text, searchQuery)
+              expectedPlatform === contest.platform &&
+              SearchText(text, searchQuery)
             );
           }),
         );
       }
     });
-    // NOTE: Do not add `contestData` to the dependencies array
-    // IDK why, but it causes an infinite loop
-    // TODO: Add `contentsData` and see what is the actual problem.
-  }, [searchQuery]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [searchQuery, platform, contestData]);
 
   // use effect for platform change
   useEffect(() => {
