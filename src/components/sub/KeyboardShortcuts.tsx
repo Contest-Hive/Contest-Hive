@@ -15,11 +15,11 @@ const SHORTCUTS = [
     followedByKey: "k",
     description: "Search for a contest",
   },
-  {
-    key: "alt",
-    followedByKey: "f",
-    description: "Toggle Focus Mode",
-  },
+  // {
+  //   key: "alt",
+  //   followedByKey: "f",
+  //   description: "Toggle Focus Mode",
+  // },
   {
     key: "right arrow",
     followedByKey: "",
