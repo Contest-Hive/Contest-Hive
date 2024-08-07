@@ -7,7 +7,6 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import Highlight from "./typography/Highlight";
 import Slider from "./Slider";
 import AnimatedBlob from "./sub/AnimatedBlob";
-import { cn } from "@/lib/utils";
 
 const GITHUB_Link = "https://github.com/Contest-Hive/Contest-Hive";
 const DOCS_LINK = "https://contest-hive.github.io/docs";
@@ -32,15 +31,6 @@ const Hero = () => {
           Keep your 👀 on our <b>Telegram</b> channel for contest alerts.
         </span>
         <br />
-        <Link
-          href={GOOGLE_FORM}
-          target="_blank"
-          className={buttonVariants({ variant: "link" })}
-        >
-          <span className="underline-dotted font-sans text-xs tracking-wider text-primary/90 md:text-sm">
-            Don&apos;t like this UI? 📝
-          </span>
-        </Link>
       </p>
       <div className="relative flex flex-col items-center justify-center gap-2 py-6">
         <div className="flex items-center justify-center gap-2">
