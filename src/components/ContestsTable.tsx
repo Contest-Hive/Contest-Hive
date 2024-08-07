@@ -34,6 +34,8 @@ import Contest from "./sub/Contest";
 import SearchText from "@/lib/helpers/search";
 
 import type { ContestType } from "@/lib/types";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 const PLATFORMS = [
   "Atcoder",
@@ -136,28 +138,31 @@ export default function ContestsTable({
 
   return (
     <Card className="font-sans" id="contest-table">
-      <CardHeader className="px-7 py-5">
-        <CardTitle className="mb-2 border-b pb-2 text-2xl font-bold md:text-4xl">
+      <CardHeader className="px-1 py-1 md:px-7">
+        <CardTitle
+          className={cn(
+            "border-b px-2 pb-2 text-2xl font-bold md:text-4xl",
+            compressed && "mb-2",
+          )}
+        >
           Upcoming Contests
         </CardTitle>
+
         <CardDescriptionDiv className="mx-0.5">
-          {compressed ? (
-            <>
-              <span className="hidden font-semibold md:block">
-                Enable Focus Mode
-                <span className="font-mono">(alt+f)</span> for better experience
-              </span>
-              <span className="block font-semibold md:hidden">
-                These are the upcoming contests you can participate in.
-              </span>
-            </>
-          ) : (
-            <span className="text-base">
-              These are the upcoming contests you can participate in.
+          {compressed && (
+            <span className="font-semibold">
+              Go to the{" "}
+              <Link
+                href="/focused"
+                className="font-mono tracking-wider text-primary/90 underline underline-offset-2"
+              >
+                focused
+              </Link>{" "}
+              page for a better experience.
             </span>
           )}
 
-          <div className="mt-8 flex items-center justify-start gap-2">
+          <div className="mb-1 mt-4 flex items-center justify-start gap-2">
             <SelectPlatform platform={platform} setPlatform={setPlatform} />
             <SearchBar
               searchQuery={searchQuery}
@@ -166,11 +171,11 @@ export default function ContestsTable({
           </div>
         </CardDescriptionDiv>
       </CardHeader>
-      <CardContent>
+      <CardContent className="px-1 md:px-7">
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead className="border-b border-t bg-muted/50">
+              <TableHead className="border-b border-t bg-muted/50 py-0">
                 <p className="text-xs font-normal tracking-wide md:text-sm">
                   Showing{" "}
                   <span className="font-bold">

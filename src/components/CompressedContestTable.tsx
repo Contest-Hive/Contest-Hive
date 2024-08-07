@@ -1,17 +1,16 @@
-import ContestsTable from "@/components/ContestsTable";
+"use client";
+import { useState } from "react";
 
+import ContestsTable from "@/components/ContestsTable";
 import { ContestType } from "@/lib/types";
-import { Dispatch, SetStateAction } from "react";
 
 const CompressedContestTable = ({
   contestData,
-  perPage,
-  setPerPage,
 }: {
   contestData: ContestType[];
-  perPage: number;
-  setPerPage: Dispatch<SetStateAction<string>>;
 }) => {
+  const [perPage, setPerPage] = useState("5"); // TODO: read from local storage
+
   return (
     <div className="grainy-light dark:bg-none">
       <div className="container mx-auto max-w-screen-md px-1 pb-10">
@@ -27,9 +26,9 @@ const CompressedContestTable = ({
           <span className="font-semibold">so you don&apos;t have to!</span>
         </p>
         <ContestsTable
-          contestData={contestData}
           compressed={true}
-          perPage={perPage}
+          contestData={contestData}
+          perPage={parseInt(perPage)}
           setPerPage={setPerPage}
         />
       </div>
