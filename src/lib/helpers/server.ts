@@ -2,7 +2,7 @@
 import { randomInt } from "@/lib/utils";
 import getFakeContestData from "@/lib/helpers/fakeContestData";
 import { updateData as updateStatsData } from "@/lib/dbConnect";
-import { getResponse as getContestResponse } from "@/app/api/(main)/default";
+import { getResponse as getContestResponse } from "@/app/api/default";
 import { getSecondsDifferencesFromCurrentTime } from "@/lib/helpers/datetime";
 
 import { ContestDataType } from "@/lib/types";

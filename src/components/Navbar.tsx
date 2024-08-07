@@ -1,13 +1,13 @@
 "use client";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useHotkeys } from "react-hotkeys-hook";
-
+import Anchor from "./typography/Anchor";
 import { CircleHelp } from "lucide-react";
 
 import { ModeToggle } from "./ui/theme-toggle";
 import { Separator } from "./ui/separator";
-import { Button, buttonVariants } from "./ui/button";
+import { Button } from "./ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,35 +16,37 @@ import {
 
 import MaxWidthWrapper from "./ui/MaxWidthWrapper";
 import NavMenu from "./mobile/NavMenu";
-import FocusMode from "./sub/FocusMode";
 import KeyboardShortcuts from "./sub/KeyboardShortcuts";
 import { cn } from "@/lib/utils";
 
 const OLD_WEBSITE = "https://contest-hive-old.vercel.app";
 
-const NavBar = ({
-  isFocusMode,
-  setFocusMode,
-}: {
-  isFocusMode?: boolean;
-  setFocusMode?: React.Dispatch<React.SetStateAction<boolean>>;
-}) => {
-  useHotkeys(
-    "alt+f",
-    (e) => {
-      e.preventDefault();
-      if (setFocusMode) setFocusMode((prev) => !prev);
-    },
-    {
-      enableOnFormTags: true,
-    },
-  );
+const NavBar = () => {
+  const [scrollY, setScrollY] = useState(0);
+  const [show, setShow] = useState(true);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY < 150) {
+        setShow(true);
+        return;
+      }
+      setScrollY(window.scrollY);
+      setShow(scrollY > window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [scrollY]);
 
   return (
-    <div className="sticky inset-0 top-0 z-[99999] h-12 bg-white bg-opacity-70 backdrop-blur-lg dark:bg-transparent md:h-14 md:bg-opacity-30">
+    <div
+      className={cn(
+        "sticky inset-0 top-0 z-[55] h-12 bg-white bg-opacity-70 backdrop-blur-lg transition-all duration-300 dark:bg-transparent md:h-14 md:bg-opacity-30",
+        show ? "translate-y-0" : "-translate-y-full",
+      )}
+    >
       <MaxWidthWrapper>
         <div className="flex h-12 flex-1 items-center justify-between gap-2 px-2 md:h-14 md:gap-4">
-          <Link
+          <a
             href="/"
             className="flex h-full items-center gap-0.5 self-center px-1 md:gap-2"
           >
@@ -58,46 +60,23 @@ const NavBar = ({
             <p className="text-lg font-semibold tracking-tighter text-primary md:text-2xl">
               Contest Hive
             </p>
-          </Link>
+          </a>
 
           <div className="hidden items-center gap-2 md:flex">
-            <Link
-              href="/about"
-              className={cn(
-                buttonVariants({
-                  variant: "link",
-                }),
-                "px-1 lg:px-2",
-              )}
+            <Anchor
+              href="/focused"
+              className="font-bold"
+              title="Go to focused page"
+              normal
             >
-              About
-            </Link>
-            <Link
-              href="/credits"
-              className={cn(
-                buttonVariants({
-                  variant: "link",
-                }),
-                "px-1 lg:px-2",
-              )}
-            >
-              Credits
-            </Link>
-
-            <Link
-              href={OLD_WEBSITE}
-              target="_blank"
-              className={cn(
-                buttonVariants({
-                  variant: "link",
-                }),
-                "px-0 lg:px-2",
-              )}
-            >
+              •Focused•
+            </Anchor>
+            <Anchor href="/about">About</Anchor>
+            <Anchor href="/credits">Credits</Anchor>
+            <Anchor href={OLD_WEBSITE} target="_blank">
               Old Website
-            </Link>
-            <Separator className="ml-1 mr-2 w-7 rotate-90" />
-            {/* use orientation="vertical" in separator */}
+            </Anchor>
+            <Separator className="ml-1 mr-2 h-7" orientation="vertical" />
             <DropdownMenu>
               <DropdownMenuTrigger className="hidden select-none focus-visible:outline-none md:block">
                 <Button
@@ -114,21 +93,9 @@ const NavBar = ({
                 <KeyboardShortcuts />
               </DropdownMenuContent>
             </DropdownMenu>
-            {isFocusMode !== undefined && setFocusMode !== undefined && (
-              <FocusMode
-                isFocusMode={isFocusMode}
-                setFocusMode={setFocusMode}
-              />
-            )}
             <ModeToggle />
           </div>
           <span className="flex items-center gap-1 md:hidden">
-            {isFocusMode !== undefined && setFocusMode !== undefined && (
-              <FocusMode
-                setFocusMode={setFocusMode}
-                isFocusMode={isFocusMode}
-              />
-            )}
             <ModeToggle />
             <NavMenu />
           </span>

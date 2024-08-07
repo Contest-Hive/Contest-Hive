@@ -1,11 +1,17 @@
-export default function Search(text: string, searchQuery: string) {
-  let lowerSearchQuery = searchQuery.toLowerCase().replace(/./, "");
-  for (let i of ".()") {
-    lowerSearchQuery = lowerSearchQuery.replaceAll(i, "");
-  }
-  lowerSearchQuery = lowerSearchQuery
+function removeSpecialCharsAndSpaces(text: string) {
+  const allowedChars = "abcdefghijklmnopqrstuvwxyz0123456789 ";
+  return text
+    .toLowerCase()
     .replaceAll("   ", "  ")
-    .replaceAll("  ", " ");
+    .replaceAll("  ", " ")
+    .split("")
+    .filter((char) => allowedChars.includes(char))
+    .join("");
+}
 
-  return text.includes(lowerSearchQuery);
+export default function Search(text: string, searchQuery: string) {
+  const lowerSearchQuery = removeSpecialCharsAndSpaces(searchQuery);
+  const lowerText = removeSpecialCharsAndSpaces(text);
+
+  return lowerText.includes(lowerSearchQuery);
 }
