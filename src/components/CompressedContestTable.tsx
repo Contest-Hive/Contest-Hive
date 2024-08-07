@@ -1,16 +1,15 @@
 "use client";
-import { useState } from "react";
-
 import Highlight from "./typography/Highlight";
 import ContestsTable from "@/components/ContestsTable";
 import { ContestType } from "@/lib/types";
+import useLocalStorage from "@/hooks/useLocalStorage";
 
 const CompressedContestTable = ({
   contestData,
 }: {
   contestData: ContestType[];
 }) => {
-  const [perPage, setPerPage] = useState("5"); // TODO: read from local storage
+  const [perPage, setPerPage] = useLocalStorage("compressed-per-page", "5");
 
   return (
     <div className="grainy-light dark:bg-none">

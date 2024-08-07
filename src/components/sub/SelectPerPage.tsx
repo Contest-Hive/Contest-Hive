@@ -14,15 +14,15 @@ export default function SelectPerPage({
   setPerPage,
 }: {
   perPage: number;
-  setPerPage: Dispatch<SetStateAction<string>>
+  setPerPage: Dispatch<SetStateAction<string>>;
 }) {
   return (
     <Select
-      defaultValue={perPage.toString()}
+      value={perPage.toString()}
       onValueChange={(value) => setPerPage(value)}
     >
       <SelectTrigger className="w-[66px]" title="Show Per Page">
-        <SelectValue placeholder="5" />
+        <SelectValue />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
