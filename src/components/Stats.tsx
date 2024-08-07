@@ -7,6 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import ResponsiveTooltip from "@/components/ui/responsiveTooltip";
+import Highlight from "./typography/Highlight";
 
 import Testimonials from "@/components/Testimonials";
 
@@ -18,10 +19,7 @@ const Stats = async () => {
   return (
     <MaxWidthWrapper id="stats">
       <header className="mb-6 pb-2 pt-10 text-center font-heading text-4xl font-bold leading-tight tracking-tighter md:text-5xl lg:text-6xl">
-        Why{" "}
-        <span className="mr-1.5 rounded-lg bg-pinkish px-2 pb-1 text-secondary dark:bg-blueish dark:text-primary">
-          Contest Hive?
-        </span>
+        Why<Highlight>Contest Hive</Highlight>
       </header>
       <p className="mx-auto mb-10 max-w-lg text-balance text-center text-sm md:max-w-xl md:text-base lg:max-w-2xl lg:text-lg">
         <span className="font-semibold tracking-tighter">Contest Hive</span>{" "}

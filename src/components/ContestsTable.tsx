@@ -141,8 +141,8 @@ export default function ContestsTable({
       <CardHeader className="px-1 py-1 md:px-7">
         <CardTitle
           className={cn(
-            "border-b px-2 pb-2 text-2xl font-bold md:text-4xl",
-            compressed && "mb-2",
+            "mt-3 border-b px-2 pb-2 text-2xl font-bold md:text-4xl",
+            compressed && "my-2 py-3",
           )}
         >
           Upcoming Contests

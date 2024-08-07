@@ -4,7 +4,7 @@ import Link from "next/link";
 import { GitHubLogoIcon, ReaderIcon } from "@radix-ui/react-icons";
 import { ChevronDown } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
-
+import Highlight from "./typography/Highlight";
 import Slider from "./Slider";
 import AnimatedBlob from "./sub/AnimatedBlob";
 import { cn } from "@/lib/utils";
@@ -20,10 +20,8 @@ const Hero = () => {
       <div className="flex items-center justify-center">
         <AnimatedBlob />
       </div>
-      <header className="text-5xl relative pb-8 pt-20 text-center font-heading font-bold leading-tight tracking-tighter md:text-6xl lg:text-7xl">
-        <span className="mr-1.5 rounded-lg bg-pinkish px-2 pb-1 pt-1 text-secondary dark:bg-blueish dark:text-primary md:px-3 md:pt-0">
-          Contest
-        </span>
+      <header className="relative pb-8 pt-20 text-center font-heading text-5xl font-bold leading-tight tracking-tighter md:text-6xl lg:text-7xl">
+        <Highlight>Contest</Highlight>
         at your <span className="tracking-tighter">Fingertips</span>
       </header>
       <p className="relative mx-auto max-w-lg text-balance text-center text-base md:max-w-xl md:text-base lg:max-w-2xl lg:text-lg">
