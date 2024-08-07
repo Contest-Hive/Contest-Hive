@@ -1,6 +1,6 @@
 import { NextRequest } from "next/server";
 // import { escapeHTML } from "@/lib/MdtoHtml";
-import { JsonResponse } from "../../(main)/default";
+import { JsonResponse } from "../../default";"../../default";"../../default";"../../default";
 
 const URL = process.env.URL;
 

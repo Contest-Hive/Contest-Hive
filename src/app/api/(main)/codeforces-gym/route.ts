@@ -1,4 +1,4 @@
-import { getResponse, JsonResponse } from "../default";
+import { getResponse, JsonResponse } from "@/app/api/default";
 import { updateData as updateStatsData } from "@/lib/dbConnect";
 
 export async function GET() {
