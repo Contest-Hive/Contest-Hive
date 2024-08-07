@@ -48,6 +48,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.svg" />
+        <meta
+          name="google-site-verification"
+          content="XLTmt69wH57wnU1mAOAb9t2kQjBMW7Px6hwBBeahMfI"
+        />
       </head>
       <body
         className={cn(
