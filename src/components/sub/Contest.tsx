@@ -49,7 +49,7 @@ export default function Contest(contest: ContestType, index: number) {
                 content={IsoTimeToLocalTime(contest.startTime)}
                 className="w-54 text-xs font-semibold"
               >
-                <Badge>{timeToReadableTime(contest.startTime)}</Badge>
+                <Badge variant="secondary">{timeToReadableTime(contest.startTime)}</Badge>
               </ResponsiveTooltip>
             </span>
 
@@ -57,7 +57,7 @@ export default function Contest(contest: ContestType, index: number) {
 
             <span className="flex w-32 items-center justify-start gap-1">
               <Clock className="h-5 w-5 text-primary/70" />
-              <Badge variant="secondary">
+              <Badge variant="outline">
                 {secondsToShortReadableTime(contest.duration)}
               </Badge>
             </span>
