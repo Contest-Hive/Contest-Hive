@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import ResponsiveTooltip from "@/components/ui/responsiveTooltip";
@@ -12,7 +13,7 @@ import {
 } from "@/lib/helpers/datetime";
 import { getGoogleCalenderLink } from "@/lib/helpers/others";
 
-import { getPlatformLogo } from "@/lib/helpers/getPlatformLogo";
+import { getPlatformLogoUrl } from "@/lib/helpers/others";
 import { cn } from "@/lib/utils";
 import { Link2, CalendarPlus, CalendarDays, Clock } from "lucide-react";
 
@@ -24,9 +25,14 @@ export default function Contest(contest: ContestType, index: number) {
     <TableRow key={index}>
       <TableCell className="py-1">
         <div className="mt-1 flex items-center justify-start">
-          <span className="w-2 h-2 block">
-            {getPlatformLogo(contest.platform)}
-          </span>
+          <Image
+            priority
+            src={getPlatformLogoUrl(contest.platform)}
+            alt={contest.platform}
+            width={1}
+            height={1}
+            className="mr-0.5 mt-2 h-6 w-6 rounded-sm p-0.5 dark:bg-primary md:mr-1"
+          />
           <Link
             href={contest.url}
             className="group flex min-w-64 items-center justify-start gap-1 text-balance text-xs font-semibold text-primary underline-offset-2 hover:underline md:text-sm"

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import MaxWidthWrapper from "./ui/MaxWidthWrapper";
-import { getPlatformLogo } from "@/lib/helpers/getPlatformLogo";
+import { getPlatformLogoUrl } from "@/lib/helpers/others";
 import "@/styles/slider.css";
 
 const images =
@@ -15,7 +15,14 @@ const Slider = () => {
             key={index}
             className={`item item${index + 1} flex flex-col items-center justify-center font-semibold`}
           >
-            {getPlatformLogo(image)}
+            <Image
+              priority
+              src={getPlatformLogoUrl(image)}
+              alt={image}
+              width={1}
+              height={1}
+              className="h-8 w-8 md:h-10 md:w-10"
+            />
             <p className="mt-1.5 text-xs md:text-sm">
               {image[0].toUpperCase() + image.slice(1)}
             </p>

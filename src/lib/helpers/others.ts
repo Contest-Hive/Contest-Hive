@@ -20,14 +20,12 @@ export function getGoogleCalenderLink(contest: ContestType) {
 
 export function getPlatformLogoUrl(
   platform: string,
-  transparent: boolean = false,
+  transparent: boolean = true,
 ) {
   let plt = platform.toLowerCase();
-  if (platform.toLowerCase().includes("codeforces")) {
+  if (plt.includes("codeforces") || plt.includes("cf")) {
     plt = "codeforces";
   }
 
-  if (transparent) return `/assets/svgs/platforms/transparent/${plt}.svg`;
-
-  return `/assets/svgs/platforms/${plt}.svg`;
+  return `/assets/svgs/platforms${transparent && "/transparent"}/${plt}.svg`;
 }
