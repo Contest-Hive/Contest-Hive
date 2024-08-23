@@ -3,6 +3,7 @@ import { updateData as updateStatsData } from "@/lib/dbConnect";
 import { getResponse as getContestResponse } from "@/app/api/default";
 import { getSecondsDifferencesFromCurrentTime } from "@/lib/helpers/datetime";
 
+import { sleep } from "../utils";
 import { ContestDataType } from "@/lib/types";
 
 export async function getStatsData(update: "api" | "page") {
@@ -43,8 +44,6 @@ export async function sendMessage(message: string) {
 }
 
 export async function getAllContestData() {
-  // Fetch contests data
-
   var _contests: ContestDataType = (await getContestResponse("all")).data;
 
   // Process contests data
