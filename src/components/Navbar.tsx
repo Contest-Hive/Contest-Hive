@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import Anchor from "./typography/Anchor";
 import { CircleHelp } from "lucide-react";
@@ -67,7 +66,6 @@ const NavBar = () => {
               href="/focused"
               className="font-bold"
               title="Go to focused page"
-              normal
             >
               •Focused•
             </Anchor>

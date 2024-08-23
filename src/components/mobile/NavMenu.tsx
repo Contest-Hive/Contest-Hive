@@ -22,7 +22,6 @@ export function NavMenu() {
             href="/focused"
             className="font-bold"
             title="Go to focused page"
-            normal
           >
             •Focused•
           </Anchor>

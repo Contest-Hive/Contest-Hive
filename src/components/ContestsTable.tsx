@@ -149,7 +149,7 @@ export default function ContestsTable({
           {compressed && (
             <span className="px-1.5 font-semibold">
               Go to the
-              <Anchor href="/focused" className="p-0 underline" normal>
+              <Anchor href="/focused" className="p-0 underline">
                 focused
               </Anchor>
               page for a better experience.
@@ -170,13 +170,14 @@ export default function ContestsTable({
           <TableHeader>
             <TableRow>
               <TableHead className="border-b border-t bg-muted/50 py-0">
-                <p className="text-xs font-normal tracking-wide md:text-sm">
+                <p className="text-xs font-thin tracking-wide md:text-sm">
                   Showing{" "}
-                  <span className="font-bold">
+                  <span className="font-semibold">
                     {Math.min(currentPage * perPage + 1, length)}-
                     {Math.min((currentPage + 1) * perPage, length)}
                   </span>{" "}
-                  out of <span className="font-bold">{length}</span> contests
+                  out of <span className="font-semibold">{length}</span>{" "}
+                  contests
                 </p>
               </TableHead>
             </TableRow>
