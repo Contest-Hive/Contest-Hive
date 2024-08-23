@@ -1,5 +1,4 @@
 "use server"
-import { sendToAuthor } from "@/app/api/others/send/route";
 import { updateData as updateStatsData } from "@/lib/dbConnect";
 import { getResponse as getContestResponse } from "@/app/api/default";
 import { getSecondsDifferencesFromCurrentTime } from "@/lib/helpers/datetime";

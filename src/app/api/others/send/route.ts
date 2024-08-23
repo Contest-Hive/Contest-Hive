@@ -1,14 +1,9 @@
 import { NextRequest } from "next/server";
-// import { escapeHTML } from "@/lib/MdtoHtml";
-import { JsonResponse } from "../../default";
-("../../default");
-("../../default");
-("../../default");
+import { JsonResponse } from "@/app/api/default";
 
 const URL = process.env.URL;
 
 export async function POST(req: NextRequest) {
-  console.log("Hello?")
   const ip = req.headers.get("x-real-ip") ?? "127.0.0.1";
   const jsonData = await req.json();
   const message = String(jsonData.message).trim();
@@ -25,7 +20,7 @@ export async function POST(req: NextRequest) {
   return await JsonResponse(result, result.status_code);
 }
 
-export async function sendToAuthor(message: string, ip: string) {
+async function sendToAuthor(message: string, ip: string) {
   const content = `
 📧 New message from ${ip}
 Message:
