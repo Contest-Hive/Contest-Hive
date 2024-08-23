@@ -1,6 +1,6 @@
 "use server";
-import { randomInt } from "./utils";
 import STATS from "@/db/schemas/STATS";
+import { randomInt } from "../lib/utils";
 import MongoConnection from "@/db/index";
 
 await MongoConnection(); // Make sure we're connected to the database

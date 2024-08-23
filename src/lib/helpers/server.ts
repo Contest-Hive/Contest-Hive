@@ -1,10 +1,10 @@
 "use server"
-import { updateData as updateStatsData } from "@/lib/dbConnect";
+import { updateData as updateStatsData } from "@/db/updateStats";
 import { getResponse as getContestResponse } from "@/app/api/default";
-import { getSecondsDifferencesFromCurrentTime } from "@/lib/helpers/datetime";
+import { getSecondsDifferencesFromCurrentTime } from "@/lib/helpers/datetime";sFromCurrentTime } from "@/lib/helpers/datetime";
 
 import { sleep } from "../utils";
-import { ContestDataType } from "@/lib/types";
+import { ContestDataType } from "@/lib/types";estDataType } from "@/lib/types";
 
 export async function getStatsData(update: "api" | "page") {
   // also increments whenever called

@@ -1,6 +1,6 @@
 import STATS from "@/db/schemas/STATS";
-import { updateData } from "@/lib/dbConnect";
-import { NextRequest, NextResponse } from "next/server";
+import { updateData } from "@/db/updateStats";
+import { NextRequest, NextResponse } from "next/server";import { NextRequest, NextResponse } from "next/server";import { NextRequest, NextResponse } from "next/server";import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   try {
