@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import ResponsiveTooltip from "@/components/ui/responsiveTooltip";
@@ -13,7 +12,7 @@ import {
 } from "@/lib/helpers/datetime";
 import { getGoogleCalenderLink } from "@/lib/helpers/others";
 
-import { getPlatformLogo } from "@/lib/helpers/others";
+import { getPlatformLogo } from "@/lib/helpers/getPlatformLogo";
 import { cn } from "@/lib/utils";
 import { Link2, CalendarPlus, CalendarDays, Clock } from "lucide-react";
 
@@ -25,16 +24,12 @@ export default function Contest(contest: ContestType, index: number) {
     <TableRow key={index}>
       <TableCell className="py-1">
         <div className="mt-1 flex items-center justify-start">
-          <Image
-            src={getPlatformLogo(contest.platform)}
-            alt="Platform Logo"
-            width={1}
-            height={1}
-            className="mr-0.5 h-5 w-5 rounded-sm md:mr-2 md:h-6 md:w-6"
-          />
+          <span className="w-2 h-2 block">
+            {getPlatformLogo(contest.platform)}
+          </span>
           <Link
             href={contest.url}
-            className="group flex min-w-64 text-balance items-center justify-start gap-1 text-xs font-semibold text-primary underline-offset-2 hover:underline md:text-sm"
+            className="group flex min-w-64 items-center justify-start gap-1 text-balance text-xs font-semibold text-primary underline-offset-2 hover:underline md:text-sm"
             target="_blank"
           >
             {contest.title}
@@ -49,7 +44,9 @@ export default function Contest(contest: ContestType, index: number) {
                 content={IsoTimeToLocalTime(contest.startTime)}
                 className="w-54 text-xs font-semibold"
               >
-                <Badge variant="secondary">{timeToReadableTime(contest.startTime)}</Badge>
+                <Badge variant="secondary">
+                  {timeToReadableTime(contest.startTime)}
+                </Badge>
               </ResponsiveTooltip>
             </span>
 

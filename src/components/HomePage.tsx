@@ -6,6 +6,7 @@ import ContestSection from "./ContestSection";
 import Hero from "./Hero";
 import NavBar from "./Navbar";
 
+
 const HomePage = () => {
   return (
     <>

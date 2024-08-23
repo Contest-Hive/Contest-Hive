@@ -1,11 +1,13 @@
 import { cn } from "@/lib/utils";
 
 const defaultClassName =
-  "mx-10 h-10 w-10 rounded-md p-2 dark:bg-primary md:mx-14 md:h-12 md:w-12";
+  "mx-10 h-8 w-8 rounded-md p-2 dark:bg-primary md:mx-14 md:h-4 md:w-4";
 
-const AtcoderLogo = (className: string = "") => {
+const AtcoderLogo = ({ transparent }: { transparent?: boolean }) => {
+  let newClass = ""
+
   return (
-    <div className={cn(defaultClassName, className)}>
+    <div className={defaultClassName}>
       <svg
         width="29"
         height="25"

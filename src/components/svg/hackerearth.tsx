@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 const defaultClassName =
   "mx-10 h-10 w-10 rounded-md p-2 dark:bg-primary md:mx-14 md:h-12 md:w-12";
 
-const HackerearthLogo = (className: string = "") => {
+const HackerearthLogo = ({ className }: { className?: string }) => {
   return (
     <div className={cn(defaultClassName, className)}>
       <svg

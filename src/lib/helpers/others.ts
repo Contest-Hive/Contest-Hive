@@ -18,7 +18,7 @@ export function getGoogleCalenderLink(contest: ContestType) {
   );
 }
 
-export function getPlatformLogo(
+export function getPlatformLogoUrl(
   platform: string,
   transparent: boolean = false,
 ) {
