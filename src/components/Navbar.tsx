@@ -50,6 +50,7 @@ const NavBar = () => {
             className="flex h-full items-center gap-0.5 self-center px-1 md:gap-2"
           >
             <Image
+              priority
               src="/favicon.svg"
               height={1}
               width={1}
