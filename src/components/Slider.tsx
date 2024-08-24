@@ -21,7 +21,7 @@ const Slider = () => {
               alt={image}
               width={1}
               height={1}
-              className="h-8 w-8 md:h-10 md:w-10"
+              className="h-8 w-8 rounded-md p-0.5 dark:bg-primary md:h-10 md:w-10 md:p-1"
             />
             <p className="mt-1.5 text-xs md:text-sm">
               {image[0].toUpperCase() + image.slice(1)}

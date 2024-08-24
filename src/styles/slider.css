@@ -1,7 +1,7 @@
 :root {
   --total-items: 7;
   --item-width: 155px;
-  --duration: 30s;
+  --duration: 60s;
 }
 
 .wrapper {
