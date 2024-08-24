@@ -1,4 +1,3 @@
-"use client"
 import Loading from "@/components/sub/Loading";
 
 const LoadingPage = () => {
