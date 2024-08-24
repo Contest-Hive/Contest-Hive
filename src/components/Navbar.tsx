@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link"
 import Anchor from "./typography/Anchor";
 import { CircleHelp } from "lucide-react";
 
@@ -45,7 +46,7 @@ const NavBar = () => {
     >
       <MaxWidthWrapper>
         <div className="flex h-12 flex-1 items-center justify-between gap-2 px-2 md:h-14 md:gap-4">
-          <a
+          <Link
             href="/"
             className="flex h-full items-center gap-0.5 self-center px-1 md:gap-2"
           >
@@ -60,7 +61,7 @@ const NavBar = () => {
             <p className="text-lg font-semibold tracking-tighter text-primary md:text-2xl">
               Contest Hive
             </p>
-          </a>
+          </Link>
 
           <div className="hidden items-center gap-2 md:flex">
             <Anchor
