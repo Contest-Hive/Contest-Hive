@@ -31,7 +31,7 @@ export default function Contest(contest: ContestType, index: number) {
             alt={contest.platform}
             width={1}
             height={1}
-            className="mr-0.5 mt-2 h-6 w-6 rounded-sm p-0.5 dark:bg-primary md:mr-1"
+            className="-ml-0.5 mr-0.5 mt-2 h-6 w-6 rounded-sm p-0.5 dark:bg-primary md:mr-1"
           />
           <Link
             href={contest.url}
