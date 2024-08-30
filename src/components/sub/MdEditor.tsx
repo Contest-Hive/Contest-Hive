@@ -8,7 +8,6 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 import { Loader2 } from "lucide-react";
-import { sendMessage } from "@/lib/helpers/server";
 
 function MessageArea({
   text,
@@ -19,7 +18,10 @@ function MessageArea({
 }) {
   return (
     <div className="grid min-h-48 w-full gap-2">
-      <Label htmlFor="message" className="ml-2 text-start text-xs md:text-sm text-primary/80">
+      <Label
+        htmlFor="message"
+        className="ml-2 text-start text-xs text-primary/80 md:text-sm"
+      >
         Markdown Supported
       </Label>
       <Textarea
@@ -80,16 +82,23 @@ const MdEditor = () => {
           disabled={disabled}
           className="w-fit"
           onClick={async () => {
-            if(text.trim().length === 0) return toast({
-              duration: 1500,
-              title: "Empty Message",
-              description: "Please type a message before sending."
-            });
+            if (text.trim().length === 0)
+              return toast({
+                duration: 1500,
+                title: "Empty Message",
+                description: "Please type a message before sending.",
+              });
 
             setDisabled(true);
-            const x = await sendMessage(text);
+            const resp = await fetch("http://127.0.0.1:3001/api/others/send", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ message: text }),
+            });
+            const x: any = await resp.json();
             setDisabled(false);
-
             if (x.ok) {
               setText("");
               toast({
@@ -106,7 +115,8 @@ const MdEditor = () => {
             }
           }}
         >
-          Send message {disabled && <Loader2 className="ml-2 h-4 w-4 animate-spin" />}
+          Send message{" "}
+          {disabled && <Loader2 className="ml-2 h-4 w-4 animate-spin" />}
         </Button>
         <p className="text-end text-xs">{text.length}/4000</p>
       </span>
