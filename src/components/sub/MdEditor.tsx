@@ -90,7 +90,7 @@ const MdEditor = () => {
               });
 
             setDisabled(true);
-            const resp = await fetch("http://127.0.0.1:3001/api/others/send", {
+            const resp = await fetch("https://contest-hive.vercel.app/api/others/send", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
