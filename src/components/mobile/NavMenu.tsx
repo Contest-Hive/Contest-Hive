@@ -27,9 +27,6 @@ export function NavMenu() {
           </Anchor>
           <Anchor href="/about">About</Anchor>
           <Anchor href="/credits">Credits</Anchor>
-          <Anchor href={OLD_WEBSITE} target="_blank">
-            Old Website
-          </Anchor>
           <Separator className="mb-10" />
         </div>
       </SheetContent>

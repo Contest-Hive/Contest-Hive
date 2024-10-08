@@ -73,9 +73,6 @@ const NavBar = () => {
             </Anchor>
             <Anchor href="/about">About</Anchor>
             <Anchor href="/credits">Credits</Anchor>
-            <Anchor href={OLD_WEBSITE} target="_blank">
-              Old Website
-            </Anchor>
             <Separator className="ml-1 mr-2 h-7" orientation="vertical" />
             <DropdownMenu>
               <DropdownMenuTrigger className="hidden select-none focus-visible:outline-none md:block">
