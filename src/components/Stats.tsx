@@ -19,7 +19,7 @@ const Stats = async () => {
   return (
     <MaxWidthWrapper id="stats">
       <div className="mx-auto my-5 max-w-screen-md rounded-3xl bg-muted/30 pb-2">
-        <header className="mb-6 pb-2 pt-10 text-center font-heading text-4xl font-bold leading-tight tracking-tighter md:text-5xl lg:text-6xl">
+        <header className="mb-6 flex flex-wrap pb-2 pt-10 text-center font-heading text-4xl font-bold leading-tight tracking-tighter md:text-5xl lg:text-6xl items-center justify-center">
           Why<Highlight>Contest Hive</Highlight>
         </header>
         <p className="mx-auto mb-3 max-w-lg text-balance text-center text-sm md:max-w-xl md:text-base lg:max-w-2xl lg:text-lg">

@@ -13,7 +13,7 @@ const Footer = () => {
         <p className="text-center text-sm text-gray-500">
           Made with{" "}
           <svg
-            className="animate-bounce inline h-5 w-5 md:h-6 md:w-6 text-sky-600 dark:text-blue-500"
+            className="inline h-5 w-5 animate-bounce text-sky-600 dark:text-blue-500 md:h-6 md:w-6"
             viewBox="0 0 1024 1024"
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
