@@ -42,7 +42,7 @@ export default function Contest(contest: ContestType, index: number) {
             <Link2 className="mt-0.5 hidden h-4 w-4 -rotate-45 group-hover:block" />
           </Link>
         </div>
-        <div className="mb-1 flex items-center justify-start md:pl-8">
+        <div className="mb-1 flex items-center justify-start md:pl-0">
           <div className="flex w-full items-center justify-start gap-2">
             <span className="flex w-32 items-center justify-start gap-1 md:w-36 ">
               <CalendarDays className="h-5 w-5 text-primary/70" />
@@ -65,26 +65,28 @@ export default function Contest(contest: ContestType, index: number) {
               </Badge>
             </span>
             <Separator orientation="vertical" className="h-6" />
-            <ResponsiveTooltip
-              content="Add to Google Calendar"
-              className="w-54 text-xs font-semibold"
-            >
-              <Link
-                href={getGoogleCalenderLink(contest)}
-                // I know it's a mess! :3
-                target="_blank"
-                className={cn(
-                  "scale-90",
-                  buttonVariants({
-                    variant: "outline",
-                    size: "icon",
-                  }),
-                )}
+            <div className="flex md:w-[60%] items-center justify-end">
+              <ResponsiveTooltip
+                content="Add to Google Calendar"
+                className="min-w-54 text-xs font-semibold"
               >
-                <p className="sr-only">Add to calender</p>
-                <CalendarPlus className="h-5 w-5 text-primary/70" />
-              </Link>
-            </ResponsiveTooltip>
+                <Link
+                  href={getGoogleCalenderLink(contest)}
+                  // I know it's a mess! :3
+                  target="_blank"
+                  className={cn(
+                    "mx-auto scale-90",
+                    buttonVariants({
+                      variant: "outline",
+                      size: "icon",
+                    }),
+                  )}
+                >
+                  <p className="sr-only">Add to calender</p>
+                  <CalendarPlus className="h-5 w-5 text-primary/70" />
+                </Link>
+              </ResponsiveTooltip>
+            </div>
           </div>
         </div>
       </TableCell>
