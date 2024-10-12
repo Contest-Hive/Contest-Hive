@@ -64,7 +64,7 @@ export default function Contest(contest: ContestType, index: number) {
                 {secondsToShortReadableTime(contest.duration)}
               </Badge>
             </span>
-            <Separator orientation="vertical" className="h-6" />
+            {/* <Separator orientation="vertical" className="h-6" /> */}
             <div className="flex md:w-[60%] items-center justify-end">
               <ResponsiveTooltip
                 content="Add to Google Calendar"
