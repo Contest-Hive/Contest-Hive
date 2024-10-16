@@ -84,13 +84,13 @@ The documentation fully explains how to use the API and the response formats.
 | ----------------------------------------------------------------------- | ---------------------------------------------------------- | --------------------------------------------------------------- |
 | [`/api/`](https://contest-hive.vercel.app/api)                           | [](https://contest-hive.vercel.app/api/)                   | Root Endpoint of api                                            |
 | [`/atcoder`](https://contest-hive.vercel.app/api/atcoder)               | [`/1`](https://contest-hive.vercel.app/api/atcoder)        | Returns all the future contests information from AtCoder        |
-| [`/codechef`](https://contest-hive.vercel.app/api/codechef)             | [`/2`](https://contest-hive.vercel.app/api/codechef)       | Returns all the future contests information from Codechef       |
-| [`/codeforces`](https://contest-hive.vercel.app/api/codeforces)         | [`/3`](https://contest-hive.vercel.app/api/codeforces)     | Returns all the future contests information from Codeforces     |
-| [`/hackerearth`](https://contest-hive.vercel.app/api/hackerearth)       | [`/4`](https://contest-hive.vercel.app/api/hackerearth)    | Returns all the future contests information from Hackerearth    |
-| [`/hackerrank`](https://contest-hive.vercel.app/api/hackerrank)         | [`/5`](https://contest-hive.vercel.app/api/hackerrank)     | Returns all the future contests information from Hackerrank     |
-| [`/leetcode`](https://contest-hive.vercel.app/api/leetcode)             | [`/6`](https://contest-hive.vercel.app/api/leetcode)       | Returns all the future contests information from Leetcode       |
-| [`/toph`](https://contest-hive.vercel.app/api/toph)                     | [`/7`](https://contest-hive.vercel.app/api/toph)           | Returns all the future contests information from Toph           |
-| [`/codeforces-gym`](https://contest-hive.vercel.app/api/codeforces-gym) | [`/8`](https://contest-hive.vercel.app/api/codeforces-gym) | Returns all the future contests information from Codeforces GYM |
+| [`/codechef`](https://contest-hive.vercel.app/api/codechef)             | [`/2`](https://contest-hive.vercel.app/api/codechef)       | (same as above for) Codechef       |
+| [`/codeforces`](https://contest-hive.vercel.app/api/codeforces)         | [`/3`](https://contest-hive.vercel.app/api/codeforces)     | (same as above for) Codeforces     |
+| [`/hackerearth`](https://contest-hive.vercel.app/api/hackerearth)       | [`/4`](https://contest-hive.vercel.app/api/hackerearth)    | (same as above for) Hackerearth    |
+| [`/hackerrank`](https://contest-hive.vercel.app/api/hackerrank)         | [`/5`](https://contest-hive.vercel.app/api/hackerrank)     | (same as above for) Hackerrank     |
+| [`/leetcode`](https://contest-hive.vercel.app/api/leetcode)             | [`/6`](https://contest-hive.vercel.app/api/leetcode)       | (same as above for) Leetcode       |
+| [`/toph`](https://contest-hive.vercel.app/api/toph)                     | [`/7`](https://contest-hive.vercel.app/api/toph)           | (same as above for) Toph           |
+| [`/codeforces-gym`](https://contest-hive.vercel.app/api/codeforces-gym) | [`/8`](https://contest-hive.vercel.app/api/codeforces-gym) | (same as above for) Codeforces GYM |
 
 ### API Response Format
 
