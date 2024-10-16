@@ -24,7 +24,11 @@ export default function SelectPerPage({
       <SelectTrigger className="w-[66px]" title="Show Per Page">
         <SelectValue />
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent 
+        ref={(ref) =>
+        // temporary workaround from https://github.com/shadcn-ui/ui/issues/1220
+        ref?.addEventListener('touchend', (e) => e.preventDefault())
+      }>
         <SelectGroup>
           <SelectLabel>Select</SelectLabel>
           <SelectItem value="3">3</SelectItem>

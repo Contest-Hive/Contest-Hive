@@ -2,18 +2,17 @@ import Stats from "./Stats";
 import Contact from "./Contact";
 import Footer from "./Footer";
 
-import { getAllContestData } from "@/lib/helpers/server";
-import CompressedContestTable from "./CompressedContestTable";
+import ContestSection from "./ContestSection";
 import Hero from "./Hero";
 import NavBar from "./Navbar";
 
-const HomePage = async () => {
-  const contests = await getAllContestData();
+
+const HomePage = () => {
   return (
     <>
       <NavBar />
       <Hero />
-      <CompressedContestTable contestData={contests} />
+      <ContestSection />
       <Stats />
       <Contact />
       <Footer />

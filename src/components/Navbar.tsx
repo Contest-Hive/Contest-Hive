@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link"
 import Anchor from "./typography/Anchor";
 import { CircleHelp } from "lucide-react";
 
@@ -51,6 +51,7 @@ const NavBar = () => {
             className="flex h-full items-center gap-0.5 self-center px-1 md:gap-2"
           >
             <Image
+              priority
               src="/favicon.svg"
               height={1}
               width={1}
@@ -67,15 +68,11 @@ const NavBar = () => {
               href="/focused"
               className="font-bold"
               title="Go to focused page"
-              normal
             >
               •Focused•
             </Anchor>
             <Anchor href="/about">About</Anchor>
             <Anchor href="/credits">Credits</Anchor>
-            <Anchor href={OLD_WEBSITE} target="_blank">
-              Old Website
-            </Anchor>
             <Separator className="ml-1 mr-2 h-7" orientation="vertical" />
             <DropdownMenu>
               <DropdownMenuTrigger className="hidden select-none focus-visible:outline-none md:block">

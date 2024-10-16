@@ -21,7 +21,7 @@ export default function FAQ() {
         <AccordionItem value="item-2">
           <AccordionTrigger>Does the API have rate limit?</AccordionTrigger>
           <AccordionContent>
-            I do not intend to apply any kind of rate limits. But if abuse of
+            We do not intend to apply any kind of rate limits. But if abuse of
             the tool is noticed, steps might be taken to ensure availability for
             all the users.
           </AccordionContent>

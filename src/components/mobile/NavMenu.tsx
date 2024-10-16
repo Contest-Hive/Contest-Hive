@@ -22,15 +22,11 @@ export function NavMenu() {
             href="/focused"
             className="font-bold"
             title="Go to focused page"
-            normal
           >
             •Focused•
           </Anchor>
           <Anchor href="/about">About</Anchor>
           <Anchor href="/credits">Credits</Anchor>
-          <Anchor href={OLD_WEBSITE} target="_blank">
-            Old Website
-          </Anchor>
           <Separator className="mb-10" />
         </div>
       </SheetContent>
