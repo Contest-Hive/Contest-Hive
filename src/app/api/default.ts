@@ -36,7 +36,8 @@ type platformName =
   | "hackerearth"
   | "hackerrank"
   | "leetcode"
-  | "toph";
+  | "toph"
+  | "$platformName";
 
 export async function getResponse(platformName: platformName) {
   const API_URL = `https://raw.githubusercontent.com/Contest-Hive/__contest-hive-backend/cache/cache/Data/${platformName}.json`;

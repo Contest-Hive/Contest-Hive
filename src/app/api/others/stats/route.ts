@@ -1,6 +1,7 @@
 import STATS from "@/db/schemas/STATS";
 import { updateData } from "@/db/updateStats";
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
+import { JsonResponse } from "@/app/api/default";
 
 export async function POST(req: NextRequest) {
   try {
@@ -10,9 +11,9 @@ export async function POST(req: NextRequest) {
 
     await updateData(path);
 
-    return new NextResponse(JSON.stringify({ ok: true }, null, 2));
+    return JsonResponse({ ok: true });
   } catch {
-    return new NextResponse(JSON.stringify({ ok: false }, null, 2));
+    return JsonResponse({ ok: false }, 500);
   }
 }
 
@@ -27,15 +28,8 @@ export async function GET(req: NextRequest) {
     };
     delete data._id;
 
-    return new NextResponse(JSON.stringify(data, null, 2), {
-      status: 200,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET",
-        "Access-Control-Allow-Headers": "*",
-      },
-    });
+    return JsonResponse(data);
   } catch {
-    return new NextResponse(JSON.stringify({ ok: false }, null, 2));
+    return JsonResponse({ ok: false }, 500);
   }
 }

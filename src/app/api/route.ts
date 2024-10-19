@@ -1,8 +1,9 @@
 import { JsonResponse } from "@/app/api/default";
 import { updateData as updateStatsData } from "@/db/updateStats";
+import { waitUntil } from "@vercel/functions";
 
 export async function GET() {
-  await updateStatsData("api");
+  waitUntil(updateStatsData("api"));
   const data = {
     ok: true,
     message:

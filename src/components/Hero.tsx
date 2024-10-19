@@ -59,6 +59,7 @@ const Hero = () => {
           <Button asChild variant="outline">
             <Link href={TELEGRAM_CHANNEL} target="_blank">
               <img
+                fetchPriority="high"
                 src="/assets/svgs/telegram.svg"
                 alt="Telegram Logo"
                 className="h-7 w-7"

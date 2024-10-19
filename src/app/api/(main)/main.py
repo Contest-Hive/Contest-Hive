@@ -13,7 +13,7 @@ import pathlib
 
 # ----------------------------
 
-with open("template.txt", "r", encoding="utf8") as f:
+with open("template.ts", "r", encoding="utf8") as f:
     template = f.read()
 
 
