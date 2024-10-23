@@ -22,7 +22,7 @@ const TESTAMENTS = [
     description: (
       <>
         <span className="font-semibold tracking-tighter">Contest Hive</span> has
-        been a great tool for my competitive programming journey. It's genuinely easier than searching for contests by myself.
+        been a great tool for my competitive programming journey. It&apos;s genuinely easier than searching for contests by myself.
       </>
     ),
   },
