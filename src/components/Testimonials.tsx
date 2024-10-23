@@ -22,8 +22,7 @@ const TESTAMENTS = [
     description: (
       <>
         <span className="font-semibold tracking-tighter">Contest Hive</span> has
-        saved me a ton of time. What would have taken me hours, now just takes a
-        minute!
+        been a great tool for my competitive programming journey. It's genuinely easier than searching for contests by myself.
       </>
     ),
   },
