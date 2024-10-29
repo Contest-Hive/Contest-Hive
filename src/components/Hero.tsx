@@ -20,15 +20,14 @@ const Hero = () => {
         <AnimatedBlob />
       </div>
       <header className="relative pb-8 pt-20 text-center font-heading text-5xl font-bold leading-tight tracking-tighter md:text-6xl lg:text-7xl">
-        <Highlight>Contest</Highlight>
-        at your <span className="tracking-tighter">Fingertips</span>
+        <Highlight>Contests</Highlight>{" "}at your <span className="tracking-tighter">Fingertips</span>
       </header>
       <p className="relative mx-auto max-w-lg text-balance text-center text-base md:max-w-xl md:text-base lg:max-w-2xl lg:text-lg">
         <span className="font-semibold tracking-tighter">Contest Hive</span>{" "}
         will keep you updated with all the upcoming contests.
         <br />
         <span className="text-sm text-primary/90 md:text-base">
-          Keep your 👀 on our <b>Telegram</b> channel for contest alerts.
+          Keep your <span title="eyes emoji">👀</span> on our <b>Telegram</b> channel for contest alerts.
         </span>
         <br />
       </p>
