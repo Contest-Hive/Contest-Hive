@@ -65,13 +65,13 @@ const listItems = [
   //   kontests: <Cross />,
   // },
   {
-    feature: "Shows Local Time",
+    feature: "Shows Native Time",
     contestHive: <Check />,
     stopStalk: <Cross />,
     kontests: <Check />,
     info: (
       <Info>
-        Whether the website shows the local time of the user or not
+        If it shows the native time for the user based on his/her location
       </Info>
     ),
   },
