@@ -27,19 +27,14 @@ const title = "Contest Hive";
 const description =
   "Contest Hive provides all the upcoming contests in one place. You will never miss a contest again. With the help of our API, you can integrate it with your website or app.";
 const keywords =
-  "contest, contest hive, contest api, upcoming contest, codeforces api, toph api, kontests api, hackerearth api, hackerrank api, codechef api, atcoder api, leetcode api, nusab taha, nusab19, toph leaderboard";
+  "contest, contest hive, contest api, upcoming contest, codeforces api, toph api, kontests api, hackerearth api, hackerrank api, codechef api, atcoder api, leetcode api";
 const url = "https://contest-hive.vercel.app/";
 
 export const metadata = {
+  metadataBase: new URL(url),
   title: title,
   description: description,
   keywords: keywords,
-  openGraph: {
-    title: title,
-    description: description,
-    url: url,
-    images: ["/opengraph-image.png"],
-  },
 };
 export const fetchCache = "default-no-store";
 
