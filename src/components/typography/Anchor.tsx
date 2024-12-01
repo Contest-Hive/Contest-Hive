@@ -39,7 +39,11 @@ const Anchor = ({
       href={href}
       target={target}
       title={title}
-      className={cn(buttonVariants({ variant: "link" }), "mx-1 px-0 lg:px-1 lg:mx-1", className)}
+      className={cn(
+        buttonVariants({ variant: "link" }),
+        "mx-1 px-0 focus:text-blue-500 dark:focus:text-blue-300 lg:mx-1 lg:px-1",
+        className,
+      )}
     >
       {children}
     </Link>
