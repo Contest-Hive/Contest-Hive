@@ -35,7 +35,7 @@
     "cmdk": "^1.0.0",
     "lucide-react": "^0.372.0",
     "marked": "^13.0.0",
-    "mongoose": "^8.3.2",
+    "mongoose": "^8.8.3",
     "next": "14.2.4",
     "next-themes": "^0.3.0",
     "react": "^18",
