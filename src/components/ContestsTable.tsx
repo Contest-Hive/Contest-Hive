@@ -147,7 +147,7 @@ export default function ContestsTable({
 
         <CardDescriptionDiv className="px-0.5">
           {compressed && (
-            <span className="px-1.5 font-semibold">
+            <span className="block px-1.5 font-semibold">
               Go to the
               <Anchor href="/focused" className="p-0 underline">
                 focused
@@ -170,13 +170,14 @@ export default function ContestsTable({
           <TableHeader>
             <TableRow>
               <TableHead className="border-b border-t bg-muted/50 py-0">
-                <p className="text-xs font-thin tracking-wide md:text-sm">
+                <p className="text-xs font-semibold tracking-wider md:text-sm">
                   Showing{" "}
-                  <span className="font-semibold">
+                  <span className="font-bold text-primary/80">
                     {Math.min(currentPage * perPage + 1, length)}-
                     {Math.min((currentPage + 1) * perPage, length)}
                   </span>{" "}
-                  out of <span className="font-semibold">{length}</span>{" "}
+                  out of{" "}
+                  <span className="font-bold text-primary/80">{length}</span>{" "}
                   contests
                 </p>
               </TableHead>
