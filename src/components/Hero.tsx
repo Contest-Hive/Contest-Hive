@@ -20,7 +20,7 @@ const Hero = () => {
       <div className="flex items-center justify-center">
         <AnimatedBlob />
       </div>
-      <Heading>
+      <Heading className="relative">
         <Highlight>Contests</Highlight> at your{" "}
         <span className="tracking-tighter">Fingertips</span>
       </Heading>
