@@ -1,5 +1,6 @@
 "use client";
-import Highlight from "./typography/Highlight";
+import Heading from "@/components/typography/Heading";
+import Highlight from "@/components/typography/Highlight";
 import ContestsTable from "@/components/ContestsTable";
 import { ContestType } from "@/lib/types";
 import useLocalStorage from "@/hooks/useLocalStorage";
@@ -14,9 +15,9 @@ const CompressedContestTable = ({
   return (
     <div className="mx-auto max-w-screen-md px-1 pb-10">
       <div className="my-5 rounded-3xl bg-muted/30 pb-2">
-        <header className="mb-6 pb-2 pt-10 text-center font-heading text-4xl font-bold leading-tight tracking-tighter md:text-5xl lg:text-6xl">
+        <Heading level={2}>
           Take a<Highlight>Glance</Highlight>
-        </header>
+        </Heading>
 
         <p className="mx-auto mb-10 max-w-lg text-balance text-center text-sm md:max-w-xl md:text-base lg:max-w-2xl lg:text-lg">
           We gathered everything in one place,{" "}

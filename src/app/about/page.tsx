@@ -24,7 +24,7 @@ const About = async () => {
           <br />
           <br />
           So, I started working on it more seriously and after
-          <span className="font-mono text-xs tracking-tight text-primary/70 md:text-sm font-semibold">
+          <span className="font-mono text-xs font-semibold tracking-tight text-primary/70 md:text-sm">
             (GOD knows how many)
           </span>
           sleepless nights, here we are.

@@ -12,6 +12,7 @@ import {
   TableRow,
   TableCaption,
 } from "@/components/ui/table";
+import Link from "next/link";
 import ResponsiveTooltip from "@/components/ui/responsiveTooltip";
 
 const Check = () => <CheckIcon className="text-green-500" />;
@@ -24,7 +25,11 @@ const Info = ({
   className?: string;
 }) => {
   return (
-    <ResponsiveTooltip content={children ?? ""} className="text-xs md:text-sm" title="Further Information">
+    <ResponsiveTooltip
+      content={children ?? ""}
+      className="text-xs md:text-sm"
+      title="Further Information"
+    >
       <InfoIcon className="-mt-3 ml-1 h-4 w-4 md:h-5 md:w-5" />
     </ResponsiveTooltip>
   );
@@ -43,7 +48,9 @@ const listItems = [
     stopStalk: <b>~3 hour</b>,
     kontests: <b>~24 hour</b>,
     info: (
-      <Info>The interval of time after which the data is fetched and updated</Info>
+      <Info>
+        The interval of time after which the data is fetched and updated
+      </Info>
     ),
   },
   {
@@ -99,15 +106,29 @@ function FeatureTable() {
   return (
     <Table className="mb-5 mt-5 text-xs md:text-sm">
       <TableCaption className="text-xs md:text-sm">
-        *As of 22th June, 2024 - <b>Kontests</b> is discontinued
+        *As of 22th June, 2024 -{" "}
+        <Link href="https://kontests.net/" target="_blank">
+          <b>Kontests</b>
+        </Link>{" "}
+        is discontinued
       </TableCaption>
 
       <TableHeader>
         <TableRow className="rounded-md bg-muted/50">
           <TableHead className="w-56">Features</TableHead>
-          <TableHead>Contest Hive</TableHead>
-          <TableHead>StopStalk</TableHead>
-          <TableHead>Kontests</TableHead>
+          <TableHead>
+            <Link href="/">Contest Hive</Link>
+          </TableHead>
+          <TableHead>
+            <Link href="https://www.stopstalk.com/" target="_blank">
+              StopStalk
+            </Link>
+          </TableHead>
+          <TableHead>
+            <Link href="https://kontests.net/" target="_blank">
+              Kontests
+            </Link>
+          </TableHead>
         </TableRow>
       </TableHeader>
       <TableBody className="border-b">
@@ -141,13 +162,12 @@ const WhyUs = () => {
       </header>
 
       <blockquote className="mt-6 border-l-2 pl-4 text-xs italic md:pl-6 md:text-base">
-        There are other platforms which does the same thing -{" "}
+        - There are other platforms which does the same thing -{" "}
         <q className="font-mono font-semibold">Shows Contests</q>
-        <br />
-        Then how is <b>Contest Hive</b> different?
+        <br />- Then how is <b>Contest Hive</b> different?
       </blockquote>
       <blockquote className="mt-2 border-l-2 pl-4 text-xs italic md:pl-6 md:text-base">
-        Why does <b>Contest Hive</b> even exist in the first place?
+        - Why does <b>Contest Hive</b> even exist in the first place?
       </blockquote>
       <p className="text-balance text-sm md:text-lg">
         <br />
