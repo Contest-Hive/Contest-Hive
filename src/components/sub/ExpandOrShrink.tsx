@@ -42,7 +42,7 @@ const ExpandOrShrink = ({
   return (
     <TooltipProvider delayDuration={100}>
       <Tooltip>
-        <TooltipTrigger>
+        <TooltipTrigger asChild>
           <Button
             variant="outline"
             className="group max-w-12"
