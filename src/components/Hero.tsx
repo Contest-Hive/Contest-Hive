@@ -2,11 +2,12 @@
 import Link from "next/link";
 
 import { GitHubLogoIcon, ReaderIcon } from "@radix-ui/react-icons";
+import { Button } from "@/components/ui/button";
+import Heading from "@/components/typography/Heading";
+import Highlight from "@/components/typography/Highlight";
+import Slider from "@/components/Slider";
+import AnimatedBlob from "@/components/sub/AnimatedBlob";
 import { ChevronDown } from "lucide-react";
-import { Button, buttonVariants } from "@/components/ui/button";
-import Highlight from "./typography/Highlight";
-import Slider from "./Slider";
-import AnimatedBlob from "./sub/AnimatedBlob";
 
 const GITHUB_Link = "https://github.com/Contest-Hive/Contest-Hive";
 const DOCS_LINK = "https://contest-hive.github.io/docs";
@@ -19,15 +20,18 @@ const Hero = () => {
       <div className="flex items-center justify-center">
         <AnimatedBlob />
       </div>
-      <header className="relative pb-8 pt-20 text-center font-heading text-5xl font-bold leading-tight tracking-tighter md:text-6xl lg:text-7xl">
-        <Highlight>Contests</Highlight>{" "}at your <span className="tracking-tighter">Fingertips</span>
-      </header>
+      <Heading className="relative">
+        <Highlight>Contests</Highlight> at your{" "}
+        <span className="tracking-tighter">Fingertips</span>
+      </Heading>
       <p className="relative mx-auto max-w-lg text-balance text-center text-base md:max-w-xl md:text-base lg:max-w-2xl lg:text-lg">
         <span className="font-semibold tracking-tighter">Contest Hive</span>{" "}
         will keep you updated with all the upcoming contests.
         <br />
         <span className="text-sm text-primary/90 md:text-base">
-          Keep your <span title="eyes emoji">👀</span> on our <b>Telegram</b> channel for contest alerts.
+          Keep your <span title="eyes emoji">👀</span> on our{" "}
+          <b className="text-[#26a5e4] dark:text-[#2bb8ff]">Telegram</b> channel
+          for contest alerts.
         </span>
         <br />
       </p>
@@ -66,12 +70,12 @@ const Hero = () => {
             </Link>
           </Button>
           <Button asChild variant="outline">
-            <Link
-              href="#contest-table"
+            <a
+              href="javascript:document.getElementById('contest-table').scrollIntoView(true);"
               className="flex items-center justify-center gap-1"
             >
               View Contests <ChevronDown size={20} />
-            </Link>
+            </a>
           </Button>
         </div>
       </div>

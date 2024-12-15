@@ -7,8 +7,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import ResponsiveTooltip from "@/components/ui/responsiveTooltip";
-import Highlight from "./typography/Highlight";
-
+import Heading from "@/components/typography/Heading";
+import Highlight from "@/components/typography/Highlight";
 import Testimonials from "@/components/Testimonials";
 
 import { getStatsData } from "@/lib/helpers/server";
@@ -19,9 +19,9 @@ const Stats = async () => {
   return (
     <MaxWidthWrapper id="stats">
       <div className="mx-auto my-5 max-w-screen-md rounded-3xl bg-muted/30 pb-2">
-        <header className="mb-6 flex flex-wrap pb-2 pt-10 text-center font-heading text-4xl font-bold leading-tight tracking-tighter md:text-5xl lg:text-6xl items-center justify-center">
+        <Heading level={2}>
           Why<Highlight>Contest Hive</Highlight>
-        </header>
+        </Heading>
         <p className="mx-auto mb-3 max-w-lg text-balance text-center text-sm md:max-w-xl md:text-base lg:max-w-2xl lg:text-lg">
           <span className="font-semibold tracking-tighter">Contest Hive</span>{" "}
           started its journey on{" "}

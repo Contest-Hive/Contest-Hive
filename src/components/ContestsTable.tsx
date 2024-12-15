@@ -30,9 +30,9 @@ import SelectPerPage from "./sub/SelectPerPage";
 import SearchBar from "./sub/SearchBar";
 import Contest from "./sub/Contest";
 // import ContestSkeleton from "./ContestSkeleton";
+import ExpandOrShrink from "./sub/ExpandOrShrink";
 
 import SearchText from "@/lib/helpers/search";
-
 import type { ContestType } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -47,16 +47,63 @@ const PLATFORMS = [
   "Toph",
 ];
 
+const EXPAND_SVG = () => (
+  <svg
+    className="h-12 w-12 rotate-90 p-1"
+    width={1}
+    height={1}
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g>
+      <path
+        id="Vector"
+        d="M16 15L12 19L8 15M8 9L12 5L16 9"
+        stroke="#000000"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </g>
+  </svg>
+);
+const SHRINK_SVG = () => (
+  <svg
+    className="h-12 w-12 rotate-45 p-1"
+    width={1}
+    height={1}
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g>
+      <path
+        id="Vector"
+        d="M5 14H10V19M19 10H14V5"
+        stroke="#000000"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </g>
+  </svg>
+);
+
 export default function ContestsTable({
   contestData,
   compressed = false,
   perPage,
   setPerPage,
+  isExpanded = null,
+  handleToggleExpanded,
 }: {
   contestData: ContestType[];
   compressed?: boolean;
   perPage: number;
   setPerPage: Dispatch<SetStateAction<string>>;
+  isExpanded?: boolean;
+  handleToggleExpanded?: any;
 }) {
   const [isPending, startTransition] = useTransition();
 
@@ -138,16 +185,24 @@ export default function ContestsTable({
       <CardHeader className="px-1 py-1 md:px-7">
         <CardTitle
           className={cn(
-            "mt-1.5 border-b px-2 py-2 text-3xl font-bold md:text-4xl",
+            "relative mt-1.5 border-b px-2 py-2 text-3xl font-bold md:text-4xl",
             compressed && "md:my-2 md:py-3",
           )}
         >
           Upcoming Contests
+          {isExpanded !== null && (
+            <div className="absolute right-3 top-1 hidden xl:block">
+              <ExpandOrShrink
+                isExpanded={isExpanded}
+                handleToggleExpanded={handleToggleExpanded}
+              />
+            </div>
+          )}
         </CardTitle>
 
         <CardDescriptionDiv className="px-0.5">
           {compressed && (
-            <span className="px-1.5 font-semibold">
+            <span className="block px-1.5 font-semibold">
               Go to the
               <Anchor href="/focused" className="p-0 underline">
                 focused
@@ -170,13 +225,14 @@ export default function ContestsTable({
           <TableHeader>
             <TableRow>
               <TableHead className="border-b border-t bg-muted/50 py-0">
-                <p className="text-xs font-thin tracking-wide md:text-sm">
+                <p className="text-xs font-semibold tracking-wider md:text-sm">
                   Showing{" "}
-                  <span className="font-semibold">
+                  <span className="font-bold text-primary/80">
                     {Math.min(currentPage * perPage + 1, length)}-
                     {Math.min((currentPage + 1) * perPage, length)}
                   </span>{" "}
-                  out of <span className="font-semibold">{length}</span>{" "}
+                  out of{" "}
+                  <span className="font-bold text-primary/80">{length}</span>{" "}
                   contests
                 </p>
               </TableHead>
