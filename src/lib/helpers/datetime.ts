@@ -141,3 +141,23 @@ export function getEncodedDate(isoTime: string) {
   const encodedDate = `${year}${month}${day}T${hours}${minutes}${seconds}Z`;
   return encodedDate;
 }
+
+export function getUserTimezone(): string {
+  try {
+    const formatter = new Intl.DateTimeFormat("en-US", {
+      timeZoneName: "short",
+    });
+
+    const parts = formatter.formatToParts(new Date());
+
+    const timeZonePart = parts.find((part) => part.type === "timeZoneName");
+
+    if (timeZonePart && timeZonePart.value) {
+      return timeZonePart.value; // Return the timezone abbreviation (e.g., "BST").
+    }
+  } catch (error) {
+    console.error("Error determining timezone:", error);
+  }
+
+  return "Local Time"; // Default fallback if timezone cannot be determined.
+}
