@@ -47,48 +47,6 @@ const PLATFORMS = [
   "Toph",
 ];
 
-const EXPAND_SVG = () => (
-  <svg
-    className="h-12 w-12 rotate-90 p-1"
-    width={1}
-    height={1}
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <g>
-      <path
-        id="Vector"
-        d="M16 15L12 19L8 15M8 9L12 5L16 9"
-        stroke="#000000"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </g>
-  </svg>
-);
-const SHRINK_SVG = () => (
-  <svg
-    className="h-12 w-12 rotate-45 p-1"
-    width={1}
-    height={1}
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <g>
-      <path
-        id="Vector"
-        d="M5 14H10V19M19 10H14V5"
-        stroke="#000000"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </g>
-  </svg>
-);
 
 export default function ContestsTable({
   contestData,
