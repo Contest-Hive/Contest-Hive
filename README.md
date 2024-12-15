@@ -147,3 +147,11 @@ Contest Hive is licensed under the [Apache License](LICENSE)
 - [Contest Hive API Documentation](https://contest-hive.vercel.app/docs/) - Documentation of Contest Hive API
 - [About Page of Contest Hive](https://contest-hive.vercel.app/about/) - About Page of Contest Hive
 - [Credits Page of Contest Hive](https://contest-hive.vercel.app/credits/) - Credits Page of Contest Hive
+
+# Repo Activity
+
+![Alt](https://repobeats.axiom.co/api/embed/68af15f7d6e18ff8f4851dea4b7eae62305bff1f.svg "Repobeats analytics image")
+
+# Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Contest-Hive/Contest-Hive&type=Date)](https://star-history.com/#Contest-Hive/Contest-Hive&Date)
