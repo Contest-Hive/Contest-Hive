@@ -65,7 +65,7 @@ export default function Contest(contest: ContestType, index: number) {
               </Badge>
             </span>
             {/* <Separator orientation="vertical" className="h-6" /> */}
-            <div className="flex md:w-[60%] items-center justify-end">
+            <div className="flex md:ml-auto items-center justify-end">
               <ResponsiveTooltip
                 content="Add to Google Calendar"
                 className="min-w-54 text-xs font-semibold"
