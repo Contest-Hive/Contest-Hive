@@ -10,6 +10,7 @@ import {
   timeToReadableTime,
   secondsToShortReadableTime,
   IsoTimeToLocalTime,
+  getUserTimezone,
 } from "@/lib/helpers/datetime";
 import { getGoogleCalenderLink } from "@/lib/helpers/others";
 
@@ -47,7 +48,7 @@ export default function Contest(contest: ContestType, index: number) {
             <span className="flex w-32 items-center justify-start gap-1 md:w-36 ">
               <CalendarDays className="h-5 w-5 text-primary/70" />
               <ResponsiveTooltip
-                content={IsoTimeToLocalTime(contest.startTime)}
+                content={`${IsoTimeToLocalTime(contest.startTime)} ${getUserTimezone()}`}
                 className="w-54 text-xs font-semibold"
               >
                 <Badge variant="secondary">
@@ -65,7 +66,7 @@ export default function Contest(contest: ContestType, index: number) {
               </Badge>
             </span>
             {/* <Separator orientation="vertical" className="h-6" /> */}
-            <div className="flex md:ml-auto items-center justify-end">
+            <div className="flex items-center justify-end md:ml-auto">
               <ResponsiveTooltip
                 content="Add to Google Calendar"
                 className="min-w-54 text-xs font-semibold"
