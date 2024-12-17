@@ -70,12 +70,12 @@ const Hero = () => {
             </Link>
           </Button>
           <Button asChild variant="outline">
-            <a
-              href="javascript:document.getElementById('contest-table').scrollIntoView(true);"
+            <Link
+              href="#contest-table"
               className="flex items-center justify-center gap-1"
             >
               View Contests <ChevronDown size={20} />
-            </a>
+            </Link>
           </Button>
         </div>
       </div>

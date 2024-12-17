@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import ResponsiveTooltip from "@/components/ui/responsiveTooltip";
 import { Badge } from "@/components/ui/badge";
-import { buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { TableCell, TableRow } from "@/components/ui/table";
 
 import {
@@ -70,22 +70,18 @@ export default function Contest(contest: ContestType, index: number) {
               <ResponsiveTooltip
                 content="Add to Google Calendar"
                 className="min-w-54 text-xs font-semibold"
+                tabIndex={-1}
               >
-                <Link
-                  href={getGoogleCalenderLink(contest)}
-                  // I know it's a mess! :3
-                  target="_blank"
-                  className={cn(
-                    "mx-auto scale-90",
-                    buttonVariants({
-                      variant: "outline",
-                      size: "icon",
-                    }),
-                  )}
-                >
-                  <p className="sr-only">Add to calender</p>
-                  <CalendarPlus className="h-5 w-5 text-primary/70" />
-                </Link>
+                <Button asChild variant="outline" size="icon">
+                  <Link
+                    href={getGoogleCalenderLink(contest)}
+                    target="_blank"
+                    className="mx-auto scale-90"
+                  >
+                    <p className="sr-only">Add to calender</p>
+                    <CalendarPlus className="h-5 w-5 text-primary/70" />
+                  </Link>
+                </Button>
               </ResponsiveTooltip>
             </div>
           </div>
