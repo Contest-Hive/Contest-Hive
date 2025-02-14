@@ -35,6 +35,7 @@ import ExpandOrShrink from "./sub/ExpandOrShrink";
 import SearchText from "@/lib/helpers/search";
 import type { ContestType } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import RelativeTime from "./sub/RelativeTime";
 
 const PLATFORMS = [
   "Atcoder",
@@ -47,7 +48,6 @@ const PLATFORMS = [
   "Toph",
 ];
 
-
 export default function ContestsTable({
   contestData,
   compressed = false,
@@ -55,6 +55,7 @@ export default function ContestsTable({
   setPerPage,
   isExpanded = null,
   handleToggleExpanded,
+  lastUpdated,
 }: {
   contestData: ContestType[];
   compressed?: boolean;
@@ -62,10 +63,12 @@ export default function ContestsTable({
   setPerPage: Dispatch<SetStateAction<string>>;
   isExpanded?: boolean;
   handleToggleExpanded?: any;
+  lastUpdated: string;
 }) {
   const [isPending, startTransition] = useTransition();
 
   const [filteredData, setFilteredData] = useState(contestData);
+
   const length = filteredData.length;
 
   const totalPages = Math.ceil(length / perPage);
@@ -202,18 +205,9 @@ export default function ContestsTable({
               .map((contest, index) => {
                 return Contest(contest, index);
               })}
-
-            {/* 
-            On the last page, if the number is not a multiple of perPage, add skeleton cards
-            */}
-            {/* {currentPage === totalPages - 1 &&
-              Array.from({ length: perPage - (length % perPage) }).map(
-                (_, index) => {
-                  return ContestSkeleton(index);
-                },
-              )} */}
           </TableBody>
         </Table>
+        <RelativeTime utcTime={lastUpdated} />
       </CardContent>
       <CardContent className="flex justify-between">
         <div className="flex items-center justify-center gap-2 text-xs font-semibold md:text-sm">

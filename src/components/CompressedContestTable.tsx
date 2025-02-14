@@ -7,8 +7,10 @@ import useLocalStorage from "@/hooks/useLocalStorage";
 
 const CompressedContestTable = ({
   contestData,
+  lastUpdated,
 }: {
   contestData: ContestType[];
+  lastUpdated: string;
 }) => {
   const [perPage, setPerPage] = useLocalStorage("compressed-per-page", "5");
 
@@ -26,6 +28,7 @@ const CompressedContestTable = ({
       </div>
       <section className="relative">
         <ContestsTable
+          lastUpdated={lastUpdated}
           compressed={true}
           contestData={contestData}
           perPage={parseInt(perPage)}
