@@ -55,7 +55,7 @@ export async function getResponse(platformName: platformName) {
     for (const contest of allContests) {
       // Skip if contest has already ended
       if (getSecondsDifferencesFromCurrentTime(contest.start) < 0) continue;
-      const contestData = getContestData(contest, undefined);
+      const contestData = getContestData(contest, platformName);
       contests.push({ ...contestData });
     }
     data.data = contests;
