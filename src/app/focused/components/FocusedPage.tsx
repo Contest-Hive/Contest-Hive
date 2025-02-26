@@ -8,7 +8,13 @@ import MaxWidthWrapper from "@/components/ui/MaxWidthWrapper";
 import useLocalStorage from "@/hooks/useLocalStorage";
 import { cn } from "@/lib/utils";
 
-const FocusedPage = ({ contestData }: { contestData: ContestType[] }) => {
+const FocusedPage = ({
+  contestData,
+  lastUpdated,
+}: {
+  contestData: ContestType[];
+  lastUpdated: string;
+}) => {
   const [perPage, setPerPage] = useLocalStorage("focused-per-page", "10");
   const [isExpanded, setIsExpanded] = useLocalStorage("expanded", "false");
   const [ready, setReady] = useState(false);
@@ -46,6 +52,7 @@ const FocusedPage = ({ contestData }: { contestData: ContestType[] }) => {
       <NavBar />
       <MaxWidthWrapper className={wrapperClass}>
         <ContestsTable
+          lastUpdated={lastUpdated}
           contestData={contestData}
           perPage={parseInt(perPage)}
           setPerPage={setPerPage}
