@@ -1,36 +1,28 @@
 import mongoose from "mongoose";
 
-const MongoURI = process.env.MONGO_URI || (process.env.LOCAL === "true" ? "mongodb://localhost:27017" : "");
+const MONGODB_URI = process.env.MONGO_URI;
 
-if (!MongoURI) {
-  throw new Error("Mongo URI is not defined");
+if (!MONGODB_URI) {
+  throw new Error("MONGO_URI must be defined");
 }
 
-let cached = global.mongoose; // Use global object to persist connection in serverless environments
+let cachedConnection: mongoose.Connection | null = null;
 
-if (!cached) {
-  cached = global.mongoose = { conn: null, promise: null };
+async function connectDatabase() {
+  if (cachedConnection) return cachedConnection;
+
+  const connection = await mongoose.connect(MONGODB_URI, {
+    maxPoolSize: 10,           // Increased connection pool
+    minPoolSize: 5,            // Minimum maintained connections
+    socketTimeoutMS: 45000,    // Extended socket timeout
+    serverSelectionTimeoutMS: 45000,
+    waitQueueTimeoutMS: 45000, // Wait time for connection
+    connectTimeoutMS: 10000,   // Connection attempt timeout
+    retryWrites: true
+  });
+
+  cachedConnection = connection.connection;
+  return cachedConnection;
 }
 
-const MongoConnection = async () => {
-  if (cached.conn) {
-    console.log("Using existing MongoDB connection");
-    return cached.conn;
-  }
-
-  if (!cached.promise) {
-    cached.promise = mongoose.connect(MongoURI, {
-      // useNewUrlParser: true,
-      // useUnifiedTopology: true,
-      bufferCommands: false, // Disable buffering to avoid memory leaks
-    }).then((conn) => {
-      console.log(`MongoDB Connected: ${conn.connection.host}`);
-      return conn;
-    });
-  }
-
-  cached.conn = await cached.promise;
-  return cached.conn;
-};
-
-export default MongoConnection;
+export default connectDatabase;

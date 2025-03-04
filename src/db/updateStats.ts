@@ -1,24 +1,11 @@
 "use server";
 import STATS from "@/db/schemas/STATS";
-import { randomInt } from "../lib/utils";
 import MongoConnection from "@/db/index";
 
-await MongoConnection(); // Make sure we're connected to the database
-
-function randomStatsData() {
-  let data = {
-    page: randomInt(2134123),
-    api: randomInt(213411232),
-    past24page: randomInt(214),
-    past24api: randomInt(312),
-    total: 1,
-  };
-
-  data.total = data.page + data.api;
-  return data;
-}
 
 export async function updateData(key: "api" | "page") {
+  await MongoConnection();
+  
   let updateObj: { [key: string]: number } = { total: 1, past24: 1 };
   updateObj[key] = 1;
   if (key === "page") {
