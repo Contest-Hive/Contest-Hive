@@ -20,9 +20,6 @@ export function formatNumber(num: number) {
   return formatted;
 }
 
-export function randomInt(num: number = 100) {
-  return parseInt(String((Math.random() + 1) * num));
-}
 
 export async function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));

@@ -3,7 +3,6 @@ import { updateData as updateStatsData } from "@/db/updateStats";
 import { getResponse as getContestResponse } from "@/app/api/default";
 import { getSecondsDifferencesFromCurrentTime } from "@/lib/helpers/datetime";
 
-import { sleep } from "../utils";
 import { ContestDataType } from "@/lib/types";
 
 export async function getStatsData(update: "api" | "page") {
