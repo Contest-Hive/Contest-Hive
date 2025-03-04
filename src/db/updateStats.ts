@@ -1,39 +1,39 @@
 "use server";
-import STATS from "@/db/schemas/STATS";
-import { randomInt } from "../lib/utils";
-import MongoConnection from "@/db/index";
+import client from "@/db/redis";
 
-await MongoConnection(); // Make sure we're connected to the database
+export async function updateData(key: "api" | "page"): Promise<any> {
+  const multi = client.multi();
 
-function randomStatsData() {
-  let data = {
-    page: randomInt(2134123),
-    api: randomInt(213411232),
-    past24page: randomInt(214),
-    past24api: randomInt(312),
-    total: 1,
-  };
+  // Increment the respective fields in the "stats" hash
+  multi.hincrby("stats", "total", 1);
+  multi.hincrby("stats", "past24", 1);
 
-  data.total = data.page + data.api;
-  return data;
-}
-
-export async function updateData(key: "api" | "page") {
-  let updateObj: { [key: string]: number } = { total: 1, past24: 1 };
-  updateObj[key] = 1;
   if (key === "page") {
-    updateObj["past24page"] = 1;
-    updateObj["page"] = 1;
+    multi.hincrby("stats", "past24page", 1);
+    multi.hincrby("stats", "page", 1);
   } else if (key === "api") {
-    updateObj["past24api"] = 1;
-    updateObj["api"] = 1;
+    multi.hincrby("stats", "past24api", 1);
+    multi.hincrby("stats", "api", 1);
   } else {
-    updateObj = {};
-    console.log("Error in Mongo Update: Invalid Key Supplied");
-    return;
+    console.log("Error in Redis Update: Invalid Key Supplied");
+    return null;
   }
 
-  const updated = await STATS.findOneAndUpdate({ _id: 1 }, { $inc: updateObj });
-  if (!updated) console.log("Error in Mongo Update: Failed to Update Stats");
-  return updated;
+  // Execute multi and check results
+  try {
+    const result = await multi.exec();
+    if (!result) {
+      console.log("Error in Redis Update: Failed to Update Stats");
+      return null;
+    }
+
+    // Fetch updated stats after increment
+    const afterStats = await client.hgetall("stats");
+
+    return afterStats;
+
+  } catch (error) {
+    console.error("Error executing multi commands:", error);
+    return null;
+  }
 }

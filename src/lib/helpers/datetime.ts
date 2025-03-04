@@ -1,5 +1,3 @@
-import { randomInt } from "../utils";
-
 export function secondsToReadableTime(s: number) {
   if (!s) {
     return "-1 second";
@@ -113,17 +111,6 @@ export function getEndTime(isoStartTime: string, durationSeconds: number) {
   const startDate = new Date(isoStartTime);
   const endDate =
     new Date(startDate.getTime() + durationSeconds * 1000)
-      .toISOString()
-      .slice(0, -5) + "Z";
-
-  return endDate;
-}
-
-export function getRandomISOTime() {
-  const randomDuration = randomInt(134902);
-  const startDate = new Date();
-  const endDate =
-    new Date(startDate.getTime() + randomDuration * 1000)
       .toISOString()
       .slice(0, -5) + "Z";
 
