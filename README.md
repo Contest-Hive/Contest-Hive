@@ -2,6 +2,7 @@
 <img height="100px" src="public/favicon.svg" alt="Contest Hive Logo">
 </p>
 
+
 # Contest Hive - Contests at Your Fingertips
 
 <p align="center">
