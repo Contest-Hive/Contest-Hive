@@ -1,7 +1,10 @@
 import STATS from "@/db/schemas/STATS";
+import MongoConnection from "@/db/index";
 import { updateData } from "@/db/updateStats";
 import { NextRequest } from "next/server";
 import { JsonResponse } from "@/app/api/default";
+
+await MongoConnection();
 
 export async function POST(req: NextRequest) {
   try {
