@@ -1,21 +1,36 @@
 import mongoose from "mongoose";
 
-const MongoConnection = async () => {
-  var MongoURI = process.env.MONGO_URI || "";
-  if (process.env.LOCAL === "true") {
-    MongoURI = "mongodb://localhost:27017";
-  }
-  try {
-    if (mongoose.connections[0].readyState)
-      return console.log("Already Connected to MongoDB");
-    if (process.env.MONGO_URI === undefined)
-      return console.log("Mongo URI is not defined");
+const MongoURI = process.env.MONGO_URI || (process.env.LOCAL === "true" ? "mongodb://localhost:27017" : "");
 
-    const conn = await mongoose.connect(MongoURI);
-    console.log(`MongoDB Connected: ${conn.connection.host}`);
-  } catch (error: any) {
-    console.error(`Error: ${error.message}`);
+if (!MongoURI) {
+  throw new Error("Mongo URI is not defined");
+}
+
+let cached = global.mongoose; // Use global object to persist connection in serverless environments
+
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
+}
+
+const MongoConnection = async () => {
+  if (cached.conn) {
+    console.log("Using existing MongoDB connection");
+    return cached.conn;
   }
+
+  if (!cached.promise) {
+    cached.promise = mongoose.connect(MongoURI, {
+      // useNewUrlParser: true,
+      // useUnifiedTopology: true,
+      bufferCommands: false, // Disable buffering to avoid memory leaks
+    }).then((conn) => {
+      console.log(`MongoDB Connected: ${conn.connection.host}`);
+      return conn;
+    });
+  }
+
+  cached.conn = await cached.promise;
+  return cached.conn;
 };
 
 export default MongoConnection;
