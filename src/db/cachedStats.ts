@@ -1,6 +1,7 @@
 "use server";
 
 export async function fetchStats() {
+  console.log("Called cached")
   try {
     const response = await fetch(
       "https://contest-hive.vercel.app/api/others/stats",
