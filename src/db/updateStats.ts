@@ -1,39 +1,39 @@
 "use server";
-import client from "@/db/redis";
+import STATS from "@/db/schemas/STATS";
+import MongoConnection from "@/db/index";
+import { fetchStats } from "./cachedStats"; // Assuming previous artifact's file
 
-export async function updateData(key: "api" | "page"): Promise<any> {
-  const multi = client.multi();
-
-  // Increment the respective fields in the "stats" hash
-  multi.hincrby("stats", "total", 1);
-  multi.hincrby("stats", "past24", 1);
-
-  if (key === "page") {
-    multi.hincrby("stats", "past24page", 1);
-    multi.hincrby("stats", "page", 1);
-  } else if (key === "api") {
-    multi.hincrby("stats", "past24api", 1);
-    multi.hincrby("stats", "api", 1);
-  } else {
-    console.log("Error in Redis Update: Invalid Key Supplied");
-    return null;
-  }
-
-  // Execute multi and check results
+export async function updateData(key: "api" | "page") {
   try {
-    const result = await multi.exec();
-    if (!result) {
-      console.log("Error in Redis Update: Failed to Update Stats");
-      return null;
+    await MongoConnection();
+
+    let updateObj: { [key: string]: number } = { total: 1, past24: 1 };
+    updateObj[key] = 1;
+
+    if (key === "page") {
+      updateObj["past24page"] = 1;
+      updateObj["page"] = 1;
+    } else if (key === "api") {
+      updateObj["past24api"] = 1;
+      updateObj["api"] = 1;
+    } else {
+      console.log("Error in Mongo Update: Invalid Key Supplied");
+      return await fetchStats();
     }
 
-    // Fetch updated stats after increment
-    const afterStats = await client.hgetall("stats");
+    const updated = await STATS.findOneAndUpdate(
+      { _id: 1 },
+      { $inc: updateObj },
+    );
 
-    return afterStats;
+    if (!updated) {
+      console.log("Error in Mongo Update: Failed to Update Stats");
+      return await fetchStats();
+    }
 
+    return updated;
   } catch (error) {
-    console.error("Error executing multi commands:", error);
-    return null;
+    console.error("MongoDB Connection/Update Error:", error);
+    return await fetchStats();
   }
 }

@@ -33,7 +33,6 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
-    "ioredis": "^5.5.0",
     "lucide-react": "^0.372.0",
     "marked": "^13.0.0",
     "mongoose": "^8.8.3",
