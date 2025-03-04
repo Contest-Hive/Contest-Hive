@@ -118,7 +118,7 @@ The API returns a JSON object with the following format for each platform:
       "platform": "Atcoder"
     }
   ],
-  "lastUpdated": "2023-09-26T14:31:22Z"
+  "lastUpdated": "2025-03-03T14:31:22Z"
 }
 ```
 
