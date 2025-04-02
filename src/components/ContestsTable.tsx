@@ -49,6 +49,23 @@ const PLATFORMS = [
   "Toph",
 ];
 
+/**
+ * Renders a table of upcoming contests with filtering, search, and pagination controls.
+ *
+ * The component displays contest data and provides interactive controls for filtering by contest platform,
+ * searching by title, and navigating between pages. It uses local storage to persist the selected platform and
+ * supports keyboard navigation using the left and right arrow keys.
+ *
+ * @param contestData - An array of contest objects to display.
+ * @param compressed - If true, renders the component in a compact layout.
+ * @param perPage - The number of contests to show per page.
+ * @param setPerPage - Function to update the number of contests displayed per page.
+ * @param isExpanded - (Optional) Indicates whether the contests section is expanded.
+ * @param handleToggleExpanded - (Optional) Callback to toggle the expanded state.
+ * @param lastUpdated - A string timestamp indicating when the contest data was last updated.
+ *
+ * @returns A React element that renders the contests table.
+ */
 export default function ContestsTable({
   contestData,
   compressed = false,

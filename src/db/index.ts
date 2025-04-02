@@ -8,6 +8,15 @@ if (!MONGODB_URI) {
 
 let cachedConnection: mongoose.Connection | null = null;
 
+/**
+ * Establishes and returns a connection to the MongoDB database.
+ *
+ * This asynchronous function first checks if an active connection already exists and returns it if available.
+ * If not, it creates a new connection using Mongoose with a reduced connection pool and shorter timeout settings.
+ * The new connection is then cached for future use.
+ *
+ * @returns The active MongoDB connection.
+ */
 async function connectDatabase() {
   if (cachedConnection) return cachedConnection;
 
