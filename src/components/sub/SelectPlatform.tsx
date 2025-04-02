@@ -35,7 +35,11 @@ export default function SelectPlatform({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="sm" className="h-10 select-none gap-1">
+        <Button
+          variant="outline"
+          size="sm"
+          className="h-10 min-w-24 select-none justify-start gap-1"
+        >
           <Image
             priority
             src={getPlatformLogoUrl(platform)}
@@ -45,7 +49,7 @@ export default function SelectPlatform({
             className="h-6 w-6 rounded-sm p-0.5 dark:bg-primary"
           />
           <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-            Platform
+            {platform}
           </span>
           <ChevronDown className="h-4 w-4" />
         </Button>
