@@ -1,11 +1,11 @@
-import { getAllContestData } from "@/lib/helpers/server";
+import { getAllContestData, getLastUpdatedTime } from "@/lib/helpers/server";
 import FocusedPage from "./components/FocusedPage";
 
 export const revalidate = 60 * 5; // 5 minutes
 
 const Focused = async () => {
   const contests = await getAllContestData();
-  const lastUpdated = String(new Date());
+  const lastUpdated = await getLastUpdatedTime();
 
   return <FocusedPage contestData={contests} lastUpdated={lastUpdated} />;
 };

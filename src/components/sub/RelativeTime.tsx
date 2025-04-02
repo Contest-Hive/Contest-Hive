@@ -15,7 +15,7 @@ const RelativeTime: React.FC<RelativeTimeProps> = ({ utcTime, className }) => {
     const diffTime = Math.abs(now.getTime() - utcDate.getTime());
     const diffMinutes = Math.floor(diffTime / (1000 * 60));
 
-    if (diffMinutes === 0) return "just now";
+    if (diffMinutes === 0) return "Now";
 
     return `${diffMinutes} minute${diffMinutes > 1 ? "s" : ""} ago`;
   };
@@ -28,7 +28,7 @@ const RelativeTime: React.FC<RelativeTimeProps> = ({ utcTime, className }) => {
       )}
     >
       <Clock className="text-emerald-500" strokeWidth={2} size={18} />
-      <span className="font-normal">Last Modified:</span>
+      <span className="font-normal">Last Updated:</span>
       <time dateTime={utcTime} className="font-semibold">
         {getRelativeTime(utcTime)}
       </time>

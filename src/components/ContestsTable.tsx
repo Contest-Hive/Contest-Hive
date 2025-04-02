@@ -31,6 +31,7 @@ import SearchBar from "./sub/SearchBar";
 import Contest from "./sub/Contest";
 // import ContestSkeleton from "./ContestSkeleton";
 import ExpandOrShrink from "./sub/ExpandOrShrink";
+import useLocalStorage from "@/hooks/useLocalStorage";
 
 import SearchText from "@/lib/helpers/search";
 import type { ContestType } from "@/lib/types";
@@ -76,7 +77,8 @@ export default function ContestsTable({
     Math.min(0, Math.abs(totalPages - 1)), // Prevent negative values using abs
   );
 
-  const [platform, setPlatform] = useState("All");
+  // const [platform, setPlatform] = useState("All");
+  const [platform, setPlatform] = useLocalStorage("platform-name", "All");
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
@@ -165,14 +167,14 @@ export default function ContestsTable({
           {compressed && (
             <span className="block px-1.5 font-semibold">
               Go to the
-              <Anchor href="/focused" className="p-0 underline">
+              <Anchor href="/focused" className="p-0 underline font-bold text-indigo-500 tracking-wider">
                 focused
               </Anchor>
               page for a better experience.
             </span>
           )}
 
-          <div className="mb-1 mt-4 flex items-center justify-start gap-2">
+          <div className="mb-1 mt-4 flex items-center justify-between gap-2">
             <SelectPlatform platform={platform} setPlatform={setPlatform} />
             <SearchBar
               searchQuery={searchQuery}
@@ -207,7 +209,7 @@ export default function ContestsTable({
               })}
           </TableBody>
         </Table>
-        <RelativeTime utcTime={lastUpdated} />
+        <RelativeTime utcTime={lastUpdated} className="mt-5"/>
       </CardContent>
       <CardContent className="flex justify-between">
         <div className="flex items-center justify-center gap-2 text-xs font-semibold md:text-sm">
