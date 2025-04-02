@@ -31,6 +31,7 @@ const PEOPLE = [
       { name: "github", url: "https://github.com/safin01" },
       { name: "telegram", url: "https://t.me/safin_sarker" },
       { name: "facebook", url: "https://facebook.com/safin.20050601" },
+      { name: "portfolio", url: "https://safin-sarker.vercel.app/" },
     ],
   },
 ];
@@ -71,7 +72,7 @@ function getPersonCard({
           </CardDescription>
           <span className="ml-1 mt-1 flex items-center gap-1 md:gap-3">
             {person.links.map((link, index) => (
-              <a href={link.url} key={index}>
+              <a href={link.url} key={index} target="_blank" rel="noreferrer">
                 <Image
                   src={`/assets/svgs/${link.name}.svg`}
                   width={20}
