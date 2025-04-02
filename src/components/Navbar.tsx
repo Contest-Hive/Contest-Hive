@@ -5,7 +5,7 @@ import Link from "next/link";
 import Anchor from "./typography/Anchor";
 import { CircleHelp } from "lucide-react";
 
-import { ModeToggle } from "./ui/theme-toggle";
+import ModeToggle from "./ui/theme-toggle";
 import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
 import {
@@ -77,7 +77,10 @@ const NavBar = () => {
             <Anchor href="/credits">Credits</Anchor>
             <Separator className="ml-1 mr-2 h-7" orientation="vertical" />
             <DropdownMenu>
-              <DropdownMenuTrigger className="hidden select-none focus-visible:outline-none md:block" tabIndex={-1}>
+              <DropdownMenuTrigger
+                className="hidden select-none focus-visible:outline-none md:block"
+                tabIndex={-1}
+              >
                 <Button
                   tabIndex={0}
                   className="h-10 w-10 p-2"

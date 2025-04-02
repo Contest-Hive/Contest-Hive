@@ -1,4 +1,4 @@
-"use server"
+"use server";
 import { updateData as updateStatsData } from "@/db/updateStats";
 import { getResponse as getContestResponse } from "@/app/api/default";
 import { getSecondsDifferencesFromCurrentTime } from "@/lib/helpers/datetime";
@@ -60,4 +60,18 @@ export async function getAllContestData() {
   );
 
   return filteredContests;
+}
+
+export async function getLastUpdatedTime() {
+  const url =
+    "https://raw.githubusercontent.com/Contest-Hive/__contest-hive-backend/refs/heads/cache/cache/Data/all.json";
+  const response = await fetch(url, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const data = await response.json();
+  const lastUpdated = data.lastUpdated as string;
+  return lastUpdated;
 }

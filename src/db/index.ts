@@ -12,12 +12,11 @@ async function connectDatabase() {
   if (cachedConnection) return cachedConnection;
 
   const connection = await mongoose.connect(MONGODB_URI, {
-    maxPoolSize: 10,           // Increased connection pool
-    minPoolSize: 5,            // Minimum maintained connections
-    socketTimeoutMS: 45000,    // Extended socket timeout
-    serverSelectionTimeoutMS: 45000,
-    waitQueueTimeoutMS: 45000, // Wait time for connection
-    connectTimeoutMS: 10000,   // Connection attempt timeout
+    maxPoolSize: 2,           // Increased connection pool
+    socketTimeoutMS: 4500,    // Extended socket timeout
+    serverSelectionTimeoutMS: 4500,
+    waitQueueTimeoutMS: 4500, // Wait time for connection
+    connectTimeoutMS: 5000,   // Connection attempt timeout
     retryWrites: true
   });
 
