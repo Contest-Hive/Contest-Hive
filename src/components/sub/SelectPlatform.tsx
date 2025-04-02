@@ -25,6 +25,14 @@ const PLATFORMS = [
   "Toph",
 ];
 
+/**
+ * Renders a dropdown menu for selecting a programming platform.
+ *
+ * This React component displays a button showing the logo and name of the current platform. Clicking the button opens a menu listing all available platforms. Selecting a platform triggers the update callback.
+ *
+ * @param platform - The currently selected platform.
+ * @param setPlatform - Callback to update the selected platform.
+ */
 export default function SelectPlatform({
   platform,
   setPlatform,
