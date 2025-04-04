@@ -12,6 +12,7 @@ import { getPlatformLogoUrl } from "@/lib/helpers/others";
 import { Button } from "../ui/button";
 import { ChevronDown } from "lucide-react";
 import { get } from "http";
+import { cn } from "@/lib/utils";
 
 const PLATFORMS = [
   "All",
@@ -54,7 +55,10 @@ export default function SelectPlatform({
             alt={platform}
             width={1}
             height={1}
-            className="h-6 w-6 rounded-sm p-0.5 dark:bg-primary"
+            className={cn(
+              "h-6 w-6 rounded-sm p-0.5 dark:bg-primary",
+              platform.toLowerCase().includes("gym") ? "invert-[19]" : "",
+            )}
           />
           <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
             {platform}
@@ -78,7 +82,10 @@ export default function SelectPlatform({
               alt={plt}
               width={1}
               height={1}
-              className="h-6 w-6 rounded-sm p-0.5 dark:bg-primary"
+              className={cn(
+                "h-6 w-6 rounded-sm p-0.5 dark:bg-primary",
+                plt.toLowerCase().includes("gym") ? "invert-[19]" : "",
+              )}
             />
             {plt}
           </DropdownMenuCheckboxItem>

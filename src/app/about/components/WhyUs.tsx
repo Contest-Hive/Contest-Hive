@@ -30,7 +30,7 @@ const Info = ({
       className="text-xs md:text-sm"
       title="Further Information"
     >
-      <InfoIcon className="-mt-3 ml-1 h-4 w-4 md:h-5 md:w-5" />
+      <InfoIcon className="ml-1 h-4 w-4 md:h-5 md:w-5" />
     </ResponsiveTooltip>
   );
 };
@@ -117,7 +117,7 @@ function FeatureTable() {
         <TableRow className="rounded-md bg-muted/50">
           <TableHead className="w-56">Features</TableHead>
           <TableHead>
-            <Link href="/">Contest Hive</Link>
+            <Link href="/" className="text-nowrap">Contest Hive</Link>
           </TableHead>
           <TableHead>
             <Link href="https://www.stopstalk.com/" target="_blank">
@@ -126,7 +126,7 @@ function FeatureTable() {
           </TableHead>
           <TableHead>
             <Link href="https://kontests.net/" target="_blank">
-              Kontests
+              Kontests*
             </Link>
           </TableHead>
         </TableRow>
