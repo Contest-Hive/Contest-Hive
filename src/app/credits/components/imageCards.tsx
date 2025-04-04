@@ -49,6 +49,19 @@ const ME = {
   ],
 };
 
+/**
+ * Renders a card component displaying a person's profile, including their name, role, image, description, and social media links.
+ *
+ * @param person - An object containing the person's details:
+ *   - name: The person's name.
+ *   - role: The person's role or title.
+ *   - image: URL to the person's profile image.
+ *   - description: A short bio or description of the person.
+ *   - links: An array of objects with each social media link's name and URL.
+ * @param index - (Optional) A unique index used as a key when rendering a list of cards.
+ *
+ * @returns A JSX element representing the person's profile card.
+ */
 function getPersonCard({
   person,
   index,

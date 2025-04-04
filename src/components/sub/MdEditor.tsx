@@ -9,6 +9,14 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 import { Loader2 } from "lucide-react";
 
+/**
+ * Renders a textarea for entering messages in the Markdown editor.
+ *
+ * Displays a controlled input area that updates the message text state only if the new content does not exceed 4000 characters.
+ *
+ * @param text - The current message text.
+ * @param setText - Function to update the message text.
+ */
 function MessageArea({
   text,
   setText,

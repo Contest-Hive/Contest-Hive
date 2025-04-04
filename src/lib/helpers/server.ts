@@ -43,6 +43,13 @@ export async function sendMessage(message: string) {
   return response.json();
 }
 
+/**
+ * Retrieves and processes contest data.
+ *
+ * Fetches all contest data using `getContestResponse`, flattens the data structure into a single array, sorts contests based on their start times relative to the current time, and filters out contests that are starting in 10 seconds or less.
+ *
+ * @returns An array of contest objects that start in more than 10 seconds.
+ */
 export async function getAllContestData() {
   var _contests: ContestDataType = (await getContestResponse("all")).data;
 
@@ -62,6 +69,14 @@ export async function getAllContestData() {
   return filteredContests;
 }
 
+/**
+ * Retrieves the last updated time from the contest data JSON.
+ *
+ * This asynchronous function sends a GET request to a GitHub-hosted JSON file containing contest metadata
+ * and extracts the `lastUpdated` property from the response.
+ *
+ * @returns A promise that resolves to the last updated time as a string.
+ */
 export async function getLastUpdatedTime() {
   const url =
     "https://raw.githubusercontent.com/Contest-Hive/__contest-hive-backend/refs/heads/cache/cache/Data/all.json";
