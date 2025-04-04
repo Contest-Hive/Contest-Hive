@@ -13,18 +13,7 @@ import { Button } from "../ui/button";
 import { ChevronDown } from "lucide-react";
 import { get } from "http";
 import { cn } from "@/lib/utils";
-
-const PLATFORMS = [
-  "All",
-  "Atcoder",
-  "Codeforces",
-  "Codeforces Gym",
-  "CodeChef",
-  "HackerEarth",
-  "HackerRank",
-  "LeetCode",
-  "Toph",
-];
+import { PLATFORMS } from "@/lib/constants";
 
 /**
  * Renders a dropdown menu for selecting a programming platform.
@@ -55,10 +44,7 @@ export default function SelectPlatform({
             alt={platform}
             width={1}
             height={1}
-            className={cn(
-              "h-6 w-6 rounded-sm p-0.5 dark:bg-primary",
-              platform.toLowerCase().includes("gym") ? "invert-[19]" : "",
-            )}
+            className="h-6 w-6 rounded-sm p-0.5 dark:bg-primary"
           />
           <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
             {platform}
@@ -82,10 +68,7 @@ export default function SelectPlatform({
               alt={plt}
               width={1}
               height={1}
-              className={cn(
-                "h-6 w-6 rounded-sm p-0.5 dark:bg-primary",
-                plt.toLowerCase().includes("gym") ? "invert-[19]" : "",
-              )}
+              className="h-6 w-6 rounded-sm p-0.5 dark:bg-primary"
             />
             {plt}
           </DropdownMenuCheckboxItem>

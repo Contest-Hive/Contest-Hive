@@ -32,18 +32,18 @@ export default function Contest(contest: ContestType, index: number) {
             alt={contest.platform}
             width={1}
             height={1}
-            className={cn(
-              "-ml-0.5 mr-0.5 h-6 w-6 rounded-sm p-0.5 dark:bg-primary md:mr-1",
-              contest.platform.toLowerCase().includes("gym")
-                ? "invert-[19]"
-                : "",
-            )}
+            className="-ml-0.5 mr-0.5 h-6 w-6 rounded-sm p-0.5 dark:bg-primary/95 md:mr-1"
           />
           <Link
             href={contest.url}
             className="group flex min-w-64 items-center justify-start gap-1 text-balance text-xs font-semibold text-primary underline-offset-2 hover:underline md:text-sm"
             target="_blank"
           >
+            {contest.platform.toLowerCase().includes("gym") && (
+              <p className="-mx-0.5 mt-0.5 font-mono font-bold text-red-600 dark:text-blue-400">
+                [GYM]
+              </p>
+            )}
             {contest.title}
             <Link2 className="mt-0.5 hidden h-4 w-4 -rotate-45 group-hover:block" />
           </Link>

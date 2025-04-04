@@ -21,3 +21,15 @@ export const contestUrlData = {
   leetcode: "https://leetcode.com/contest/",
   toph: "https://toph.co/c/",
 };
+
+export const PLATFORMS = [
+  "All",
+  "Atcoder",
+  "Codeforces",
+  "Codeforces GYM",
+  "CodeChef",
+  "HackerEarth",
+  "HackerRank",
+  "LeetCode",
+  "Toph",
+];

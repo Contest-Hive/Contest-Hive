@@ -37,17 +37,8 @@ import SearchText from "@/lib/helpers/search";
 import type { ContestType } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import RelativeTime from "./sub/RelativeTime";
+import { PLATFORMS } from "@/lib/constants";
 
-const PLATFORMS = [
-  "Atcoder",
-  "Codeforces",
-  "Codeforces Gym",
-  "CodeChef",
-  "HackerEarth",
-  "HackerRank",
-  "LeetCode",
-  "Toph",
-];
 
 /**
  * Renders a table of upcoming contests with filtering, search, and pagination controls.
@@ -109,7 +100,7 @@ export default function ContestsTable({
           setFilteredData(
             contestData.filter((contest) => {
               const isPlatformMatch =
-                platform === "Codeforces Gym" ? "CF GYM" : platform;
+                platform === "Codeforces GYM" ? "CF GYM" : platform;
               return contest.platform === isPlatformMatch;
             }),
           );
@@ -120,7 +111,7 @@ export default function ContestsTable({
           contestData.filter((contest) => {
             const text = `${contest.title.toLowerCase()} ${contest.platform.toLowerCase()}`;
             const expectedPlatform =
-              platform === "Codeforces Gym" ? "CF GYM" : platform;
+              platform === "Codeforces GYM" ? "CF GYM" : platform;
 
             if (platform === "All") {
               return SearchText(text, searchQuery);
@@ -145,7 +136,7 @@ export default function ContestsTable({
       setFilteredData(
         contestData.filter((contest) => {
           const isPlatformMatch =
-            platform === "Codeforces Gym" ? "CF GYM" : platform;
+            platform === "Codeforces GYM" ? "CF GYM" : platform;
           return contest.platform === isPlatformMatch;
         }),
       );
@@ -184,7 +175,10 @@ export default function ContestsTable({
           {compressed && (
             <span className="block px-1.5 font-semibold">
               Go to the
-              <Anchor href="/focused" className="p-0 underline font-bold text-indigo-500 tracking-wider">
+              <Anchor
+                href="/focused"
+                className="p-0 font-bold tracking-wider text-indigo-500 underline"
+              >
                 focused
               </Anchor>
               page for a better experience.
@@ -226,7 +220,7 @@ export default function ContestsTable({
               })}
           </TableBody>
         </Table>
-        <RelativeTime utcTime={lastUpdated} className="mt-5"/>
+        <RelativeTime utcTime={lastUpdated} className="mt-5" />
       </CardContent>
       <CardContent className="flex justify-between">
         <div className="flex items-center justify-center gap-2 text-xs font-semibold md:text-sm">
