@@ -36,7 +36,7 @@ export default function SelectPlatform({
         <Button
           variant="outline"
           size="sm"
-          className="h-10 min-w-24 select-none justify-start gap-1"
+          className="h-10 md:min-w-24 select-none justify-start gap-1"
         >
           <Image
             priority
@@ -52,7 +52,7 @@ export default function SelectPlatform({
           <ChevronDown className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="start">
+      <DropdownMenuContent align="start" className="pr-2">
         <DropdownMenuLabel>Select Platform</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {PLATFORMS.map((plt) => (
