@@ -21,16 +21,17 @@ export function secondsToReadableTime(s: number) {
   if (minutes > 0) {
     result += `${result ? " " : ""}${minutes} minute${minutes > 1 ? "s" : ""}`;
   }
-  if (!result) {
-    result = `${seconds} second${seconds > 1 ? "s" : ""}`;
-  }
+  
+  result += `${result ? " " : ""}${seconds} second${seconds > 1 ? "s" : ""}`;
+  // if (seconds > 0) {
+  // }
 
   return result;
 }
 
 export function secondsToShortReadableTime(s: number) {
   if (!s) {
-    return "13s";
+    return "-1s";
   }
 
   const seconds = s % 60;
@@ -49,9 +50,10 @@ export function secondsToShortReadableTime(s: number) {
   if (minutes > 0) {
     result += `${result ? " " : ""}${minutes}m`;
   }
-  if (!result) {
-    result = `${seconds}s`;
-  }
+
+  result += `${result ? " " : ""} ${seconds}s`;
+  // if (seconds > 0) {
+  // }
 
   return result;
 }
