@@ -16,7 +16,7 @@ const GOOGLE_FORM = "https://forms.gle/xmvC3KdvAzcRXk7j6";
 
 const Hero = () => {
   return (
-    <div className="grainy-dark mx-auto w-full px-2.5 py-10 dark:bg-none md:px-20">
+    <div className="grainy-dark mx-auto w-full px-2.5 py-10 md:px-20 dark:!bg-none">
       <div className="flex items-center justify-center">
         <AnimatedBlob />
       </div>
@@ -24,11 +24,11 @@ const Hero = () => {
         <Highlight>Contests</Highlight> at your{" "}
         <span className="tracking-tighter">Fingertips</span>
       </Heading>
-      <p className="relative mx-auto max-w-lg text-balance text-center text-base md:max-w-xl md:text-base lg:max-w-2xl lg:text-lg">
+      <p className="relative mx-auto max-w-lg text-center text-base text-balance md:max-w-xl md:text-base lg:max-w-2xl lg:text-lg">
         <span className="font-semibold tracking-tighter">Contest Hive</span>{" "}
         will keep you updated with all the upcoming contests.
         <br />
-        <span className="text-sm text-primary/90 md:text-base">
+        <span className="text-primary/90 text-sm md:text-base">
           Keep your <span title="eyes emoji">👀</span> on our{" "}
           <b className="text-[#26a5e4] dark:text-[#2bb8ff]">Telegram</b> channel
           for contest alerts.
