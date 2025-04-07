@@ -74,7 +74,7 @@ function ContestRow({ contest, index }: { contest: ContestType; index: number })
                 content={`${IsoTimeToLocalTime(contest.startTime)} ${getUserTimezone()}`}
                 className="w-60 flex items-center ml-2 md:ml-0 justify-center text-xs font-semibold"
               >
-                <Badge variant="secondary">
+                <Badge variant="secondary" className="text-nowrap">
                   {timeToReadableTime(contest.startTime)}
                 </Badge>
               </ResponsiveTooltip>
