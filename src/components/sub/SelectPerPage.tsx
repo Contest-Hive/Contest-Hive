@@ -20,7 +20,7 @@ export default function DropdownPerPage({
   const [open, setOpen] = useState(false);
 
   return (
-    <DropdownMenu open={open} onOpenChange={setOpen}>
+    <DropdownMenu open={open} onOpenChange={setOpen} modal={false}>
       <DropdownMenuTrigger asChild>
         <Button 
           variant="outline" 
@@ -34,10 +34,6 @@ export default function DropdownPerPage({
       </DropdownMenuTrigger>
       <DropdownMenuContent 
         className="w-[66px]"
-        ref={(ref) =>
-          // temporary workaround from https://github.com/shadcn-ui/ui/issues/1220
-          ref?.addEventListener('touchend', (e) => e.preventDefault())
-        }
       >
         <DropdownMenuGroup>
           <DropdownMenuLabel>Select</DropdownMenuLabel>
