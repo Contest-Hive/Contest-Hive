@@ -26,26 +26,25 @@ export default function Contest(contest: ContestType, index: number) {
     <TableRow key={index}>
       <TableCell className="py-1">
         <div className="mt-1 flex items-center justify-start">
-          <div className="relative flex items-center justify-center">
-            <Image
-              priority
-              src={getPlatformLogoUrl(contest.platform)}
-              alt={contest.platform}
-              width={1}
-              height={1}
-              className="-ml-0.5 mr-0.5 h-6 w-6 rounded-sm p-0.5 dark:bg-primary/95 md:mr-1"
-            />
-            {contest.platform.toLowerCase().includes("gym") && (
-              <p className="absolute -ml-[5px] mt-7 scale-75 font-mono text-xs font-bold text-red-600 dark:text-blue-400 md:text-sm">
-                GYM
-              </p>
-            )}
-          </div>
+          <Image
+            priority
+            src={getPlatformLogoUrl(contest.platform)}
+            alt={contest.platform}
+            width={1}
+            height={1}
+            className="-ml-0.5 mr-0.5 h-6 w-6 rounded-sm p-0.5 dark:bg-primary/95 md:mr-1"
+          />
           <Link
             href={contest.url}
-            className="group flex min-w-64 items-center justify-start gap-1 text-xs font-semibold text-primary underline-offset-2 hover:underline md:text-sm"
+            className="group flex items-center justify-start gap-1 text-balance text-xs font-semibold text-primary underline-offset-2 hover:underline md:text-sm"
             target="_blank"
           >
+            {contest.platform.toLowerCase().includes("gym") ||
+              (1 && (
+                <p className="text-3xs -mx-0.5 mt-0.5 font-mono font-bold text-red-600 dark:text-blue-400">
+                  [GYM]
+                </p>
+              ))}
             {contest.title}
             <Link2 className="mt-0.5 hidden h-4 w-4 -rotate-45 group-hover:block" />
           </Link>

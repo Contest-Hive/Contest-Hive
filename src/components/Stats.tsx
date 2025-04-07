@@ -18,7 +18,7 @@ const Stats = async () => {
   const statsData = await getStatsData("page");
   return (
     <MaxWidthWrapper id="stats">
-      <div className="mx-auto my-5 max-w-screen-md rounded-3xl bg-muted/30 pb-2">
+      <div className="mx-auto my-5 max-w-(--breakpoint-md) rounded-3xl bg-muted/30 pb-2">
         <Heading level={2}>
           Why<Highlight>Contest Hive</Highlight>
         </Heading>
@@ -36,7 +36,7 @@ const Stats = async () => {
           </span>
         </p>
       </div>
-      <div className="mx-auto mb-10 flex max-w-screen-md flex-col items-center justify-between gap-2 md:flex-row">
+      <div className="mx-auto mb-10 flex max-w-(--breakpoint-md) flex-col items-center justify-between gap-2 md:flex-row">
         {statsData.map((data, index) => (
           <Card key={index} className="w-full">
             <CardContent className="pb-4">
