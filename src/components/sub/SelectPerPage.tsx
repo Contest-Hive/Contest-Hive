@@ -1,51 +1,45 @@
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
-import { Dispatch, SetStateAction, useState } from "react";
-import { ChevronDown } from "lucide-react";
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectLabel,
+  SelectValue,
+} from "@/components/ui/select";
+import { Dispatch, SetStateAction } from "react";
 
-export default function DropdownPerPage({
+export default function SelectPerPage({
   perPage,
   setPerPage,
 }: {
   perPage: number;
   setPerPage: Dispatch<SetStateAction<string>>;
 }) {
-  const [open, setOpen] = useState(false);
-
   return (
-    <DropdownMenu open={open} onOpenChange={setOpen} modal={false}>
-      <DropdownMenuTrigger asChild>
-        <Button 
-          variant="outline" 
-          className="w-[66px]" 
-          title="Show Per Page"
-          onClick={() => setOpen(!open)}
-        >
-          {perPage}
-          <ChevronDown className="ml-1 h-4 w-4" />
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent 
-        className="w-[66px]"
-      >
-        <DropdownMenuGroup>
-          <DropdownMenuLabel>Select</DropdownMenuLabel>
-          <DropdownMenuItem onClick={() => { setPerPage("3"); setOpen(false); }}>3</DropdownMenuItem>
-          <DropdownMenuItem onClick={() => { setPerPage("5"); setOpen(false); }}>5</DropdownMenuItem>
-          <DropdownMenuItem onClick={() => { setPerPage("7"); setOpen(false); }}>7</DropdownMenuItem>
-          <DropdownMenuItem onClick={() => { setPerPage("10"); setOpen(false); }}>10</DropdownMenuItem>
-          <DropdownMenuItem onClick={() => { setPerPage("15"); setOpen(false); }}>15</DropdownMenuItem>
-          <DropdownMenuItem onClick={() => { setPerPage("20"); setOpen(false); }}>20</DropdownMenuItem>
-          <DropdownMenuItem onClick={() => { setPerPage("25"); setOpen(false); }}>25</DropdownMenuItem>
-        </DropdownMenuGroup>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <Select
+      value={perPage.toString()}
+      onValueChange={(value) => setPerPage(value)}
+    >
+      <SelectTrigger className="w-[66px]" title="Show Per Page">
+        <SelectValue />
+      </SelectTrigger>
+      <SelectContent 
+        ref={(ref) =>
+        // temporary workaround from https://github.com/shadcn-ui/ui/issues/1220
+        ref?.addEventListener('touchend', (e) => e.preventDefault())
+      }>
+        <SelectGroup>
+          <SelectLabel>Select</SelectLabel>
+          <SelectItem value="3">3</SelectItem>
+          <SelectItem value="5">5</SelectItem>
+          <SelectItem value="7">7</SelectItem>
+          <SelectItem value="10">10</SelectItem>
+          <SelectItem value="15">15</SelectItem>
+          <SelectItem value="20">20</SelectItem>
+          <SelectItem value="25">25</SelectItem>
+        </SelectGroup>
+      </SelectContent>
+    </Select>
   );
 }
