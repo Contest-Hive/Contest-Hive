@@ -41,7 +41,7 @@ export default function Contest(contest: ContestType, index: number) {
           >
             {contest.platform.toLowerCase().includes("gym") ||
               (1 && (
-                <p className="text-3xs -mx-0.5 mt-0.5 font-mono font-bold text-red-600 dark:text-blue-400">
+                <p className="text-xs -mx-0.5 mt-1 font-mono font-bold text-red-600 dark:text-blue-400">
                   [GYM]
                 </p>
               ))}
