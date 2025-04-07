@@ -68,7 +68,7 @@ function ContestRow({ contest, index }: { contest: ContestType; index: number })
         </div>
         <div className="mb-1 flex items-center justify-start md:pl-0">
           <div className="flex w-full items-center justify-start gap-2">
-            <span className="flex min-w-32 items-center justify-start gap-1 md:w-36 ">
+            <span className="flex min-w-36 items-center justify-start gap-1 md:w-36 ">
               <CalendarDays className="h-5 w-5 text-primary/70" />
               <ResponsiveTooltip
                 content={`${IsoTimeToLocalTime(contest.startTime)} ${getUserTimezone()}`}
