@@ -1,12 +1,166 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-html {
-  scroll-behavior: smooth;
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-heading:
+    'Recursive', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  --color-pinkish: #ef4444;
+  --color-pinkish-foreground: #ff6b6b;
+
+  --color-blueish: #002244;
+  --color-blueish-foreground: #60a5fa;
+
+  --color-greenish: #10b981;
+  --color-greenish-foreground: #34d399;
+
+  --color-yellowish: #f59e0b;
+  --color-yellowish-foreground: #fcd34d;
+
+  --color-redish: #dc2626;
+  --color-redish-foreground: #ef4444;
+
+  --color-grayish: #6b7280;
+  --color-grayish-foreground: #9ca3af;
+
+  --color-blackish: #111827;
+  --color-blackish-foreground: #1f2937;
+
+  --color-whitish: #f9fafb;
+  --color-whitish-foreground: #f3f4f6;
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-blob-phone: blobPhone 7s ease-in-out infinite;
+  --animate-blob: blob 7s ease-in-out infinite;
+
+  @keyframes blob {
+    0% {
+      transform: translate(0px, -45px) scale(0.9);
+    }
+    13% {
+      transform: translate(100px, -70px) scale(0.75);
+    }
+    33% {
+      transform: translate(-100px, -100px) scale(1);
+    }
+    66% {
+      transform: translate(0, -50px) scale(0.75);
+    }
+    88% {
+      transform: translate(0, 0px) scale(0.8);
+    }
+    100% {
+      transform: translate(0px, -45px) scale(0.9);
+    }
+  }
+  @keyframes blobPhone {
+    0% {
+      transform: translate(-13px, 5px) scale(1);
+    }
+    13% {
+      transform: translate(50px, -70px) scale(0.95);
+    }
+    33% {
+      transform: translate(-100px, -50) scale(1.1);
+    }
+    66% {
+      transform: translate(-20, -60) scale(0.95);
+    }
+    88% {
+      transform: translate(0px, 0px) scale(0.95);
+    }
+    100% {
+      transform: translate(-13px, 5px) scale(1);
+    }
+  }
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
 }
 
-/* --- Shadcn Themes --- */
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+  @media (width >= --theme(--breakpoint-sm)) {
+    max-width: none;
+  }
+  @media (width >= 1400px) {
+    max-width: 1400px;
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@layer utilities {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* --- Shadcn Themes --- */
+}
 
 @layer base {
   :root {
