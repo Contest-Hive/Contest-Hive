@@ -56,12 +56,12 @@ function ContestRow({ contest, index }: { contest: ContestType; index: number })
             className="group flex items-center justify-start gap-1 text-balance text-xs font-semibold text-primary underline-offset-2 hover:underline md:text-sm"
             target="_blank"
           >
-            {contest.platform.toLowerCase().includes("gym") ||
-              (1 && (
+            {contest.platform.toLowerCase().includes("gym") &&
+               (
                 <p className="text-xs -mx-0.5 font-mono font-bold text-red-600 dark:text-blue-400">
                   [GYM]
                 </p>
-              ))}
+              )}
             {contest.title}
             <Link2 className="mt-0.5 hidden h-4 w-4 -rotate-45 group-hover:block" />
           </Link>

@@ -26,7 +26,7 @@ const PEOPLE = [
     role: "Competitive Programmer",
     image: "/assets/images/min/safin.jpg",
     description:
-      "My friend who helped me make the UI more user-friendly and helped me with color combinations.",
+      "My friend who helped me make the UI more user-friendly and helped me with color combinations. He's been a great tester too!",
     links: [
       { name: "github", url: "https://github.com/safin01" },
       { name: "telegram", url: "https://t.me/safin_sarker" },
