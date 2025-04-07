@@ -31,7 +31,7 @@ export default function SelectPlatform({
   setPlatform: (platform: string) => void;
 }) {
   return (
-    <DropdownMenu>
+    <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
         <Button
           variant="outline"
