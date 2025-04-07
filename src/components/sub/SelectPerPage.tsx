@@ -7,7 +7,7 @@ import {
   SelectLabel,
   SelectValue,
 } from "@/components/ui/select";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef } from "react";
 
 export default function SelectPerPage({
   perPage,
@@ -16,6 +16,46 @@ export default function SelectPerPage({
   perPage: number;
   setPerPage: Dispatch<SetStateAction<string>>;
 }) {
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const content = contentRef.current;
+    
+    if (!content) return;
+    
+    // Function to handle wheel events
+    const handleWheel = (e: WheelEvent) => {
+      const element = e.currentTarget as HTMLDivElement;
+      const { scrollTop, scrollHeight, clientHeight } = element;
+      
+      // If we're at the top of the dropdown and scrolling up
+      // or at the bottom and scrolling down, allow page to scroll
+      const isAtTop = scrollTop <= 0;
+      const isAtBottom = Math.abs(scrollHeight - clientHeight - scrollTop) < 1;
+      
+      if ((isAtTop && e.deltaY < 0) || (isAtBottom && e.deltaY > 0)) {
+        // Allow the event to bubble up to the page
+        e.stopPropagation();
+        return;
+      }
+      
+      // Otherwise, prevent propagation to avoid page scroll while navigating dropdown
+      e.stopPropagation();
+    };
+    
+    // Add the event listener
+    content.addEventListener('wheel', handleWheel);
+    
+    // Handle touch events for mobile
+    content.addEventListener('touchend', (e) => e.preventDefault());
+    
+    // Clean up event listeners on unmount
+    return () => {
+      content.removeEventListener('wheel', handleWheel);
+      content.removeEventListener('touchend', (e) => e.preventDefault());
+    };
+  }, []);
+
   return (
     <Select
       value={perPage.toString()}
@@ -24,11 +64,7 @@ export default function SelectPerPage({
       <SelectTrigger className="w-[66px]" title="Show Per Page">
         <SelectValue />
       </SelectTrigger>
-      <SelectContent 
-        ref={(ref) =>
-        // temporary workaround from https://github.com/shadcn-ui/ui/issues/1220
-        ref?.addEventListener('touchend', (e) => e.preventDefault())
-      }>
+      <SelectContent ref={contentRef}>
         <SelectGroup>
           <SelectLabel>Select</SelectLabel>
           <SelectItem value="3">3</SelectItem>
