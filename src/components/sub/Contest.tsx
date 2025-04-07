@@ -22,20 +22,14 @@ import { Link2, CalendarPlus, CalendarDays, Clock } from "lucide-react";
 import type { ContestType } from "@/lib/types";
 import { Separator } from "../ui/separator";
 
-// Keep the function signature the same as it was originally
-// since the parent component is calling it as a function
 export default function Contest(contest: ContestType, index: number) {
-  // We can't use hooks directly in this function if it's being called as a function
-  // Instead, we'll use a component wrapper pattern
   return <ContestRow contest={contest} index={index} />;
 }
 
-// Create a proper React component that can use hooks
 function ContestRow({ contest, index }: { contest: ContestType; index: number }) {
   // State to force re-render
   const [, setCurrentTime] = useState(new Date());
 
-  // Set up an interval to update the time every second
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentTime(new Date()); // This forces a re-render
@@ -64,7 +58,7 @@ function ContestRow({ contest, index }: { contest: ContestType; index: number })
           >
             {contest.platform.toLowerCase().includes("gym") ||
               (1 && (
-                <p className="text-xs -mx-0.5 mt-1 font-mono font-bold text-red-600 dark:text-blue-400">
+                <p className="text-xs -mx-0.5 font-mono font-bold text-red-600 dark:text-blue-400">
                   [GYM]
                 </p>
               ))}
@@ -81,7 +75,6 @@ function ContestRow({ contest, index }: { contest: ContestType; index: number })
                 className="w-60 flex items-center ml-2 md:ml-0 justify-center text-xs font-semibold"
               >
                 <Badge variant="secondary">
-                  {/* The component re-renders every second because of the useState and useEffect */}
                   {timeToReadableTime(contest.startTime)}
                 </Badge>
               </ResponsiveTooltip>
