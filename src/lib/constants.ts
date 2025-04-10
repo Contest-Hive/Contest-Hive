@@ -14,8 +14,8 @@ export const pascalNames = {
 export const contestUrlData = {
   atcoder: "https://atcoder.jp/contests/",
   codechef: "https://www.codechef.com/",
-  codeforces: "https://codeforces.com/contests/",
-  "codeforces-gym": "https://codeforces.com/gymRegistration/",
+  codeforces: "https://codeforces.com/contest/",
+  "codeforces-gym": "https://codeforces.com/gym/",
   hackerearth: "https://",
   hackerrank: "https://www.hackerrank.com/contests/",
   leetcode: "https://leetcode.com/contest/",
