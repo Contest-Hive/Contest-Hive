@@ -11,12 +11,16 @@ export function NavMenu() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outline" className="h-10 w-10 px-2" title="Open Menu">
+        <Button
+          variant="outline"
+          className="z-[55] h-10 w-10 bg-red-500 px-2"
+          title="Open Menu"
+        >
           <Menu className="h-full w-full" />
         </Button>
       </SheetTrigger>
 
-      <SheetContent side="right">
+      <SheetContent>
         <div className="mt-10 flex flex-col">
           <Anchor
             href="/focused"

@@ -3,7 +3,7 @@ import MdEditor from "./sub/MdEditor";
 
 const Contact = () => {
   return (
-    <MaxWidthWrapper id="contact" className="max-w-(--breakpoint-md) px-4">
+    <MaxWidthWrapper id="contact" className="max-w-screen-md px-4">
       <header className="mb-6 mt-10 inline-block border-b-2 px-6 pb-2 text-center font-heading text-4xl font-bold leading-tight tracking-tighter md:text-5xl lg:text-6xl">
         Contact Us
       </header>
