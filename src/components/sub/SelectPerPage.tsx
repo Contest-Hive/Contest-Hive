@@ -14,7 +14,7 @@ export default function SelectPerPage({
   setPerPage,
 }: {
   perPage: number;
-  setPerPage: Dispatch<SetStateAction<string>>;
+  setPerPage: Dispatch<SetStateAction<string | number>>;
 }) {
   return (
     <Select

@@ -39,7 +39,6 @@ import { cn } from "@/lib/utils";
 import RelativeTime from "./sub/RelativeTime";
 import { PLATFORMS } from "@/lib/constants";
 
-
 /**
  * Renders a table of upcoming contests with filtering, search, and pagination controls.
  *
@@ -69,7 +68,7 @@ export default function ContestsTable({
   contestData: ContestType[];
   compressed?: boolean;
   perPage: number;
-  setPerPage: Dispatch<SetStateAction<string>>;
+  setPerPage: Dispatch<SetStateAction<number>>;
   isExpanded?: boolean;
   handleToggleExpanded?: any;
   lastUpdated: string;
@@ -216,7 +215,7 @@ export default function ContestsTable({
             {filteredData
               .slice(currentPage * perPage, perPage * (currentPage + 1))
               .map((contest, index) => {
-                return Contest(contest, index);
+                return <Contest contest={contest} index={index} key={index} />;
               })}
           </TableBody>
         </Table>

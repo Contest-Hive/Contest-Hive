@@ -21,15 +21,15 @@ export function secondsToReadableTime(s: number) {
   if (minutes > 0) {
     result += `${result ? " " : ""}${minutes} minute${minutes > 1 ? "s" : ""}`;
   }
-  
-  result += `${result ? " " : ""}${seconds} second${seconds > 1 ? "s" : ""}`;
-  // if (seconds > 0) {
-  // }
+
+  if (seconds > 0) {
+    result += `${result ? " " : ""}${seconds} second${seconds > 1 ? "s" : ""}`;
+  }
 
   return result;
 }
 
-export function secondsToShortReadableTime(s: number) {
+export function secondsToShortReadableTime(s: number, addSecond = false) {
   if (!s) {
     return "-1s";
   }
@@ -51,9 +51,10 @@ export function secondsToShortReadableTime(s: number) {
     result += `${result ? " " : ""}${minutes}m`;
   }
 
-  result += `${result ? " " : ""} ${seconds}s`;
   // if (seconds > 0) {
-  // }
+  if (addSecond) {
+    result += `${result ? " " : ""} ${seconds}s`;
+  }
 
   return result;
 }
@@ -70,7 +71,7 @@ export function getSecondsDifferencesFromCurrentTime(isoTime: string) {
 export function timeToReadableTime(isoTime: string) {
   const x = getSecondsDifferencesFromCurrentTime(isoTime);
   if (x < 1) return "Started";
-  return secondsToShortReadableTime(x);
+  return secondsToShortReadableTime(x, true);
 }
 
 export function IsoTimeToLocalTime(isoTime: string) {

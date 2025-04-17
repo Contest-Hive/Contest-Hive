@@ -15,7 +15,7 @@ const CompressedContestTable = ({
   const [perPage, setPerPage] = useLocalStorage("compressed-per-page", "5");
 
   return (
-    <div className="mx-auto max-w-(--breakpoint-md) px-1 pb-10">
+    <div className="mx-auto max-w-screen-md px-1 pb-10">
       <div className="my-5 rounded-3xl bg-muted/30 pb-2">
         <Heading level={2}>
           Take a<Highlight>Glance</Highlight>

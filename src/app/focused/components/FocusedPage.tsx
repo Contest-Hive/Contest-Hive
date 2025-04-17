@@ -41,9 +41,9 @@ const FocusedPage = ({
     "my-5 px-1 text-start transition-all duration-300",
     ready
       ? JSON.parse(isExpanded)
-        ? "max-w-(--breakpoint-2xl)"
-        : "max-w-(--breakpoint-lg)"
-      : "max-w-(--breakpoint-lg)", // Default shrunk state before ready
+        ? "max-w-screen-2xl"
+        : "max-w-screen-lg"
+      : "max-w-screen-lg", // Default shrunk state before ready
     // ik, the logic is kinda messy! But it works! :)
   );
 

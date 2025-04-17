@@ -40,11 +40,11 @@ const NavBar = () => {
   return (
     <div
       className={cn(
-        "sticky inset-0 top-0 z-55 h-12 bg-white bg-opacity-70 backdrop-blur-lg transition-all duration-300 dark:bg-transparent md:h-14 md:bg-opacity-30",
+        "sticky inset-0 top-0 z-[55] h-12 bg-white bg-opacity-70 backdrop-blur-lg transition-all duration-300 dark:bg-transparent md:h-14 md:bg-opacity-30",
         show ? "translate-y-0" : "-translate-y-full",
       )}
     >
-      <MaxWidthWrapper>
+      <MaxWidthWrapper className="relative">
         <div className="flex h-12 flex-1 items-center justify-between gap-2 px-2 md:h-14 md:gap-4">
           <Link
             prefetch={false}
@@ -78,7 +78,7 @@ const NavBar = () => {
             <Separator className="ml-1 mr-2 h-7" orientation="vertical" />
             <DropdownMenu>
               <DropdownMenuTrigger
-                className="hidden select-none focus-visible:outline-hidden md:block"
+                className="hidden select-none focus-visible:outline-none md:block"
                 tabIndex={-1}
               >
                 <Button
