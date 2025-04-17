@@ -23,7 +23,7 @@ export async function GET(req: NextRequest) {
     const stats = await STATS.findOne({ _id: 1 });
     const data = {
       ok: true,
-      ...stats._doc,
+      ...stats.toObject(),
       href: req.nextUrl.href,
       ip: req.headers.get("x-real-ip") || "127.0.0.1",
     };
