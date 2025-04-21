@@ -13,7 +13,7 @@ const Focused = async () => {
 export default Focused;
 
 export const metadata = {
-  title: "Focused Mode - Contest Hive",
+  title: "Focused Mode - Upcoming Contests in One Place | Contest Hive",
   description:
     "With the focused mode, you can only focus on the contests and not the other data. Increase your productivity with Contest Hive. All upcoming competitive contests at one place.",
 };
