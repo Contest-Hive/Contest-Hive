@@ -13,7 +13,7 @@ export function NavMenu() {
       <SheetTrigger asChild>
         <Button
           variant="outline"
-          className="z-[55] h-10 w-10 bg-red-500 px-2"
+          className="z-[55] h-10 w-10 px-2"
           title="Open Menu"
         >
           <Menu className="h-full w-full" />

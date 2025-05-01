@@ -23,7 +23,7 @@ export const viewport: Viewport = {
 };
 */
 
-const title = "Contest Hive";
+const title = "Contest Hive - Upcoming Contests in One Place";
 const description =
   "Contest Hive provides all the upcoming competitive contests in one place. You will never miss a contest again. With the help of our API, you can integrate it with your website or app.";
 const keywords =
