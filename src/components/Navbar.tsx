@@ -40,7 +40,7 @@ const NavBar = () => {
   return (
     <div
       className={cn(
-        "sticky inset-0 top-0 z-[55] h-12 bg-white bg-opacity-70 backdrop-blur-lg transition-all duration-300 dark:bg-transparent md:h-14 md:bg-opacity-30",
+        "sticky inset-0 top-0 z-50 h-12 bg-white bg-opacity-70 backdrop-blur-lg transition-all duration-300 dark:bg-transparent md:h-14 md:bg-opacity-30",
         show ? "translate-y-0" : "-translate-y-full",
       )}
     >
