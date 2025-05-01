@@ -20,8 +20,8 @@ export function NavMenu() {
         </Button>
       </SheetTrigger>
 
-      <SheetContent>
-        <div className="mt-10 flex flex-col">
+      <SheetContent className="z-[100]">
+        <div className="flex flex-col mt-10">
           <Anchor
             href="/focused"
             className="font-bold"
