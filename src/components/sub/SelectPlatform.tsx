@@ -11,8 +11,6 @@ import {
 import { getPlatformLogoUrl } from "@/lib/helpers/others";
 import { Button } from "../ui/button";
 import { ChevronDown } from "lucide-react";
-import { get } from "http";
-import { cn } from "@/lib/utils";
 import { PLATFORMS } from "@/lib/constants";
 
 /**
@@ -44,7 +42,7 @@ export default function SelectPlatform({
             alt={platform}
             width={1}
             height={1}
-            className="h-6 w-6 rounded-sm p-0.5 dark:bg-primary"
+            className="h-6 w-6 rounded-sm p-0.5 dark:bg-primary mr-1.5"
           />
           <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
             {platform}

@@ -8,7 +8,6 @@ import {
   CardTitle,
 } from "../ui/card";
 
-
 const SHORTCUTS = [
   {
     key: "ctrl", // ⌘
@@ -20,6 +19,12 @@ const SHORTCUTS = [
   //   followedByKey: "f",
   //   description: "Toggle Focus Mode",
   // },
+
+  {
+    key: "ctrl",
+    followedByKey: ".",
+    description: "Toggle Wide Mode in Focused Page",
+  },
   {
     key: "right arrow",
     followedByKey: "",
@@ -38,7 +43,7 @@ export default function KeyboardShortcuts() {
 
   return (
     <Card className="border-none p-1">
-      <CardHeader className="rounded-md bg-muted p-2 text-center mt-1 font-bold text-primary">
+      <CardHeader className="mt-1 rounded-md bg-muted p-2 text-center font-bold text-primary">
         Keyboard Shortcuts
       </CardHeader>
       <CardTitle className="hidden">Keyboard Shortcuts</CardTitle>

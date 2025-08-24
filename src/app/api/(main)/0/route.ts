@@ -4,7 +4,7 @@ import { waitUntil } from "@vercel/functions";
 
 export async function GET() {
   waitUntil(updateStatsData("api")); // this won't block the response
-  const data = await getResponse("$platformName");
+  const data = await getResponse("all");
 
   return await JsonResponse(data);
 }

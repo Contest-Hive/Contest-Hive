@@ -37,6 +37,12 @@ const Info = ({
 
 const listItems = [
   {
+    feature: "Working?",
+    contestHive: <Check />,
+    stopStalk: <Cross />,
+    kontests: <Cross />,
+  },
+  {
     feature: "Shows All Contests",
     contestHive: <Check />,
     stopStalk: <Check />,
@@ -65,12 +71,6 @@ const listItems = [
     stopStalk: <Cross />,
     kontests: <Check />,
   },
-  // {
-  //   feature: "Best Performance",
-  //   contestHive: <Check />,
-  //   stopStalk: <Cross />,
-  //   kontests: <Cross />,
-  // },
   {
     feature: "Shows Native Time",
     contestHive: <Check />,
@@ -106,22 +106,33 @@ function FeatureTable() {
   return (
     <Table className="mb-5 mt-5 text-xs md:text-sm">
       <TableCaption className="text-xs md:text-sm">
-        *As of 22th June, 2024 -{" "}
-        <Link href="https://kontests.net/" target="_blank">
-          <b>Kontests</b>
-        </Link>{" "}
-        is discontinued
+        <div>
+          *As of 22th June, 2024,{" "}
+          <Link href="https://kontests.net/" target="_blank">
+            <b>Kontests</b>
+          </Link>{" "}
+          has been discontinued
+        </div>
+        <div>
+          *As of 1st August, 2025,{" "}
+          <Link href="https://www.stopstalk.com/" target="_blank">
+            <b>StopStalk</b>
+          </Link>{" "}
+          has been discontinued
+        </div>
       </TableCaption>
 
       <TableHeader>
         <TableRow className="rounded-md bg-muted/50">
           <TableHead className="w-56">Features</TableHead>
           <TableHead>
-            <Link href="/" className="text-nowrap">Contest Hive</Link>
+            <Link href="/" className="text-nowrap">
+              Contest Hive
+            </Link>
           </TableHead>
           <TableHead>
             <Link href="https://www.stopstalk.com/" target="_blank">
-              StopStalk
+              StopStalk*
             </Link>
           </TableHead>
           <TableHead>

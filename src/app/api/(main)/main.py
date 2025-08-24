@@ -24,6 +24,7 @@ def getPlatformTemplate(platformName: str):
 data = {
     "data": {
         "all": "all",
+        "0": "all",
         "1": "atcoder",
         "2": "codechef",
         "3": "codeforces",
