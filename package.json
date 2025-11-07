@@ -12,6 +12,7 @@
     "api": "cd \"src/app/api/(main)\" && python main.py"
   },
   "dependencies": {
+    "@next/third-parties": "^16.0.1",
     "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-avatar": "^1.1.0",
     "@radix-ui/react-dialog": "^1.0.5",

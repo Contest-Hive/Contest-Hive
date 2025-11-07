@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 import { Inter as FontSans } from "next/font/google";
 import { Recursive } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
@@ -41,16 +42,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           name="google-site-verification"
           content="XLTmt69wH57wnU1mAOAb9t2kQjBMW7Px6hwBBeahMfI"
         />
-        {/* Analytics */}
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-75X001RBNN"
-        ></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-75X001RBNN');`,
-          }}
-        />
       </head>
       <body
         className={cn(
@@ -68,6 +59,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </ThemeProvider>
         <Toaster />
       </body>
+      <GoogleAnalytics gaId="G-75X001RBNN" />
     </html>
   );
 }
