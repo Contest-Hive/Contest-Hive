@@ -31,8 +31,24 @@ const Stats = async () => {
           <br />
           Since then, it has been gaining popularity.
           <br />
-          <span className="text-sm text-muted-foreground md:text-base">
-            Here are some stats
+          <span className="flex items-center justify-center gap-2 text-sm text-muted-foreground md:text-base">
+            Here are some stats and{" "}
+            <ResponsiveTooltip
+              content={
+                <span>
+                  Umm... So, the stats below are not{" "}
+                  <i className="font-bold">incorrect or fake</i>. But, all of
+                  them don&apos;t really represent actual human visits.
+                  <br />
+                  Because, even if a bot visits the site, it is counted in the
+                  stats. <code>:3</code>
+                </span>
+              }
+              className="mr-5 max-w-md text-balance px-2 py-5 text-center text-xs font-normal md:mr-0 md:max-w-lg md:text-sm"
+              innerClassName="font-mono font-bold italic dark:text-blue-400 text-blue-500"
+            >
+              a secret
+            </ResponsiveTooltip>
           </span>
         </p>
       </div>

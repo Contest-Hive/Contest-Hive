@@ -52,7 +52,12 @@ export default function ResponsiveTooltip({
         >
           {children}
         </PopoverTrigger>
-        <PopoverContent className={cn("mx-auto font-bold", className)}>
+        <PopoverContent
+          className={cn(
+            "max-w-md text-balance px-2 text-center text-xs font-normal",
+            className,
+          )}
+        >
           {content}
         </PopoverContent>
       </Popover>

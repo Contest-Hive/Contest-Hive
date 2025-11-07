@@ -16,16 +16,10 @@ const fontRecursive = Recursive({
   subsets: ["latin"],
   variable: "--font-sans",
 });
-/*
-import type { Viewport } from "next";
-export const viewport: Viewport = {
-  maximumScale: 1, // Disable auto-zoom on mobile Safari, credit to https://github.com/ai-ng
-};
-*/
 
 const title = "Contest Hive - Upcoming Contests in One Place";
 const description =
-  "Contest Hive provides all the upcoming competitive contests in one place. You will never miss a contest again. With the help of our API, you can integrate it with your website or app.";
+  "Contest Hive provides all the upcoming contests from Atcoder, CodeChef, Codeforces, HackerEarth, HackerRank, LeetCode and Toph in one place. Never miss a contest again!";
 const keywords =
   "contest, contest hive, contest api, upcoming contest, codeforces api, toph api, kontests api, hackerearth api, hackerrank api, codechef api, atcoder api, leetcode api";
 const url = "https://contest-hive.vercel.app/";
@@ -46,6 +40,16 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <meta
           name="google-site-verification"
           content="XLTmt69wH57wnU1mAOAb9t2kQjBMW7Px6hwBBeahMfI"
+        />
+        {/* Analytics */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-75X001RBNN"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-75X001RBNN');`,
+          }}
         />
       </head>
       <body
