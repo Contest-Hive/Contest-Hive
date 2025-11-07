@@ -41,6 +41,16 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           name="google-site-verification"
           content="XLTmt69wH57wnU1mAOAb9t2kQjBMW7Px6hwBBeahMfI"
         />
+        {/* Analytics */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-75X001RBNN"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-75X001RBNN');`,
+          }}
+        />
       </head>
       <body
         className={cn(
