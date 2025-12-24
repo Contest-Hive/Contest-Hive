@@ -2,11 +2,13 @@
 <img height="100px" src="public/favicon.svg" alt="Contest Hive Logo">
 </p>
 
-
 # Contest Hive - Contests at Your Fingertips
 
 <p align="center">
+  <img width="700" alt="Contest Hive Cover" src="https://github.com/user-attachments/assets/86b9f12e-4323-4e82-9c10-8fd6305ac111" />
+</p>
 
+<p align="center">
 <a href="https://github.com/Nusab19/Contest-Hive/actions/workflows/npm-publish-github-packages.yml">
   <img src="https://github.com/Nusab19/Contest-Hive/actions/workflows/test-build.yml/badge.svg" alt="Build">
 </a>
