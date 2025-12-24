@@ -57,7 +57,7 @@ const Stats = async () => {
           <Card key={index} className="w-full">
             <CardContent className="pb-4">
               <CardHeader className="py-3">
-                <CardTitle className="font-bold">{data.title}</CardTitle>
+                <CardTitle className="font-bold text-primary/95">{data.title}</CardTitle>
               </CardHeader>
               <CardDescription className="flex flex-col items-center justify-center">
                 <span className="text-3xl font-extrabold text-primary">
