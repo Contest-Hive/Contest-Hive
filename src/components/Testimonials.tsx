@@ -22,13 +22,14 @@ const TESTAMENTS = [
     description: (
       <>
         <span className="font-semibold tracking-tighter">Contest Hive</span> has
-        been a great tool for my competitive programming journey. It&apos;s genuinely easier than searching for contests by myself.
+        been a useful tool for my competitive programming journey. I don&apos;t
+        have to search through contest by myself anymore.
       </>
     ),
   },
 
   {
-    name: "Random User",
+    name: "Fake User",
     image: "/assets/images/min/beluga.jpg",
     title: (
       <>
@@ -42,6 +43,9 @@ const TESTAMENTS = [
         <span className="font-semibold tracking-tighter">Contest Hive</span> for
         couple of months now. I think every competitive programmer should give
         it a try.
+        <span className="ml-3 text-xs tracking-widest  text-gray-500 dark:text-gray-400">
+          (LIES)
+        </span>
       </>
     ),
   },
@@ -77,7 +81,7 @@ function getCard({
           </div>
         </div>
       </CardHeader>
-      <CardContent className="ml-3 mt-2 text-balance">
+      <CardContent className="ml-3 mt-2 text-balance text-primary/90">
         <QuoteIcon className="absolute inset-0 left-6 top-20 rotate-180" />
         {description}
       </CardContent>

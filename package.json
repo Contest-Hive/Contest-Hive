@@ -12,6 +12,7 @@
     "api": "cd \"src/app/api/(main)\" && python main.py"
   },
   "dependencies": {
+    "@next/third-parties": "^16.0.1",
     "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-avatar": "^1.1.0",
     "@radix-ui/react-dialog": "^1.0.5",
@@ -37,7 +38,7 @@
     "lucide-react": "^0.372.0",
     "marked": "^13.0.0",
     "mongoose": "^8.8.3",
-    "next": "14.2.4",
+    "next": "14.2.35",
     "next-themes": "^0.3.0",
     "react": "^18",
     "react-dom": "^18",
