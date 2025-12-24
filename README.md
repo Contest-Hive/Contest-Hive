@@ -9,8 +9,8 @@
 </p>
 
 <p align="center">
-<a href="https://github.com/Nusab19/Contest-Hive/actions/workflows/npm-publish-github-packages.yml">
-  <img src="https://github.com/Nusab19/Contest-Hive/actions/workflows/test-build.yml/badge.svg" alt="Build">
+<a href="https://github.com/Contest-Hive/Contest-Hive/actions/workflows/github-code-scanning/codeql">
+  <img src="https://github.com/Contest-Hive/Contest-Hive/actions/workflows/github-code-scanning/codeql/badge.svg?branch=main" alt="Build">
 </a>
 <a href="https://contest-hive.vercel.app/docs/">
   <img src="https://img.shields.io/badge/Docs-passing-33cb56" alt="Docs">
