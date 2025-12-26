@@ -3,6 +3,7 @@
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
+import { useHotkeys } from "react-hotkeys-hook";
 
 /**
  * Toggles the application's theme between light and dark modes.
@@ -12,11 +13,23 @@ import { Button } from "@/components/ui/button";
  * dark theme is active, with corresponding animations. A visually hidden label enhances accessibility by describing the button's purpose.
  */
 export default function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
 
   const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
+    setTheme(resolvedTheme === "dark" ? "light" : "dark");
   };
+
+  useHotkeys(
+    "alt+t",
+    (e) => {
+      console.log(resolvedTheme)
+      e.preventDefault();
+      toggleTheme();
+    },
+    {
+      enableOnFormTags: true,
+    },
+  );
 
   return (
     <Button variant="outline" size="icon" onClick={toggleTheme}>
