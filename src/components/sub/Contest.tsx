@@ -65,16 +65,16 @@ function ContestRow({
           />
           <Link
             href={contest.url}
-            className="group flex items-center justify-start gap-1 text-balance text-xs font-semibold text-primary underline-offset-2 hover:underline md:text-sm"
+            className="group relative pr-5 text-balance text-xs font-semibold text-primary underline-offset-2 hover:underline md:text-sm"
             target="_blank"
           >
             {contest.platform.toLowerCase().includes("gym") && (
-              <p className="-mx-0.5 font-mono text-xs font-bold text-red-600 dark:text-blue-400 md:text-sm">
-                [GYM]
-              </p>
+              <span className="-mx-0.5 font-mono text-xs font-bold text-red-600 dark:text-blue-400 md:text-sm">
+                [GYM]{" "}
+              </span>
             )}
             {contest.title}
-            <Link2 className="mt-0.5 hidden h-4 w-4 -rotate-45 group-hover:block" />
+            <Link2 className="absolute right-0 top-1/2 hidden h-4 w-4 -translate-y-1/2 -rotate-45 group-hover:inline-block" />
           </Link>
         </div>
         <div className="mb-1 flex items-center justify-start md:pl-0">
@@ -99,7 +99,6 @@ function ContestRow({
                 {secondsToShortReadableTime(contest.duration)}
               </Badge>
             </span>
-            {/* <Separator orientation="vertical" className="h-6" /> */}
             <div className="flex items-center justify-end md:ml-auto">
               <ResponsiveTooltip
                 content="Add to Google Calendar"

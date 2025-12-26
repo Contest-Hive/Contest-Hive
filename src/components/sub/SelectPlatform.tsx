@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { useState } from "react";
+import { useHotkeys } from "react-hotkeys-hook";
 
 import {
   DropdownMenu,
@@ -28,8 +30,21 @@ export default function SelectPlatform({
   platform: string;
   setPlatform: (platform: string) => void;
 }) {
+  const [open, setOpen] = useState(false);
+
+  useHotkeys(
+    "\\",
+    (e) => {
+      e.preventDefault();
+      setOpen((prev) => !prev);
+    },
+    {
+      enableOnFormTags: false, // Prevents triggering while typing in inputs
+    }
+  );
+
   return (
-    <DropdownMenu modal={false}>
+    <DropdownMenu open={open} onOpenChange={setOpen} modal={false}>
       <DropdownMenuTrigger asChild>
         <Button
           variant="outline"
@@ -57,7 +72,10 @@ export default function SelectPlatform({
           <DropdownMenuCheckboxItem
             key={plt}
             checked={plt === platform}
-            onClick={() => setPlatform(plt)}
+            onClick={() => {
+              setPlatform(plt);
+              setOpen(false);
+            }}
             className="flex items-center justify-start gap-2 text-xs md:text-sm"
           >
             <Image

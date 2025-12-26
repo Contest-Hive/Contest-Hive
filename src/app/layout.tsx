@@ -7,6 +7,8 @@ import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "@/components/ui/toaster";
+import GlobalShortcuts from "@/components/GlobalShortcuts";
+import ShortcutModal from "@/components/ShortcutModal";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -57,6 +59,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         >
           {children}
         </ThemeProvider>
+        <GlobalShortcuts />
+        <ShortcutModal />
         <Toaster />
       </body>
       <GoogleAnalytics gaId="G-75X001RBNN" />

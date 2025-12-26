@@ -16,7 +16,6 @@ import {
 
 import MaxWidthWrapper from "./ui/MaxWidthWrapper";
 import NavMenu from "./mobile/NavMenu";
-import KeyboardShortcuts from "./sub/KeyboardShortcuts";
 import { cn } from "@/lib/utils";
 
 const OLD_WEBSITE = "https://contest-hive-old.vercel.app";
@@ -65,43 +64,29 @@ const NavBar = () => {
             </p>
           </Link>
 
-          <div className="hidden items-center gap-2 md:flex">
-            <Anchor
-              href="/focused"
-              className="font-bold"
-              title="Go to focused page"
-            >
-              •Focused•
-            </Anchor>
-            <Anchor href="/about">About</Anchor>
-            <Anchor href="/credits">Credits</Anchor>
-            <Separator className="ml-1 mr-2 h-7" orientation="vertical" />
-            <DropdownMenu>
-              <DropdownMenuTrigger
-                className="hidden select-none focus-visible:outline-none md:block"
-                tabIndex={-1}
+          <div className="flex items-center gap-1 md:gap-2">
+            {/* Nav Links - Hidden on Mobile */}
+            <div className="hidden items-center gap-2 md:flex">
+              <Anchor
+                href="/focused"
+                className="font-bold"
+                title="Go to focused page"
               >
-                <Button
-                  tabIndex={0}
-                  className="h-10 w-10 p-2"
-                  variant="outline"
-                  size="icon"
-                  asChild
-                  title="Show Shortcuts"
-                >
-                  <CircleHelp className="h-10 w-10" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="min-w-[300px] p-1" align="center">
-                <KeyboardShortcuts />
-              </DropdownMenuContent>
-            </DropdownMenu>
+                •Focused•
+              </Anchor>
+              <Anchor href="/about">About</Anchor>
+              <Anchor href="/credits">Credits</Anchor>
+              <Separator className="ml-1 mr-2 h-7" orientation="vertical" />
+            </div>
+
+            {/* THE FIX: Render ModeToggle exactly ONCE here */}
             <ModeToggle />
+
+            {/* Mobile Menu - Hidden on Desktop */}
+            <div className="md:hidden">
+              <NavMenu />
+            </div>
           </div>
-          <span className="flex items-center gap-1 md:hidden">
-            <ModeToggle />
-            <NavMenu />
-          </span>
         </div>
       </MaxWidthWrapper>
       <Separator />

@@ -41,18 +41,21 @@ const listItems = [
     contestHive: <Check />,
     stopStalk: <Cross />,
     kontests: <Cross />,
+    clist: <Check />,
   },
   {
     feature: "Shows All Contests",
     contestHive: <Check />,
     stopStalk: <Check />,
     kontests: <Check />,
+    clist: <Check />,
   },
   {
     feature: "Data Updates",
     contestHive: <b>~5 min</b>,
     stopStalk: <b>~3 hour</b>,
     kontests: <b>~24 hour</b>,
+    clist: <b>~5 min</b>,
     info: (
       <Info>
         The interval of time after which the data is fetched and updated
@@ -64,18 +67,21 @@ const listItems = [
     contestHive: <Check />,
     stopStalk: <Check />,
     kontests: <Check />,
+    clist: <Check />,
   },
   {
     feature: "API Support",
     contestHive: <Check />,
     stopStalk: <Cross />,
     kontests: <Check />,
+    clist: <Check />,
   },
   {
     feature: "Shows Native Time",
     contestHive: <Check />,
     stopStalk: <Cross />,
     kontests: <Check />,
+    clist: <Check />,
     info: (
       <Info>
         If it shows the native time for the user based on his/her location
@@ -87,18 +93,21 @@ const listItems = [
     contestHive: <Check />,
     stopStalk: <Cross />,
     kontests: <Cross />,
+    clist: <Check />,
   },
   {
     feature: "Google Calendar Event",
     contestHive: <Check />,
     stopStalk: <Check />,
     kontests: <Cross />,
+    clist: <Check />,
   },
   {
     feature: "Multiple Use Cases",
     contestHive: <Cross />,
     stopStalk: <Check />,
     kontests: <Cross />,
+    clist: <Check />,
   },
 ];
 
@@ -125,17 +134,26 @@ function FeatureTable() {
       <TableHeader>
         <TableRow className="rounded-md bg-muted/50">
           <TableHead className="w-56">Features</TableHead>
-          <TableHead>
+          <TableHead className="text-center">
             <Link href="/" className="text-nowrap">
               Contest Hive
             </Link>
           </TableHead>
-          <TableHead>
+          <TableHead className="text-center">
+            <Link
+              href="https://clist.by/"
+              target="_blank"
+              className="text-nowrap"
+            >
+              Clist
+            </Link>
+          </TableHead>
+          <TableHead className="text-center">
             <Link href="https://www.stopstalk.com/" target="_blank">
               StopStalk*
             </Link>
           </TableHead>
-          <TableHead>
+          <TableHead className="text-center">
             <Link href="https://kontests.net/" target="_blank">
               Kontests*
             </Link>
@@ -149,14 +167,17 @@ function FeatureTable() {
               {item.feature}
               {item.info && item.info}
             </TableCell>
-            <TableCell className="text-nowrap md:pl-10">
-              {item.contestHive}
+            <TableCell className="text-nowrap text-center">
+              <div className="flex justify-center">{item.contestHive}</div>
             </TableCell>
-            <TableCell className="text-nowrap md:pl-10">
-              {item.stopStalk}
+            <TableCell className="text-nowrap text-center">
+              <div className="flex justify-center">{item.clist}</div>
             </TableCell>
-            <TableCell className="text-nowrap md:pl-10">
-              {item.kontests}
+            <TableCell className="text-nowrap text-center">
+              <div className="flex justify-center">{item.stopStalk}</div>
+            </TableCell>
+            <TableCell className="text-nowrap text-center">
+              <div className="flex justify-center">{item.kontests}</div>
             </TableCell>
           </TableRow>
         ))}
@@ -183,6 +204,12 @@ const WhyUs = () => {
       <p className="text-balance text-sm md:text-lg">
         <br />
         See the table below. You&apos;ll get your answers.
+      </p>
+      <p className="my-3 ml-2 max-w-3xl text-balance text-xs tracking-wider text-gray-600 dark:text-gray-400 md:ml-5 md:text-sm">
+        Uhm, so, I actually did <b>not</b> know about <b>Clist</b> before. I
+        only recently came to know about it. But does this mean I&apos;m going
+        to abandon <b>Contest Hive</b>?<br />
+        Nope!
       </p>
       <FeatureTable />
     </section>
