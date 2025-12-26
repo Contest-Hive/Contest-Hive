@@ -1,24 +1,21 @@
 "use client"
 import { useHotkeys } from "react-hotkeys-hook";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 const GlobalShortcuts = () => {
   const router = useRouter();
+  const pathname = usePathname();
 
-  // backspace -> back
+  // backspace -> back (only if not already at home)
   useHotkeys("backspace", (e) => {
     e.preventDefault();
-    router.back();
+    if (pathname !== "/") {
+      router.back();
+    }
   });
 
   // ctrl+backspace -> home
   useHotkeys("ctrl+backspace", (e) => {
-    e.preventDefault();
-    router.push("/");
-  });
-
-  // h -> home
-  useHotkeys("h", (e) => {
     e.preventDefault();
     router.push("/");
   });
@@ -28,6 +25,13 @@ const GlobalShortcuts = () => {
     e.preventDefault();
     router.push("/focused");
   });
+
+  // esc -> blur anything selected
+  useHotkeys("esc", () => {
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
+  }, { enableOnFormTags: true });
 
   return null;
 };

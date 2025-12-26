@@ -107,7 +107,8 @@ export function IsoTimeToLocalTime(isoTime: string) {
     daySuffix = "rd";
   }
 
-  const timeString = `${day}${daySuffix} ${month}, ${year} at ${hours}:${minutes}:${seconds}`;
+  const timeString = `${day}${daySuffix} ${month} at ${hours}:${minutes}:${seconds}`;
+  // const timeString = `${day}${daySuffix} ${month}, ${year} at ${hours}:${minutes}:${seconds}`;
 
   return timeString;
 }

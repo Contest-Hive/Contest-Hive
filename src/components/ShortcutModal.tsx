@@ -1,34 +1,31 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 import { cn } from "@/lib/utils";
 
 const ShortcutModal = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [showFloating, setShowFloating] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isAtTop, setIsAtTop] = useState(true);
 
-  // Scroll logic to hide/show the floating trigger
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY < 100) {
-        setShowFloating(true);
-        return;
+      // If scroll is 0, show it. Otherwise, hide it.
+      if (window.scrollY === 0) {
+        setIsAtTop(true);
+      } else {
+        setIsAtTop(false);
       }
-      setShowFloating(window.scrollY < lastScrollY);
-      setLastScrollY(window.scrollY);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   const groups = [
     {
       title: "Navigation",
       items: [
-        { key: "h", desc: "Go to `Home` Page" },
         { key: "f", desc: "Go to `Focused` Page" },
         { key: "Backspace", desc: "Go Back" },
         { key: "Ctrl + Backspace", desc: "Home Page" },
@@ -37,6 +34,7 @@ const ShortcutModal = () => {
     {
       title: "Contests & Interface",
       items: [
+        { key: "\\", desc: "Toggle `Platform` Menu" },
         { key: "Ctrl + K", desc: "Search for Contest" },
         { key: "Alt + T", desc: "Toggle Theme" },
         { key: "Ctrl + .", desc: "Toggle Wide Mode" },
@@ -47,7 +45,7 @@ const ShortcutModal = () => {
       title: "System",
       items: [
         { key: "/", desc: "Open Shortcuts" },
-        { key: "Esc", desc: "Close Shortcuts" },
+        { key: "Esc", desc: "Close Modal / `Blur` Focus" },
       ],
     },
   ];
@@ -95,9 +93,9 @@ const ShortcutModal = () => {
         onClick={toggleModal}
         className={cn(
           "fixed bottom-6 right-6 z-[90] flex h-10 items-center gap-2 rounded-full border border-gray-200 bg-gray-50/70 px-4 text-sm font-medium shadow-lg transition-all duration-300 hover:bg-gray-50 dark:border-gray-800 dark:bg-gray-800/80 dark:text-white dark:hover:bg-gray-700",
-          showFloating
+          isAtTop
             ? "translate-y-0 opacity-100"
-            : "translate-y-20 opacity-0",
+            : "translate-y-20 opacity-0 pointer-events-none",
         )}
       >
         <span className="flex h-5 w-5 items-center justify-center rounded bg-background/50 text-[10px] text-primary">
