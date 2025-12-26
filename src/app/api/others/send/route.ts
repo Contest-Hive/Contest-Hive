@@ -33,7 +33,6 @@ ${message}
   try {
     const response = await fetch(url);
     const data = await response.json();
-
     if (data.ok) {
       return {
         ok: true,
