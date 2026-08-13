@@ -1,28 +1,34 @@
-"use server"
+"use server";
 
-const URL = process.env.URL;
+import { escapeHTML } from "@/lib/utils";
 
+const API_URL = process.env.URL;
 
-
-export default async function sendToAuthor(message: string, ip: string) {
-  const sanitizedMessage = message
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-
+export default async function sendToAuthor(
+  email: string,
+  message: string,
+  ip: string,
+) {
   const content = `
 📧 New message from ${ip}
+Email: <code>${escapeHTML(email)}</code>
 Message:
 
-${sanitizedMessage}
-`.replace(/(?:\r\n|\r|\n)/g, "%0A");
+${escapeHTML(message)}
+`.trim();
 
-  const url = URL + content;
+  const url = new URL(API_URL);
 
   try {
-    const response = await fetch(url);
+    const response = await fetch(url.origin + url.pathname, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        ...Object.fromEntries(url.searchParams.entries()),
+        text: content,
+        parse_mode: "HTML",
+      }),
+    });
     const data = await response.json();
     if (data.ok) {
       return {

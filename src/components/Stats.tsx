@@ -35,13 +35,10 @@ const Stats = async () => {
             Here are some stats and{" "}
             <ResponsiveTooltip
               content={
-                <span>
-                  Umm... So, the stats below are not{" "}
-                  <i className="font-bold">incorrect or fake</i>. But, all of
-                  them don&apos;t really represent actual human visits.
+                <span className="text-xs md:px-5 text-balance">
+                  Every refresh/request is counted, even the bot ones.
                   <br />
-                  Because, even if a bot visits the site, it is counted in the
-                  stats. <code>:3</code>
+                  That&apos;s why it may seem very high to you. <code>:3</code>
                 </span>
               }
               className="mr-5 max-w-md text-balance px-2 py-5 text-center text-xs font-normal md:mr-0 md:max-w-lg md:text-sm"
@@ -57,7 +54,9 @@ const Stats = async () => {
           <Card key={index} className="w-full">
             <CardContent className="pb-4">
               <CardHeader className="py-3">
-                <CardTitle className="font-bold text-primary/95">{data.title}</CardTitle>
+                <CardTitle className="font-bold text-primary/95">
+                  {data.title}
+                </CardTitle>
               </CardHeader>
               <CardDescription className="flex flex-col items-center justify-center">
                 <span className="text-3xl font-extrabold text-primary">

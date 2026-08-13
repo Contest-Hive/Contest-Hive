@@ -14,9 +14,9 @@ const Contact = () => {
       </p>
       <p className="mx-auto mb-10 mt-2 max-w-xl text-balance text-sm text-muted-foreground">
         Tell us what you like, what you don&apos;t like, or any suggestion!
-        <br />
+        {/*<br />
         But if you want us to reach out to you, please leave your email or
-        contact info in the message.
+        contact info in the message.*/}
       </p>
 
       <MdEditor />

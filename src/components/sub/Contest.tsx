@@ -69,7 +69,7 @@ function ContestRow({
             target="_blank"
           >
             {contest.platform.toLowerCase().includes("gym") && (
-              <span className="-mx-0.5 font-mono text-xs font-bold text-red-600 dark:text-blue-400 md:text-sm">
+              <span className="-mx-0.5 font-mono text-xs font-bold text-red-600 dark:text-rose-500 md:text-sm">
                 [GYM]{" "}
               </span>
             )}
@@ -82,7 +82,7 @@ function ContestRow({
             <span className="flex min-w-36 items-center justify-start gap-1 md:w-36 ">
               <CalendarDays className="h-5 w-5 text-primary/70" />
               <ResponsiveTooltip
-                content={`${IsoTimeToLocalTime(contest.startTime)} ${getUserTimezone()}`}
+                content={`${IsoTimeToLocalTime(contest.startTime)} (${getUserTimezone()})`}
                 className="ml-2 flex w-60 items-center justify-center text-xs font-semibold md:ml-0"
               >
                 <Badge variant="secondary" className="text-nowrap">

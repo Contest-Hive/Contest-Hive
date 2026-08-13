@@ -26,6 +26,12 @@ const GlobalShortcuts = () => {
     router.push("/focused");
   });
 
+  // h -> go to / instantly
+  useHotkeys("h", (e) => {
+    e.preventDefault();
+    router.push("/");
+  });
+
   // esc -> blur anything selected
   useHotkeys("esc", () => {
     if (document.activeElement instanceof HTMLElement) {

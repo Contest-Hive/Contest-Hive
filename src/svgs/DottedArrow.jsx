@@ -7,7 +7,7 @@ const DottedArrow = () => {
       viewBox="145.281 153.683 762.1 455.8"
     >
       <g
-        stroke-width="7"
+        strokeWidth="7"
         stroke="currentColor"
         fill="none"
         stroke-linecap="round"

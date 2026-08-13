@@ -74,7 +74,11 @@ export function timeToReadableTime(isoTime: string) {
   return secondsToShortReadableTime(x, true);
 }
 
-export function IsoTimeToLocalTime(isoTime: string) {
+export function IsoTimeToLocalTime(
+  isoTime: string,
+  addYear: boolean = false,
+  use12Hour: boolean = true,
+) {
   const dt = new Date(isoTime);
   const months = [
     "January",
@@ -94,7 +98,7 @@ export function IsoTimeToLocalTime(isoTime: string) {
   const day = dt.getDate();
   const month = months[dt.getMonth()];
   const year = dt.getFullYear();
-  const hours = dt.getHours().toString().padStart(2, "0");
+  let rawHours = dt.getHours();
   const minutes = dt.getMinutes().toString().padStart(2, "0");
   const seconds = dt.getSeconds().toString().padStart(2, "0");
 
@@ -107,11 +111,23 @@ export function IsoTimeToLocalTime(isoTime: string) {
     daySuffix = "rd";
   }
 
-  const timeString = `${day}${daySuffix} ${month} at ${hours}:${minutes}:${seconds}`;
-  // const timeString = `${day}${daySuffix} ${month}, ${year} at ${hours}:${minutes}:${seconds}`;
+  let formattedHours: string;
+  let period = "";
+
+  if (use12Hour) {
+    const periodHours = rawHours % 12 || 12;
+    formattedHours = periodHours.toString().padStart(2, "0");
+    period = rawHours >= 12 ? " PM" : " AM";
+  } else {
+    formattedHours = rawHours.toString().padStart(2, "0");
+  }
+
+  const yearString = addYear ? `, ${year}` : "";
+  const timeString = `${day}${daySuffix} ${month}${yearString} at ${formattedHours}:${minutes}:${seconds}${period}`;
 
   return timeString;
 }
+
 
 export function getEndTime(isoStartTime: string, durationSeconds: number) {
   const startDate = new Date(isoStartTime);
@@ -135,6 +151,19 @@ export function getRandomISOTime() {
 }
 
 export function getEncodedDate(isoTime: string) {
+  // If input is ISO string like "2026-08-14T03:00:00Z" (UTC)
+  if (isoTime.endsWith("Z")) {
+    const dt = new Date(isoTime);
+    const year = dt.getUTCFullYear();
+    const month = (dt.getUTCMonth() + 1).toString().padStart(2, "0");
+    const day = dt.getUTCDate().toString().padStart(2, "0");
+    const hours = dt.getUTCHours().toString().padStart(2, "0");
+    const minutes = dt.getUTCMinutes().toString().padStart(2, "0");
+    const seconds = dt.getUTCSeconds().toString().padStart(2, "0");
+    return `${year}${month}${day}T${hours}${minutes}${seconds}Z`;
+  }
+
+  // If input is local ISO string like "2026-08-14T03:00:00"
   const dt = new Date(isoTime);
   const year = dt.getFullYear();
   const month = (dt.getMonth() + 1).toString().padStart(2, "0");
@@ -142,8 +171,7 @@ export function getEncodedDate(isoTime: string) {
   const hours = dt.getHours().toString().padStart(2, "0");
   const minutes = dt.getMinutes().toString().padStart(2, "0");
   const seconds = dt.getSeconds().toString().padStart(2, "0");
-  const encodedDate = `${year}${month}${day}T${hours}${minutes}${seconds}Z`;
-  return encodedDate;
+  return `${year}${month}${day}T${hours}${minutes}${seconds}`;
 }
 
 export function getUserTimezone(): string {

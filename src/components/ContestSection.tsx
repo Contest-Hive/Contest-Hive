@@ -13,7 +13,6 @@ export const revalidate = 60 * 5; /**
 async function ContestSection() {
   const contests = await getAllContestData();
   const lastUpdated = await getLastUpdatedTime();
-
   // return <pre>
   //   {JSON.stringify(contests, null, 2)}
   // </pre>

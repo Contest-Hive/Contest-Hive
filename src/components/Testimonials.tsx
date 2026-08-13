@@ -11,7 +11,7 @@ import { QuoteIcon } from "lucide-react";
 
 const TESTAMENTS = [
   {
-    name: "Nusab Taha",
+    name: "Nusab19",
     image: "/assets/images/min/me.jpg",
     title: (
       <>
@@ -34,7 +34,7 @@ const TESTAMENTS = [
     title: (
       <>
         Potential Engineer @{" "}
-        <span className="font-mono font-semibold">Google</span>
+        <span className="font-mono font-semibold"><span className="mr-0.5 line-through decoration-[1.5px] decoration-red-500">G</span>Noogle</span>
       </>
     ),
     description: (

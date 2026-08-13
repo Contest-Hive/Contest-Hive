@@ -1,4 +1,3 @@
-import { Separator } from "./ui/separator";
 import { buttonVariants } from "./ui/button";
 
 import { cn } from "@/lib/utils";
@@ -36,8 +35,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer id="footer" className="pt-20">
-      <Separator />
+    <footer id="footer" className="mt-20 border-t">
       <div className="container mx-auto px-4 pb-14 pt-6">
         <div className="text-center text-sm text-gray-500">
           <p className="flex items-center justify-center gap-2">
@@ -54,7 +52,7 @@ const Footer = () => {
                   !
                   <br/>
                   <br/>
-                  It&apos;s <b className="text-red-600 dark:text-red-500">Bangladesh</b>, my home country! 
+                  It&apos;s <b className="text-red-600 dark:text-red-500">Bangladesh</b>, my home country!
                 </span>
               }
               className="max-w-60 text-xs text-balance"

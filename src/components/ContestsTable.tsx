@@ -176,7 +176,7 @@ export default function ContestsTable({
               Go to the
               <Anchor
                 href="/focused"
-                className="p-0 font-bold tracking-wider text-indigo-500 underline"
+                className="p-0 font-bold tracking-wider text-blue-600 dark:text-blue-500 underline"
               >
                 focused
               </Anchor>

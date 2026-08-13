@@ -27,6 +27,7 @@ const ShortcutModal = () => {
       title: "Navigation",
       items: [
         { key: "f", desc: "Go to `Focused` Page" },
+        { key: "h", desc: "Go to `Home` Page" },
         { key: "Backspace", desc: "Go Back" },
         { key: "Ctrl + Backspace", desc: "Home Page" },
       ],
@@ -39,6 +40,14 @@ const ShortcutModal = () => {
         { key: "Alt + T", desc: "Toggle Theme" },
         { key: "Ctrl + .", desc: "Toggle Wide Mode" },
         { key: "← / →", desc: "Prev / Next Page" },
+      ],
+    },
+    {
+      title: "Contact Box",
+      items: [
+        { key: "alt+e", desc: "Editor Tab" },
+        { key: "alt+p", desc: "Preview Tab" },
+        { key: "ctrl+enter", desc: "Send Message" },
       ],
     },
     {
@@ -92,7 +101,7 @@ const ShortcutModal = () => {
       <button
         onClick={toggleModal}
         className={cn(
-          "fixed bottom-6 right-6 z-[90] flex h-10 items-center gap-2 rounded-full border border-gray-200 bg-gray-50/70 px-4 text-sm font-medium shadow-lg transition-all duration-300 hover:bg-gray-50 dark:border-gray-800 dark:bg-gray-800/80 dark:text-white dark:hover:bg-gray-700",
+          "md:fixed hidden bottom-6 right-6 z-[90] flex h-10 items-center gap-2 rounded-full border border-gray-200 bg-gray-50/70 px-4 text-sm font-medium shadow-lg transition-all duration-300 hover:bg-gray-50 dark:border-gray-800 dark:bg-gray-800/80 dark:text-white dark:hover:bg-gray-700",
           isAtTop
             ? "translate-y-0 opacity-100"
             : "translate-y-20 opacity-0 pointer-events-none",

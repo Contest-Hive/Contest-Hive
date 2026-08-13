@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 
 import {
@@ -31,25 +31,32 @@ export default function SelectPlatform({
   setPlatform: (platform: string) => void;
 }) {
   const [open, setOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+
+  const handleOpenChange = (next: boolean) => {
+    setOpen(next);
+    if (!next) triggerRef.current?.blur();
+  };
 
   useHotkeys(
     "\\",
     (e) => {
       e.preventDefault();
-      setOpen((prev) => !prev);
+      handleOpenChange(!open);
     },
     {
       enableOnFormTags: false, // Prevents triggering while typing in inputs
-    }
+    },
   );
 
   return (
-    <DropdownMenu open={open} onOpenChange={setOpen} modal={false}>
+    <DropdownMenu open={open} onOpenChange={handleOpenChange} modal={false}>
       <DropdownMenuTrigger asChild>
         <Button
+          ref={triggerRef}
           variant="outline"
           size="sm"
-          className="h-10 md:min-w-24 select-none justify-start gap-1"
+          className="h-10 select-none justify-start gap-1 md:min-w-24"
         >
           <Image
             priority
@@ -57,7 +64,7 @@ export default function SelectPlatform({
             alt={platform}
             width={1}
             height={1}
-            className="h-6 w-6 rounded-sm p-0.5 dark:bg-primary mr-1.5"
+            className="mr-1.5 h-6 w-6 rounded-sm p-0.5 dark:bg-primary"
           />
           <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
             {platform}
@@ -65,7 +72,14 @@ export default function SelectPlatform({
           <ChevronDown className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" className="pr-2">
+      <DropdownMenuContent
+        align="start"
+        className="pr-2"
+        onCloseAutoFocus={(e) => {
+          e.preventDefault();
+          triggerRef.current?.blur();
+        }}
+      >
         <DropdownMenuLabel>Select Platform</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {PLATFORMS.map((plt) => (
@@ -74,7 +88,7 @@ export default function SelectPlatform({
             checked={plt === platform}
             onClick={() => {
               setPlatform(plt);
-              setOpen(false);
+              handleOpenChange(false);
             }}
             className="flex items-center justify-start gap-2 text-xs md:text-sm"
           >
