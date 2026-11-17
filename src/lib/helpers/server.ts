@@ -1,32 +1,9 @@
 "use server";
-import { updateData as updateStatsData } from "@/db/updateStats";
 import { getResponse as getContestResponse } from "@/app/api/default";
 import { getSecondsDifferencesFromCurrentTime } from "@/lib/helpers/datetime";
 
 import { sleep } from "../utils";
 import { ContestDataType } from "@/lib/types";
-
-export async function getStatsData(update: "api" | "page") {
-  // also increments whenever called
-  const data = await updateStatsData(update);
-  return [
-    {
-      title: "Today",
-      value: data.past24page,
-      description: "visited",
-    },
-    {
-      title: "Total served",
-      value: data.api,
-      description: "API requests",
-    },
-    {
-      title: "Total",
-      value: data.page,
-      description: "page visits",
-    },
-  ];
-}
 
 export async function sendMessage(message: string) {
   const response = await fetch(

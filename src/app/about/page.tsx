@@ -3,10 +3,8 @@ import NavBar from "@/components/Navbar";
 import FAQ from "@/app/about/components/FAQ";
 import WhyUs from "@/app/about/components/WhyUs";
 import Footer from "@/components/Footer";
-import { getStatsData } from "@/lib/helpers/server";
 
-const About = async () => {
-  const statsData = await getStatsData("page");
+const About = () => {
   return (
     <>
       <NavBar />
